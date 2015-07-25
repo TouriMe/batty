@@ -19,8 +19,6 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'language_list'
 gem 'activeadmin', github: 'activeadmin'
 
-gem 'rails-api'
-
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do

@@ -4,4 +4,6 @@ class Driver < ActiveRecord::Base
   has_many :languages, class_name: 'DriverLanguage'
 
   validates_presence_of :first_name, :last_name, :description, :phone
+
+  accepts_nested_attributes_for :languages
 end

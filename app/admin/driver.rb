@@ -3,7 +3,9 @@ ActiveAdmin.register Driver do
   contacts = {phone:nil, email:nil, wechat_id: nil, whatsapp_id: nil, facebook_url: nil }
   intros  = {avatar_url: nil, video_url: nil }
 
-  permit_params *(particulars.keys + contacts.keys + intros.keys), languages_attributes: [:language_code, :proficiency]
+  all_fields = particulars.keys + contacts.keys + intros.keys
+
+  permit_params *all_fields, languages_attributes: [:language_code, :proficiency]
 
   register_fields = Proc.new do |f, fields|
     fields.each do |field, type|
@@ -28,5 +30,26 @@ ActiveAdmin.register Driver do
     end
 
     f.actions
+  end
+
+  show do
+    attributes_table do
+      all_fields.each do |field|
+        row field
+      end
+    end
+
+    panel 'Languages' do
+      table do
+        driver.languages.each do |l|
+          tr do
+            td {LanguageList::LanguageInfo.find(l.language_code).name}
+            td {l.proficiency}
+          end
+        end
+      end
+    end
+
+    active_admin_comments
   end
 end

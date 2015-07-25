@@ -3,6 +3,8 @@ class Api::DriversController < ApiController
     @drivers = Driver.all
   end
 
-  def view
+  def show
+    @driver = Driver.find(params[:id])
+    render '_model'
   end
 end

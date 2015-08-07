@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150806093759) do
+ActiveRecord::Schema.define(version: 20150806100800) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,13 @@ ActiveRecord::Schema.define(version: 20150806093759) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "driver_cities", force: :cascade do |t|
+    t.integer  "driver_id"
+    t.integer  "city_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "driver_languages", force: :cascade do |t|
     t.integer  "driver_id"
     t.string   "language_code"
@@ -64,6 +71,13 @@ ActiveRecord::Schema.define(version: 20150806093759) do
   end
 
   add_index "driver_languages", ["language_code"], name: "index_driver_languages_on_language_code", using: :btree
+
+  create_table "driver_vehicles", force: :cascade do |t|
+    t.integer  "driver_id"
+    t.integer  "vehicle_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "drivers", force: :cascade do |t|
     t.string   "first_name"

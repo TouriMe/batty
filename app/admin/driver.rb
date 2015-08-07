@@ -5,7 +5,10 @@ ActiveAdmin.register Driver do
 
   all_fields = particulars.keys + contacts.keys + intros.keys
 
-  permit_params *all_fields, languages_attributes: [:language_code, :proficiency]
+  permit_params *all_fields,
+                languages_attributes: [:id, :_destroy, :language_code, :proficiency],
+                driver_cities_attributes: [:id, :city_id, :_destroy],
+                driver_vehicles_attributes: [:id, :vehicle_id, :_destroy]
 
   register_fields = Proc.new do |f, fields|
     fields.each do |field, type|
@@ -18,12 +21,22 @@ ActiveAdmin.register Driver do
   end
 
   form do |f|
-    f.inputs('Particulars'){ register_fields[f, particulars] }
+    f.inputs('Particulars') do
+      register_fields[f, particulars]
+
+      f.has_many :driver_cities, allow_destroy: true do |city|
+        city.input :city_id, label: 'Name', as: :select, collection: (City.all.map {|c| [c.name, c.id]})
+      end
+
+      f.has_many :driver_vehicles, allow_destroy: true do |vehicle|
+        vehicle.input :vehicle_id, label: 'Name', as: :select, collection: (Vehicle.all.map {|v| [v.name, v.id]})
+      end
+    end
     f.inputs('Contacts'){ register_fields[f, contacts]}
     f.inputs('Intro'){ register_fields[f, intros]}
 
     f.inputs 'Language' do
-      f.has_many :languages, allow_destroy: true, new_record: true do |l|
+      f.has_many :languages, allow_destroy: true do |l|
         l.input :language_code, as: :select, collection: LanguageList::COMMON_LANGUAGES.map{|l| [l.name, l.iso_639_3]}
         l.input :proficiency, as: :select, collection: DriverLanguage.proficiencies.keys.to_a
       end
@@ -32,23 +45,33 @@ ActiveAdmin.register Driver do
     f.actions
   end
 
-  show do
-    attributes_table do
-      all_fields.each do |field|
-        row field
-      end
-    end
 
-    panel 'Languages' do
-      table do
-        driver.languages.each do |l|
-          tr do
-            td {LanguageList::LanguageInfo.find(l.language_code).name}
-            td {l.proficiency}
+  show do
+    table_panel = Proc.new do |name, models, &blk|
+      panel name do
+        table do
+          models.each do |m|
+            tr do
+              blk[m].each {|s| td s}
+            end
           end
         end
       end
     end
+
+    attributes_table do
+      all_fields.each do |field|
+        row field
+      end
+
+      row(:cities){ driver.cities.map(&:name).join ' ,'}
+      row(:vehicles){ driver.vehicles.map(&:name).join ' ,'}
+    end
+
+    table_panel.call('Languages', driver.languages) do |l|
+      [LanguageList::LanguageInfo.find(l.language_code).name, l.proficiency]
+    end
+
 
     active_admin_comments
   end

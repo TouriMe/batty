@@ -2,10 +2,13 @@ class Driver < ActiveRecord::Base
   obfuscate_id
 
   has_many :languages, class_name: 'DriverLanguage'
-  has_many :cities
-  has_many :vehicles
+  has_many :driver_cities
+  has_many :driver_vehicles
+
+  has_many :cities, through: :driver_cities
+  has_many :vehicles, through: :driver_vehicles
 
   validates_presence_of :first_name, :last_name, :description, :phone
 
-  accepts_nested_attributes_for :languages, :cities, :vehicles
+  accepts_nested_attributes_for :languages, :driver_cities, :driver_vehicles, allow_destroy: true
 end

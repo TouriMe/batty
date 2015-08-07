@@ -8,7 +8,8 @@ class Driver < ActiveRecord::Base
   has_many :cities, through: :driver_cities
   has_many :vehicles, through: :driver_vehicles
 
-  validates_presence_of :first_name, :last_name, :description, :phone
+  validates_presence_of :first_name, :last_name, :phone
+  # :description
 
   accepts_nested_attributes_for :languages, :driver_cities, :driver_vehicles, allow_destroy: true
 end

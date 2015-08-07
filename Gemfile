@@ -13,11 +13,15 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'slim-rails'
 gem 'obfuscate_id'
-gem 'devise'
 
 gem 'bcrypt', '~> 3.1.7'
 gem 'language_list'
 gem 'activeadmin', github: 'activeadmin'
+
+# Authentication related
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 group :development, :test do
   gem 'byebug'

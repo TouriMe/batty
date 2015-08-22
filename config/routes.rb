@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'welcome#index'
+  resources :drivers, only: [:index, :show]
 
   get 'test' => 'welcome#test'
   namespace :api do

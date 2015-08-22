@@ -1,0 +1,19 @@
+video#bgvid(autoplay,poster='assets/bg_poster.jpg',loop)
+  source[src="assets/cs_bgvid.webm#t=00:00:01" type="video/webm"]
+    source[src="assets/cs_bgvid.mp4#t=00:00:01" type="video/mp4"]
+
+.fullbg-img
+
+.row.home
+  .small-12.large-8.large-centered.columns
+    .content
+      .tag-line
+        h2
+          | Find your Driver in Cambodia
+        h6
+          | We help to connect global travelers to local drivers directly
+          br
+          | to discover amazing Cambodia.
+      .line
+      .search-form
+        = render 'partials/search_drivers'

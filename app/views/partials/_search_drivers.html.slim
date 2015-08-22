@@ -1,0 +1,15 @@
+.search-heading
+  h5
+    span
+      = fa_icon 'search'
+  |  Search for Drivers
+  form
+    label.control-label(for='City')
+    select#City
+      option(value='') -- Select City --
+      option(value='All') All
+      option(value='Siem Reap') Siem Reap
+      option(value='Phnom Penh') Phnom Penh
+    submit.button.back
+      | Find Drivers
+      = fa_icon 'chevron-down'

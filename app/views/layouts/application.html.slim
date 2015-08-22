@@ -2,17 +2,17 @@ doctype html
 html
   head
     meta(charset='utf-8')
-    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
 
     title
       | CambodianSmile | Connect with your drivers
 
-    meta(name='description', content='')
-    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='description' content='')
+    meta(name='viewport' content='width=device-width initial-scale=1')
 
-    = render 'layouts/head'
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
+    = render 'layouts/head'
     = csrf_meta_tags
   body
     .off-canvas-wrap[data-offcanvas]
@@ -20,7 +20,7 @@ html
         = render 'partials/menu'
         = render 'partials/topbar'
         = render 'partials/login'
-        #content.main-container
+        #content.main-container(height='250px')
           = yield
           = render 'partials/footer'
         a.exit-off-canvas

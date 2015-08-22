@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root 'welcome#index'
+
+  get 'test' => 'welcome#test'
   namespace :api do
     resources :drivers, defaults: {format: :json}
   end

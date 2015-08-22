@@ -14,7 +14,11 @@
     a[href="mailto:thecambodiansmiles@gmail.com?"]
       i.fa.fa-envelope
   .links
-    |  {{#link-to 'terms'}}Terms of Service{{/link-to}} {{#link-to 'privacy'}}Privacy Policy{{/link-to}} {{#link-to 'feedback'}}Feedback{{/link-to}} {{#link-to 'faq'}}FAQ{{/link-to}} {{#link-to 'about'}}About Us{{/link-to}} 
+    = link_to 'Terms', '/terms'
+    = link_to 'Privacy Policy', '/privacy'
+    = link_to 'Feedback', '/feedback'
+    = link_to 'FAQ', '/faq'
+    = link_to 'About', '/about'
   .m-copyright
     p
       | © 2015 CambodianSmiles Team

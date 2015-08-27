@@ -1,32 +1,32 @@
-script
-  |  function hide(target) { document.getElementById(target).style.display = 'none'; } function cheight(){ var c_height = document.getElementById('content').clientHeight + 80; document.getElementById('close').onclick= hide('sign_banner'); document.getElementById('content').style.height = c_height + "px" } var main = function() { /* Push the body and the nav over by 285px over */ $('.menu-icon').click(function() { $('.menu').animate({ right: "0" }, 200); $('body').animate({ right: "285px" }, 200); }); /* Then push them back */ $('.icon-close').click(function() { $('.menu').animate({ right: "-285px" }, 200); $('body').animate({ right: "0px" }, 200); }); }; $(document).ready(main); 
 #sign_banner.banner
   span
     | Have a Driver to Contribute?
-  a.button[href="https://docs.google.com/forms/d/144R0Ln0FmIQ1KLk6RI5jl9O_68S3n-RJhXa-ggnNSrY/viewform"]
-    | Click here
+  a.button[href="http://www.wenjuan.com/s/nquQji/"]
+    b
+     | Click here
   i#close.fa.fa-times[onclick="cheight()"]
 .topbar
   .top-bar-buttons
-    /|  {{#if session.isAuthenticated}} <button{{action 'invalidateSession'}} class="button small"> {{fa-icon "user" size="lg" inverse=true}}
-    button.button.small(action='invalidateSession')
+    button.button
       = fa_icon 'user', size: 'lg', inverse: true
-      span[style="color:white;"] Sign Out
-    button.button.small[data-reveal-id="loginModal"]
-      span Sign In
+      span[style="color:white;"]
+        b Sign Out
+    button.button[data-reveal-id="loginModal"]
+      span
+        b Sign In
     i.mobile.menu-icon.fa.fa-bars
-  .mobile.menu
+  .mobile.menu.hidden
     .icon-close
       i.fa.fa-close.fa-2x
-    button.button.small(action='invalidateSession')
+    button.button
       = fa_icon 'user', size: 'lg', inverse: true
     span[style="color:white;"]
       | Sign Out
-    button.button.small[data-reveal-id="loginModal"]
+    button.button[data-reveal-id="loginModal"]
       span Sign In
-    = link_to '/', class: 'tuk-tuk-logo'
-      .logo-wrap
-        img[src="assets/cs_logo.png" alt=""]
+  .tuk-tuk-logo
+    .logo-wrap
+      img[src="assets/cs_logo.png" alt=""]
         span.logo_txt
           | Cambodian
           b

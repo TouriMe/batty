@@ -4,7 +4,7 @@ $gray: rgb(236,236,236);
 $bg-alpha: rgba(0,0,0,0.45);
 $darkgray: #1a1a1a;
 $black: #000;
-
+$primary-color: #008CBA;
 /**
  * Base Styles
  */
@@ -94,6 +94,7 @@ top: 6.25rem;
 
 .login-button{
   width:100%;
+  background-color: $primary-color;
 }
 
 /**

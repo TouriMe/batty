@@ -1,6 +1,6 @@
 .driver-item
   a[href="/drivers/#{driver.to_param}"]
-    = image_tag driver., class: 'item-bg'
+    = image_tag driver.background_url, class: 'item-bg'
     .description
       h5 = driver.full_name
       .avatar

@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   root 'welcome#index'
   resources :drivers, only: [:index, :show]
+  post 'drivers' => 'drivers#find_drivers'
 
-  get 'test' => 'welcome#test'
   namespace :api do
     resources :drivers, defaults: {format: :json}
   end

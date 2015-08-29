@@ -10,20 +10,19 @@ html
     meta(name='description' content='')
     meta(name='viewport' content='width=device-width initial-scale=1')
 
-    = stylesheet_link_tag    'application', media: 'all'
+    = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application'
     = javascript_include_tag 'vendor/modernizr'
     = render 'layouts/head'
     = csrf_meta_tags
   body
-    .scrollable
-      .off-canvas-wrap[data-offcanvas]
-        .inner-wrap
-          = render 'partials/menu'
-          = render 'partials/topbar'
-          = render 'partials/login'
-          #content.main-container
-            .scrollable
-              = yield
-              = render 'partials/footer'
-            a.exit-off-canvas
+    .off-canvas-wrap[data-offcanvas]
+      .inner-wrap
+        = render 'partials/menu'
+        = render 'partials/topbar'
+        = render 'partials/login'
+        #content.main-container
+          .scrollable
+            = yield
+            = render 'partials/footer'
+          a.exit-off-canvas

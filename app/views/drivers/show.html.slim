@@ -6,56 +6,55 @@
 
   .profile-page-fold
   .profile-page-body
+    .small-9.columns.main-content
+      .small-3.columns
+        .profile-avatar
+          img.avatar-imagea[src=@driver.avatar_url]
+      .small-6.columns
+        .profile
+          .profile-rating.section
+            .section.rating
+            h4
+              = fa_icon 'thumbs-up'
+              | Rating
+            - 5.times do
+              = fa_icon 'star-o'
 
-  .small-9.columns.main-content
-    .small-3.columns
-      .profile-avatar
-        img.avatar-imagea[src=@driver.avatar_url]
-    .small-6.columns
-      .profile
-        .profile-rating.section
-          .section.rating
-          h4
-            = fa_icon 'thumbs-up'
-            | Rating
-          - 5.times do
-            = fa_icon 'star-o'
+            h3 = @driver.full_name
+            .divider
+            h6 = @driver.nickname
 
-          h3 = @driver.full_name
-          .divider
-          h6 = @driver.nickname
+            .contact-info
+              - if @driver.facebook_url
+                a(href=@driver.facebook_url size='1')
+                  = fa_icon('facebook-square')
+                  | Profile
+              - if @driver.email
+                a(href=@driver.email size='1')
+                  = fa_icon('envelope-o')
+                  = @driver.email
+              - if @driver.phone
+                a(href=@driver.phone size='1')
+                  = fa_icon('phone')
+                  = @driver.phone
+      .small-3.columns
+        .share-box
+          h6.butt-favorite
+            = fa_icon 'heart-o', size: 2
+            span Add to favorites
 
-          .contact-info
-            - if @driver.facebook_url
-              a(href=@driver.facebook_url size='1')
-                = fa_icon('facebook-square')
-                | Profile
-            - if @driver.email
-              a(href=@driver.email size='1')
-                = fa_icon('envelope-o')
-                = @driver.email
-            - if @driver.phone
-              a(href=@driver.phone size='1')
-                = fa_icon('phone')
-                = @driver.phone
-    .small-3.columns
-      .share-box
-        h6.butt-favorite
-          = fa_icon 'heart-o', size:2
-          span Add to favorites
+            .butt-share
+              h6 Share
+              = fa_icon 'facebook', size: 2
+              = fa_icon 'twitter', size: 2
+              = fa_icon 'linkedin', size: 2
+              = fa_icon 'weibo', size: 2
 
-          .butt-share
-            h6 Share
-            = fa_icon 'facebook', size:2
-            = fa_icon 'twitter', size:2
-            = fa_icon 'linkedin', size:2
-            = fa_icon 'weibo', size:2
-
-    .small-12.columns.main_content
-      .profile-details
-        .section
-          h4 About this driver
-          p = @driver.description
+      .small-12.columns.main_content
+        .profile-details
+          .section
+            h4 About this driver
+            p = @driver.description
 
     /.section.comments
 

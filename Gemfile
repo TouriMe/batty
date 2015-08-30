@@ -34,4 +34,4 @@ group :development do
 end
 
 gem 'font-awesome-rails'
-gem 'zurb-foundation'
+gem 'foundation-rails'

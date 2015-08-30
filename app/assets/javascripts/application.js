@@ -12,5 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require foundation.min
+//= require foundation
 //= require_tree .
+
+
+$(function () {
+    $(document).foundation();
+});

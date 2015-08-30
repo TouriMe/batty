@@ -1,15 +1,16 @@
-a[href="/drivers/#{driver.to_param}"]
-  = image_tag driver.background_url, class:'item-bg'
-  .description
-    h5 = driver.full_name
-    .avatar
-      = image_tag driver.avatar_url, class: 'item-avatar'
-    .intro
-      p = driver.short_desc
-    .list-contact
-      = link_to fa_icon('facebook'), driver.facebook_url, size:'2'
-      = link_to fa_icon('envelope-o'), "mail_to:#{driver.email}", size:'2'
-      = link_to fa_icon('phone'), driver.phone, size:'2'
-    .list-fav
-      i.fa.fa-heart-o.fa-2x
-      i.fa.fa-heart.fa-2x
+.driver-item
+  a[href="/drivers/#{driver.to_param}"]
+    = image_tag driver.background_url, class: 'item-bg'
+    .description
+      h5 = driver.full_name
+      .avatar
+        = image_tag driver.avatar_url, class: 'item-avatar'
+      .intro
+        p = driver.short_desc
+      .list-contact
+        = link_to fa_icon('facebook'), driver.facebook_url, size: '2'
+        = link_to fa_icon('envelope-o'), "mail_to:#{driver.email}", size: '2'
+        = link_to fa_icon('phone'), driver.phone, size: '2'
+      .list-fav
+        i.fa.fa-heart-o.fa-2x
+        i.fa.fa-heart.fa-2x

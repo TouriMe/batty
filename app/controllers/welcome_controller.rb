@@ -1,7 +1,6 @@
 class WelcomeController < ApplicationController
   def index
-  end
-
-  def test
+    @cities = City.all.map{|c| [c.name, c.to_param]}
+    @cities.unshift(['All',''])
   end
 end

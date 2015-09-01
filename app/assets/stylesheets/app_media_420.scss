@@ -1,0 +1,42 @@
+@media (max-width: 420px) {
+
+  .search-form {
+    a.button {
+      padding-top: 9% !important;
+
+    }
+
+    a.button i {
+      margin-top: 2px !important;
+    }
+    a.button:hover > i {
+      transition: all 0.15s;
+      padding-top: 6px !important
+    }
+
+  }
+
+  .topbar {
+    padding: 5px 15px;
+  }
+
+  .tag-line {
+
+    padding-top: 30px;
+
+  }
+
+  .content .search-form {
+    margin: 30px auto auto !important;
+  }
+  .search-form {
+
+    width: 100% !important;
+    height: 0px !important;
+    padding-bottom: 100% !important;
+    -moz-border-radius: 100% !important;
+    -webkit-border-radius: 100% !important;
+    border-radius: 100% !important;
+    margin: auto auto;
+  }
+}

@@ -5,6 +5,7 @@ $bg-alpha: rgba(0, 0, 0, 0.45);
 $darkgray: #1a1a1a;
 $black: #000;
 $primary-color: #008CBA;
+
 /**
  * Base Styles
  */
@@ -129,7 +130,6 @@ body {
 
 // Top Bar
 .banner {
-  height: 80px;
   padding: 25px 20px;
   text-align: center;
   background-color: $darkgray;
@@ -157,7 +157,6 @@ body {
 }
 
 .topbar {
-  position: fixed;
   width: 100%;
   background: rgba(0, 0, 0, 0.4);
   padding: 5px 40px;
@@ -182,11 +181,7 @@ body {
   }
 
   .logo-wrap {
-
-    width: 230px;
-    margin: auto auto;
     margin-top: 4px;
-
   }
 
   .logo_txt {
@@ -262,7 +257,6 @@ body {
 
 // Footer
 .footer {
-  height: 60px;
   padding: 18px 40px;
   background-color: rgba(0, 0, 0, 0.65);
   color: $white;

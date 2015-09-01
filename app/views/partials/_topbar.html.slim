@@ -3,17 +3,8 @@
     | Have a Driver to Contribute?
   a.button[href="http://www.wenjuan.com/s/nquQji/"]
     | Click here
-  i#close.fa.fa-times[onclick="cheight()"]
+  i.fa.fa-times.close
 .topbar
-  .top-bar-buttons
-    button.button.small
-      = fa_icon 'user', size: 'lg', inverse: true
-      span[style="color:white;"]
-        | Sign Out
-    button.button.small[data-reveal-id="loginModal"]
-      span
-        | Sign In
-    i.mobile.menu-icon.fa.fa-bars
   .mobile.menu.hidden
     .icon-close
       i.fa.fa-close.fa-2x
@@ -30,3 +21,12 @@
           | Cambodian 
           b
             | Smiles
+  /.top-bar-buttons
+  /  button.button.small
+  /    = fa_icon 'user', size: 'lg', inverse: true
+  /    span[style="color:white;"]
+  /      | Sign Out
+  /  button.button.small[data-reveal-id="loginModal"]
+  /    span
+  /      | Sign In
+  /  i.mobile.menu-icon.fa.fa-bars

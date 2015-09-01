@@ -1,7 +1,7 @@
 @media (max-width: 780px) {
 
   .mobile.menu {
-    display: block !important;
+    display: block;
   }
 
   .mobile.menu {
@@ -25,10 +25,10 @@
 
   #loginModal {
     position: fixed;
-    max-width: 100% !important;
+    max-width: 100%;
     background-color: rgba(255, 255, 255, 1);
     width: 100%;
-    top: 0px !important;
+    top: 0px;
     bottom: 0px;
     border-radius: 0px;
   }
@@ -37,12 +37,12 @@
     padding-top: 25px;
   }
   .drivers.row {
-    padding-top: 35px !important;
-    padding-bottom: 0px !important;
+    padding-top: 35px;
+    padding-bottom: 0px;
 
     .columns {
-      padding-left: 0px !important;
-      padding-right: 0px !important;
+      padding-left: 0px;
+      padding-right: 0px;
 
       .list-fav, .list-contact {
         bottom: 18px;
@@ -53,25 +53,25 @@
       }
 
       .ember-view.driver-item img.item-bg, .ember-view.driver-item .description {
-        border-radius: 0px !important;
+        border-radius: 0px;
       }
 
       .ember-view.driver-item {
 
-        border-radius: 0px !important;
-        margin: 0px !important;
+        border-radius: 0px;
+        margin: 0px;
 
-        width: 100% !important;
+        width: 100%;
       }
 
     }
 
-    padding: 0px !important;
+    padding: 0px;
 
   }
 
   .top-bar-buttons .mobile.menu-icon {
-    display: block !important;
+    display: block;
     margin-top: 12px;
     font-size: 1.1rem;
 
@@ -80,7 +80,7 @@
   }
 
   .top-bar-buttons button.small {
-    display: none !important;
+    display: none;
 
   }
 
@@ -105,7 +105,7 @@
   }
 
   .tag-line {
-    width: 100% !important;
+    width: 100%;
     padding-left: 25px;
     padding-right: 25px;
   }
@@ -119,23 +119,23 @@ width: 100%!important;
 }*/
 
   .ember-view.driver-item {
-    width: 90% !important;
-    height: 300px !important;
+    width: 90%;
+    height: 300px;
 
     .avatar {
-      top: -70px !important;
+      top: -70px;
     }
 
   }
 
   .banner {
-    text-align: left !important;
+    text-align: left;
     font-size: 14px;
 
     a {
-      font-size: 12px !important;
-      margin-left: 10px !important;
-      margin-right: 0px !important;
+      font-size: 12px;
+      margin-left: 10px;
+      margin-right: 0px;
     }
   }
 }

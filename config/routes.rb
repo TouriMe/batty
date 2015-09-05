@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get 'tourists/new'
-
-  get 'tourists/show'
-
   root 'welcome#index'
   get 'terms' => 'welcome#terms'
   get 'faq' => 'welcome#faq'
@@ -10,10 +6,15 @@ Rails.application.routes.draw do
   get 'privacy' => 'welcome#privacy'
   get 'about' => 'welcome#about'
 
+  get 'tourists/new'
+  get 'tourists/show'
+
   devise_for :tourists, :controllers => { :omniauth_callbacks => 'auth/omniauth' }
   resources :tourists, only: [:new, :show]
 
   resources :drivers, only: [:index, :show]
+  post 'drivers/:id/comments' => 'drivers#add_comment'
+
   post 'drivers' => 'drivers#find_drivers'
 
   namespace :api do

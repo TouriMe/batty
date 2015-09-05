@@ -8,6 +8,8 @@ class Driver < ActiveRecord::Base
   has_many :cities, through: :driver_cities
   has_many :vehicles, through: :driver_vehicles
 
+  has_many :driver_comments
+
   validates_presence_of :first_name, :phone
   # :description
 

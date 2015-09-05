@@ -1,14 +1,34 @@
-#loginModal.reveal-modal[data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog" style="max-width:300px;"]
-  .text-center[style="padding:10px 0;"]
-    h5
-      strong
-        span[style="color:#007095;"]
-          | Social Network Login
-      button.login-button.radius
-        = fa_icon 'facebook', size:'lg'
-        = link_to " Sign in with Facebook", tourist_omniauth_authorize_path(:facebook)
-      button.login-button.radius
-        = fa_icon 'google-plus', size: 'lg'
-        = link_to " Sign in with Google", tourist_omniauth_authorize_path(:google_oauth2)
-      a.close-reveal-modal[aria-label="Close"]
-        | ×
+- if tourist_signed_in?
+  button.button
+    = fa_icon 'user', size: 'lg', inverse: true
+    /span[style="color:white;"]
+    = link_to(' Sign Out', destroy_tourist_session_path, method: :delete)
+- else
+  button.button.small[data-reveal-id="loginModal"]
+    span
+      | Sign In
+  i.mobile.menu-icon.fa.fa-bars
+  .mobile.menu.hidden
+    .icon-close
+      i.fa.fa-close.fa-2x
+    button.button
+      = fa_icon 'user', size: 'lg', inverse: true
+    span[style="color:white;"]
+      | Sign Out
+    button.button[data-reveal-id="loginModal"]
+      span Sign In
+
+  #loginModal.reveal-modal[data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog" style="max-width:300px;"]
+    .text-center[style="padding:10px 0;"]
+      h5
+        strong
+          span[style="color:#007095;"]
+            | Social Network Login
+        button.login-button.radius
+          = fa_icon 'facebook', size:'lg'
+          = link_to " Sign in with Facebook", tourist_omniauth_authorize_path(:facebook)
+        button.login-button.radius
+          = fa_icon 'google-plus', size: 'lg'
+          = link_to " Sign in with Google", tourist_omniauth_authorize_path(:google_oauth2)
+        a.close-reveal-modal[aria-label="Close"]
+          | ×

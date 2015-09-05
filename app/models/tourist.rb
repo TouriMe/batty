@@ -1,6 +1,8 @@
 class Tourist < User
   devise :omniauthable, :omniauth_providers => [:facebook, :google_oauth2]
 
+  has_many :driver_comments
+
   def self.from_omniauth(auth)
     @tourist = find_by(email: auth.info.email)
     return @tourist if @tourist

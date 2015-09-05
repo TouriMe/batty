@@ -1,26 +1,14 @@
-div
-  - if tourist_signed_in?
-    | Signed In as&nbsp;
-    = current_tourist.name
-    = link_to('Sign Out', destroy_tourist_session_path, :method => :delete)
-  - else
-    = fa_icon 'facebook', size:'lg'
-    = link_to "Sign in with Facebook", tourist_omniauth_authorize_path(:facebook)
-    = link_to "Sign in with Google", tourist_omniauth_authorize_path(:google_oauth2)
-
 #loginModal.reveal-modal[data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog" style="max-width:300px;"]
   .text-center[style="padding:10px 0;"]
     h5
       strong
         span[style="color:#007095;"]
           | Social Network Login
-  div
-    button.login-button.radius
-      = fa_icon 'facebook', size:'lg'
-      = link_to "Sign in with Facebook", tourist_omniauth_authorize_path(:facebook)
-  div
-    button.login-button.radius(action='googleLogin')
-      = fa_icon 'google-plus', size: 'lg'
-      |   Login with Google
-  a.close-reveal-modal[aria-label="Close"]
-    | ×
+      button.login-button.radius
+        = fa_icon 'facebook', size:'lg'
+        = link_to " Sign in with Facebook", tourist_omniauth_authorize_path(:facebook)
+      button.login-button.radius
+        = fa_icon 'google-plus', size: 'lg'
+        = link_to " Sign in with Google", tourist_omniauth_authorize_path(:google_oauth2)
+      a.close-reveal-modal[aria-label="Close"]
+        | ×

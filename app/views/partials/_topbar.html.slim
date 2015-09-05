@@ -5,15 +5,26 @@
     | Click here
   i.fa.fa-times.close
 .topbar
-  .mobile.menu.hidden
-    .icon-close
-      i.fa.fa-close.fa-2x
-    button.button
-      = fa_icon 'user', size: 'lg', inverse: true
-    span[style="color:white;"]
-      | Sign Out
-    button.button[data-reveal-id="loginModal"]
-      span Sign In
+  .top-bar-buttons
+    - if tourist_signed_in?
+      button.button
+        = fa_icon 'user', size: 'lg', inverse: true
+        /span[style="color:white;"]
+        = link_to(' Sign Out', destroy_tourist_session_path, method: :delete)
+    - else
+      button.button.small[data-reveal-id="loginModal"]
+        span
+          | Sign In
+      i.mobile.menu-icon.fa.fa-bars
+      .mobile.menu.hidden
+        .icon-close
+          i.fa.fa-close.fa-2x
+        button.button
+          = fa_icon 'user', size: 'lg', inverse: true
+        span[style="color:white;"]
+          | Sign Out
+        button.button[data-reveal-id="loginModal"]
+          span Sign In
   .tuk-tuk-logo
     a.logo-wrap [href="/"]
       = image_tag 'cs_logo.png'
@@ -21,12 +32,3 @@
         | Cambodian
         b
           |  Smiles
-  /.top-bar-buttons
-  /  button.button.small
-  /    = fa_icon 'user', size: 'lg', inverse: true
-  /    span[style="color:white;"]
-  /      | Sign Out
-  /  button.button.small[data-reveal-id="loginModal"]
-  /    span
-  /      | Sign In
-  /  i.mobile.menu-icon.fa.fa-bars

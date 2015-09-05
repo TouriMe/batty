@@ -32,12 +32,10 @@
                   | Profile
                   br
               - if @driver.email
-                  /a(href='#' size='1')
                   = fa_icon('envelope-o')
                   = @driver.email
                   br
               - if @driver.phone
-                  /a(href='#' size='1')
                   = fa_icon('phone')
                   = @driver.phone
       .small-3.columns

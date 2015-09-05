@@ -93,9 +93,13 @@ h6 {
   top: 6.25rem;
 }
 
-.login-button {
+.login-button,.login-button:hover {
   width: 100%;
   background-color: $primary-color;
+  a {
+    color:white;
+    font-weight:700;
+  }
 }
 
 /**
@@ -212,6 +216,10 @@ body {
     .button {
       margin-left: 6px;
       margin-right: 0px;
+    }
+
+    a{
+      color:white;
     }
   }
 }

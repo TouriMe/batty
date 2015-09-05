@@ -7,7 +7,7 @@ class Auth::OmniauthController < Devise::OmniauthCallbacksController
 
       if @tourist.persisted?
         sign_in_and_redirect @tourist, :event => :authentication
-        set_flash_message(:notice, :success, :kind => kind) if is_navigational_format?
+        # set_flash_message(:notice, :success, :kind => kind) if is_navigational_format?
       else
         session[session_name] = request.env["omniauth.auth"]
         redirect_to new_tourist_path

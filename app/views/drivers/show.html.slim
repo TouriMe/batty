@@ -54,31 +54,7 @@
             h4 About this driver
             p = @driver.description
 
-          .section.comments
-            h4
-              i.fa.fa-list-ul[aria-hidden="true" ]
-              | 23 comments
-            .tag.comment
-              .small-6.columns
-                | Comment 1
-              .small-6.columns
-                .section.rating
-                  i.fa.fa-star-o
-                  i.fa.fa-star-o
-                  i.fa.fa-star-o
-                  i.fa.fa-star-o
-                  i.fa.fa-star-o
-            .tag.comment
-              .small-6.columns
-                | Comment 1
-              .small-6.columns
-                .section.rating
-                  i.fa.fa-star-o
-                  i.fa.fa-star-o
-                  i.fa.fa-star-o
-                  i.fa.fa-star-o
-                  i.fa.fa-star-o
-
+          = render 'comment', comments: @driver.driver_comments, driver: @driver
     .small-3.columns.right
       .section
         h4

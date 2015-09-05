@@ -7,4 +7,5 @@ class Api::DriversController < ApiController
     @driver = Driver.find(params[:id])
     render '_model'
   end
+
 end

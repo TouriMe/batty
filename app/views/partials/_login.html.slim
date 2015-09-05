@@ -1,3 +1,11 @@
+div
+  - if tourist_signed_in?
+    | Signed In as&nbsp;
+    = current_tourist.name
+  - else
+    = fa_icon 'facebook', size:'lg'
+    = link_to "Sign in with Facebook", tourist_omniauth_authorize_path(:facebook)
+
 #loginModal.reveal-modal[data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog" style="max-width:300px;"]
   .text-center[style="padding:10px 0;"]
     h5
@@ -7,7 +15,7 @@
   div
     button.login-button.radius
       = fa_icon 'facebook', size:'lg'
-      |   Login with Facebook
+      = link_to "Sign in with Facebook", tourist_omniauth_authorize_path(:facebook)
   div
     button.login-button.radius(action='googleLogin')
       = fa_icon 'google-plus', size: 'lg'

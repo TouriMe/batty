@@ -8,6 +8,14 @@ end
   Vehicle.create(name: vehicle_name)
 end
 
+language_mapping = {
+    'Mandarin' => 'zho',
+    'English'  => 'eng',
+    'French'   => 'fra',
+    'Germany'  => 'deu',
+    'Khmer' => 'khm'
+}
+
 drivers = JSON.parse(File.open('db/data/drivers.json').read)['drivers']
 drivers.each do |driver|
   d = Driver.new driver.except('id', 'cities', 'vehicles', 'languages_spoken', 'languages_written')
@@ -21,5 +29,9 @@ drivers.each do |driver|
   driver['vehicles'].each do |vehicle_name|
     vehicle = Vehicle.find_by(name:vehicle_name)
     d.driver_vehicles.create(vehicle: vehicle)
+  end
+
+  driver['languages_written'].each do |code|
+    d.languages.create! proficiency: 'written', language_code: language_mapping[code]
   end
 end

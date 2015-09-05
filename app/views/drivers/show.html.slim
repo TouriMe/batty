@@ -101,8 +101,25 @@
 
       .section
         h4
+          = fa_icon 'home'
+          span City
+        - @driver.cities.each do |c|
+          .tag = c.name
+
+      .section
+        h4
+          = fa_icon 'taxi'
+          span Vehicle
+        - @driver.vehicles.each do |v|
+          .tag = v.name
+
+      .section
+        h4
           = fa_icon 'tachometer'
           span Driving Experience
         .tag
-          = @driver.driving_years
-          | years
+          - if @driver.driving_years
+            = @driver.driving_years
+            | &nbsp;years
+          - else
+            | N.A.

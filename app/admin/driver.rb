@@ -1,5 +1,5 @@
 ActiveAdmin.register Driver do
-  particulars = {first_name:nil, last_name: nil, nickname: nil, short_desc: nil, description: :text}
+  particulars = {first_name:nil, last_name: nil, nickname: nil, short_desc: nil, description: :text, driving_years:nil}
   contacts = {phone:nil, email:nil, wechat_id: nil, whatsapp_id: nil, facebook_url: nil }
   intros  = {avatar_url: nil, video_url: nil }
 

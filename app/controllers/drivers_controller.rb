@@ -26,6 +26,8 @@ class DriversController < ApplicationController
 
     if(comment.save)
       flash[:success] = 'Comment Added.'
+      redirect_to driver_path(@driver)+'#comment-section'
+      return
     else
       flash[:error] = 'Error: ' + comment.errors.to_a.join(', ')
     end

@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
   root 'welcome#index'
+  get 'terms' => 'welcome#terms'
+  get 'faq' => 'welcome#faq'
+  get 'feedback' => 'welcome#feedback'
+  get 'privacy' => 'welcome#privacy'
+  get 'about' => 'welcome#about'
+
   resources :drivers, only: [:index, :show]
   post 'drivers' => 'drivers#find_drivers'
 

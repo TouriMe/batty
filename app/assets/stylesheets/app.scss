@@ -257,9 +257,10 @@ body {
 
 // Footer
 .footer {
-  padding: 18px 40px;
-  background-color: rgba(0, 0, 0, 0.65);
-  color: $white;
+  padding: 16px 40px;
+  background-color: rgba(0, 0, 0, 0.35);
+  color: #fff;
+  height: 60px;
 
   .m-copyright {
     p {

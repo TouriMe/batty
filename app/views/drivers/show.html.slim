@@ -94,3 +94,14 @@
             | &nbsp;years
           - else
             | N.A.
+
+      .section
+        h4
+          = fa_icon 'child'
+          span Child Safe
+        .tag
+          - if @driver.childsafe
+            | ChildSafe Member
+          - else
+            | Not ChildSafe Member
+

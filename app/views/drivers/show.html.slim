@@ -95,13 +95,11 @@
           - else
             | N.A.
 
-      .section
-        h4
-          = fa_icon 'child'
-          span Child Safe
-        .tag
-          - if @driver.childsafe
+      - if @driver.childsafe
+        .section
+          h4
+            = fa_icon 'child'
+            span Child Safe
+          .tag
             | ChildSafe Member
-          - else
-            | Not ChildSafe Member
 

@@ -21,11 +21,11 @@
     margin: $footer-link-margin;
     font-size: $footer-link-line-height;
 
-    @media only screen and (max-width: $small-breakpoint){
+    @media #{$media-phone-smaller}{
       display: block;
     }
 
-    @media only screen and (min-width: $small-breakpoint){
+    @media #{$media-phone-larger}{
       display: inline-block;
     }
   }

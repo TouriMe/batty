@@ -24,11 +24,11 @@ html, body{
   padding-bottom: $footer-height;
 }
 #footer{
-  @media only screen and (max-width: $small-breakpoint){
+  @media #{$media-phone-smaller}{
     height: $footer-height;
   }
 
-  @media only screen and (min-width: $small-breakpoint){
+  @media #{$media-phone-larger}{
     height: $footer-height-large-screen;
   }
 

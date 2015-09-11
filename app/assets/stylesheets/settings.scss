@@ -1,6 +1,14 @@
+@import 'foundation_and_overrides';
+
 $footer-contact-icon-size: 34px;
 $footer-link-margin: 10px;
 $footer-link-line-height: 15px;
 $footer-copyright-font-size: 12px;
 $footer-height: 280px;
 $footer-height-large-screen: 150px;
+
+$media-phone-smaller: "only screen and (max-width: #{$small-breakpoint})";
+$media-phone-larger: "only screen and (min-width: #{$small-breakpoint})";
+
+$media-pad-smaller: "only screen and (max-width: #{$medium-breakpoint})";
+$media-pad-larger: "only screen and (min-width: #{$medium-breakpoint})";

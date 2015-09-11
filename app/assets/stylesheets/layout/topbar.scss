@@ -6,6 +6,7 @@
   text-align: center;
   text-transform: uppercase;
 
+  padding: 10px 0;
 
   .button{
     background: transparent;
@@ -17,6 +18,12 @@
     letter-spacing: 1px;
 
     padding: 5px 10px;
+    margin: 0 5px;
+  }
+  
+  .close{
+    vertical-align: middle;
+    margin: 10px;
   }
 }
 

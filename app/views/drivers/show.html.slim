@@ -5,57 +5,59 @@
       span Open photo gallery
     img.cover-image[src=@driver.background_url]
 
-  .profile-page-fold
-  .profile-page-body
-    .small-9.columns.main-content
-      .small-3.columns
-        .profile-avatar
-          img.avatar-imagea[src=@driver.avatar_url]
-      .small-6.columns
-        .profile
-          .profile-rating.section
-            .section.rating
-              h4
-                /= fa_icon 'thumbs-up'
-                /| Rating
-                - 5.times do
-                  = fa_icon 'star-o'
+  .profile-page-body.row
+    .medium-9.columns.profile-basic-info
+      .row
+        .columns.medium-3.small-12
+          .profile-avatar
+            img.avatar-image[src=@driver.avatar_url]
+        .columns.small-6.small-12
+          .profile
+            .profile-rating.section
+              .section.rating
+                h4
+                  - 5.times do
+                    = fa_icon 'star-o'
 
-            h3 = @driver.full_name
-            .divider
-            h6 = @driver.nickname
+            .profile-name
+              h3 = @driver.full_name
+              .divider
+              h6 = @driver.nickname
 
             .contact-info
               - if @driver.facebook_url
-                a(href=@driver.facebook_url size='1')
-                  = fa_icon('facebook-square')
-                  | Profile
-                  br
+                div.contact-info-facebook
+                  a(href=@driver.facebook_url size='1')
+                    = fa_icon('facebook-square')
+                    | Profile
+                    br
               - if @driver.email
+                div.contact-info-email
                   = fa_icon('envelope-o')
                   = @driver.email
                   br
               - if @driver.phone
+                div.contact-info-phone
                   = fa_icon('phone')
                   = @driver.phone
-      .small-3.columns
-        .share-box
-          h6.butt-favorite
-            = fa_icon 'heart-o', size: 2
-            span Add to favorites
+        .columns.small-12.medium-3
+          .columns.share-box.small-6.medium-12
+            h6.butt-favorite
+              = fa_icon 'heart-o', size: 2
+              span Add to favorites
 
-          .butt-share
+          .columns.butt-share.small-6.medium-12
             h6 Share
             = social_share_button_tag("Welcome to Cambodian Smiles")
 
-      .small-12.columns.main_content
-        .profile-details
+      .row
+        .small-12.columns.profile-page-details
           .section
             h4 About this driver
             p = @driver.description
 
-          = render 'comment', comments: @driver.driver_comments, driver: @driver
-    .small-3.columns.right
+            = render 'comment', comments: @driver.driver_comments, driver: @driver
+    .medium-3.columns.profile-page-matrix
       .section
         h4
           = fa_icon 'comment'

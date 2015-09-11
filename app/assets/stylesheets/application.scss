@@ -18,6 +18,10 @@ html, body{
 #wrapper{
   min-height: 100%;
   position: relative;
+
+  .page-header{
+    padding: 50px 0;
+  }
 }
 
 #content{
@@ -39,4 +43,5 @@ html, body{
   bottom: 0;
   left: 0;
 }
+
 

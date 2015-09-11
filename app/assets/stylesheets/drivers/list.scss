@@ -1,0 +1,68 @@
+// Place all the styles related to the drivers controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.drivers{
+  background-color: white;
+
+  .driver-item{
+    position: relative;
+    display: block;
+    min-width: 200px;
+    height: 310px;
+    margin: 15px;
+    background-color: #fff;
+    overflow: hidden;
+
+    img{
+      max-width: 100%;
+      position: static;
+    }
+
+    .description{
+      position: absolute;
+      min-height: 130px;
+      width: 100%;
+      bottom: 0;
+      padding: 15px;
+      border-top: 8px solid white;
+      border-radius: 0 0 4px 4px;
+      background-color: whitesmoke;
+      box-shadow: 0 -2px 20px 1px rgba(0, 0, 0, 0.45);
+
+      .avatar{
+        position: absolute;
+        top: -45px;
+        right: 15px;
+
+        img{
+          border-radius: 45px;
+          border: 5px solid white;
+          display: inline-block;
+
+          width: 90px;
+          height: 90px;
+        }
+      }
+
+      .intro p{
+        font-size: 14px;
+        color: black;
+        font-weight: 300;
+        display: block;
+      }
+
+      .list-contact{
+        position: absolute;
+        bottom: 6px;
+        right: 10px;
+
+        a i.fa{
+          color: #787878;
+          font-size: 1.25em;
+          padding: 2px 4px;
+        }
+      }
+    }
+  }
+}

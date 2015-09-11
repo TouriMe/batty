@@ -5,3 +5,38 @@
  *= require_tree .
  *= require_self
  */
+
+@import 'settings';
+@import 'foundation_and_overrides';
+
+html, body{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+#wrapper{
+  min-height: 100%;
+  position: relative;
+}
+
+#content{
+  padding-bottom: $footer-height;
+}
+#footer{
+  @media only screen and (max-width: $small-breakpoint){
+    height: $footer-height;
+  }
+
+  @media only screen and (min-width: $small-breakpoint){
+    height: $footer-height-large-screen;
+  }
+
+  width: 100%;
+  height: $footer-height;
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+

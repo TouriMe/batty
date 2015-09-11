@@ -1,10 +1,11 @@
 .search-heading
-  h5
+  h3
     span
       = fa_icon 'search'
     | Search for Drivers
 = form_tag 'drivers', method: :post do
-  = select_tag(:city_id, options_for_select(@cities))
+  .select-city
+    = select_tag(:city_id, options_for_select(@cities))
   button.black.button(type='submit')
     | Find Drivers
     = fa_icon 'chevron-down'

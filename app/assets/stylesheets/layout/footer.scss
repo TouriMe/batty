@@ -1,0 +1,55 @@
+@import '../settings';
+@import '../foundation_and_overrides';
+
+#footer{
+  color: white;
+  background-color: rgba(0,0,0,0.4);
+  padding: 32px;
+
+  text-align: center;
+
+  p,a{
+    font-weight: 300;
+    font-size: 14px;
+  }
+
+  a{
+    color: white;
+  }
+
+  .links a{
+    margin: $footer-link-margin;
+    font-size: $footer-link-line-height;
+
+    @media only screen and (max-width: $small-breakpoint){
+      display: block;
+    }
+
+    @media only screen and (min-width: $small-breakpoint){
+      display: inline-block;
+    }
+  }
+
+  .contacts{
+
+    a{
+      .fa{
+        width: $footer-contact-icon-size;
+        height: $footer-contact-icon-size;
+
+        vertical-align: middle;
+        padding-top: ($footer-contact-icon-size - 14px) / 2 - 1;
+        margin: 0;
+
+        border-radius: 50px;
+        border: 1px solid white;
+      }
+
+      margin: 0 8px;
+    }
+  }
+
+  .copyright p{
+    font-size: $footer-copyright-font-size;
+  }
+}

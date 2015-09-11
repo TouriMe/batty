@@ -15,12 +15,11 @@ html
     = render 'layouts/head'
     = csrf_meta_tags
   body
-    .off-canvas-wrap[data-offcanvas]
-      .inner-wrap
-        = render 'partials/menu'
+    #wrapper
+      #header
+        = render 'partials/banner'
         = render 'partials/topbar'
-        #content.main-container
-          .scrollable
-            = yield
-            = render 'partials/footer'
-          a.exit-off-canvas
+      #content.main-container
+        = yield
+      #footer
+        = render 'partials/footer'

@@ -1,0 +1,37 @@
+#sign_banner.banner{
+  display: block;
+  background-color: black;
+
+  color: white;
+  text-align: center;
+  text-transform: uppercase;
+
+
+  .button{
+    background: transparent;
+
+    border-radius: 4px;
+    border: 1px solid white;
+
+    font-weight: 300;
+    letter-spacing: 1px;
+
+    padding: 5px 10px;
+  }
+}
+
+.top-bar{
+  .site-title{
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    img{
+      display: inline-block;
+      vertical-align: middle;
+      height: 42px;
+      max-width: 100%;
+    }
+  }
+}
+

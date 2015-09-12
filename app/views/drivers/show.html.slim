@@ -5,9 +5,9 @@
       span Open photo gallery
     img.cover-image[src=@driver.background_url]
 
-  .profile-page-body.row
-    .medium-9.columns.profile-basic-info
-      .row
+  .profile-page-body.row.full-width[data-equalizer]
+    .medium-9.columns.profile-basic-info[data-equalizer-watch]
+      .row.full-width
         .columns.medium-3.small-12
           .profile-avatar
             img.avatar-image[src=@driver.avatar_url]
@@ -50,14 +50,14 @@
             h6 Share
             = social_share_button_tag("Welcome to Cambodian Smiles")
 
-      .row
+      .row.full-width
         .small-12.columns.profile-page-details
           .section
             h4 About this driver
             p = @driver.description
 
             = render 'comment', comments: @driver.driver_comments, driver: @driver
-    .medium-3.columns.profile-page-matrix
+    .medium-3.columns.profile-page-matrix[data-equalizer-watch]
       .section
         h4
           = fa_icon 'comment'

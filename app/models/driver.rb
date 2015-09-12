@@ -18,4 +18,10 @@ class Driver < ActiveRecord::Base
   def full_name
     self.first_name + ' ' + self.last_name
   end
+
+  def rating
+    nums = driver_comments.map(&:rating)
+    return nil if nums.empty?
+    nums.sum.to_f / nums.count
+  end
 end

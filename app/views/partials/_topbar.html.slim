@@ -1,18 +1,11 @@
-.contain-to-grid.sticky
-  nav.top-bar[data-topbar role="navigation"]
-    ul.title-area
-      li.name
-        h1.site-title
-          a[href="/"]
-            .logo-wrap
-              = image_tag 'cs_logo.png'
-              span.logo_txt
-                | Cambodian
-                b
-                  |  Smiles
-      li.toggle-topbar.menu-icon
-        a[href='#']
-          span
-    section.top-bar-section
-      ul.right
-        li = render 'partials/login'
+nav.site-bar
+  .site-title
+    a[href="/"]
+      .logo-wrap
+        = image_tag 'cs_logo.png'
+        span.logo_txt
+          | Cambodian
+          b
+            |  Smiles
+  .site-bar-button.right
+    = render 'partials/login'

@@ -1,3 +1,19 @@
+.yy-button{
+  background: transparent;
+  color: white;
+
+  font-weight: 300;
+  letter-spacing: 1px;
+
+  padding: 5px 10px;
+
+  &:hover{
+    color: white;
+    background-color: #007095;
+  }
+  border-radius: 4px;
+}
+
 #sign_banner.banner{
   display: block;
   background-color: black;
@@ -6,19 +22,11 @@
   text-align: center;
   text-transform: uppercase;
 
-  padding: 10px 0;
+  padding: 20px 0;
 
-  .button{
-    background: transparent;
-
-    border-radius: 4px;
+  .click-here{
+    margin-left: 15px;
     border: 1px solid white;
-
-    font-weight: 300;
-    letter-spacing: 1px;
-
-    padding: 5px 10px;
-    margin: 0 5px;
   }
   
   .close{
@@ -27,18 +35,36 @@
   }
 }
 
-.top-bar{
-  .site-title{
+.site-bar{
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 100%;
+  padding: 10px;
+
+  a{
     color: white;
-    text-transform: uppercase;
     letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  text-align: center;
+
+  .site-title{
+    display: inline-block;
 
     img{
       display: inline-block;
       vertical-align: middle;
       height: 42px;
       max-width: 100%;
+      margin-right: 10px;
     }
   }
+  .site-bar-button{
+    i.fa{
+      margin-right: 10px;
+    }
+    margin-top: 10px;
+    margin-right: 10px;
+  }
+  border-bottom: 2px solid #ffffff;
 }
 

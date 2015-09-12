@@ -3,15 +3,13 @@
   overflow-x: hidden;
   background: white;
   box-shadow: 0 -2px 20px 1px rgba(0, 0, 0, 0.35);
-  @media #{$media-pad-larger}{
-    padding: 20px 50px;
-  }
 
   ol{
     list-style: none;
   }
 
 }
+
 
 button.login-button{
   background-color: #008CBA;

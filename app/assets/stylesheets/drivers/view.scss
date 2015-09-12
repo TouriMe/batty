@@ -1,8 +1,8 @@
 @import "../settings";
 
-#content .driver-profile{
+#content .driver-profile {
   background-color: white;
-  .profile-page-hero{
+  .profile-page-hero {
     background-position: 50% 0%;
 
     height: 400px;
@@ -10,7 +10,7 @@
 
     overflow: hidden;
 
-    p{
+    p {
       position: absolute;
       right: 3%;
       margin-top: 20px;
@@ -22,30 +22,30 @@
       font-size: 13px;
       letter-spacing: 0.3px;
 
-      span{
+      span {
         margin-left: 10px;
       }
     }
 
-    img.cover-image{
+    img.cover-image {
       width: 100%;
     }
   }
 
-  .profile-page-body{
-    .profile-basic-info{
-      background-color:  white;
+  .profile-page-body {
+    .profile-basic-info {
+      background-color: white;
       padding: 0;
       height: 100%;
 
-      .profile-avatar{
+      .profile-avatar {
         width: 220px;
         height: 220px;
         border-radius: 110px;
         background-color: white;
         box-shadow: -2px 0px 10px -1px rgba(125, 125, 125, 0.8);
 
-        img.avatar-image{
+        img.avatar-image {
           width: 210px;
           height: 210px;
           border-radius: 105px;
@@ -56,39 +56,39 @@
         margin-left: 15%;
       }
 
-      .profile{
+      .profile {
         padding: 10px;
         text-align: center;
         position: relative;
-        a{
+        a {
           color: black;
         }
 
-        .divider{
+        .divider {
           width: 30px;
           border: 1px solid black;
           margin: 0 auto;
         }
 
-        .contact-info{
+        .contact-info {
           text-align: left;
           margin: 15px;
 
-          i.fa{
-              margin: 0 10px;
+          i.fa {
+            margin: 0 10px;
           }
         }
       }
 
-      .profile-page-details{
+      .profile-page-details {
         background-color: whitesmoke;
         border-top: 2px solid silver;
         padding: 45px 10% 0px 10%;
 
-        .section.comments{
+        .section.comments {
           margin: 20px 0;
 
-          i.fa.fa-list-ul{
+          i.fa.fa-list-ul {
             margin-right: 10px;
           }
 
@@ -110,18 +110,20 @@
     }
 
     // Still in profile page body
-    .share-box{
+    .share-box {
       border-left: 1px solid silver;
       padding: 20px;
       margin: 15px 0;
 
-      .butt-favorite{
+      .butt-favorite {
         border: 1px solid silver;
         padding: 15px;
-        .fa{ margin-right: 15px;}
+        .fa {
+          margin-right: 15px;
+        }
       }
 
-      .social-share-button{
+      .social-share-button {
         display: block;
       }
     }
@@ -134,24 +136,24 @@
 
     padding: 30px 25px 50px;
 
-
-    .section{
+    .section {
       margin: 15px 0;
-      h4{ // TODO: h4 is not very descriptive
+      h4 {
+        // TODO: h4 is not very descriptive
         color: white;
         font-size: 0.9rem;
         font-weight: 400;
-        i{
+        i {
           font-size: 1.4rem;
           margin-right: 15px;
 
-          @media only screen and (min-width: $small-breakpoint) and (max-width: $medium-breakpoint){
+          @media only screen and (min-width: $small-breakpoint) and (max-width: $medium-breakpoint) {
             display: block;
           }
         }
       }
 
-      .tag{
+      .tag {
         background-color: rgba(255, 255, 255, 0.2);
         display: inline-block;
         padding: 5px 10px;
@@ -165,7 +167,7 @@
   }
 }
 
-.row.full-width{
+.row.full-width {
   width: 100%;
   max-width: 100%;
 }

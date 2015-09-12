@@ -1,0 +1,142 @@
+@import "../settings";
+
+#content .driver-profile{
+  background-color: white;
+  .profile-page-hero{
+    background-position: 50% 0%;
+
+    height: 400px;
+    background-size: cover;
+
+    overflow: hidden;
+
+    p{
+      position: absolute;
+      right: 3%;
+      margin-top: 20px;
+      padding: 15px;
+      background-color: rgba(0, 0, 0, 0.4);
+      border: 1px solid white;
+      color: white;
+      font-weight: bold;
+      font-size: 13px;
+      letter-spacing: 0.3px;
+
+      span{
+        margin-left: 10px;
+      }
+    }
+
+    img.cover-image{
+      width: 100%;
+    }
+  }
+
+  .profile-page-body{
+    .profile-basic-info{
+      background-color:  white;
+      padding: 0;
+      height: 100%;
+
+      .profile-avatar{
+        width: 220px;
+        height: 220px;
+        border-radius: 110px;
+        background-color: white;
+        box-shadow: -2px 0px 10px -1px rgba(125, 125, 125, 0.8);
+
+        img.avatar-image{
+          width: 210px;
+          height: 210px;
+          border-radius: 105px;
+          margin: 5px;
+        }
+
+        margin-top: -33%;
+      }
+
+      .profile{
+
+        text-align: center;
+        position: relative;
+        a{
+          color: black;
+        }
+
+        .divider{
+          width: 30px;
+          border: 1px solid black;
+          margin: 0 auto;
+        }
+
+        .contact-info{
+          text-align: left;
+          position: relative;
+          top: 15px;
+          left: 15px;
+
+          i.fa{
+              margin: 0 10px;
+          }
+        }
+      }
+
+      .profile-page-details{
+        background-color: whitesmoke;
+        border-top: 2px solid silver;
+        padding: 45px 10% 0px 10%;
+      }
+
+      height: 100%;
+    }
+
+    // Still in profile page body
+    .share-box{
+      height: 200px;
+      border-left: 1px solid silver;
+      padding: 20px;
+      margin-top: 15px;
+
+      .butt-favorite{
+        border: 1px solid silver;
+        padding: 15px;
+        width: 180px;
+      }
+    }
+  }
+
+  .profile-page-matrix {
+    background-color: #323232;
+    color: white;
+    font-weight: 400;
+
+    padding-top: 30px;
+    padding-bottom: 50px;
+
+    @media #{$media-pad-smaller} {
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+
+    @media #{$media-pad-larger}{
+      padding-left: 20px;
+      padding-right: 20x;
+    }
+
+    h4{ // TODO: h4 is not very descriptive
+      color: white;
+      font-size: 0.9rem;
+      i{ font-size: 1.4rem; }
+    }
+
+    .tag{
+      background-color: rgba(255, 255, 255, 0.2);
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 6px;
+      margin: 2px;
+      font-weight: 300;
+    }
+    height: 100%;
+  }
+}

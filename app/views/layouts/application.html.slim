@@ -3,59 +3,24 @@ html
   head
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible' content='IE=edge')
-
-    title
-      | CambodianSmile | Connect with your drivers
-
-    meta(name='AUTHOR'
-      content='Created By CambodianSmiles Team')
-
-    meta(name='CambodianSmiles | Connect traveler to amazing Cambodia'
-      content='We help to connect global travelers to local drivers directly to discover amazing Cambodia, \
-      experience one of the best destination in Asia.')
-
-    meta(name='ROBOTS' content='INDEX,FOLLOW')
-    
-    meta(name='CambodianSmiles | Experience the best destination in Asia'
-      content='CambodianSmiles lets you connect to one of the best place in Asia, Cambodia. \
-      Find your driver and discover amazing place in the Kingdom such as Angkorwat Seam Reap, Royal Palace, etc.')
-
-    meta(name='CambodianSmiles | Explore the best place in Asia, Cambodia'
-      content='We help to connect global travelers to local drivers directly to discover amazing Cambodia, \
-      experience one of the best destination in Asia. Explore Angkorwat, Seam Reap, beautiful beach at Sihanouk Ville,\
-       Royal Palace, etc.')
-
-    meta(name='We connect you to the best destination in Asia | CambodianSmiles'
-      content='We connect you to the best destination in Asia | CambodianSmiles')
-
-    meta(name='Cambodia Drivers | Travel with the your ideal driver in Cambodia'
-      content='Cambodia Drivers | Travel with the your ideal driver in Cambodia')
-
-    meta(name='Travel with the ideal driver in Cambodia | CambodianSmiles'
-      content='Travel with the ideal driver in Cambodia | CambodianSmiles')
-
-    meta(name='KEYWORDS' content = 'Best Place To Travel, Amazing Cheap Backpacker Destination, \
-      Top Places To Visit In Asia, Angkorwat Seam Reap, Royal Palace Cambodia, World Best Trip, \
-      Best Destination In The World, Angkorwat Seam Reap, Royal Palace Cambodia, Beautiful Beach In Asia, \
-      Sihanouk Ville, Place To Travel In Asia')
-
-    meta(name='COVERAGE' content='global')
-
     meta(name='viewport' content='width=device-width initial-scale=1')
     meta(name='title' content='About CambodianSmiles | Connect traveler to amazing Cambodia')
 
+    title CambodianSmile | Connect with your drivers
+
+    = render 'layouts/seo_meta'
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application'
     = javascript_include_tag 'vendor/modernizr'
     = render 'layouts/head'
     = csrf_meta_tags
   body
-    .off-canvas-wrap[data-offcanvas]
-      .inner-wrap
-        = render 'partials/menu'
+    #wrapper
+      #header
+        = render 'partials/banner'
         = render 'partials/topbar'
-        #content.main-container
-          .scrollable
-            = yield
-            = render 'partials/footer'
-          a.exit-off-canvas
+        .fullbg.bg-img
+      #content.main-container
+        = yield
+      #footer
+        = render 'partials/footer'

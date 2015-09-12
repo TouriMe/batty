@@ -1,0 +1,18 @@
+.bg-video{
+  z-index: -99;
+}
+
+.fullbg{
+  position: fixed;
+  margin: 0;
+  padding: 0;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.bg-curtain{
+  background-color: rgba(0,0,0, 0.3);
+  z-index: -98;
+}

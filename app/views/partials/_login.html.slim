@@ -1,22 +1,11 @@
 - if tourist_signed_in?
-  button.button
+  = link_to(destroy_tourist_session_path, method: :delete)
     = fa_icon 'user', size: 'lg', inverse: true
-    /span[style="color:white;"]
-    = link_to(' Sign Out', destroy_tourist_session_path, method: :delete)
+    | Sign Out
 - else
-  button.button.small[data-reveal-id="loginModal"]
-    span
-      | Sign In
-  i.mobile.menu-icon.fa.fa-bars
-  .mobile.menu.hidden
-    .icon-close
-      i.fa.fa-close.fa-2x
-    button.button
-      = fa_icon 'user', size: 'lg', inverse: true
-    span[style="color:white;"]
-      | Sign Out
-    button.button[data-reveal-id="loginModal"]
-      span Sign In
+  a[data-reveal-id="loginModal"]
+    = fa_icon 'user', size: 'lg', inverse: true
+    | Sign In
 
   #loginModal.reveal-modal[data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog" style="max-width:300px;"]
     .text-center[style="padding:10px 0;"]

@@ -93,11 +93,15 @@
           }
 
           .tag.comment{
-            height: 50px;
             border-bottom: 1px solid gainsboro;
             margin: 12px;
             background-color: #fff;
             padding: 12px;
+
+            .ratting .fa{
+              padding: 0;
+              margin: 0;
+            }
           }
         }
       }

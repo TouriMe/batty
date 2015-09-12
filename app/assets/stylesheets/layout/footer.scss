@@ -1,39 +1,43 @@
 @import '../settings';
 @import '../foundation_and_overrides';
 
-#footer{
+#footer {
   color: white;
-  background-color: rgba(0,0,0,0.4);
-  padding: 32px;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 10px 0;
 
   text-align: center;
 
-  p,a{
+  p, a {
     font-weight: 300;
     font-size: 14px;
   }
 
-  a{
+  a {
     color: white;
   }
 
-  .links a{
-    margin: $footer-link-margin;
-    font-size: $footer-link-line-height;
+  .links {
+    float: right;
+    padding: 3px 0;
+    a {
+      margin: 0 $footer-link-margin;
+      font-size: $footer-link-line-height;
 
-    @media #{$media-phone-smaller}{
-      display: block;
-    }
+      @media #{$media-phone-smaller}{
+        display: block;
+      }
 
-    @media #{$media-phone-larger}{
-      display: inline-block;
+      @media #{$media-phone-larger}{
+        display: inline-block;
+      }
     }
   }
 
-  .contacts{
-
-    a{
-      .fa{
+  .contacts {
+    padding: 3px 0;
+    a {
+      .fa {
         width: $footer-contact-icon-size;
         height: $footer-contact-icon-size;
 
@@ -49,7 +53,15 @@
     }
   }
 
-  .copyright p{
-    font-size: $footer-copyright-font-size;
+  .copyright {
+    padding: 7px 0;
+    p {
+      margin-right: 25px;
+      margin-bottom:0;
+      display: inline-block;
+      font-weight: 100;
+      font-size: $footer-copyright-font-size;
+    }
   }
+
 }

@@ -25,7 +25,17 @@ html, body{
 }
 
 #content{
-  padding-bottom: $footer-height;
+  @media #{$media-phone-smaller}{
+    padding-bottom: $footer-height;
+  }
+  @media #{$media-phone-larger}{
+    padding-bottom: $footer-height-medium-screen;
+  }
+
+  @media #{$media-pad-larger}{
+    padding-bottom: $footer-height-large-screen;
+  }
+
 }
 #footer{
   @media #{$media-phone-smaller}{
@@ -33,6 +43,10 @@ html, body{
   }
 
   @media #{$media-phone-larger}{
+    height: $footer-height-medium-screen;
+  }
+
+  @media #{$media-pad-larger}{
     height: $footer-height-large-screen;
   }
 

@@ -1,9 +1,12 @@
 // Place all the styles related to the drivers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
+@import 'settings';
 .drivers{
   background-color: white;
+  @media #{$media-pad-larger}{
+    padding: 20px 50px;
+  }
 
   .driver-item{
     width: 100%;

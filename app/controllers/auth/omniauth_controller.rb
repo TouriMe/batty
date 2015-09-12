@@ -16,7 +16,7 @@ class Auth::OmniauthController < Devise::OmniauthCallbacksController
   end
 
   def failure
-    flash[:error] = 'Failed to login via OpenID'
+    # flash[:error] = 'Failed to login via OpenID'
     redirect_to root_path
   end
 end

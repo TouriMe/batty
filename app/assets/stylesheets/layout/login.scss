@@ -1,0 +1,41 @@
+.reveal-modal{
+  .header{
+    background-color: #1E1E1E;
+
+    &, h5{
+      color: white;
+      text-transform: uppercase;
+    }
+    .user-icon{
+      font-size: 3em;
+    }
+    padding: 25px 0 10px 0;
+  }
+
+  .content{
+    padding: 10px 20px;
+
+    a.login-button{
+      display: block;
+      border-radius: 5px;
+      margin: 10px;
+      background: transparent;
+      border: 1px solid black;
+      font-size: 1.2em;
+      padding: 10px 20px;
+      font-weight: 400;
+
+      &.facebook{
+        color: #344488;
+        border-color: #344488;
+        .fa{ font-size: 1.4em; }
+      }
+
+      &.google{
+        color: #be4133;
+        border-color: #be4133;
+        .fa{ font-size: 1.4em; }
+      }
+    }
+  }
+}

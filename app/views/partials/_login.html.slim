@@ -3,21 +3,20 @@
     = fa_icon 'user', size: 'lg', inverse: true
     | Sign Out
 - else
-  a[data-reveal-id="loginModal"]
+  a.yy-button[data-reveal-id="loginModal"]
     = fa_icon 'user', size: 'lg', inverse: true
     | Sign In
 
   #loginModal.reveal-modal[data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog" style="max-width:300px;"]
-    .text-center[style="padding:10px 0;"]
+    .text-center
+      .header
+        = fa_icon 'user', class: 'user-icon'
         h5
-          strong
-           span[style="color:#007095;"]
-            | Social Network Login
-        button.login-button.radius
-          = fa_icon 'facebook', size:'lg'
-          = link_to " Sign in with Facebook", tourist_omniauth_authorize_path(:facebook)
-        button.login-button.radius
-          = fa_icon 'google-plus', size: 'lg'
-          = link_to " Sign in with Google", tourist_omniauth_authorize_path(:google_oauth2)
-        a.close-reveal-modal[aria-label="Close"]
-          | ×
+          strong Login With
+      .content
+        = link_to tourist_omniauth_authorize_path(:facebook), class: 'login-button facebook'
+          = fa_icon 'facebook', class: 'left'
+          | Facebook
+        = link_to tourist_omniauth_authorize_path(:google_oauth2), class: 'login-button google'
+          = fa_icon 'google-plus', class: 'left'
+          | Google

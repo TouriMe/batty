@@ -1136,10 +1136,11 @@ $bg-alpha: rgba(0,0,0,0.45);
 // $reveal-default-width: 80%;
 // $reveal-max-width: $row-width;
 // $reveal-modal-padding: rem-calc(20);
+$reveal-modal-padding: 0;
 // $reveal-box-shadow: 0 0 10px rgba($black,.4);
 
 // We use these to style the reveal close button
-// $reveal-close-font-size: rem-calc(40);
+//$reveal-close-font-size: rem-calc(40);
 // $reveal-close-top: rem-calc(10);
 // $reveal-close-side: rem-calc(22);
 // $reveal-close-color: $base;
@@ -1154,7 +1155,7 @@ $bg-alpha: rgba(0,0,0,0.45);
 // $reveal-border-width: 1px;
 // $reveal-border-color: $steel;
 
-// $reveal-modal-class: "reveal-modal";
+$reveal-modal-class: "reveal-modal";
 // $close-reveal-modal-class: "close-reveal-modal";
 
 // 26. Side Nav

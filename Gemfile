@@ -33,8 +33,10 @@ end
 
 group :development do
   gem 'rails-erd'
+  gem 'letter_opener'
 end
 
 gem 'font-awesome-rails'
 gem 'foundation-rails'
 gem 'social-share-button', '~> 0.1.6'
+

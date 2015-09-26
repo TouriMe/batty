@@ -3,7 +3,7 @@ class Auth::OmniauthController < Devise::OmniauthCallbacksController
     [:google_oauth2 , 'Google', 'devise.google_data']
   ].each do |provider, kind, session_name|
     define_method provider do
-      @tourist = User.from_omniauth(request.env["omniauth.auth"])
+      @tourist = NormalUser.from_omniauth(request.env["omniauth.auth"])
 
       if @tourist.persisted?
         sign_in_and_redirect @tourist, :event => :authentication

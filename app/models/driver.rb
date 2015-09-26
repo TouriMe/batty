@@ -11,7 +11,8 @@ class Driver < ActiveRecord::Base
   has_many :driver_comments
 
   validates_presence_of :first_name, :phone
-  # :description
+
+  scope :active, ->{where(is_active: true)}
 
   accepts_nested_attributes_for :languages, :driver_cities, :driver_vehicles, allow_destroy: true
 

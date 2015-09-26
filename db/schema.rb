@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150907130735) do
+ActiveRecord::Schema.define(version: 20150926040824) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,10 +85,11 @@ ActiveRecord::Schema.define(version: 20150907130735) do
     t.string   "facebook_url"
     t.string   "wechat_id"
     t.string   "whatsapp_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.integer  "driving_years"
     t.boolean  "childsafe"
+    t.boolean  "is_active",      default: true
   end
 
   create_table "users", force: :cascade do |t|

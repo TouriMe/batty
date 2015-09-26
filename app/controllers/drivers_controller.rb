@@ -2,7 +2,7 @@ class DriversController < ApplicationController
   before_filter(only:[:show, :add_comment]){@driver = Driver.find(params[:id])}
 
   def index
-    @drivers = Driver.all
+    @drivers = Driver.active
   end
 
   def show
@@ -11,9 +11,9 @@ class DriversController < ApplicationController
   def find_drivers
     city_id = params['city_id']
     if city_id.empty?
-      @drivers = Driver.all
+      @drivers = Driver.active
     else
-      @drivers = City.find(city_id).drivers
+      @drivers = City.find(city_id).drivers.active
     end
 
     render 'index'

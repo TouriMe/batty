@@ -1,5 +1,5 @@
 ActiveAdmin.register Driver do
-  particulars = {first_name:nil, last_name: nil, nickname: nil, short_desc: nil, description: :text}
+  particulars = {first_name:nil, last_name: nil, nickname: nil, short_desc: nil, description: :text, is_active: nil}
   contacts = {phone:nil, email:nil, wechat_id: nil, whatsapp_id: nil, facebook_url: nil }
   intros  = {childsafe: nil, avatar_url: nil, video_url: nil, driving_years:nil}
 
@@ -12,6 +12,7 @@ ActiveAdmin.register Driver do
 
   register_fields = Proc.new do |f, fields|
     fields.each do |field, type|
+      puts "Register -> #{field}: #{type}"
       if type
         f.input field, as: type
       else

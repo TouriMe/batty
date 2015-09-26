@@ -50,3 +50,12 @@
   }
 }
 
+@media (min-width: 640px) {
+  .top-bar .title-area {
+    float: left;
+    margin: 0 auto;
+    width: calc(100% - 90px);
+    position: unset;
+  }
+}
+

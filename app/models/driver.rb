@@ -1,6 +1,8 @@
 class Driver < ActiveRecord::Base
   obfuscate_id
 
+  belongs_to :normal_user
+
   has_many :languages, class_name: 'DriverLanguage'
   has_many :driver_cities
   has_many :driver_vehicles

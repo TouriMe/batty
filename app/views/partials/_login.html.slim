@@ -1,9 +1,9 @@
-- if tourist_signed_in?
-  = link_to(destroy_tourist_session_path, method: :delete)
+- if normal_user_signed_in?
+  = link_to(destroy_normal_user_session_path, method: :delete)
     = fa_icon 'user', size: 'lg', inverse: true
     | Sign Out
 - else
-  a.yy-button[data-reveal-id="loginModal"]
+  a[data-reveal-id="loginModal"]
     = fa_icon 'user', size: 'lg', inverse: true
     | Sign In
 
@@ -14,9 +14,9 @@
         h5
           strong Login With
       .content
-        = link_to tourist_omniauth_authorize_path(:facebook), class: 'login-button facebook'
+        = link_to normal_user_omniauth_authorize_path(:facebook), class: 'login-button facebook'
           = fa_icon 'facebook', class: 'left'
           | Facebook
-        = link_to tourist_omniauth_authorize_path(:google_oauth2), class: 'login-button google'
+        = link_to normal_user_omniauth_authorize_path(:google_oauth2), class: 'login-button google'
           = fa_icon 'google-plus', class: 'left'
           | Google

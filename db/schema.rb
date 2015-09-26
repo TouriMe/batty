@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150926040824) do
+ActiveRecord::Schema.define(version: 20150926065723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(version: 20150926040824) do
     t.integer  "driving_years"
     t.boolean  "childsafe"
     t.boolean  "is_active",      default: true
+    t.integer  "user_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -16,7 +16,7 @@
       .small-12.columns
         = c.message
 
-  - if tourist_signed_in?
+  - if normal_user_signed_in?
     = form_for [driver, comments.new], url: {action: 'add_comment'} do |f|
       = f.text_area :message
       .rating

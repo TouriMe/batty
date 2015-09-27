@@ -22,13 +22,14 @@ class DriversController < ApplicationController
   def add_comment
     comment_params = params.require(:driver_comment).permit(:message, :rating)
     comment = @driver.driver_comments.new comment_params
-    comment.tourist = current_tourist
+    comment.tourist = current_normal_user
 
     if(comment.save)
       flash[:success] = 'Comment Added.'
       redirect_to driver_path(@driver)+'#comment-section'
       return
     else
+      puts "Comment Error: #{comment.errors.to_a.join(', ')}"
       flash[:error] = 'Error: ' + comment.errors.to_a.join(', ')
     end
 

@@ -4,3 +4,4 @@
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
 ga('create', 'UA-40302663-3', 'auto');
+console.log('ga got runed. ga: ', ga)

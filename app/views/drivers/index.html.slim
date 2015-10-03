@@ -1,9 +1,4 @@
-.page-header.bg-img
-  .tag-line
-    h2 welcome to cambodia
-    .line
 .page.drivers
   .search-results.row.full-width
-    /small-block-grid-1.large-block-grid-4.medium-block-grid-2
     - @drivers.each do |d|
       .small-12.medium-6.large-3.columns = render 'drivers/driver_item', driver: d

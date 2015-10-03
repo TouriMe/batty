@@ -14,7 +14,6 @@
         .columns.medium-6.small-12
           .profile
             - rating = @driver.rating
-            - puts "Rating: #{rating}"
             - if rating
               - rating = (rating * 2).to_i
 
@@ -56,7 +55,7 @@
 
           .columns.butt-share.small-6.medium-12
             | Share
-            span = social_share_button_tag("Welcome to Cambodian Smiles")
+            span = social_share_button_tag('Welcome to Cambodian Smiles')
 
       .row.full-width
         .small-12.columns.profile-page-details

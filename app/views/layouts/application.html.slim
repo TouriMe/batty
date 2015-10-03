@@ -31,6 +31,16 @@ html
         = render 'partials/topbar'
         .fullbg.bg-img
       #content.main-container
-        = yield
+        - unless @no_show_title
+          .page-header.bg-img
+            .tag-line
+              h2 welcome to cambodia
+              .line
+        - if(@no_white_background)
+          = yield
+        - else
+          .page
+            = yield
+
       #footer
         = render 'partials/footer'

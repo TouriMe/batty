@@ -27,4 +27,6 @@ class Driver < ActiveRecord::Base
     return nil if nums.empty?
     nums.sum.to_f / nums.count
   end
+
+  has_many :purchases, as: :purchasable
 end

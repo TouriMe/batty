@@ -1,7 +1,0 @@
-$( ->
-  clientToken = '<%= ::Braintree::ClientToken.generate %>'
-
-  braintree.setup(clientToken, 'dropin',
-    container: 'payment-form'
-  )
-)

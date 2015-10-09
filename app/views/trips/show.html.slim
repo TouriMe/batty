@@ -10,7 +10,7 @@ h1
     span = @trip.price
 
 .payment
-  script[src='//js.braintreegateway.com/v2/braintree.js']
+  = render 'braintree'
   = form_for Purchase.new do
     #payment-form
     input[type='submit' value='Pay $10']

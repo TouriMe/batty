@@ -3,7 +3,7 @@ class CreateTrips < ActiveRecord::Migration
     create_table :trips do |t|
       t.string :name
       t.text :content
-      t.money :price_cent
+      t.monetize :price
 
       t.timestamps null: false
     end

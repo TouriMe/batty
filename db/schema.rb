@@ -105,9 +105,10 @@ ActiveRecord::Schema.define(version: 20151008154056) do
   create_table "trips", force: :cascade do |t|
     t.string   "name"
     t.text     "content"
-    t.money    "price_cent", scale: 2
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.integer  "price_cents",    default: 0,     null: false
+    t.string   "price_currency", default: "USD", null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   create_table "users", force: :cascade do |t|

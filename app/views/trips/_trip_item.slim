@@ -1,5 +1,6 @@
 .field
   = link_to trip_path(trip) do
+    img[src=trip.image_url]
     .name
       span Name:
       = trip.name

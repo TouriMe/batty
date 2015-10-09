@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151008154056) do
+ActiveRecord::Schema.define(version: 20151009152709) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,12 @@ ActiveRecord::Schema.define(version: 20151008154056) do
   add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
+
+  create_table "add_image_url_to_trips", force: :cascade do |t|
+    t.string   "image_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "cities", force: :cascade do |t|
     t.string   "name"
@@ -109,6 +115,7 @@ ActiveRecord::Schema.define(version: 20151008154056) do
     t.string   "price_currency", default: "USD", null: false
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
+    t.string   "image_url"
   end
 
   create_table "users", force: :cascade do |t|

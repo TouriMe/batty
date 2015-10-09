@@ -5,13 +5,13 @@ ActiveAdmin.register Trip do
     end
   end
 
-  form do |f|
-    input :name
-    input :price
-    input :price_currency, as: :string
-    input :content, input_html: {class: 'wysiwyg-edit-field'}
-    actions
-  end
+  # form do |f|
+  #   input :name
+  #   input :price
+  #   input :price_currency, as: :string
+  #   input :content, input_html: {class: 'wysiwyg-edit-field'}
+  #   actions
+  # end
 
   show do
     attributes_table do

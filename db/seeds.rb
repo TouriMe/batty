@@ -35,3 +35,5 @@ drivers.each do |driver|
     d.languages.create! proficiency: 'written', language_code: language_mapping[code]
   end
 end
+
+Trip.create(content: '')

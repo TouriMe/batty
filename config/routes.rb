@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :tourists, only: [:new, :show]
   resources :drivers, only: [:index, :show]
   resources :trips, only: [:index, :show]
+  resources :purchases, only: [:new, :create]
 
   post 'drivers/:id/comments' => 'drivers#add_comment'
 

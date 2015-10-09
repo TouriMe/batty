@@ -1,2 +1,12 @@
-h1 Trips#show
-p Find me in app/views/trips/show.html.slim
+h1
+  | Trips -
+  = @trip.name
+
+.content
+  = @trip.content
+
+  .price
+    span Price
+    span = @trip.price
+
+

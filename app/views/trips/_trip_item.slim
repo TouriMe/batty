@@ -1,5 +1,8 @@
 .field
-  span Name
-    = t.name
-  span Price
-    = t.price
+  = link_to trip_path(trip) do
+    .name
+      span Name:
+      = trip.name
+    .price
+      span Price:
+      = trip.price

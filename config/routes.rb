@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'trips/index'
+
+  get 'trips/show'
+
   root 'welcome#index'
   get 'terms' => 'welcome#terms'
   get 'faq' => 'welcome#faq'
@@ -11,6 +15,7 @@ Rails.application.routes.draw do
 
   resources :tourists, only: [:new, :show]
   resources :drivers, only: [:index, :show]
+  resources :trips, only: [:index, :show]
 
   post 'drivers/:id/comments' => 'drivers#add_comment'
 

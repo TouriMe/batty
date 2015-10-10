@@ -9,9 +9,9 @@
           img src='https://yt3.ggpht.com/-Vbjfn6-4MoA/AAAAAAAAAAI/AAAAAAAAAAA/AdWRagtHzjE/s88-c-k-no/photo.jpg'
         .comment-detail.left
           .small-12.columns
-            = c.tourist.name
+            strong = c.tourist.name
             | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            = c.created_at.strftime("%b %d %Y")
+            span [class="comment-date" ] = c.created_at.strftime("%b %d %Y")
           .small-12.columns
             = c.message
   - if normal_user_signed_in?

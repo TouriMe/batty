@@ -10,8 +10,8 @@
         .comment-detail.left
           .small-12.columns
             = c.tourist.name
-            | &nbsp;&nbsp;&nbsp;
-            /= c.created_at
+            | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            = c.created_at.strftime("%b %d %Y")
           .small-12.columns
             = c.message
   - if normal_user_signed_in?

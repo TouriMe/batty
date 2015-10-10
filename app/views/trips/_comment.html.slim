@@ -1,0 +1,18 @@
+.section.comments#comment-section
+  h4
+    i.fa.fa-list-ul[aria-hidden="true" ]
+    = pluralize(comments.count, 'comment')
+  - comments.each do |c|
+    .tag.comment.row
+      .small-2.columns
+        = fa_icon 'user', size: 'lg', inverse: true
+      .small-10.columns
+        .small-12.columns
+          | From:&nbsp;
+          = c.tourist.name
+        .small-12.columns
+          = c.message
+  - if normal_user_signed_in?
+    = form_for [trip, comments.new], url: {action: 'add_comment'} do |f|
+      = f.text_area :message
+      = f.submit 'Post'

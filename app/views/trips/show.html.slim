@@ -12,7 +12,7 @@
         p
          span Price(USD): $
          span = @trip.price
-    = render 'comment', comments: trip.comment, driver: @driver
+    /= render 'comment', comments: trip.comment, driver: @driver
 
   .rhs.small-12.large-3.columns
     .payment

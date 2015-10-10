@@ -1,16 +1,22 @@
-h1
-  | Trips -
-  = @trip.name
+.row
+  h1
+    = @trip.name
 
-.content
-  = @trip.content
+  .content.small-12.large-9.columns
 
-  .price
-    span Price
-    span = @trip.price
+    .detail
+      h3
+        | Trip Details
+      = @trip.content
+      .price
+        p
+         span Price(USD): $
+         span = @trip.price
+    = render 'comment', comments: trip.comment, driver: @driver
 
-.payment
-  = render 'braintree'
-  = form_for Purchase.new do
-    #payment-form
-    input[type='submit' value='Pay $10']
+  .rhs.small-12.large-3.columns
+    .payment
+      = render 'braintree'
+      = form_for Purchase.new do
+        #payment-form
+        input[type='submit' value='Pay $10']

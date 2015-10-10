@@ -1,11 +1,11 @@
-.card_item
-  = link_to trip_path(trip) do
-
-    img[src=trip.image_url]
-    .desciption
+.card-item
+  a[href="/trips/#{trip.to_param}"]
+    = image_tag trip.image_url, class: 'item-bg'
+    .description
       .name
-        = trip.name
-      = trip.description
+        h5 = trip.name
+      p
+        = trip.description
       .price
         span Price:
         = trip.price

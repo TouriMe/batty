@@ -1,4 +1,4 @@
-wwclass Auth::OmniauthController < Devise::OmniauthCallbacksController
+class Auth::OmniauthController < Devise::OmniauthCallbacksController
   [ [:facebook, 'Facebook', 'devise.facebook_data'],
     [:google_oauth2 , 'Google', 'devise.google_data']
   ].each do |provider, kind, session_name|

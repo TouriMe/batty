@@ -1,9 +1,10 @@
 .field
   = link_to trip_path(trip) do
-    img[src=trip.image_url]
     .name
-      span Name:
       = trip.name
+    img[src=trip.image_url]
+    .descption
+      = trip.description
     .price
       span Price:
       = trip.price

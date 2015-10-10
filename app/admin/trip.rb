@@ -16,6 +16,7 @@ ActiveAdmin.register Trip do
   show do
     attributes_table do
       row :name
+      row :description
       row(:price){"#{trip.price} #{trip.price_currency}"}
       row :content
     end

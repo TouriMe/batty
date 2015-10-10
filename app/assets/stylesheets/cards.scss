@@ -1,14 +1,14 @@
-// Place all the styles related to the drivers controller here.
+// Place all the styles related to the trips controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import 'settings';
-.drivers{
+.cards{
   background-color: white;
   @media #{$media-pad-larger}{
     padding: 20px 50px;
   }
 
-  .driver-item{
+  .card-item{
     width: 100%;
     min-width: 200px;
     height: 310px;

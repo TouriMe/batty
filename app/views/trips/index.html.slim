@@ -1,5 +1,5 @@
 h1 Trips
-
-.search-results.row.full-width
-  - @trips.each do |t|
-    .small-12.medium-6.large-3.columns = render 'trip_item', trip: t
+.cards
+  .search-results.row.full-width
+    - @trips.each do |t|
+      .small-12.medium-6.large-3.columns = render 'trip_item', trip: t

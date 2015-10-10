@@ -1,10 +1,11 @@
-.field
+.card_item
   = link_to trip_path(trip) do
-    .name
-      = trip.name
+
     img[src=trip.image_url]
-    .descption
+    .desciption
+      .name
+        = trip.name
       = trip.description
-    .price
-      span Price:
-      = trip.price
+      .price
+        span Price:
+        = trip.price

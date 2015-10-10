@@ -3,14 +3,15 @@
     i.fa.fa-list-ul[aria-hidden="true" ] &nbsp&nbsp
     = pluralize(comments.count, 'comment')
   - comments.each do |c|
-    .tag.comment.row
+    .comment.row
       .small-12.columns
         .profile-pic.left
           img src='https://yt3.ggpht.com/-Vbjfn6-4MoA/AAAAAAAAAAI/AAAAAAAAAAA/AdWRagtHzjE/s88-c-k-no/photo.jpg'
         .comment-detail.left
           .small-12.columns
-            | From:&nbsp;
             = c.tourist.name
+            | &nbsp;&nbsp;&nbsp;
+            /= c.created_at
           .small-12.columns
             = c.message
   - if normal_user_signed_in?

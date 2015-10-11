@@ -1,10 +1,11 @@
 class NormalUser < User
   devise :omniauthable, :omniauth_providers => [:facebook, :google_oauth2]
   has_one :driver
+  has_one :tourist
 
   def self.from_omniauth(auth)
-    @tourist = find_by(email: auth.info.email)
-    return @tourist if @tourist
+    @user = find_by(email: auth.info.email)
+    return @user if @user
 
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       email = auth.info.email ? auth.info.email : "user-#{auth.uid}@#{auth.provider}.com"

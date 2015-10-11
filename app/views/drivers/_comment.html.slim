@@ -20,7 +20,7 @@
     = form_for [driver, comments.new], url: {action: 'add_comment'} do |f|
       = f.text_area :message
       .rating
-        label(for='driver_comment[rating]') Rating
+        label(for='comment[rating]') Rating
         = f.select :rating, (1..5).map{|i| [i,i]}.reverse
       = f.submit 'Add Comment'
 

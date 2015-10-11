@@ -10,7 +10,7 @@ class Driver < ActiveRecord::Base
   has_many :cities, through: :driver_cities
   has_many :vehicles, through: :driver_vehicles
 
-  has_many :driver_comments
+  has_many :comments, as: :commentable
 
   validates_presence_of :first_name, :phone
 
@@ -23,7 +23,7 @@ class Driver < ActiveRecord::Base
   end
 
   def rating
-    nums = driver_comments.map(&:rating)
+    nums = comments.map(&:rating)
     return nil if nums.empty?
     nums.sum.to_f / nums.count
   end

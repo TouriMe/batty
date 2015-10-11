@@ -20,8 +20,8 @@ class DriversController < ApplicationController
   end
 
   def add_comment
-    comment_params = params.require(:driver_comment).permit(:message, :rating)
-    comment = @driver.driver_comments.new comment_params
+    comment_params = params.require(:comment).permit(:message, :rating)
+    comment = @driver.comments.new comment_params
     comment.normal_user = current_normal_user
 
     if(comment.save)

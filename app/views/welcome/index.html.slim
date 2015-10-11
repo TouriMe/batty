@@ -16,8 +16,9 @@
 
   .small-12.large-4.columns
     = render 'partials/show_subject_button', \
-      subject: 'Tours', subject_link: tours_path, \
+      subject: 'Tours', subject_link: trips_path, \
       desc_text: 'Have some real Cambodian adventure by your preference.'
   .small-12.large-4.columns
-    .search-form
-      = render 'partials/search_guides'
+    = render 'partials/show_subject_button', \
+      subject: 'Guides', subject_link: guides_path, \
+      desc_text: 'You can even choose your tour guide that will show you around.'

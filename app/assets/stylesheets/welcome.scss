@@ -4,13 +4,13 @@
   .content{
   margin-bottom:40px;
   }
-  .search-form{
+  .show-subject-button{
     @media #{$media-phone-smaller} {
       width: 250px;
       height: 250px;
       margin: 10px auto;
 
-      .search-heading{
+      .show-subject-button-header{
         padding-top: 5%;
         h3 i.fa{
           font-size: 18px;
@@ -19,7 +19,7 @@
       }
       font-size: 20px;
 
-      form{
+      .show-subject-button-content{
         .select-city select {
           height: 40px;
         }
@@ -35,7 +35,7 @@
       height: 250px;
       margin: 10px auto;
 
-      .search-heading{
+      .show-subject-button-header{
         padding-top: 10%;
         h3 i.fa{
           font-size: 38px;
@@ -44,7 +44,7 @@
       }
       /*font-size: 36px;*/
 
-      form{
+      .show-subject-button-content{
         .select-city select {
           height: 62px;
         }
@@ -63,7 +63,7 @@
 
     overflow: hidden;
 
-    .search-heading {
+    .show-subject-button-header{
       h3 i.fa {
         display: block;
       }
@@ -74,7 +74,7 @@
       text-weight: 900;
     }
 
-    form{
+    .show-subject-button-content{
       .select-city select{
 
         border-radius: 4px;

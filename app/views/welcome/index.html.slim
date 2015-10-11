@@ -10,11 +10,14 @@
         | Travel with the best tour guide and driver is just AMAZING!
       .line
   .small-12.large-4.columns
-    .search-form
-      = render 'partials/search_drivers'
+    = render 'partials/show_subject_button', \
+      subject: 'Drivers', subject_link: drivers_path, \
+      desc_text: 'Pick a driver you like and have an amazing experience.'
+
   .small-12.large-4.columns
-    .search-form
-      = render 'partials/search_tours'
+    = render 'partials/show_subject_button', \
+      subject: 'Tours', subject_link: tours_path, \
+      desc_text: 'Have some real Cambodian adventure by your preference.'
   .small-12.large-4.columns
     .search-form
       = render 'partials/search_guides'

@@ -1,0 +1,10 @@
+.show-subject-button
+  .show-subject-button-header
+    h3
+      span
+        strong
+          = fa_icon 'search'
+          = subject
+    = link_to subject_link, class:'show-subject-button-content' do
+      = desc_text
+      = fa_icon 'chevron-down'

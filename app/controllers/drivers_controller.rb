@@ -9,12 +9,13 @@ class DriversController < ApplicationController
   end
 
   def find_drivers
-    city_id = params['city_id']
-    if city_id.empty?
-      @drivers = Driver.active
-    else
-      @drivers = City.find(city_id).drivers.active
-    end
+    @drivers = Driver.active
+    #city_id = params['city_id']
+    #if city_id.empty?
+      #@drivers = Driver.active
+    #else
+      #@drivers = City.find(city_id).drivers.active
+    #end
 
     render 'index'
   end

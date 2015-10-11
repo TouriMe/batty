@@ -1,7 +1,8 @@
-<script src='//js.braintreegateway.com/v2/braintree.js'/>
+<script src='//js.braintreegateway.com/v2/braintree.js'></script>
 <script>
   (function(){
     var clientToken = '<%= ::Braintree::ClientToken.generate %>';
     braintree.setup(clientToken, 'dropin', {container: 'payment-form'});
+    console.log('setup done.');
   })()
 </script>

@@ -1,6 +1,9 @@
 @import 'settings';
 
 #content{
+  .content{
+  margin-bottom:40px;
+  }
   .search-form{
     @media #{$media-phone-smaller} {
       width: 250px;
@@ -28,9 +31,9 @@
     }
 
     @media #{$media-phone-larger} {
-      width: 350px;
-      height: 350px;
-      margin: 60px auto;
+      width: 250px;
+      height: 250px;
+      margin: 10px auto;
 
       .search-heading{
         padding-top: 10%;
@@ -39,7 +42,7 @@
           margin-bottom: 12px;
         }
       }
-      font-size: 36px;
+      /*font-size: 36px;*/
 
       form{
         .select-city select {
@@ -47,7 +50,7 @@
         }
 
         button.button{
-          padding-top: 13%;
+          padding-top: 0;
         }
       }
     }

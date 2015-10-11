@@ -2,15 +2,21 @@
 = render 'partials/flash'
 
 .row.home
-  .small-12.large-8.large-centered.columns
-    .content
-      .tag-line
-        h2
-          | Find your Driver in Cambodia
-        h6
-          | We help to connect global travelers to local drivers directly
-          br
-          | to discover amazing Cambodia.
-        .line
-      .search-form
-        = render 'partials/search_drivers'
+  .content
+    .tag-line
+      h2
+        | Find your Driver in Cambodia
+      h6
+        | We help to connect global travelers to local drivers directly
+        br
+        | to discover amazing Cambodia.
+      .line
+  .small-12.large-4.columns
+    .search-form
+      = render 'partials/search_drivers'
+  .small-12.large-4.columns
+    .search-form
+      = render 'partials/search_tours'
+  .small-12.large-4.columns
+    .search-form
+      = render 'partials/search_guides'

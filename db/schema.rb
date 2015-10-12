@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151011163953) do
+ActiveRecord::Schema.define(version: 20151012163452) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,15 +51,6 @@ ActiveRecord::Schema.define(version: 20151011163953) do
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.string   "commentable_type"
-  end
-
-  create_table "dictionaries", force: :cascade do |t|
-    t.string   "key"
-    t.string   "value"
-    t.string   "dictionariable_type"
-    t.integer  "dictionariable_id"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
   end
 
   create_table "driver_cities", force: :cascade do |t|
@@ -118,14 +109,6 @@ ActiveRecord::Schema.define(version: 20151011163953) do
     t.datetime "updated_at",                           null: false
   end
 
-  create_table "images", force: :cascade do |t|
-    t.string   "url"
-    t.integer  "imageable_id"
-    t.string   "imageable_type"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-  end
-
   create_table "purchases", force: :cascade do |t|
     t.integer  "purchasable_id"
     t.string   "purchasable_type"
@@ -133,23 +116,7 @@ ActiveRecord::Schema.define(version: 20151011163953) do
     t.integer  "buyer_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
-  end
-
-  create_table "tours", force: :cascade do |t|
-    t.string   "name"
-    t.text     "description"
-    t.money    "price",          scale: 2
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-    t.string   "background_url"
-  end
-
-  create_table "trip_comments", force: :cascade do |t|
-    t.string   "tourist_id"
-    t.string   "trip_id"
-    t.string   "message"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.date     "start_date"
   end
 
   create_table "trips", force: :cascade do |t|
@@ -181,9 +148,13 @@ ActiveRecord::Schema.define(version: 20151011163953) do
     t.string   "uid"
     t.string   "name"
     t.string   "image"
+    t.string   "phone_number"
+    t.string   "country"
+    t.string   "city"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["phone_number"], name: "index_users_on_phone_number", using: :btree
   add_index "users", ["provider"], name: "index_users_on_provider", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["uid"], name: "index_users_on_uid", using: :btree

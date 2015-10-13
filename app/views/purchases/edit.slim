@@ -1,0 +1,19 @@
+h1 Make Payment
+
+= form_for @purchase do |f|
+  .purchase-details
+    p.trip-info
+      span Trip Name:
+      span = @purchase.purchasable.name
+    p.trip-price
+      span Amount:
+      span = @purchase.purchasable.price
+    p.start-date
+      span Start Date:
+      span = @purchase.start_date
+    p.email
+      span Email:
+      span = @purchase.email
+  #payment-form
+  input[type='submit' value="Pay"]
+  = render 'braintree'

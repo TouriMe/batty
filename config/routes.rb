@@ -17,9 +17,7 @@ Rails.application.routes.draw do
   resources :drivers, only: [:index, :show]
   resources :trips, only: [:index, :show]
   resources :guides, only: [:index, :show]
-  resources :purchases, only: [:create] do
-    post 'trip', on: :collection, to: :trip
-  end
+  resources :purchases, only: [:create, :edit,:update]
 
   resources :comments, only: [:create, :update, :destroy]
 

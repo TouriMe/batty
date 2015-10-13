@@ -5,12 +5,3 @@ h1 Purchase#new
 
   = submit_tag 'Confirm', class: 'btn push--ends'
 
-- content_for :javascript do
-  = javascript_include_tag "https://js.braintreegateway.com/v2/braintree.js"
-  javascript:
-    var client_token = "#{@organization.payment['client_token']}";
-    braintree.setup(
-            client_token,
-            'dropin', {
-              container: 'dropin'
-            });

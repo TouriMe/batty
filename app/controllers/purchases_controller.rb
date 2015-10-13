@@ -13,4 +13,9 @@ class PurchasesController < ApplicationController
 
   def checkout
   end
+
+  def trip
+    @trip = Trip.find(params[:trip_id])
+    @start_date = params[:start_date]
+  end
 end

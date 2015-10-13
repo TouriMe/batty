@@ -7,7 +7,7 @@
     .detail
       h3
         | Trip Details
-      = @trip.content
+      = @trip.content.html_safe
       .price
         p
          span Price(USD): $

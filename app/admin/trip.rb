@@ -13,6 +13,14 @@ ActiveAdmin.register Trip do
   #   actions
   # end
 
+  index do
+    selectable_column
+    column :name
+    column(:price){|c| c.price.to_s + ' ' + c.price.currency}
+    column :updated_at
+    actions
+  end
+
   show do
     attributes_table do
       row :name

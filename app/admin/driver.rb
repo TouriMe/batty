@@ -5,6 +5,17 @@ ActiveAdmin.register Driver do
 
   all_fields = particulars.keys + contacts.keys + intros.keys
 
+  index do
+    selectable_column
+    column :first_name
+    column :last_name
+    column :phone
+    column :email
+    column :driving_years
+    column :updated_at
+    actions
+  end
+
   permit_params *all_fields,
                 languages_attributes: [:id, :_destroy, :language_code, :proficiency],
                 driver_cities_attributes: [:id, :city_id, :_destroy],

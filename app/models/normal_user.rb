@@ -1,7 +1,7 @@
 class NormalUser < User
   devise :omniauthable, :omniauth_providers => [:facebook, :google_oauth2]
   has_one :driver
-  has_one :tourist
+  # has_one :tourist
 
   def self.from_omniauth(auth)
     @user = find_by(email: auth.info.email)

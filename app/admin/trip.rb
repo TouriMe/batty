@@ -10,7 +10,7 @@ ActiveAdmin.register Trip do
       input :name
       input :price
       input :price_currency, as: :string
-      input :content
+      input :content, as: :html_editor
     end
     f. actions
   end

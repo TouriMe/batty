@@ -40,6 +40,7 @@ gem 'font-awesome-rails'
 gem 'foundation-rails'
 gem 'social-share-button', '~> 0.1.6'
 
+gem 'active_admin_editor', github: 'boontdustie/active_admin_editor'
 gem 'wysiwyg-rails'
 gem 'money-rails'
 gem 'braintree'

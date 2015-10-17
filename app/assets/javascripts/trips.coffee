@@ -2,6 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $( ->
+  
   $(window).scroll( ->
     contentOffset = $('#detail-content').offset().top
     fixheadHeight = $('#fixed-head').height()

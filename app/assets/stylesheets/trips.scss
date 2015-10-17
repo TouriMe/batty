@@ -1,37 +1,50 @@
 // Place all the styles related to the trips controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.content{
+.content {
   border: 1px solid;
-  .detail{
-    .price{
-      margin:20px 0;
-      color:green;
+  .detail {
+    .price {
+      margin: 20px 0;
+      color: green;
     }
   }
 
-  .comments{
-    .header{
-      font-size:20px;
+  .comments {
+    .header {
+      font-size: 20px;
       margin-bottom: 10px;
     }
-    .comment{
-      margin:15px 0 ;
+    .comment {
+      margin: 15px 0;
 
-      .profile-pic{
-        width:48px;
-        height:48px;
+      .profile-pic {
+        width: 48px;
+        height: 48px;
       }
 
-      .comment-detail{
-        .comment-date{
-          font-size:10px;
+      .comment-detail {
+        .comment-date {
+          font-size: 10px;
         }
       }
     }
 
-    padding:10px;
+    padding: 10px;
     margin-bottom: 50px;
+  }
+
+}
+
+.rhs {
+  .payment {
+    border: 1px solid;
+    backgroud-color: white;
+    position: fixed;
+    top: 45px;
+    width: 250px;
+    padding: 30px 10px;
+    background-color: wheat;
   }
 
 }

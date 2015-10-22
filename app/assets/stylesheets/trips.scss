@@ -1,7 +1,8 @@
 // Place all the styles related to the trips controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.content {
+#detail-content {
+  border:solid 1px;
   .detail {
     .price {
       margin: 20px 0;
@@ -36,7 +37,7 @@
 }
 
 .rhs {
-  .payment {
+  #payment {
     border: 1px solid;
     backgroud-color: white;
     position: fixed;

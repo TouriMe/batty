@@ -2,7 +2,7 @@
   h1
     = @trip.name
 
-  #detail-content.content.small-12.large-9.columns
+  #detail-content.small-12.large-9.columns
 
     .detail
       h3
@@ -15,7 +15,7 @@
     = render 'comments/comments', target: @trip
 
   .rhs.small-12.large-3.columns
-    #payment.payment
+    #payment
       = form_for @trip.purchases.new do |f|
         = f.hidden_field :purchasable_id
         = f.hidden_field :purchasable_type

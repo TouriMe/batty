@@ -1,0 +1,30 @@
+@import 'settings';
+.comments {
+  .header {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  .comment {
+    margin: 10px 0;
+
+    .profile-pic {
+      width: 48px;
+      height: 48px;
+    }
+
+    .comment-detail {
+      margin-left: 58px;
+      .comment-date {
+        font-size: 10px;
+      }
+    }
+  }
+
+  padding: 10px;
+  margin-bottom: 50px;
+
+  form#new_comment {
+    margin-left: 68px;
+    margin-right: 10px;
+  }
+}

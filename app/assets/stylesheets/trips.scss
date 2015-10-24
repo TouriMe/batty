@@ -2,38 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 #detail-content {
-  border:solid 1px;
+  border: solid 1px;
   .detail {
     .price {
       margin: 20px 0;
       color: green;
     }
   }
-
-  .comments {
-    .header {
-      font-size: 20px;
-      margin-bottom: 10px;
-    }
-    .comment {
-      margin: 15px 0;
-
-      .profile-pic {
-        width: 48px;
-        height: 48px;
-      }
-
-      .comment-detail {
-        .comment-date {
-          font-size: 10px;
-        }
-      }
-    }
-
-    padding: 10px;
-    margin-bottom: 50px;
-  }
-
 }
 
 .rhs {

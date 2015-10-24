@@ -4,7 +4,7 @@
 $( ->
 
   $(window).scroll( ->
-    contentOffset = $('#detail-content').offset.top
+    contentOffset = $('#detail-content').offset().top
     fixheadHeight = $('#fixed-head').height()
     console.log(contentOffset - $(window).scrollTop())
     if $(window).scrollTop() >= contentOffset-fixheadHeight

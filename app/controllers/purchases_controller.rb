@@ -12,6 +12,9 @@ class PurchasesController < ApplicationController
   end
 
   def edit
+    if @purchase.status == :paid
+      redirect_to request.referer
+    end
   end
 
   def update
@@ -20,16 +23,13 @@ class PurchasesController < ApplicationController
         :amount => @purchase.purchasable.price,
         :payment_method_nonce => nonce
     )
-    p result
     if result.success?
       @purchase.status = :paid
       @purchase.save
       flash[:success] = 'Payment made successfully'
-      puts 'result is successful'
       render 'success'
     else
-      flash[:error] = 'there is error with your payment'
-      puts 'got error'
+      flash[:error] = 'There is error with your payment: ' + result.message
       render 'edit'
     end
   end

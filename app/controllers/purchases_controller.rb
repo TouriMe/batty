@@ -26,7 +26,7 @@ class PurchasesController < ApplicationController
     if result.success?
       @purchase.status = :paid
       @purchase.save
-      flash[:success] = 'Payment made successfully'
+      flash[:notice] = 'Payment made successfully'
       render 'success'
     else
       flash[:error] = 'There is error with your payment: ' + result.message

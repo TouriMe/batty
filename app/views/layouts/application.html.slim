@@ -37,9 +37,11 @@ html
               h2 welcome to cambodia
               .line
         - if(@no_white_background)
+          = render 'partials/flash'
           = yield
         - else
           .page
+            = render 'partials/flash'
             = yield
 
       #footer

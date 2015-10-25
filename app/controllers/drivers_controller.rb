@@ -26,7 +26,7 @@ class DriversController < ApplicationController
     comment.normal_user = current_normal_user
 
     if(comment.save)
-      flash[:success] = 'Comment Added.'
+      flash[:notice] = 'Comment Added.'
       redirect_to driver_path(@driver)+'#comment-section'
       return
     else

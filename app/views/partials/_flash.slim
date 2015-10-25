@@ -1,0 +1,6 @@
+- if flash[:alert]
+  .alert-box.warning = flash[:alert]
+- if flash[:notice]
+  .alert-box.success =flash[:notice]
+- if flash[:error]
+  .alert-box.alert =flash[:error]

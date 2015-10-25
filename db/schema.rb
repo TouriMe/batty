@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151014154320) do
+ActiveRecord::Schema.define(version: 20151025020424) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,15 +51,6 @@ ActiveRecord::Schema.define(version: 20151014154320) do
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.string   "commentable_type"
-  end
-
-  create_table "dictionaries", force: :cascade do |t|
-    t.string   "key"
-    t.string   "value"
-    t.string   "dictionariable_type"
-    t.integer  "dictionariable_id"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
   end
 
   create_table "driver_cities", force: :cascade do |t|
@@ -118,14 +109,6 @@ ActiveRecord::Schema.define(version: 20151014154320) do
     t.datetime "updated_at",                           null: false
   end
 
-  create_table "images", force: :cascade do |t|
-    t.string   "url"
-    t.integer  "imageable_id"
-    t.string   "imageable_type"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-  end
-
   create_table "purchases", force: :cascade do |t|
     t.integer  "purchasable_id"
     t.string   "purchasable_type"
@@ -135,16 +118,9 @@ ActiveRecord::Schema.define(version: 20151014154320) do
     t.datetime "updated_at",       null: false
     t.integer  "status"
     t.string   "email"
-    t.datetime "start_date"
-  end
-
-  create_table "tours", force: :cascade do |t|
-    t.string   "name"
-    t.text     "description"
-    t.money    "price",          scale: 2
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-    t.string   "background_url"
+    t.date     "start_date"
+    t.string   "country"
+    t.string   "contact"
   end
 
   create_table "trips", force: :cascade do |t|

@@ -313,6 +313,7 @@ DEPENDENCIES
   foundation-rails
   jbuilder (~> 2.0)
   jquery-rails
+  jquery-ui-rails
   language_list
   letter_opener
   money-rails

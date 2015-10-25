@@ -24,5 +24,5 @@
           = f.text_field :email
         .div
           span Start Date
-          = f.text_field :start_date
+          = f.text_field :start_date, class: 'yy-date-picker'
         input[type='submit' value="Purchase #{@trip.price}"]

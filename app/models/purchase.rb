@@ -10,5 +10,5 @@ class Purchase < ActiveRecord::Base
   end
 
   enum status: [:unpaid, :paid, :confirmed]
-  validate :price, :email, presence: true
+  validates :price, :email, presence: true
 end

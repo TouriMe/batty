@@ -66,6 +66,11 @@ html, body, h1, h2, h3, h4, h5, h6, p, a, label, select {
   font-weight: 300;
 }
 
+#header {
+  #fixed-head {
+    padding: 5px 0px;
+  }
+}
 .alert-box{
   margin: 5px 10px;
 }

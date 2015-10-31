@@ -5,6 +5,9 @@
 #= require_tree .
 #= require social-share-button
 #= require froala_editor.min.js
+#= require react
+#= require react_ujs
+#= require components
 
 $(()->
   $(document).foundation()

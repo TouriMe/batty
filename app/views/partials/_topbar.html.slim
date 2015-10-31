@@ -2,7 +2,7 @@
   nav.top-bar[data-topbar role="navigation"]
     ul.title-area
       li.name
-        h1.site-title
+        h1.site-title.left
           a[href="/"]
             .logo-wrap
               = image_tag 'tourime_logo.png'
@@ -10,5 +10,4 @@
         a[href='#']
           span
     section.top-bar-section
-      ul.right
-        li = render 'partials/login'
+      = render 'partials/login'

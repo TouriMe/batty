@@ -28,6 +28,7 @@
 }
 
 .top-bar{
+
   .site-title{
     color: white;
     text-transform: uppercase;
@@ -44,8 +45,14 @@
     img{
       display: inline-block;
       vertical-align: middle;
-      height: 42px;
+      height: 50px;
       max-width: 100%;
+    }
+  }
+
+  .top-bar-section{
+    .login-btn{
+      color:white;
     }
   }
 }
@@ -56,6 +63,12 @@
     margin: 0 auto;
     width: calc(100% - 100px);
     position: unset;
+
+    .top-bar-section{
+      .login-btn{
+        color:white;
+      }
+    }
   }
 }
 

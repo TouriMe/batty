@@ -11,23 +11,20 @@
 
       .show-subject-button-header{
         padding-top: 5%;
+        padding-left:5%;
+        padding-right:5%;
         h3 i.fa{
           font-size: 18px;
           margin-bottom: 10px;
         }
+
+        .logo-img{
+          .logo{
+            width:80px;
+          }
+        }
       }
       font-size: 20px;
-
-      .show-subject-button-content{
-        color:black;
-        .select-city select {
-          height: 40px;
-        }
-
-        button.button{
-          padding-top: 7%;
-        }
-      }
     }
 
     @media #{$media-phone-larger} {
@@ -36,23 +33,16 @@
       margin: 10px auto;
 
       .show-subject-button-header{
-        padding-top: 10%;
+        padding-top: 5%;
         h3 i.fa{
           font-size: 38px;
           margin-bottom: 12px;
         }
-      }
-      /*font-size: 36px;*/
 
-      .show-subject-button-content{
-        color: black;
-        margin:0 10px;
-        .select-city select {
-          height: 62px;
-        }
-
-        button.button{
-          padding-top: 0;
+        .logo-img{
+          .logo{
+            width:80px;
+          }
         }
       }
     }
@@ -66,46 +56,22 @@
     overflow: hidden;
 
     .show-subject-button-header{
+      padding-left:5%;
+      padding-right:5%;
       h3 i.fa {
         display: block;
       }
-
+      .logo-img{
+        .logo{
+          width:80px;
+        }
+      }
       text-align: center;
       letter-spacing: 0.6px;
       margin-bottom: 8%;
       text-weight: 900;
     }
 
-    .show-subject-button-content{
-      .select-city select{
-
-        border-radius: 4px;
-        border: 1px solid rgba(0,0,0,0.1);
-        border-top: 4px solid rgba(0,0,0,0.75);
-
-        width: 100%;
-
-        font-size: 17px;
-        font-weight: 300;
-        letter-spacing: 1px;
-        text-align: left;
-        text-indent: 70px;
-        padding-left: 0px;
-      }
-
-      button.button{
-        &.black { color: black; }
-        border: none;
-        text-transform: capitalize;
-
-        i{
-          font-size: 20px;
-          margin-top: 8px;
-          display: block;
-          transition: all 0.015s;
-        }
-      }
-    }
 
   }
 

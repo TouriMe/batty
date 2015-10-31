@@ -2,12 +2,12 @@
 #= require jquery_ujs
 #= require foundation
 #= require jquery-ui/datepicker
-#= require_tree .
 #= require social-share-button
 #= require froala_editor.min.js
 #= require react
 #= require react_ujs
 #= require components
+#= require_tree .
 
 $(()->
   $(document).foundation()

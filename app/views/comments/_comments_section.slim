@@ -20,7 +20,7 @@ i.fa.fa-list-ul[aria-hidden="true" ]
     = f.text_area :message
     = f.hidden_field :commentable_id, value: target.to_param
     = f.hidden_field :commentable_type, value: target.class
-    .rating
-      label(for='comment[rating]') Rating
-      = f.select :rating, (1..5).map{|i| [i,i]}.reverse
+    = f.hidden_field :rating, value: '5'
+    = react_component('Rating')
+
     = f.submit 'Add Comment'

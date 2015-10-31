@@ -45,3 +45,5 @@ gem 'wysiwyg-rails'
 gem 'money-rails'
 gem 'braintree'
 gem 'jquery-ui-rails'
+
+gem 'react-rails', '~> 1.4.0'

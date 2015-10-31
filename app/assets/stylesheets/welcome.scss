@@ -1,27 +1,29 @@
 @import 'settings';
-#content{
-  .content{
-  margin-bottom:40px;
+
+#content {
+  .content {
+    margin-bottom: 40px;
+    margin-top: 20px;
   }
-  .show-subject-button{
+  .show-subject-button {
     @media #{$media-phone-smaller} {
       width: 250px;
       height: 250px;
       margin: 10px auto;
 
-      .show-subject-button-content{
+      .show-subject-button-content {
         padding-top: 10%;
-        padding-left:20px;
-        padding-right:20px;
-        color:black;
-        h3 i.fa{
+        padding-left: 20px;
+        padding-right: 20px;
+        color: black;
+        h3 i.fa {
           font-size: 18px;
           margin-bottom: 10px;
         }
 
-        .logo-img{
-          .logo{
-            width:80px;
+        .logo-img {
+          .logo {
+            width: 80px;
           }
         }
       }
@@ -33,42 +35,41 @@
       height: 250px;
       margin: 10px auto;
 
-      .show-subject-button-content{
+      .show-subject-button-content {
         padding-top: 10%;
-        padding-left:20px;
-        padding-right:20px;
-        color:black;
-        h3 i.fa{
+        padding-left: 20px;
+        padding-right: 20px;
+        color: black;
+        h3 i.fa {
           font-size: 38px;
           margin-bottom: 12px;
         }
 
-        .logo-img{
-          .logo{
-            width:80px;
+        .logo-img {
+          .logo {
+            width: 80px;
           }
         }
       }
     }
 
-
     border-radius: 100%;
     background: white;
-    box-shadow: 0 0px 20px 2px rgba(0,0,0,0.35);
+    box-shadow: 0 0px 20px 2px rgba(0, 0, 0, 0.35);
     text-align: center;
 
     overflow: hidden;
 
-    .show-subject-button-content{
-      padding-left:20px;
-      padding-right:20px;
-      color:black;
+    .show-subject-button-content {
+      padding-left: 20px;
+      padding-right: 20px;
+      color: black;
       h3 i.fa {
         display: block;
       }
-      .logo-img{
-        .logo{
-          width:80px;
+      .logo-img {
+        .logo {
+          width: 80px;
         }
       }
       text-align: center;
@@ -77,10 +78,9 @@
       text-weight: 900;
     }
 
-
   }
 
-  .tag-line{
+  .tag-line {
     @media #{$media-pad-smaller}{
       width: 100%;
     }
@@ -91,18 +91,18 @@
 
     text-align: center;
     padding-bottom: 5px;
-    &, h2, h6{
+    &, h2, h6 {
       color: white;
     }
     margin: 0 auto;
   }
 
-  .line{
+  .line {
     width: 72%;
     border-bottom: 1px solid white;
     margin: 0 auto;
   }
-  .profile-page-details .line{
+  .profile-page-details .line {
     width: 100%;
     border-bottom: 1px solid silver;
     margin: 0 auto;

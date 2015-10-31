@@ -1,11 +1,12 @@
 .show-subject-button
   = link_to subject_link do
-    .show-subject-button-header
+    .show-subject-button-content
       .logo-img
         = image_tag logo_url, class: 'logo'
       h3
         strong
           = subject
-      = desc_text
-      br
-      = fa_icon 'chevron-down'
+      strong
+        = desc_text
+        br
+        = fa_icon 'chevron-down'

@@ -15,14 +15,5 @@
     = render 'comments/comments', target: @trip
 
   .rhs.small-12.large-3.columns
-    #payment
-      = form_for @trip.purchases.new do |f|
-        = f.hidden_field :purchasable_id
-        = f.hidden_field :purchasable_type
-        .div
-          span Email
-          = f.text_field :email
-        .div
-          span Start Date
-          = f.text_field :start_date, class: 'yy-date-picker'
-        input[type='submit' value="Purchase #{@trip.price}"]
+    #payment-form
+      = render 'purchases/form'

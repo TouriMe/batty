@@ -1,0 +1,15 @@
+= form_for @purchase, remote: true do |f|
+  - if @purchase.errors.any?
+    .errors
+      ul
+        - @purchase.errors.full_messages.each do |m|
+          li = m
+  = f.hidden_field :purchasable_id
+  = f.hidden_field :purchasable_type
+  .div
+    span Email
+    = f.text_field :email
+  .div
+    span Start Date
+    = f.text_field :start_date, class: 'yy-date-picker'
+  input[type='submit' value="Purchase #{@purchase.price}"]

@@ -4,11 +4,18 @@ class PurchasesController < ApplicationController
   def create
     @purchase = Purchase.new(purchase_params)
     @purchase.status = 'unpaid'
+    @purchase.price = @purchase.purchasable.price
     # @purchase.tourist = current_normal_user if current_normal_user
 
-    # TODO: redirect_back if wrong
-    @purchase.save
-    redirect_to edit_purchase_path(@purchase)
+    respond_to do |f|
+      f.js do
+        if @purchase.save
+          render 'purchases/create_success.js.erb'
+        else
+          render 'purchases/form_error.js.erb'
+        end
+      end
+    end
   end
 
   def edit

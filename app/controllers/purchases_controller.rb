@@ -21,15 +21,23 @@ class PurchasesController < ApplicationController
   def edit
     if @purchase.status == :paid
       redirect_to request.referer
+      flash[:error] = 'The purchase you request has already been paid'
     end
   end
 
   def update
+    @purchase.status = :paid
+
+    unless @purchase.valid?
+      render 'edit' and return
+    end
+
     nonce = params[:payment_method_nonce]
     result = Braintree::Transaction.sale(
         :amount => @purchase.purchasable.price,
         :payment_method_nonce => nonce
     )
+
     if result.success?
       @purchase.status = :paid
       @purchase.save

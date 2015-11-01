@@ -1,11 +1,11 @@
 - if normal_user_signed_in?
-  = link_to(destroy_normal_user_session_path, method: :delete)
+  = link_to(destroy_normal_user_session_path, method: :delete, class: 'login-btn')
     = fa_icon 'user', size: 'lg', inverse: true
-    | Sign Out
+    |   Sign Out
 - else
   a[data-reveal-id="loginModal" class="login-btn"]
     = fa_icon 'user', size: 'lg', inverse: true
-    |  SIGN IN
+    |   SIGN IN
 
   #loginModal.reveal-modal[data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog" style="max-width:300px;"]
     .text-center

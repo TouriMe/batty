@@ -5,6 +5,9 @@ class WelcomeController < ApplicationController
   
     @no_white_background = true
     @no_show_title = true
+    @seo_tags = Seo.find_by_page('home')
+    
+    puts @seo_tags
   end
 
   def terms

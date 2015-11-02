@@ -9,13 +9,14 @@ Rails.application.routes.draw do
   get 'feedback' => 'welcome#feedback'
   get 'privacy' => 'welcome#privacy'
   get 'about' => 'welcome#about'
-
   get 'tourists/new'
   get 'tourists/show'
 
   resources :tourists, only: [:new, :show]
-  resources :drivers, only: [:index, :show]
-  resources :trips, only: [:index, :show]
+  resources :drivers, only: [:index ]
+  resources :trips, only: [:index ]
+    get 'trips/:name', to: 'trips#show'
+  
   resources :guides, only: [:index, :show]
   resources :purchases, only: [:create, :edit,:update]
 

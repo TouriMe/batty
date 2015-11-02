@@ -4,10 +4,15 @@ html
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible' content='IE=edge')
     meta(name='viewport' content='width=device-width initial-scale=1')
-    meta(name='title' content='About CambodianSmiles | Connect traveler to amazing Cambodia')
+    - if (@seotags)
+      meta(name="title" content=@seotags.title)
+    
     link(href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css')
 
-    title TouriMe | Connect with your drivers
+    - if (@page_title)
+      title @page_title
+    - else
+      title TouriMe | Connect with your drivers
 
     = render 'layouts/seo_meta'
     = stylesheet_link_tag 'application', media: 'all'

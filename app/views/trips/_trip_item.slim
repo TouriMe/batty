@@ -1,5 +1,5 @@
 .card-item
-  a[href="/trips/#{trip.to_param}"]
+  a[href="/trips/#{trip.name.gsub(/\s/,'-')}"]
     = image_tag trip.image_url, class: 'item-bg'
     .description
       .name

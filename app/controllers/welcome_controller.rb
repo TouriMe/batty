@@ -2,9 +2,11 @@ class WelcomeController < ApplicationController
   def index
     @cities = City.all.map{|c| [c.name, c.to_param]}
     @cities.unshift(['All',''])
-
+  
     @no_white_background = true
     @no_show_title = true
+    @seotags = Seo.find_by_page('home')
+  
   end
 
   def terms

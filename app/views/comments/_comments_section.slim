@@ -9,14 +9,19 @@
     .small-12.columns
       .comment
         .profile.left
-          = image_tag 'avatar.jpg', class:'profile-img'
+          = image_tag 'avatar.jpg', class: 'profile-img'
           br
           span [class='tourist-name']
             strong = c.normal_user.name
         .comment-detail
-            span [class="comment-date" ] = c.created_at.strftime("%b %d %Y")
-            br
-            = c.message
+          span [class="comment-date" ] = c.created_at.strftime("%b %d %Y")
+          sapn [class="rating-star right"]
+            -(c.rating).times do
+              i.fa.fa-star
+            - (5 - c.rating).times do
+              i.fa.fa-star-o
+          br
+          = c.message
 .divider
 - if normal_user_signed_in?
   = form_for Comment.new, remote: true do |f|
@@ -25,5 +30,5 @@
     = f.hidden_field :rating, value: '5'
     .rating-star.right
       = react_component('Rating')
-    = f.text_area :message, placeholder: 'Write a comment...', class:'comment-box'
-    = f.submit 'Post', class:'comment-btn'
+    = f.text_area :message, placeholder: 'Write a comment...', class: 'comment-box'
+    = f.submit 'Post', class: 'comment-btn'

@@ -1,9 +1,9 @@
 - if normal_user_signed_in?
-  = link_to(destroy_normal_user_session_path, method: :delete, class: 'login-btn')
+  = link_to(destroy_normal_user_session_path, method: :delete, class: 'login-logout-btn')
     = fa_icon 'user', size: 'lg', inverse: true
     |   Sign Out
 - else
-  a[data-reveal-id="loginModal" class="login-btn"]
+  a[data-reveal-id="loginModal" class="login-logout-btn"]
     = fa_icon 'user', size: 'lg', inverse: true
     |   SIGN IN
 

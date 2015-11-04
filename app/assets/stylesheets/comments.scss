@@ -3,19 +3,42 @@
   .header {
     font-size: 20px;
     margin-bottom: 10px;
+
+    .comments-num{
+      margin-left:20px;
+    }
   }
   .comment {
+    min-height:80px;
     margin: 10px 0;
+    padding:10px;
+    background-color:white;
+    border-radius: 5px;
 
-    .profile-pic {
-      width: 48px;
-      height: 48px;
+    .profile {
+      width: 150px;
+      text-align:center;
+
+      .profile-img{
+        width:58px;
+        border-radius: 58px;
+        position:relative;
+        top:-20px;
+        left:-10px;
+      }
+      .tourist-name{
+        position:relative;
+        top:-20px;
+        left:-10px;
+      }
     }
 
     .comment-detail {
-      margin-left: 58px;
+      margin-left: 150px;
+      font-weight:400;
       .comment-date {
         font-size: 10px;
+        color:grey;
       }
     }
   }
@@ -24,7 +47,32 @@
   margin-bottom: 50px;
 
   form#new_comment {
-    margin-left: 58px;
-    margin-right: 10px;
+    .comment-box{
+      border-radius: 5px;
+      height: 50px;
+    }
+
+    .rating-star{
+      color:#FFB400;
+    }
+    input.comment-btn {
+      width: 80px;
+      height: 40px;
+      background-color: black;
+      color: white;
+      border-radius: 5px;
+      border: none;
+      font-size: 14px;
+    }
+  }
+
+  .divider {
+    border-top: 1px solid #C8C8C8;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  .rating-star{
+    color:#FFB400;
   }
 }

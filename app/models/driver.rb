@@ -18,7 +18,7 @@ class Driver < ActiveRecord::Base
 
   scope :active, ->{where(is_active: true)}
 
-  accepts_nested_attributes_for :languages, :driver_cities, :driver_vehicles, allow_destroy: true
+  accepts_nested_attributes_for :languages, :driver_cities, :driver_vehicles, :images, allow_destroy: true
 
   def full_name
     self.first_name + ' ' + self.last_name

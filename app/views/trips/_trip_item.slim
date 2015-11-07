@@ -1,11 +1,30 @@
-.card-item
-  a[href="/trips/#{trip.name.gsub(/\s/,'-')}"]
+a[href="/trips/#{trip.name.gsub(/\s/,'-')}"]
+  .card-item
     = image_tag trip.image_url, class: 'item-bg'
-    .description
-      .name
-        h5 = trip.name
-      p
-        = trip.description
-      .price
-        span Price:
-        = trip.price
+    .name
+      = trip.name
+    .price
+      = number_to_currency(trip.price, :precision => 0)
+    .desc.offset
+      = trip.description
+    .divider.offset
+    .review.offset
+      .rating.left
+        - rating = 0
+        - (5).times do
+          i.fa.fa-star
+      /- if trip.comments.present?
+          - trip.comments.each do |comm|
+            - rating = rating + comm.rating
+          - if rating > 0
+            - rating = (rating / trip.comments.count).to_i
+              - (rating / 2).times do
+                i.fa.fa-star
+              - if (rating % 2 == 1)
+                i.fa.fa-star-half-o
+              - ((10 - rating) / 2).times do
+                i.fa.fa-star-o
+      span.review-num.right
+        strong = pluralize(trip.comments.count, 'review')
+
+

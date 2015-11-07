@@ -1,7 +1,6 @@
 a[href="/drivers/#{driver.to_param}"]
   .card-item
-    .item-bg
-      = image_tag driver.background_url
+    = image_tag driver.background_url, class: 'item-bg'
     .name
       = driver.full_name
     .avatar

@@ -2,9 +2,6 @@ $(
   d = React.DOM
   c = React.createElement
 
-  counter = 1
-  getKey = -> counter += 1; counter
-
   window.Carousel = React.createClass
     getInitialState: -> img_idx: 0
     handle_click: (type, evt) ->

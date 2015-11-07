@@ -1,4 +1,4 @@
-a[href="/drivers/#{driver.to_param}"]
+a[href="/drivers/#{driver.nickname.to_slug.normalize.to_s}"]
   .card-item
     = image_tag driver.background_url, class: 'item-bg'
     .name

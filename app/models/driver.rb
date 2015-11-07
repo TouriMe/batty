@@ -1,6 +1,8 @@
 class Driver < ActiveRecord::Base
   include Commentable
+  extend FriendlyId
 
+  friendly_id :nickname, use: :slugged
   obfuscate_id
 
   belongs_to :normal_user
@@ -22,6 +24,11 @@ class Driver < ActiveRecord::Base
 
   def full_name
     self.first_name + ' ' + self.last_name
+  end
+
+  # to support chinese (utf8) slugs
+  def normalize_friendly_id(input)
+    input.to_s.to_slug.normalize.to_s
   end
 
   has_many :purchases, as: :purchasable

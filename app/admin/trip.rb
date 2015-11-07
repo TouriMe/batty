@@ -12,6 +12,14 @@ ActiveAdmin.register Trip do
       input :price_currency, as: :string
       input :content, as: :html_editor
     end
+
+    f.inputs 'Images' do
+      f.has_many :images, allow_destroy: true do |i|
+        i.input :url
+        i.input :alt_text
+      end
+    end
+
     f. actions
   end
 
@@ -29,6 +37,7 @@ ActiveAdmin.register Trip do
       row :description
       row(:price){"#{trip.price} #{trip.price_currency}"}
       row :content
+      row(:images){ trip.images.map(&:url).join ' ,'}
     end
     active_admin_comments
   end

@@ -19,6 +19,7 @@ ActiveAdmin.register Driver do
   permit_params *all_fields,
                 languages_attributes: [:id, :_destroy, :language_code, :proficiency],
                 driver_cities_attributes: [:id, :city_id, :_destroy],
+                images_attributes: [:id, :url, :alt_text, :_destroy],
                 driver_vehicles_attributes: [:id, :vehicle_id, :_destroy]
 
   register_fields = Proc.new do |f, fields|
@@ -54,6 +55,13 @@ ActiveAdmin.register Driver do
       end
     end
 
+    f.inputs 'Images' do
+      f.has_many :images, allow_destroy: true do |i|
+        i.input :url
+        i.input :alt_text
+      end
+    end
+
     f.actions
   end
 
@@ -78,6 +86,7 @@ ActiveAdmin.register Driver do
 
       row(:cities){ driver.cities.map(&:name).join ' ,'}
       row(:vehicles){ driver.vehicles.map(&:name).join ' ,'}
+      row(:images){ driver.images.map(&:url).join ' ,'}
     end
 
     table_panel.call('Languages', driver.languages) do |l|

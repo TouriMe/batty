@@ -2,8 +2,9 @@
   h1
     = @trip.name
 
-  #detail-content.small-12.large-9.columns
+  = react_component('Carousel', images: @trip.images)
 
+  #detail-content.small-12.large-9.columns
     .detail
       h3
         | Trip Details

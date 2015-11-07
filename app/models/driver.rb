@@ -6,6 +6,7 @@ class Driver < ActiveRecord::Base
   belongs_to :normal_user
 
   has_many :languages, class_name: 'DriverLanguage'
+  has_many :images, as: :imagable
   has_many :driver_cities
   has_many :driver_vehicles
 

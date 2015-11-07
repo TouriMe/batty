@@ -2,19 +2,20 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import 'settings';
-.cards{
+
+.cards {
   background-color: white;
   @media #{$media-pad-larger}{
-    padding: 20px 50px;
+    max-width: 1024px;
+    margin: 40px auto;
   }
 
-  .card-item{
-    width: 100%;
+  .card-item {
+    width: 300px;
     min-width: 200px;
     height: 310px;
     text-align: left;
-    margin: 15px 0;
-    display: inline-flex;
+    margin: 15px auto;
     background-color: #fff;
     box-shadow: 0 1px 4px 0px rgba(0, 0, 0, 0.25);
     -webkit-box-shadow: 0 1px 4px 0px rgba(0, 0, 0, 0.25);
@@ -24,61 +25,96 @@
     position: relative;
     cursor: pointer;
 
-    img{
-      float: left;
-      position: absolute;
-      border-radius: 4px;
+    .item-bg {
+      height: 220px;
+    }
+    .name {
+      position: relative;
+      top: -40px;
+      left: 15px;
+      color: white;
+      font-size: 18px;
+      font-weight: 700;
     }
 
-    .description{
-      position: absolute;
-      min-height: 130px;
+    .price {
+      width: 60px;
+      height: 60px;
+      border-radius: 100%;
+      background-color: #474747;
+      font-size: 22px;
+      font-weight: 700;
+      color: white;
+      text-align: center;
+      line-height: 60px;
+      position: relative;
+      top: -235px;
+      left: 230px;
+    }
+
+    .desc {
+      left: 20px;
+      color: black;
+    }
+
+    .divider {
       width: 100%;
-      bottom: 0;
-      padding: 15px;
-      border-top: 8px solid white;
-      border-radius: 0 0 4px 4px;
-      background-color: whitesmoke;
-      box-shadow: 0 -2px 20px 1px rgba(0, 0, 0, 0.45);
+      border-top: 1px solid #C8C8C8;
+      margin: 10px 0;
 
-      .avatar{
-        width: 90px;
-        height: 90px;
-        position: absolute;
-        top: -45px;
-        right: 15px;
+    }
 
-        img{
-          border-radius: 45px;
-          border: 5px solid white;
-          display: inline-block;
-
-          width: 90px;
-          height: 90px;
-        }
+    .offset {
+      position: relative;
+      top: -75px;
+    }
+    .review {
+      color: black;
+      .rating{
+        margin-left:15px;
+        color:#FFB400;
       }
-
-      .intro p{
-        font-size: 14px;
-        color: black;
-        font-weight: 300;
-        display: block;
-      }
-
-      .list-contact{
-        position: absolute;
-        bottom: 6px;
-        right: 10px;
-
-        a i.fa{
-          color: #787878;
-          font-size: 1.25em;
-          padding: 2px 4px;
-        }
+      .review-num{
+        margin-right: 15px;
       }
     }
+    .avatar {
+      width: 80px;
+      height: 80px;
+      position: relative;
+      top: -235px;
+      left: 210px;
+
+      .item-avatar {
+        width: 80px;
+        height: 80px;
+        border-radius: 100%;
+        border: 4px solid white;
+        //display: inline-block;
+      }
+    }
+
+    .intro p {
+      font-size: 14px;
+      color: black;
+      font-weight: 300;
+      display: block;
+    }
+
+    .list-contact {
+      position: absolute;
+      bottom: 6px;
+      right: 10px;
+
+      a i.fa {
+        color: #787878;
+        font-size: 1.25em;
+        padding: 2px 4px;
+      }
+    }
+
   }
-  .hvr-float{
+  .hvr-float {
     display: inline-block;
     vertical-align: middle;
     transform: translateZ(0);

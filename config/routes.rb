@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get 'tourists/show'
 
   resources :tourists, only: [:new, :show]
-  resources :drivers, only: [:index ]
+  resources :drivers, only: [:index, :show]
   resources :trips, only: [:index ]
     get 'trips/:name', to: 'trips#show'
   

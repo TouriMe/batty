@@ -14,8 +14,7 @@ Rails.application.routes.draw do
 
   resources :tourists, only: [:new, :show]
   resources :drivers, only: [:index, :show]
-  resources :trips, only: [:index ]
-    get 'trips/:name', to: 'trips#show'
+  resources :trips, only: [:index, :show ]
   
   resources :guides, only: [:index, :show]
   resources :purchases, only: [:create, :edit,:update]

@@ -22,13 +22,18 @@
               i.fa.fa-star-o
           br
           = c.message
-.divider
+
 - if normal_user_signed_in?
   = form_for Comment.new, remote: true do |f|
     = f.hidden_field :commentable_id, value: target.to_param
     = f.hidden_field :commentable_type, value: target.class
     = f.hidden_field :rating, value: '5'
-    .rating-star.right
-      = react_component('Rating')
+    .comment-head
+      strong
+       | From:
+       = current_normal_user.name
+      .rating-star.right
+        = react_component('Rating')
+    .divider
     = f.text_area :message, placeholder: 'Write a comment...', class: 'comment-box'
     = f.submit 'Post', class: 'comment-btn'

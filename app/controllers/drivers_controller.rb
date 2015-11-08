@@ -1,5 +1,6 @@
 class DriversController < ApplicationController
-  before_filter(only:[:show, :add_comment]){@driver = Driver.friendly.find(params[:id])}
+  before_filter(only:[:show, :add_comment]){
+    @driver = Driver.friendly.find(params[:id])}
 
   def index
     @drivers = Driver.active
@@ -7,7 +8,6 @@ class DriversController < ApplicationController
 
   def show
     @dirver = Driver.friendly.find(params[:id])
-
   end
 
   def find_drivers

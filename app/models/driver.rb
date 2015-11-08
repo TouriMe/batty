@@ -2,8 +2,8 @@ class Driver < ActiveRecord::Base
   include Commentable
   extend FriendlyId
 
-  friendly_id :nickname, use: :slugged
-  obfuscate_id
+  friendly_id :full_name, use: :slugged
+  # obfuscate_id
 
   belongs_to :normal_user
 

@@ -3,6 +3,10 @@ Rails.application.routes.draw do
 
   get 'trips/show'
 
+  get 'drivers/index'
+
+  get 'drivers/show'
+
   root 'welcome#index'
   get 'terms' => 'welcome#terms'
   get 'faq' => 'welcome#faq'
@@ -11,18 +15,16 @@ Rails.application.routes.draw do
   get 'about' => 'welcome#about'
   get 'tourists/new'
   get 'tourists/show'
-
+ 
+  post 'drivers' => 'drivers#find_drivers'
+  
   resources :tourists, only: [:new, :show]
   resources :drivers, only: [:index, :show]
-  resources :trips, only: [:index ]
-    get 'trips/:name', to: 'trips#show'
+  resources :trips, only: [:index, :show ]
   
   resources :guides, only: [:index, :show]
   resources :purchases, only: [:create, :edit,:update]
-
   resources :comments, only: [:create, :update, :destroy]
-
-  post 'drivers' => 'drivers#find_drivers'
 
   namespace :api do
     resources :drivers, defaults: {format: :json}

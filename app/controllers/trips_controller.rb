@@ -4,10 +4,7 @@ class TripsController < ApplicationController
   end
 
   def show
-    # a little tweak to make 
-    # url readable
-    @named_param = params[:name].gsub("-", " " )
-    @trip = Trip.find_by_name(@named_param)
+    @trip = Trip.friendly.find(params[:id])
 
     # @trip = Trip.find(params[:id])
     @purchase = @trip.purchases.new

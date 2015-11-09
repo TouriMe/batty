@@ -1,4 +1,4 @@
-a[href="/trips/#{trip.name.gsub(/\s/,'-')}"]
+a[href=trip_url(trip)]
   .card-item
     = image_tag trip.image_url, class: 'item-bg'
     .name

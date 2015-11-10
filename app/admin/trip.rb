@@ -11,6 +11,7 @@ ActiveAdmin.register Trip do
       input :price
       input :price_currency, as: :string
       input :content, as: :html_editor
+      input :important_info, as: :html_editor
     end
 
     f.inputs 'Images' do

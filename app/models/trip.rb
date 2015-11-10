@@ -5,9 +5,11 @@ class Trip < ActiveRecord::Base
   has_many :purchases, as: :purchasable
   has_many :images, as: :imagable
   
-  friendly_id :name, use: :slugged
+  friendly_id :name, use: [:slugged, :finders]
 
   monetize :price_cents
+
+  validates_presence_of :name, :price_cents, :price_currency
 
   accepts_nested_attributes_for :images, allow_destroy: true
   

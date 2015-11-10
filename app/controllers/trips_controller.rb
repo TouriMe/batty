@@ -4,7 +4,7 @@ class TripsController < ApplicationController
   end
 
   def show
-    @trip = Trip.friendly.find(params[:id])
+    @trip = Trip.find(params[:id])
 
     # @trip = Trip.find(params[:id])
     @purchase = @trip.purchases.new

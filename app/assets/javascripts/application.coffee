@@ -20,5 +20,8 @@ $(()->
   
   if (localStorage.getItem("banner_check"))
     $('#sign_banner').hide()
+
+  $(document).bind 'DOMNodeInserted', (evt)->
+    window.ReactRailsUJS.mountComponents()
 )
 

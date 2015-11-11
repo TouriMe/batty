@@ -18,3 +18,6 @@
   .rhs.small-12.large-3.columns
     #payment-form
       = render 'purchases/form'
+      #important-info
+        h2 Important
+        = @trip.important_info

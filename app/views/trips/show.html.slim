@@ -16,14 +16,14 @@
       .price
         p
           span Price(USD): $
-          span = @trip.price
+          span = @trip.tuktuk_price
     #drivers-selection
       = render 'drivers'
     = render 'comments/comments', target: @trip
 
   .rhs.small-12.large-3.columns
     #payment-form
-      = render 'purchases/form'
+      /= render 'purchases/form'
       #important-info
         h2 Important
         = @trip.important_info

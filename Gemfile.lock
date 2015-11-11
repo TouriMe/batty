@@ -105,6 +105,7 @@ GEM
     dotenv (2.0.1)
     dotenv-rails (2.0.1)
       dotenv (= 2.0.1)
+    dynamic_sitemaps (2.0.0)
     ejs (1.1.1)
     erubis (2.7.0)
     execjs (2.5.2)
@@ -325,6 +326,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   devise
   dotenv-rails
+  dynamic_sitemaps
   font-awesome-rails
   foundation-rails
   friendly_id (~> 5.1.0)

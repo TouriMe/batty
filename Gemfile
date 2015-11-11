@@ -49,4 +49,5 @@ gem 'jquery-ui-rails'
 gem 'react-rails', '~> 1.4.0'
 gem 'friendly_id', '~> 5.1.0'
 gem 'babosa'
+gem "dynamic_sitemaps"
 

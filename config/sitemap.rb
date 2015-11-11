@@ -8,7 +8,7 @@ end
 
 # You can have multiple sitemaps like the above – just make sure their names are different.
 
-ping_with "http://staging.tourime.com/sitemap.xml"
+# ping_with "http://staging.tourime.com/sitemap.xml"
 # Automatically link to all pages using the routes specified
 # using "resources :pages" in config/routes.rb. This will also
 # automatically set <lastmod> to the date and time in page.updated_at:

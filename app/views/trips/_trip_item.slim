@@ -5,7 +5,7 @@
       = trip.name
     .price
       = number_to_currency(trip.price, :precision => 0)
-    .desc.offset
+    .desc.offset.ellipsis
       = trip.description
     .divider.offset
     .review.offset

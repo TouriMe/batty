@@ -51,3 +51,6 @@ gem 'friendly_id', '~> 5.1.0'
 gem 'babosa'
 gem "dynamic_sitemaps"
 
+
+
+gem 'jquery-dotdotdot-rails', '~> 1.6', '>= 1.6.5'

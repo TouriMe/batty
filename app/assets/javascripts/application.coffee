@@ -7,7 +7,9 @@
 #= require react
 #= require react_ujs
 #= require components
+#= require jquery.dotdotdot
 #= require_tree .
+
 
 $(()->
   $(document).foundation()
@@ -23,5 +25,10 @@ $(()->
 
   $(document).bind 'DOMNodeInserted', (evt)->
     window.ReactRailsUJS.mountComponents()
+
+  $(".ellipsis").dotdotdot({
+    ellipsis	: '... ',
+    height		: 30
+  });
 )
 

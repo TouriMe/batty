@@ -1,15 +1,19 @@
-h3 Drivers available for this trip
+h3
+  strong Drivers available for this trip
 
 - Driver.active.order(rating: :desc).each do |driver|
-  .driver
-    .profile-avatar
-      img.avatar-image[src=driver.avatar_url]
-    .rating_and_review
+  .row.tour-driver
+    .profile-avatar.large-2.small-4.columns
+      - if driver.avatar_url.present?
+        img.avatar-image[src=driver.avatar_url]
+      - else
+        = image_tag 'avatar.jpg', class: 'avatar-image'
+    .rating-review.large-2.small-4.columns
       .section.rating
         = render 'partials/rating', rating: driver.rating
       .section.comment
         = pluralize(driver.comments.count, 'review')
-    .vehicle
+    .vehicle.large-2.small-4.columns
 
-    .price
-      = @trip.price
+    .price.large-2.small-4.columns
+      strong = number_to_currency(@trip.price, :precision => 0)

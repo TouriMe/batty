@@ -8,7 +8,12 @@
     .desc.offset.ellipsis
       = driver.short_desc
     .divider.offset
-    .list-contact
-      = link_to fa_icon('facebook'), driver.facebook_url, size: '2'
-      = link_to fa_icon('envelope-o'), "mail_to:#{driver.email}", size: '2'
-      = link_to fa_icon('phone'), driver.phone, size: '2'
+    .review.offset
+      .rating.left
+        - rating = 0
+        - (5).times do
+          i.fa.fa-star
+      span.right.vehicle
+        - driver.vehicles.each do |v|
+          strong = v.name + " "
+

@@ -16,7 +16,7 @@
         .comment-detail
           span [class="comment-date" ] = c.created_at.strftime("%b %d %Y")
           sapn [class="rating-star right"]
-            = render 'partial/rating', rating: c.rating
+            = render 'partials/rating', rating: c.rating
           br
           = c.message
 

@@ -99,7 +99,7 @@ ActiveRecord::Schema.define(version: 20151114055557) do
     t.boolean  "is_active",      default: true
     t.integer  "user_id"
     t.string   "slug"
-    t.float    "rating"
+    t.decimal  "rating"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -168,7 +168,7 @@ ActiveRecord::Schema.define(version: 20151114055557) do
     t.string   "description"
     t.string   "slug"
     t.text     "important_info"
-    t.float    "rating"
+    t.decimal  "rating"
   end
 
   create_table "users", force: :cascade do |t|

@@ -14,18 +14,9 @@
             img.avatar-image[src=@driver.avatar_url]
         .columns.medium-6.small-12
           .profile
-            - rating = @driver.rating
-            - if rating
-              - rating = (rating * 2).to_i
-
-              .profile-rating
-                .section.rating
-                  - (rating / 2).times do
-                    i.fa.fa-star
-                  - if (rating % 2 == 1)
-                    i.fa.fa-star-half-o
-                  - ((10 - rating) / 2).times do
-                    i.fa.fa-star-o
+            .profile-rating
+              .section.rating
+                = render 'partials/rating', rating: @driver.rating
 
             .profile-name
               h3 = @driver.full_name

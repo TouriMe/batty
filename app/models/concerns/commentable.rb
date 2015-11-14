@@ -3,11 +3,7 @@ module Commentable
 
   included do
     has_many :comments, as: :commentable
+    after_initialize { self.rating = 5 if self.new_record? }
   end
 
-  def rating
-    nums = comments.map(&:rating)
-    return nil if nums.empty?
-    nums.sum.to_f / nums.count
-  end
 end

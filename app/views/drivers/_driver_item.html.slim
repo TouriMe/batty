@@ -10,9 +10,7 @@
     .divider.offset
     .review.offset
       .rating.left
-        - rating = 0
-        - (5).times do
-          i.fa.fa-star
+        = render 'partials/rating', rating: driver.rating
       span.right.vehicle
         - driver.vehicles.each do |v|
           strong = v.name + " "

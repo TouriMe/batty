@@ -1,3 +1,15 @@
 h3 Drivers available for this trip
 
-/- Driver.active.each do ||
+- Driver.active.order(rating: :desc).each do |driver|
+  .driver
+    .profile-avatar
+      img.avatar-image[src=driver.avatar_url]
+    .rating_and_review
+      .section.rating
+        = render 'partials/rating', rating: driver.rating
+      .section.comment
+        = pluralize(driver.comments.count, 'review')
+    .vehicle
+
+    .price
+      = @trip.price

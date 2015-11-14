@@ -17,6 +17,8 @@
         p
           span Price(USD): $
           span = @trip.price
+    #drivers-selection
+      = render 'drivers'
     = render 'comments/comments', target: @trip
 
   .rhs.small-12.large-3.columns

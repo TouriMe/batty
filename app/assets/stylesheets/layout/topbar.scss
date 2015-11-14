@@ -1,4 +1,4 @@
-#sign_banner.banner{
+#sign_banner.banner {
   display: block;
   background-color: black;
   color: white;
@@ -7,7 +7,7 @@
 
   padding: 10px 0;
 
-  .button{
+  .button {
     background: transparent;
 
     border-radius: 4px;
@@ -19,29 +19,29 @@
     padding: 5px 10px;
     margin: 0 5px;
   }
-  
-  .close{
+
+  .close {
     vertical-align: middle;
     margin: 10px;
   }
 }
 
-.top-bar{
+.top-bar {
 
-  .site-title{
+  .site-title {
     color: white;
     text-transform: uppercase;
-    &:hover{
+    &:hover {
       color: white;
     }
   }
   text-align: center;
 
-  .site-title{
+  .site-title {
     display: inline-block;
     letter-spacing: 1px;
 
-    img{
+    img {
       display: inline-block;
       vertical-align: middle;
       height: 50px;
@@ -49,9 +49,9 @@
     }
   }
 
-  .top-bar-section{
-    .login-logout-btn{
-      color:white;
+  .top-bar-section {
+    .login-logout-btn {
+      color: white;
     }
   }
 }
@@ -62,10 +62,10 @@
     margin: 0 auto;
     width: calc(100% - 100px);
     position: unset;
-
-    .top-bar-section{
-      .login-logout-btn{
-        color:white;
+    z-index: 100;
+    .top-bar-section {
+      .login-logout-btn {
+        color: white;
       }
     }
   }

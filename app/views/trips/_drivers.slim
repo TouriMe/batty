@@ -10,6 +10,10 @@ h3 Drivers available for this trip
       .section.comment
         = pluralize(driver.comments.count, 'review')
     .vehicle
+      - driver.vehicles.uniq.each do |v|
+        span = v.name
+    .book-btn
+      = link_to 'Book Me', '#', class: 'btn btn-book', driver_id: driver.id
 
     .price
       = @trip.price

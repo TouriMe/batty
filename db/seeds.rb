@@ -4,7 +4,7 @@ AdminUser.create(email:'admin@cambodiansmile.com', password: '11111111')
   City.create(name: city_name)
 end
 
-['Mini Bus' , 'Mini Van', 'Tuk Tuk'].each do |vehicle_name|
+['Car' , 'Tuk Tuk'].each do |vehicle_name|
   Vehicle.create(name: vehicle_name)
 end
 
@@ -23,12 +23,14 @@ drivers.each do |driver|
 
   driver['cities'].each do |city_name|
     city = City.find_by(name:city_name)
-    d.driver_cities.create(city: city)
+    d.driver_cities.create!(city: city)
   end
 
   driver['vehicles'].each do |vehicle_name|
+    vehicle_name = 'Car' if vehicle_name == 'Mini Van'
     vehicle = Vehicle.find_by(name:vehicle_name)
-    d.driver_vehicles.create(vehicle: vehicle)
+    next unless vehicle
+    d.driver_vehicles.create!(vehicle: vehicle)
   end
 
   driver['languages_written'].each do |code|

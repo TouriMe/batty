@@ -3,9 +3,14 @@
     p
       i.fa.fa-picture-o
       span Open photo gallery
-    = react_component('Carousel', images: @driver.images)
-    img.cover-image[src=@driver.background_url]
-
+    /.hide = react_component('Carousel', images: @driver.images)
+    /img.cover-image[src=@driver.background_url]
+    ul[data-orbit]
+      - @driver.images.each do |i|
+        li
+          img [src=i.url]
+          .orbit-caption
+            = i.alt_text
   .profile-page-body.row.full-width[data-equalizer]
     .columns.large-9.small-12.profile-basic-info[data-equalizer-watch]
       .row.full-width
@@ -57,7 +62,7 @@
               - if @driver.description and (not @driver.description.empty?)
                 = @driver.description
               - else
-                | We don't know much about this driver yet...
+              | We don't know much about this driver yet...
 
             .line
 
@@ -100,7 +105,7 @@
             = @driver.driving_years
             | &nbsp;years
           - else
-            | N.A.
+          | N.A.
 
       - if @driver.childsafe
         .section

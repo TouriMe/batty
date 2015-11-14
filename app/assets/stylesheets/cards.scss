@@ -70,12 +70,17 @@
     }
     .review {
       color: black;
-      .rating{
-        margin-left:15px;
-        color:#FFB400;
+      .rating {
+        margin-left: 15px;
+        color: #FFB400;
       }
-      .review-num{
+      .review-num {
         margin-right: 15px;
+      }
+
+      .vehicle {
+        margin-right: 10px;
+        font-size:14px;
       }
     }
     .avatar {
@@ -93,27 +98,8 @@
         //display: inline-block;
       }
     }
-
-    .intro p {
-      font-size: 14px;
-      color: black;
-      font-weight: 300;
-      display: block;
-    }
-
-    .list-contact {
-      position: absolute;
-      bottom: 6px;
-      right: 10px;
-
-      a i.fa {
-        color: #787878;
-        font-size: 1.25em;
-        padding: 2px 4px;
-      }
-    }
-
   }
+
   .hvr-float {
     display: inline-block;
     vertical-align: middle;
@@ -125,4 +111,5 @@
     transition-property: transform;
     transition-timing-function: ease-out;
   }
+
 }

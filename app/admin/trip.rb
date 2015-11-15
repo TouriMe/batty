@@ -8,8 +8,10 @@ ActiveAdmin.register Trip do
   form do |f|
     f.inputs do
       input :name
-      input :price
-      input :price_currency, as: :string
+      input :tuktuk_price
+      input :tuktuk_price_currency, as: :string
+      input :car_price
+      input :car_price_currency, as: :string
       input :content, as: :html_editor
       input :important_info, as: :html_editor
     end
@@ -27,7 +29,8 @@ ActiveAdmin.register Trip do
   index do
     selectable_column
     column :name
-    column(:price){|c| c.price.to_s + ' ' + c.price.currency}
+    column(:tuktuk_price){|c| c.tuktuk_price.to_s + ' ' + c.tuktuk_price.currency}
+    column(:car_price){|c| c.car_price.to_s + ' ' + c.car_price.currency}
     column :updated_at
     actions
   end
@@ -36,7 +39,8 @@ ActiveAdmin.register Trip do
     attributes_table do
       row :name
       row :description
-      row(:price){"#{trip.price} #{trip.price_currency}"}
+      row(:tuktuk_price){ trip.tuktuk_price.to_s + ' ' + trip.tuktuk_price.currency}
+      row(:car_price){trip.car_price.to_s + ' ' + trip.car_price.currency}
       row :content
       row(:images){ trip.images.map(&:url).join ' ,'}
     end

@@ -1,19 +1,28 @@
 h1 Make Payment
 
 = form_for @purchase do |f|
+  = render 'layouts/form_error_section', object: @purchase
   .purchase-details
     p.trip-info
       span Trip Name:
       span = @purchase.purchasable.name
     p.trip-price
       span Amount:
-      span = @purchase.purchasable.price
+      span = @purchase.price
     p.start-date
       span Start Date:
       span = @purchase.start_date
     p.email
       span Email:
       span = @purchase.email
+  .customer-info
+    .div
+      span Country
+      = f.text_field :country
+    .div
+      span Contact
+      = f.text_field :contact
+
   #payment-form
   input[type='submit' value="Pay"]
   = render 'braintree'

@@ -163,14 +163,16 @@ ActiveRecord::Schema.define(version: 20151114114442) do
   create_table "trips", force: :cascade do |t|
     t.string   "name"
     t.text     "content"
-    t.integer  "price_cents",    default: 0,     null: false
-    t.string   "price_currency", default: "USD", null: false
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.integer  "tuktuk_price_cents",    default: 0,     null: false
+    t.string   "tuktuk_price_currency", default: "USD", null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.string   "image_url"
     t.string   "description"
     t.string   "slug"
     t.text     "important_info"
+    t.integer  "car_price_cents",       default: 0,     null: false
+    t.string   "car_price_currency",    default: "USD", null: false
     t.decimal  "rating"
   end
 

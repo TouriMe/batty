@@ -4,17 +4,17 @@ class PurchasesController < ApplicationController
   def create
     @purchase = Purchase.new(purchase_params)
     @purchase.status = 'unpaid'
-    @purchase.price = @purchase.purchasable.price
-    # @purchase.tourist = current_normal_user if current_normal_user
+    if @purchase.vehicle.name == 'Car'
+      @purchase.price = @purchase.purchasable.car_price
+    else
+      @purchase.price = @purchase.purchasable.tuktuk_price
+    end
+    @purchase.tourist = current_normal_user if current_normal_user
 
-    respond_to do |f|
-      f.js do
-        if @purchase.save
-          render 'purchases/create_success.js.erb'
-        else
-          render 'purchases/form_error.js.erb'
-        end
-      end
+    if @purchase.save
+      redirect_to edit_purchase_path(@purchase)
+    else
+      redirect_to :back, error: "Error in your input: #{@purchase.errors.messages}"
     end
   end
 
@@ -34,7 +34,7 @@ class PurchasesController < ApplicationController
 
     nonce = params[:payment_method_nonce]
     result = Braintree::Transaction.sale(
-        :amount => @purchase.purchasable.price,
+        :amount => @purchase.price,
         :payment_method_nonce => nonce
     )
 
@@ -51,6 +51,7 @@ class PurchasesController < ApplicationController
 
   private
   def purchase_params
-    params.require(:purchase).permit(:purchasable_id, :purchasable_type, :start_date, :email)
+    params.require(:purchase).permit(:purchasable_id, :purchasable_type, :start_date, :email, :driver_id,
+                                     :vehicle_id, :country, :contact, :comments)
   end
 end

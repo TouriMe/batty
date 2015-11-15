@@ -7,8 +7,11 @@ class Purchase < ActiveRecord::Base
   before_create { self.status = :unpaid }
 
   validate do
-    errors.add(:start_date, 'start_date needs to be specified') unless self.start_date
-    errors.add(:start_date, 'start_date must be 1 day later') unless self.start_date > Time.now
+    if self.start_date
+      errors.add(:start_date, 'start_date must be 1 day later') unless self.start_date > Time.now
+    else
+      errors.add(:start_date, 'start_date needs to be specified')
+    end
 
     if(self.paid?)
       errors.add(:country, 'need to know which country you are from') unless self.country

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151114055557) do
+ActiveRecord::Schema.define(version: 20151114114442) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -145,6 +145,9 @@ ActiveRecord::Schema.define(version: 20151114055557) do
     t.date     "start_date"
     t.string   "country"
     t.string   "contact"
+    t.integer  "driver_id"
+    t.integer  "vehicle_id"
+    t.text     "comments"
   end
 
   create_table "seos", force: :cascade do |t|

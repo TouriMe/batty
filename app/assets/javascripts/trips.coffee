@@ -13,4 +13,30 @@ $( ->
     else
       $('#payment-form').css("top",contentOffset-$(window).scrollTop())
   )
+
+  $('.book-tour-via-driver').each (idx, ele) ->
+    $ele = $(ele)
+    $ele.click( (evt) ->
+      driver_id = $ele.data('driver_id')
+    )
+
+)
+
+$( ->
+  $modal = $('#fill-purchase-info-modal')
+  $eles = $('.book-tour-via-driver')
+  $eles.click( (evt)->
+    evt.preventDefault()
+    $target = $(evt.target)
+    $modal.find('#purchase_driver_id').val($target.data('driver-id'))
+    window.ttt = $target
+    vehicle = $target.data('vehicle')
+    $modal.find('#purchase_vehicle_id').val(vehicle['id'])
+    $modal.find('.booking_info .driver-name').html($target.data('driver-name'))
+    $modal.find('.booking_info .vehicle-type').html(vehicle.name)
+    $modal.find('.pic_section img.avatar').attr('src', $target.data('driver-img-url'))
+    $modal.find('.price').html($target.data('price').to_s)
+
+    $modal.foundation('reveal', 'open')
+  )
 )

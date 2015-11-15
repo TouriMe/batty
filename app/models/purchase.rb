@@ -1,6 +1,8 @@
 class Purchase < ActiveRecord::Base
   belongs_to :tourist
   belongs_to :purchasable, polymorphic: true
+  belongs_to :driver
+  belongs_to :vehicle
 
   before_create { self.status = :unpaid }
 
@@ -10,5 +12,5 @@ class Purchase < ActiveRecord::Base
   end
 
   enum status: [:unpaid, :paid, :confirmed]
-  validates :price, :email, presence: true
+  validates :price, :email, :purchasable, :driver, :vehicle, presence: true
 end

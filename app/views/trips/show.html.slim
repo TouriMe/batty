@@ -7,7 +7,6 @@
           = i.alt_text
   h1
     = @trip.name
-  /= react_component('Carousel', images: @trip.images)
   #detail-content.small-12.large-9.columns
     .detail
       h3
@@ -22,8 +21,6 @@
     = render 'comments/comments', target: @trip
 
   .rhs.small-12.large-3.columns
-    #payment-form
-      /= render 'purchases/form'
-      #important-info
-        h2 Important
-        = @trip.important_info
+    #important-info
+      h2 Important
+      = @trip.important_info

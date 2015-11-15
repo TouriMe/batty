@@ -20,5 +20,5 @@ class Purchase < ActiveRecord::Base
   end
 
   enum status: [:unpaid, :paid, :confirmed]
-  validates :price, :email, :purchasable, :driver, :vehicle, presence: true
+  validates :purchasable, :driver, :vehicle, :price, :email, :contact, :country, presence: true
 end

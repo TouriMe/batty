@@ -11,10 +11,22 @@ class PurchasesController < ApplicationController
     end
     @purchase.tourist = current_normal_user if current_normal_user
 
-    if @purchase.save
-      redirect_to edit_purchase_path(@purchase)
-    else
-      redirect_to :back, error: "Error in your input: #{@purchase.errors.messages}"
+    respond_to do |f|
+      f.js do
+        if @purchase.save
+          render js: "window.location = '#{edit_purchase_path(@purchase)}'"
+        else
+          render
+        end
+      end
+
+      f.html do
+        if @purchase.save
+          redirect_to edit_purchase_path(@purchase)
+        else
+          redirect_to :back, error: "Error in your input: #{@purchase.errors.messages}"
+        end
+      end
     end
   end
 

@@ -2,6 +2,7 @@ h3
   strong Drivers available for this trip
 
 - Driver.active.order(rating: :desc).each do |driver|
+  - vehicle = driver.vehicles.first
   .row.tour-driver
     .profile-avatar.large-2.small-4.columns
       - if driver.avatar_url.present?
@@ -17,7 +18,57 @@ h3
       - driver.vehicles.uniq.each do |v|
         span = v.name
     .price.large-2.small-4.columns
+      / TODO: plugin price here
       strong = number_to_currency(@trip.price, :precision => 0)
     .book-btn.large-3.small-4.columns
-      = link_to 'Book Me'.upcase, '#', class: 'btn btn-book', driver_id: driver.id
-
+      = link_to 'Book Me'.upcase, '#', class: 'btn btn-book book-tour-via-driver', data: {driver_id: driver.id, vehicle: vehicle, driver_img_url: driver.avatar_url, driver_name: driver.full_name, price: @trip.price}
+    .price
+      = @trip.price
+div[class='reveal-modal' id='fill-purchase-info-modal' data-reveal]
+  h4 Your Booking
+  span.booking_info
+    span.tour-name = @trip.name
+    | &nbsp;with driver&nbsp;
+    span.driver-name
+    | &nbsp;(
+    span.vehicle-type
+    | )
+  .row
+    .small-9.columns
+      = form_for(Purchase.new) do |f|
+        = f.hidden_field :purchasable_id, value: @trip.id
+        = f.hidden_field :purchasable_type, value: 'Trip'
+        = f.hidden_field :driver_id
+        = f.hidden_field :vehicle_id
+        .row
+          .small-3.columns
+            label.right[for='right-label'] Start Date
+          .small-9.columns
+            = f.text_field :start_date, class: 'yy-date-picker'
+        .row
+          .small-3.columns
+            label.right[for='right-label'] Your Email
+          .small-9.columns
+            = f.text_field :email
+        .row
+          .small-3.columns
+            label.right[for='right-label'] Country
+          .small-9.columns
+            = f.text_field :country
+        .row
+          .small-3.columns
+            label.right[for='right-label'] Contact
+          .small-9.columns
+            = f.text_field :contact
+        .row
+          .small-3.columns
+            label.right[for='right-label'] Comments
+          .small-9.columns
+            = f.text_area :comments
+        .row
+          = f.submit 'Pay Now'
+    .small-3.columns
+      .pic_section
+        img.avatar[src='' alt='This is alt text']
+      .price $12.30
+  a class="close-reveal-modal" aria-label="Close" &#215;

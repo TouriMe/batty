@@ -62,7 +62,8 @@
         
         / #payment-form
           /= render 'purchases/form'
-        
+
         #important-info
-          h2 Important Info
-          = @trip.important_info.html_safe
+          - if @trip.important_info
+            h2 Important Info
+            = @trip.important_info.html_safe

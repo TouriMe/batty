@@ -15,13 +15,18 @@ h1 Make Payment
     p.email
       span Email:
       span = @purchase.email
-  .customer-info
-    .div
-      span Country
-      = f.text_field :country
-    .div
-      span Contact
-      = f.text_field :contact
+    p.country
+      span Country:
+      span = @purchase.country
+    p.country
+      span Contact:
+      span = @purchase.contact
+    p.driver
+      span Driver:
+      span = @purchase.driver.full_name
+    p.vehicle
+      span Vehicle:
+      span = @purchase.vehicle.name
 
   #payment-form
   input[type='submit' value="Pay"]

@@ -22,6 +22,22 @@ $( ->
 
 )
 
+
+$(document).foundation({
+    orbit: {
+      animation: 'slide',
+      timer_speed: 5000,
+      timer: false,
+      swipe: true,
+      pause_on_hover: true,
+      animation_speed: 500,
+      navigation_arrows: true,
+      bullets: false,
+      slide_number: false
+    }
+});
+
+
 $( ->
   $modal = $('#fill-purchase-info-modal')
   $eles = $('.book-tour-via-driver')

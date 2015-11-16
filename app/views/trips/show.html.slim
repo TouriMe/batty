@@ -1,16 +1,14 @@
 .container.trip_wrapper
   
-  / ul[data-orbit]
-    = @trip.images.each do |i|
+  ul[data-orbit style="height: 330px;"]
+    - @trip.images.each do |i|
       li
         img [src=i.url]
-        .orbit-caption
-          = i.alt_text
   
   .trip_head_wrapper
     .row
       section#trip_header 
-        .large-9.small-9.trip_top_head.columns
+        .large-9.small-12.trip_top_head.columns
           h1
             = @trip.name
           .meta_head
@@ -29,7 +27,7 @@
                 span.checkpoints 12 <br />
                 span.meta Checkpoints
 
-        .large-3.small-3.trip_top_info.columns
+        .large-3.small-12.trip_top_info.columns
           h1
             span = @trip.tuktuk_price 
             span  $
@@ -66,5 +64,5 @@
           /= render 'purchases/form'
         
         #important-info
-          h3 Important Info
+          h2 Important Info
           = @trip.important_info.html_safe

@@ -75,3 +75,10 @@ html, body, h1, h2, h3, h4, h5, h6, p, a, label, select {
 .alert-box{
   margin: 5px 10px;
 }
+
+/* Top Bar Looks Tight */
+nav.top-bar { 
+  height: auto;
+  padding-bottom: 10px;
+  display: block;
+}

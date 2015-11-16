@@ -1,45 +1,163 @@
 // Place all the styles related to the trips controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-#detail-content {
-  border: solid 1px;
-  .detail {
-    .price {
-      margin: 20px 0;
-      color: green;
+$themeFont: 'Avenir Next', Helvetica;
+
+.trip_wrapper {
+  background: #F5F5F5;
+  .trip_head_wrapper {
+    margin: 0px;
+    max-width: 100%;
+    background: #FFFFFF;
+    #trip_header {
+      width: 100%;
+      display: block;
+      padding-top: 15px;
+      .trip_top_head {
+        padding-top: 32px;
+        h1 {
+          font-family: $themeFont;
+          font-weight: 600;
+          font-size: 36px;
+          margin-bottom: 14px;
+        }
+        .meta_head {
+          width: 50%;
+          float: left;
+          .meta_block {
+            width: 32%;
+            display: inline-block;
+            p {
+              font-size: 18px;
+              font-family: $themeFont;
+              font-weight: 500;
+              line-height: 18px;
+              span.meta  {
+                font-size: 14px;
+                font-weight: normal;
+              }
+            }
+          }
+        }
+      }
+
+      .trip_top_info {
+        border-left: 1px solid #979797;
+        padding-bottom: 20px;
+        h1 {
+          text-align: center;
+          font-size: 48px;
+          font-family: $themeFont;
+          font-weight: 600;
+        }
+        .meta_func {
+          display: block;
+          text-align: center;
+          margin: auto;
+          width: 80%;
+          a {
+            display: block;
+            width: 90%;
+            margin: auto;
+            padding: 10px 5px;
+            font-size: 20px;
+            font-family: $themeFont;
+            font-weight: 500;
+            text-transform: uppercase;
+            padding: 10px 10px;
+          }
+          a.trip_book_now {
+            color: #FFFFFF;
+            background: #323232;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #323232;
+          }
+          a.share {
+            color: #464646;
+            border: 1px solid #979797;
+            border-radius: 5px;
+          }
+        }
+      }
     }
   }
 
-  .tour-driver{
-    height:100px;
-    border-bottom:1px solid grey;
-    padding:10px 0;
-    .avatar-image{
-      width: 80px;
-      border-radius: 80px;
-      border:2px solid white;
-    }
-    .rating-review{
-      padding:16px 0;
-      .rating{
-        color: #FFB400
+  .trip_detail_wrapper {
+    #trip_sidebar {
+      border-left: 1px solid #979797;
+      padding-top: 35px;
+      h3 {
+        font-size: 20px;
+        font-family: $themeFont;
+        font-weight: 500;
+        color: #464646; 
       }
-      .comment{
+    }
 
+    #detail-content {
+      padding-top: 35px;
+      .detail {
+        h3 {
+          font-size: 20px;
+          font-family: $themeFont;
+          font-weight: 500;
+          color: #464646;
+        }
+        .trip_content {
+          margin: 5px 20px;
+          color: #464646;
+          font-size: 16px;
+          font-weight: 400;
+          font-family: $themeFont;
+          line-height: 22px;
+          padding-bottom: 30px;
+          border-bottom: 1px solid #C8C8C8;
+        }
+        .price {
+          margin: 20px 0;
+          color: green;
+        }
+      
       }
-    }
-    .price{
-      line-height:80px;
-    }
-    .book-btn{
-      margin:25px 0;
-      .btn-book{
-        background-color: black;
-        color: white;
-        padding: 8px 15px;
-        font-size:12px;
-        font-weight: 400;
-        line-height:29px;
+
+      .tour-driver{
+        height:100px;
+        border-bottom:1px solid grey;
+        padding:10px 0;
+        
+        .avatar-image{
+          width: 80px;
+          border-radius: 80px;
+          border:2px solid white;
+        }
+        
+        .rating-review{
+          padding:16px 0;
+          
+          .rating{
+            color: #FFB400
+          }
+          
+          .comment{
+
+          }
+        }
+        
+        .price{
+          line-height:80px;
+        }
+        .book-btn{
+          margin:25px 0;
+          .btn-book{
+            background-color: black;
+            color: white;
+            padding: 8px 15px;
+            font-size:12px;
+            font-weight: 400;
+            line-height:29px;
+          }
+        }
       }
     }
   }

@@ -26,9 +26,11 @@ $(()->
   $(document).bind 'DOMNodeInserted', (evt)->
     window.ReactRailsUJS.mountComponents()
 
+    
   $(".ellipsis").dotdotdot({
     ellipsis	: '... ',
     height		: 30
   });
+
 )
 

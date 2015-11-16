@@ -1,29 +1,70 @@
-.row
-  ul[data-orbit]
-    - @trip.images.each do |i|
+.container.trip_wrapper
+  
+  / ul[data-orbit]
+    = @trip.images.each do |i|
       li
         img [src=i.url]
         .orbit-caption
           = i.alt_text
-  h1
-    = @trip.name
-  /= react_component('Carousel', images: @trip.images)
-  #detail-content.small-12.large-9.columns
-    .detail
-      h3
-        | Trip Details
-      = @trip.content.html_safe
-      .price
-        p
-          span Price(USD): $
-          span = @trip.tuktuk_price
-    #drivers-selection
-      = render 'drivers'
-    = render 'comments/comments', target: @trip
+  
+  .trip_head_wrapper
+    .row
+      section#trip_header 
+        .large-9.small-9.trip_top_head.columns
+          h1
+            = @trip.name
+          .meta_head
+            section.trip_info_distance.meta_block
+              p
+                span.distance 54 KM <br />
+                span.meta Distance
 
-  .rhs.small-12.large-3.columns
-    #payment-form
-      /= render 'purchases/form'
-      #important-info
-        h2 Important
-        = @trip.important_info
+            section.trip_info_duration.meta_block
+              p
+                span.duration 4 Days <br />
+                span.meta Duration
+
+            section.trip_info_checkpoints.meta_block
+              p
+                span.checkpoints 12 <br />
+                span.meta Checkpoints
+
+        .large-3.small-3.trip_top_info.columns
+          h1
+            span = @trip.tuktuk_price 
+            span  $
+          .meta_func 
+            a.trip_book_now
+              | Book Now
+            a.share
+              | <i class="fa fa-heart-o"></i> Share
+
+
+  .trip_detail_wrapper
+    .row
+      #detail-content.small-12.large-9.columns
+        .detail
+          h3
+            | Tour description
+
+          .trip_content
+            = @trip.content.html_safe
+            
+        / .price
+            p
+              span Price(USD): $
+              span = @trip.tuktuk_price
+        
+        #drivers-selection
+          = render 'drivers'
+          = render 'comments/comments', target: @trip
+
+      
+      #trip_sidebar.rhs.small-12.large-3.columns
+        
+        / #payment-form
+          /= render 'purchases/form'
+        
+        #important-info
+          h3 Important Info
+          = @trip.important_info.html_safe

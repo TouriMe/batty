@@ -23,20 +23,19 @@ h3
         strong = number_to_currency(price, :precision => 0)
     .book-btn.large-3.small-4.columns
       = link_to 'Book Me'.upcase, '#', class: 'btn btn-book book-tour-via-driver', data: {driver_id: driver.id, vehicle: vehicle, driver_img_url: driver.avatar_url, driver_name: driver.full_name, price: price}
-div[class='reveal-modal' id='fill-purchase-info-modal' data-reveal]
-  h4 Your Booking
-  span.booking_info
-    span.tour-name = @trip.name
-    | &nbsp;with driver&nbsp;
-    span.driver-name
-    | &nbsp;(
-    span.vehicle-type
-    | )
+div[class='reveal-modal billing-info' id='fill-purchase-info-modal' data-reveal]
   .row
-    .small-9.columns#purchase-form
+    span.booking_label
+      strong
+        | Your booking
+    span.booking_info
+      span.tour-name = @trip.name
+      | &nbsp;with driver&nbsp;
+      span.driver-name
+      | &nbsp;(
+      span.vehicle-type
+      | )
+  .divider
+    #purchase-form
       = render 'purchases/form', purchase: Purchase.new(purchasable_type: 'Trip', purchasable_id: @trip.id)
-    .small-3.columns
-      .pic_section
-        img.avatar[src='' alt='This is alt text']
-      .price $12.30
   a class="close-reveal-modal" aria-label="Close" &#215;

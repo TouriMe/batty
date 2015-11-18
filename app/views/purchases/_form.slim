@@ -1,5 +1,5 @@
 / Error Info
-- if purchase.errors.any?
+- if purchase.errors.any? && purchase.errors.full_messages.any?
 ul
   - purchase.errors.full_messages.each do |msg|
     li = msg
@@ -9,29 +9,44 @@ ul
   = f.hidden_field :driver_id
   = f.hidden_field :vehicle_id
   .row
-    .small-3.columns
-      label.right[for='right-label'] Start Date
-    .small-9.columns
-      = f.text_field :start_date, class: 'yy-date-picker'
-  .row
-    .small-3.columns
-      label.right[for='right-label'] Your Email
-    .small-9.columns
-      = f.text_field :email
-  .row
-    .small-3.columns
-      label.right[for='right-label'] Country
-    .small-9.columns
-      = f.text_field :country
-  .row
-    .small-3.columns
-      label.right[for='right-label'] Contact
-    .small-9.columns
-      = f.text_field :contact
-  .row
-    .small-3.columns
-      label.right[for='right-label'] Comments
-    .small-9.columns
-      = f.text_area :comments
-  .row
-    = f.submit 'Pay Now'
+    .small-7.columns
+      .row
+        .small-3.columns
+          label.right.bill-label[for='right-label']
+            strong Start Date
+        .small-9.columns
+          = f.text_field :start_date, class: 'yy-date-picker'
+      .row
+        .small-3.columns
+          label.right.bill-label[for='right-label']
+            strong Email
+        .small-9.columns
+          = f.text_field :email
+      .row
+        .small-3.columns
+          label.right.bill-label[for='right-label']
+            strong Country
+        .small-9.columns
+          = f.text_field :country
+      .row
+        .small-3.columns
+          label.right.bill-label[for='right-label']
+            strong Contact
+        .small-9.columns
+          = f.text_field :contact
+      .row
+        .small-3.columns
+          label.right.bill-label[for='right-label']
+            strong Comments
+        .small-9.columns
+          = f.text_area :comments
+    .small-5.columns
+      .pic-section
+        img.avatar[src='']
+      .price-section
+        span Total
+        br
+        |$
+        span.price 12.30
+      .pay-lah
+        = f.submit 'Pay Now'.upcase!, class:'pay-btn'

@@ -32,7 +32,7 @@ $themeFont: 'Avenir Next', Helvetica;
               font-family: $themeFont;
               font-weight: 500;
               line-height: 18px;
-              span.meta  {
+              span.meta {
                 font-size: 14px;
                 font-weight: normal;
               }
@@ -91,7 +91,7 @@ $themeFont: 'Avenir Next', Helvetica;
         font-size: 20px;
         font-family: $themeFont;
         font-weight: 500;
-        color: #464646; 
+        color: #464646;
       }
     }
 
@@ -118,44 +118,44 @@ $themeFont: 'Avenir Next', Helvetica;
           margin: 20px 0;
           color: green;
         }
-      
+
       }
 
-      .tour-driver{
-        height:100px;
-        border-bottom:1px solid grey;
-        padding:10px 0;
-        
-        .avatar-image{
+      .tour-driver {
+        height: 100px;
+        border-bottom: 1px solid grey;
+        padding: 10px 0;
+
+        .avatar-image {
           width: 80px;
           border-radius: 80px;
-          border:2px solid white;
+          border: 2px solid white;
         }
-        
-        .rating-review{
-          padding:16px 0;
-          
-          .rating{
+
+        .rating-review {
+          padding: 16px 0;
+
+          .rating {
             color: #FFB400
           }
-          
-          .comment{
+
+          .comment {
 
           }
         }
-        
-        .price{
-          line-height:80px;
+
+        .price {
+          line-height: 80px;
         }
-        .book-btn{
-          margin:25px 0;
-          .btn-book{
+        .book-btn {
+          margin: 25px 0;
+          .btn-book {
             background-color: black;
             color: white;
             padding: 8px 15px;
-            font-size:12px;
+            font-size: 12px;
             font-weight: 400;
-            line-height:29px;
+            line-height: 29px;
           }
         }
       }
@@ -171,6 +171,63 @@ $themeFont: 'Avenir Next', Helvetica;
     width: 235px;
     padding: 30px 10px;
     background-color: wheat;
+  }
+}
+
+.billing-info {
+  max-width: 700px !important;
+  padding: 30px !important;
+  .divider {
+    margin-top: 10px;
+    border-top: 1px solid #C8C8C8;
+  }
+
+  .booking_label {
+    margin-right: 30px;
+  }
+
+  .bill-label {
+    line-height:37px;
+  }
+
+  .pic-section {
+    width: 200px;
+    height: 120px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 6px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-color: #f5f5f5;
+    .avatar {
+
+    }
+  }
+
+  .price-section {
+    margin:10px 0;
+    font-size: 22px;
+    font-weight: 700;
+    text-align: center;
+    .price{
+      font-size: 36px;
+    }
+  }
+
+  .pay-lah {
+    width: 120px;
+    margin-left: auto;
+    margin-right: auto;
+    .pay-btn {
+      background-color: black;
+      width: 120px;
+      color: white;
+      font-size: 18px;
+      line-height: 32px;
+      border: none;
+      border-radius: 3px;
+    }
   }
 
 }

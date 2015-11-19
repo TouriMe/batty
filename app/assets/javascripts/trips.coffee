@@ -50,7 +50,8 @@ $( ->
     $modal.find('#purchase_vehicle_id').val(vehicle['id'])
     $modal.find('.booking_info .driver-name').html($target.data('driver-name'))
     $modal.find('.booking_info .vehicle-type').html(vehicle.name)
-    $modal.find('.pic_section img.avatar').attr('src', $target.data('driver-img-url'))
+    $modal.find('.pic-section').attr('style','background-image:url('+ $target.data('driver-img-url') + ')')
+    #$modal.find('.pic-section img.avatar').attr('src', $target.data('driver-img-url'))
     $modal.find('.price').html($target.data('price').to_s)
 
     $modal.foundation('reveal', 'open')

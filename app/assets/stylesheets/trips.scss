@@ -5,6 +5,12 @@ $themeFont: 'Avenir Next', Helvetica;
 
 .trip_wrapper {
   background: #F5F5F5;
+
+  .orbit-container {
+    max-width: 1024px;
+    margin: 0 auto;
+  }
+
   .trip_head_wrapper {
     margin: 0px;
     max-width: 100%;

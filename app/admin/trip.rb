@@ -9,9 +9,10 @@ ActiveAdmin.register Trip do
     f.inputs do
       input :name
       input :tuktuk_price
-      input :tuktuk_price_currency, as: :string
       input :car_price
-      input :car_price_currency, as: :string
+      input :distance, hint: 'integer, unit is `km`'
+      input :duration, hint: 'text, for example: 4 days'
+      input :checkpoint_num, hint: 'integer, number of checkpoints'
       input :content, as: :html_editor
       input :important_info, as: :html_editor
     end
@@ -31,6 +32,9 @@ ActiveAdmin.register Trip do
     column :name
     column(:tuktuk_price){|c| c.tuktuk_price.to_s + ' ' + c.tuktuk_price.currency}
     column(:car_price){|c| c.car_price.to_s + ' ' + c.car_price.currency}
+    column :duration
+    column :checkpoints_num
+    column :distance
     column :updated_at
     actions
   end

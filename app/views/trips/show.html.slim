@@ -3,7 +3,7 @@
   ul[data-orbit style="height: 330px;"]
     - @trip.images.each do |i|
       li
-        img [src=i.url]
+        img[src=i.url]
   
   .trip_head_wrapper
     .row
@@ -14,17 +14,21 @@
           .meta_head
             section.trip_info_distance.meta_block
               p
-                span.distance 54 KM <br />
+                span.distance.block
+                  = @trip.distance.blank? ? 'Unknown' : @trip.distance
+                  | &nbsp;KM
                 span.meta Distance
 
             section.trip_info_duration.meta_block
               p
-                span.duration 4 Days <br />
+                span.duration.block
+                  = @trip.duration.blank? ? 'Unknown' : @trip.duration
                 span.meta Duration
 
             section.trip_info_checkpoints.meta_block
               p
-                span.checkpoints 12 <br />
+                span.checkpoints.block
+                  = @trip.checkpoint_num.blank? ? 'Unknown' : @trip.checkpoint_num
                 span.meta Checkpoints
 
         .large-3.small-12.trip_top_info.columns

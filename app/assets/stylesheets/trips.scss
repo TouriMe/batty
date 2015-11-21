@@ -38,6 +38,9 @@ $themeFont: 'Avenir Next', Helvetica;
               font-family: $themeFont;
               font-weight: 500;
               line-height: 18px;
+              .block{
+                display: block;
+              }
               span.meta {
                 font-size: 14px;
                 font-weight: normal;

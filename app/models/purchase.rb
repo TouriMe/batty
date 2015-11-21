@@ -5,6 +5,7 @@ class Purchase < ActiveRecord::Base
   belongs_to :vehicle
 
   before_create { self.status = :unpaid }
+  after_save { OrderConfirmation.confirm(self).deliver_now if self.paid? }
 
   validate do
     if self.start_date

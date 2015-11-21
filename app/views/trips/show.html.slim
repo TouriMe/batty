@@ -1,7 +1,9 @@
 .container.trip_wrapper
 
-  - img = @trip.images.first
-  .trip-cover-img [ data-img = img.url]
+  - if @trip.images.any?
+    - img = @trip.images.first
+    .trip-cover-img [ data-img = img.url]
+
   ul.clearing-thumbs.hide [data-clearing]
     - @trip.images.each do |i|
       li

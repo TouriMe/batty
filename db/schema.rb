@@ -171,9 +171,9 @@ ActiveRecord::Schema.define(version: 20151121023529) do
     t.string   "description"
     t.string   "slug"
     t.text     "important_info"
+    t.decimal  "rating"
     t.integer  "car_price_cents",       default: 0,     null: false
     t.string   "car_price_currency",    default: "USD", null: false
-    t.decimal  "rating"
     t.integer  "distance"
     t.integer  "checkpoint_num"
     t.string   "duration"

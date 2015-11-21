@@ -2,6 +2,10 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $( ->
+
+  $imgUrl = $('.trip-cover-img').attr("data-img");
+  $('.trip-cover-img').attr('style','background-image:url('+ $imgUrl + ')');
+
   if ($('#detail-content').length == 0 || $('#payment-form').length == 0)
     return
 
@@ -19,7 +23,6 @@ $( ->
     $ele.click( (evt) ->
       driver_id = $ele.data('driver_id')
     )
-
 )
 
 

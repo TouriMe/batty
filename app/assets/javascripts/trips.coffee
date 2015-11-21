@@ -5,6 +5,9 @@ $( ->
 
   $imgUrl = $('.trip-cover-img').attr("data-img");
   $('.trip-cover-img').attr('style','background-image:url('+ $imgUrl + ')');
+  $('.trip-cover-img').click( (evt)->
+    $('.carousel ul li:first-child img').click();
+  );
 
   if ($('#detail-content').length == 0 || $('#payment-form').length == 0)
     return
@@ -60,3 +63,4 @@ $( ->
     $modal.foundation('reveal', 'open')
   )
 )
+

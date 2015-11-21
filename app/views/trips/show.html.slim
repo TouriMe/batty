@@ -1,11 +1,11 @@
 .container.trip_wrapper
-  
-  /ul[data-orbit style="height: 330px;"]
+
+  - img = @trip.images.first
+  .trip-cover-img [ data-img = img.url]
+  ul[class = "clearing-thumbs hide" data-clearing]
     - @trip.images.each do |i|
       li
         img[src=i.url]
-  - img = @trip.images.first
-  .trip-cover-img [ data-img = img.url]
 
   .trip_head_wrapper
     .row

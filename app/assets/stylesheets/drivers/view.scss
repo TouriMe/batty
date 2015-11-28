@@ -3,28 +3,28 @@
 #content .driver-profile {
   background-color: white;
   .profile-page-hero {
-    background-position: 50% 0%;
-
-    height: 400px;
-    background-size: cover;
-
+    height: 515px;
     overflow: hidden;
-
-    p {
-      position: absolute;
-      right: 3%;
-      margin-top: 20px;
-      padding: 15px;
-      background-color: rgba(0, 0, 0, 0.4);
-      border: 1px solid white;
-      color: white;
-      font-weight: bold;
-      font-size: 13px;
-      letter-spacing: 0.3px;
-
-      span {
-        margin-left: 10px;
+    .hero-background {
+      height: 515px;
+      .driver-video {
+        width: 100%;
       }
+    }
+    .hero-content {
+      text-align: center;
+      color: white;
+      height: 565px;
+      margin-top:100px;
+      padding-bottom: 104px;
+      position: relative;
+      z-index: 2;
+      top: -500px;
+
+      h1{
+        color: white;
+      }
+
     }
 
     img.cover-image {
@@ -92,13 +92,13 @@
             margin-right: 10px;
           }
 
-          .tag.comment{
+          .tag.comment {
             border-bottom: 1px solid gainsboro;
             margin: 12px;
             background-color: #fff;
             padding: 12px;
 
-            .ratting .fa{
+            .ratting .fa {
               padding: 0;
               margin: 0;
             }
@@ -170,7 +170,6 @@
 .row.full-width {
   width: 100%;
   max-width: 100%;
-
 
 }
 

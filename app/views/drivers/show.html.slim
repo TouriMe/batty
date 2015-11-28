@@ -1,16 +1,9 @@
 .page.driver-profile
   .profile-page-hero
-    p
-      i.fa.fa-picture-o
-      span Open photo gallery
-    /.hide = react_component('Carousel', images: @driver.images)
-    /img.cover-image[src=@driver.background_url]
-    ul[data-orbit]
-      - @driver.images.each do |i|
-        li
-          img [src=i.url]
-          .orbit-caption
-            = i.alt_text
+    video.driver-video[poster=(asset_path 'bg_poster.jpg') loop autoplay]
+      source[src=('https://a0.muscache.com/airbnb/static/SanFrancisco-P1-1.mp4') type="video/mp4"]]
+      source[src=('https://a0.muscache.com/airbnb/static/SanFrancisco-P1-0.webm') type="video/webm"]
+
   .profile-page-body.row.full-width[data-equalizer]
     .columns.large-9.small-12.profile-basic-info[data-equalizer-watch]
       .row.full-width

@@ -3,28 +3,10 @@
 #content .driver-profile {
   background-color: white;
   .profile-page-hero {
-    background-position: 50% 0%;
 
-    height: 400px;
-    background-size: cover;
-
-    overflow: hidden;
-
-    p {
-      position: absolute;
-      right: 3%;
-      margin-top: 20px;
-      padding: 15px;
-      background-color: rgba(0, 0, 0, 0.4);
-      border: 1px solid white;
-      color: white;
-      font-weight: bold;
-      font-size: 13px;
-      letter-spacing: 0.3px;
-
-      span {
-        margin-left: 10px;
-      }
+    height:515px;
+    .driver-video{
+      width:100%;
     }
 
     img.cover-image {

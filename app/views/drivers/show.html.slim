@@ -1,14 +1,15 @@
 .page.driver-profile
   .profile-page-hero
-    .hero-background
-      video.driver-video[poster=(asset_path 'bg_poster.jpg') loop autoplay]
-        source[src=('https://a0.muscache.com/airbnb/static/SanFrancisco-P1-1.mp4') type="video/mp4"]]
-        source[src=('https://a0.muscache.com/airbnb/static/SanFrancisco-P1-0.webm') type="video/webm"]
+    .hero-background [ data-img = @driver.background_url]
     .hero-content
         h1
-          | WELCOME TO CAMBODIA
-        p
           | Travel with the best driver is just AMAZING!
+        a [data-reveal-id="videoModal"]
+          = image_tag 'video_play.png', class: 'video-play'
+
+    #videoModal.reveal-modal.large [ data-reveal aria-labelledby="videoModalTitle" aria-hidden="true" role="dialog"]
+      .flex-video.widescreen
+        iframe [width="1280" height="720" src="https://youtu.be/fhEhlv8mNP4" frameborder="0" allowfullscreen]
   .profile-page-body.row.full-width[data-equalizer]
     .columns.large-9.small-12.profile-basic-info[data-equalizer-watch]
       .row.full-width
@@ -16,7 +17,6 @@
           .profile-avatar
             img.avatar-image[src=@driver.avatar_url]
         .columns.medium-6.small-12
-          .profile
             .profile-rating
               .section.rating
                 = render 'partials/rating', rating: @driver.rating

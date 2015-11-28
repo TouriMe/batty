@@ -5,12 +5,15 @@
   .profile-page-hero {
     height: 515px;
     overflow: hidden;
+
     .hero-background {
       height: 515px;
-      .driver-video {
-        width: 100%;
-      }
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: 50% 50%;
+      background-color: #f5f5f5;
     }
+
     .hero-content {
       text-align: center;
       color: white;
@@ -23,6 +26,11 @@
 
       h1{
         color: white;
+      }
+
+      .video-play{
+        width:100px;
+        height:100px;
       }
 
     }

@@ -156,6 +156,17 @@ $themeFont: 'Avenir Next', Helvetica;
           }
         }
 
+        .vehicles{
+          line-height: 80px;
+          .vehicle{
+            .vehicle-icon{
+              margin: 15px 0;
+            }
+
+          }
+
+        }
+
         .price {
           line-height: 80px;
         }

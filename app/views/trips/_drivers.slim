@@ -16,9 +16,16 @@ h3
         = render 'partials/rating', rating: driver.rating
       .section.comment
         = pluralize(driver.comments.count, 'review')
-    .vehicle.large-3.small-4.columns
-      - driver.vehicles.uniq.each do |v|
-        span = v.name
+    .vehicles.large-3.small-4.columns
+      .vehicle
+        - if(driver.vehicles.first.name.downcase == 'tuk tuk')
+          = image_tag 'tuktuk.png', class: 'vehicle-icon'
+        - elsif(driver.vehicles.first.name.downcase == 'car')
+          = image_tag 'car.png', class: 'vehicle-icon'
+        - else
+        span
+          strong = driver.vehicles.first.name
+
     .price.large-2.small-4.columns
         strong = number_to_currency(price, :precision => 0)
     .book-btn.large-3.small-4.columns

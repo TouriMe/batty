@@ -30,8 +30,8 @@ Rails.application.routes.draw do
     resources :drivers, defaults: {format: :json}
   end
 
-  ActiveAdmin.routes(self)
+  devise_for :normal_users, :controllers => { :omniauth_callbacks => 'auth/omniauth' }
 
   devise_for :admin_users, ActiveAdmin::Devise.config
-  devise_for :normal_users, :controllers => { :omniauth_callbacks => 'auth/omniauth' }
+  ActiveAdmin.routes(self)
 end

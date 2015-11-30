@@ -1,7 +1,7 @@
 = link_to trip_path(trip) do
   .card-item
     = image_tag trip.image_url, class: 'item-bg'
-    .name
+    .name.ellipsis
       = trip.name
     .price
       = number_to_currency(trip.tuktuk_price, :precision => 0)

@@ -10,19 +10,8 @@
     .divider.offset
     .review.offset
       .rating.left
-        - if trip.comments.present?
-          - rating_arr = trip.comments.pluck(:rating)
-          - rating = rating_arr.sum * 2 / rating_arr.size
-
-          - (rating / 2).times do
-            i.fa.fa-star
-          - if (rating % 2 == 1)
-            i.fa.fa-star-half-o
-          - ((10 - rating) / 2).times do
-            i.fa.fa-star-o
-        - else
-          - (5).times do
-            i.fa.fa-star
+        - rating = if trip.comments.present? then tr = trip.comments.pluck(:rating) ;  tr.sum * 2 / tr.size / 2.0 else 5 end
+        = render 'partials/rating', rating: rating
 
       span.review-num.right
         strong = pluralize(trip.comments.count, 'review')

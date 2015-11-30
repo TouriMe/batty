@@ -10,6 +10,7 @@ ActiveAdmin.register Trip do
       input :name
       input :tuktuk_price
       input :car_price
+      input :image_url, hint: 'The image shown as the background when listing trips'
       input :distance, hint: 'integer, unit is `km`'
       input :duration, hint: 'text, for example: 4 days'
       input :checkpoint_num, hint: 'integer, number of checkpoints'

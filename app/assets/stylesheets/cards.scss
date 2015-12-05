@@ -7,7 +7,7 @@
   background-color: white;
   @media #{$media-pad-larger}{
     max-width: 1024px;
-    margin: 40px auto;
+    margin: 0 auto 40px;
   }
 
   .card-item {

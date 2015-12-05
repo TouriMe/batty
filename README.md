@@ -1,4 +1,4 @@
-# Cambodia Smile
+# TouriMe
 
 ## How to setup
 

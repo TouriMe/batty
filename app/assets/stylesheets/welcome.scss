@@ -4,6 +4,29 @@
   .content {
     margin-bottom: 40px;
     margin-top: 50px;
+
+    .tag-line {
+      @media #{$media-pad-smaller}{
+        width: 100%;
+      }
+
+      @media #{$media-pad-larger}{
+        width: 640px;
+      }
+
+      text-align: center;
+      padding-bottom: 5px;
+      &, h2, h6 {
+        color: white;
+      }
+      margin: 0 auto;
+    }
+
+    .line {
+      width: 72%;
+      border-bottom: 1px solid white;
+      margin: 0 auto;
+    }
   }
 
 
@@ -87,33 +110,14 @@
 
     }
 
-    .tag-line {
-      @media #{$media-pad-smaller}{
-        width: 100%;
-      }
 
-      @media #{$media-pad-larger}{
-        width: 640px;
-      }
+  }
 
-      text-align: center;
-      padding-bottom: 5px;
-      &, h2, h6 {
-        color: white;
-      }
-      margin: 0 auto;
-    }
 
-    .line {
-      width: 72%;
-      border-bottom: 1px solid white;
-      margin: 0 auto;
-    }
-    .profile-page-details .line {
-      width: 100%;
-      border-bottom: 1px solid silver;
-      margin: 0 auto;
-    }
+  .profile-page-details .line {
+    width: 100%;
+    border-bottom: 1px solid silver;
+    margin: 0 auto;
   }
 }
 

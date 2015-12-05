@@ -11,35 +11,39 @@
 
   .trip_head_wrapper
     .row
-      section#trip_header 
+      section#trip_header
         .large-9.small-12.trip_top_head.columns
           h1
             = @trip.name
           .meta_head
-            section.trip_info_distance.meta_block
-              p
-                span.distance.block
+            section.trip_info_distance.meta_block.left
+              = image_tag 'tour_distance.png', class: 'trip-logo'
+              p.right
+                span.distance.block.center
                   = @trip.distance.blank? ? 'Unknown' : @trip.distance
-                  | &nbsp;KM
+                  | &nbsp;km
                 span.meta Distance
 
-            section.trip_info_duration.meta_block
-              p
-                span.duration.block
+            section.trip_info_duration.meta_block.left
+              = image_tag 'tour_duration.png', class: 'trip-logo'
+              p.right
+                span.duration.block.center
                   = @trip.duration.blank? ? 'Unknown' : @trip.duration
+                  | &nbsp;days
                 span.meta Duration
 
-            section.trip_info_checkpoints.meta_block
-              p
+            section.trip_info_checkpoints.meta_block.left
+              = image_tag 'tour_checkpoint.png', class: 'trip-logo'
+              p.right
                 span.checkpoints.block
                   = @trip.checkpoint_num.blank? ? 'Unknown' : @trip.checkpoint_num
                 span.meta Checkpoints
 
         .large-3.small-12.trip_top_info.columns
           h1
-            span = @trip.tuktuk_price 
+            span = @trip.tuktuk_price
             span  $
-          .meta_func 
+          .meta_func
             a.trip_book_now
               | Book Now
             a.share
@@ -56,19 +60,19 @@
 
           .trip_content
             = @trip.content.html_safe
-            
+
         / .price
             p
               span Price(USD): $
               span = @trip.tuktuk_price
-        
+
         #drivers-selection
           = render 'drivers'
           = render 'comments/comments', target: @trip
 
-      
+
       #trip_sidebar.rhs.small-12.large-3.columns
-        
+
         / #payment-form
           /= render 'purchases/form'
 

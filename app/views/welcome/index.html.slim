@@ -12,15 +12,17 @@
   .home-page-content
     .small-12.large-6.columns
       = render 'partials/show_subject_button', \
+      subject: 'Tours', subject_link: trips_path, \
+      desc_text: 'Have some real Cambodian adventure by your preference.', \
+      logo_url: 'hp_tours.png'
+
+
+    .small-12.large-6.columns
+      = render 'partials/show_subject_button', \
         subject: 'Drivers', subject_link: drivers_path, \
         desc_text: 'Pick a driver you like and have an amazing experience.', \
         logo_url: 'hp_drivers.png'
 
-    .small-12.large-6.columns
-      = render 'partials/show_subject_button', \
-        subject: 'Tours', subject_link: trips_path, \
-        desc_text: 'Have some real Cambodian adventure by your preference.', \
-        logo_url: 'hp_tours.png'
 
     /.small-12.large-4.columns
       = render 'partials/show_subject_button', \

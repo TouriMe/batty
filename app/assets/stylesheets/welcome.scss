@@ -1,26 +1,26 @@
 @import 'settings';
 
 #content {
+
+  .tag-line {
+    @media #{$media-pad-smaller}{
+      width: 100%;
+    }
+
+    @media #{$media-pad-larger}{
+      width: 640px;
+    }
+
+    text-align: center;
+    padding-bottom: 5px;
+    &, h2, h6 {
+      color: white;
+    }
+    margin: 0 auto;
+  }
   .content {
     margin-bottom: 40px;
     margin-top: 50px;
-
-    .tag-line {
-      @media #{$media-pad-smaller}{
-        width: 100%;
-      }
-
-      @media #{$media-pad-larger}{
-        width: 640px;
-      }
-
-      text-align: center;
-      padding-bottom: 5px;
-      &, h2, h6 {
-        color: white;
-      }
-      margin: 0 auto;
-    }
 
     .line {
       width: 72%;
@@ -29,8 +29,7 @@
     }
   }
 
-
-  .home-page-content{
+  .home-page-content {
     width: 80%;
     margin-left: auto;
     margin-right: auto;
@@ -84,7 +83,7 @@
       }
 
       border-radius: 100%;
-      background-color: rgba(255,255,255,0.7);
+      background-color: rgba(255, 255, 255, 0.7);
       box-shadow: 0 0px 20px 2px rgba(0, 0, 0, 0.35);
       text-align: center;
 
@@ -110,9 +109,7 @@
 
     }
 
-
   }
-
 
   .profile-page-details .line {
     width: 100%;

@@ -1,13 +1,9 @@
 Rails.application.routes.draw do
+  root 'welcome#index' 
   get 'trips/index'
-
   get 'trips/show'
-
   get 'drivers/index'
-
-  get 'drivers/show'
-
-  root 'welcome#index'
+  get 'drivers/show' 
   get 'terms' => 'welcome#terms'
   get 'faq' => 'welcome#faq'
   get 'feedback' => 'welcome#feedback'
@@ -20,8 +16,7 @@ Rails.application.routes.draw do
   
   resources :tourists, only: [:new, :show]
   resources :drivers, only: [:index, :show]
-  resources :trips, only: [:index, :show ]
-  
+  resources :trips, only: [:index, :show ] 
   resources :guides, only: [:index, :show]
   resources :purchases, only: [:create, :edit,:update]
   resources :comments, only: [:create, :update, :destroy]
@@ -31,7 +26,6 @@ Rails.application.routes.draw do
   end
 
   devise_for :normal_users, :controllers => { :omniauth_callbacks => 'auth/omniauth' }
-
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 end

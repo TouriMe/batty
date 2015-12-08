@@ -5,103 +5,95 @@
 
 .cards {
   background-color: white;
-  @media #{$media-pad-larger}{
-    max-width: 1024px;
-    margin: 0 auto 40px;
-  }
-
-  .card-item {
-    width: 300px;
-    min-width: 200px;
-    height: 325px;
-    text-align: left;
-    margin: 15px auto;
-    background-color: #fff;
-    box-shadow: 0 1px 4px 0px rgba(0, 0, 0, 0.25);
-    -webkit-box-shadow: 0 1px 4px 0px rgba(0, 0, 0, 0.25);
-    -moz-box-shadow: 0 1px 4px 0px rgba(0, 0, 0, 0.25);
-    overflow: hidden;
-    border-radius: 4px;
-    position: relative;
-    cursor: pointer;
-
-    .item-bg {
-      height: 220px;
+  .search-results{
+    padding: 10px 0;
+    @media #{$media-pad-larger}{
+      max-width: 1240px;
+      margin: 0 auto;
     }
-    .name {
+    .card-item {
+      width: 380px;
+      min-width: 300px;
+      text-align: left;
+      margin: 15px auto;
+      background-color: #fff;
       position: relative;
-      top: -40px;
-      padding-left: 15px;
-      color: white;
-      font-size: 18px;
-      font-weight: 700;
-      background-color: rgba(0,0,0, 0.5);
-      padding-top: 5px;
-      padding-bottom: 10px;
-    }
+      cursor: pointer;
 
-    .price {
-      width: 60px;
-      height: 60px;
-      border-radius: 100%;
-      background-color: #474747;
-      font-size: 22px;
-      font-weight: 700;
-      color: white;
-      text-align: center;
-      line-height: 60px;
-      position: relative;
-      top: -235px;
-      left: 230px;
-    }
-
-    .desc {
-      padding-left: 15px;
-      color: black;
-    }
-
-    .divider {
-      width: 100%;
-      border-top: 1px solid #C8C8C8;
-      margin: 12px 0;
-
-    }
-
-    .offset {
-      position: relative;
-      top: -85px;
-    }
-    .review {
-      color: black;
-      .rating {
-        margin-left: 15px;
-        color: #FFB400;
+      .item-bg {
+        height: 250px;
       }
-      .review-num {
-        margin-right: 15px;
+      .name {
+        position: relative;
+        top: -40px;
+        padding-left: 15px;
+        color: white;
+        font-size: 18px;
+        font-weight: 700;
+        background-color: rgba(0,0,0, 0.5);
+        padding-top: 5px;
+        padding-bottom: 10px;
       }
 
-      .vehicle {
-        margin-right: 10px;
-        font-size:14px;
-      }
-    }
-    .avatar {
-      width: 60px;
-      height: 60px;
-      position: relative;
-      top: -235px;
-      left: 230px;
-
-      .item-avatar {
+      .price {
         width: 60px;
         height: 60px;
         border-radius: 100%;
-        border: 3px solid white;
-        //display: inline-block;
+        background-color: #474747;
+        font-size: 22px;
+        font-weight: 700;
+        color: white;
+        text-align: center;
+        line-height: 60px;
+        position: relative;
+        top: -235px;
+        left: 230px;
+      }
+
+      .desc {
+        padding-left: 15px;
+        color: black;
+      }
+
+      .offset {
+        position: relative;
+        top: -90px;
+      }
+      .review {
+        color: black;
+        margin-top: 5px;
+        .rating {
+          margin-left: 15px;
+          color: #FFB400;
+        }
+        .review-num {
+          margin-right: 15px;
+        }
+
+        .vehicle {
+          margin-right: 10px;
+          font-size:14px;
+        }
+      }
+      .avatar {
+        width: 60px;
+        height: 60px;
+        position: relative;
+        top: -280px;
+        left: 300px;
+
+        .item-avatar {
+          width: 60px;
+          height: 60px;
+          border-radius: 100%;
+          border: 3px solid white;
+        }
       }
     }
   }
+
+
+
 
   .hvr-float {
     display: inline-block;

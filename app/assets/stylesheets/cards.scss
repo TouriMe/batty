@@ -6,16 +6,16 @@
 .cards {
   background-color: white;
   .search-results{
-    padding: 10px 0;
+    padding: 30px 15px;
     @media #{$media-pad-larger}{
       max-width: 1240px;
       margin: 0 auto;
     }
     .card-item {
-      width: 380px;
+      max-width: 400px;
       min-width: 300px;
       text-align: left;
-      margin: 15px auto;
+      margin: 0 auto;
       background-color: #fff;
       position: relative;
       cursor: pointer;

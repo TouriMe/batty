@@ -13,14 +13,14 @@
 
     text-align: center;
     padding-bottom: 5px;
+
     &, h2, h6 {
       color: white;
     }
     margin: 0 auto;
   }
-  .content {
-    margin-bottom: 40px;
-    margin-top: 50px;
+  .header-content {
+    margin: 50px 0;
 
     .line {
       width: 72%;

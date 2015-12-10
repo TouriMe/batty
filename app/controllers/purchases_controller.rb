@@ -4,6 +4,7 @@ class PurchasesController < ApplicationController
   def create
     @purchase = Purchase.new(purchase_params)
     @purchase.status = 'unpaid'
+    
     if @purchase.vehicle.name == 'Car'
       @purchase.price = @purchase.purchasable.car_price
     else
@@ -66,4 +67,6 @@ class PurchasesController < ApplicationController
     params.require(:purchase).permit(:purchasable_id, :purchasable_type, :start_date, :email, :driver_id,
                                      :vehicle_id, :country, :contact, :comments)
   end
+
 end
+

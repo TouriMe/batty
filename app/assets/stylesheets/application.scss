@@ -82,3 +82,19 @@ nav.top-bar {
   padding: 5px 0;
   display: block;
 }
+
+
+/** header **/
+.main-container {
+  .page-header {
+    .tag-line {
+      h2 {
+        text-transform: uppercase;
+        font-weight: 400;
+        color: #FFFFFF;
+        text-align: center;
+      }
+    }
+  }
+}
+

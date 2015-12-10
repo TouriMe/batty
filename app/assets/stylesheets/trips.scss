@@ -48,9 +48,13 @@ $themeFont: 'Avenir Next', Helvetica;
               .block{
                 display: block;
               }
+              span.checkpoints {
+                text-align: left;
+              }
               span.meta {
                 font-size: 14px;
                 font-weight: normal;
+                float: left;
               }
             }
           }

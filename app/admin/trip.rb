@@ -8,6 +8,7 @@ ActiveAdmin.register Trip do
   form do |f|
     f.inputs do
       input :name
+      input :description
       input :tuktuk_price
       input :car_price
       input :image_url, hint: 'The image shown as the background when listing trips'

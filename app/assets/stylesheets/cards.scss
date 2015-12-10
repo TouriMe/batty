@@ -6,87 +6,91 @@
 .cards {
   background-color: white;
   .search-results{
-    padding: 30px 15px;
+    padding: 30px 15px 10px;
     @media #{$media-pad-larger}{
       max-width: 1240px;
       margin: 0 auto;
     }
-    .card-item {
-      max-width: 400px;
-      min-width: 300px;
-      text-align: left;
-      margin: 0 auto;
-      background-color: #fff;
-      position: relative;
-      cursor: pointer;
-
-      .item-bg {
-        height: 250px;
-      }
-      .name {
+    .card-wrapper{
+      height:340px;
+      .card-item {
+        max-width: 400px;
+        min-width: 300px;
+        max-height:340px;
+        text-align: left;
+        margin: 0 auto;
+        background-color: #fff;
         position: relative;
-        top: -40px;
-        padding-left: 15px;
-        color: white;
-        font-size: 18px;
-        font-weight: 700;
-        background-color: rgba(0,0,0, 0.5);
-        padding-top: 5px;
-        padding-bottom: 10px;
-      }
+        cursor: pointer;
 
-      .price {
-        width: 60px;
-        height: 60px;
-        border-radius: 100%;
-        background-color: #474747;
-        font-size: 22px;
-        font-weight: 700;
-        color: white;
-        text-align: center;
-        line-height: 60px;
-        position: relative;
-        top: -270px;
-        left: 78%;
-      }
-
-      .desc {
-        padding-left: 15px;
-        color: black;
-      }
-
-      .offset {
-        position: relative;
-        top: -90px;
-      }
-      .review {
-        color: black;
-        margin-top: 5px;
-        .rating {
-          margin-left: 15px;
-          color: #FFB400;
+        .item-bg {
+          height: 250px;
         }
-        .review-num {
-          margin-right: 15px;
+        .name {
+          position: relative;
+          top: -40px;
+          padding-left: 15px;
+          color: white;
+          font-size: 18px;
+          font-weight: 700;
+          background-color: rgba(0,0,0, 0.5);
+          padding-top: 5px;
+          padding-bottom: 10px;
         }
 
-        .vehicle {
-          margin-right: 10px;
-          font-size:14px;
-        }
-      }
-      .avatar {
-        width: 60px;
-        height: 60px;
-        position: relative;
-        top: -280px;
-        left: 300px;
-
-        .item-avatar {
+        .price {
           width: 60px;
           height: 60px;
           border-radius: 100%;
-          border: 3px solid white;
+          background-color: #474747;
+          font-size: 22px;
+          font-weight: 700;
+          color: white;
+          text-align: center;
+          line-height: 60px;
+          position: relative;
+          top: -270px;
+          left: 78%;
+        }
+
+        .desc {
+          padding-left: 15px;
+          color: black;
+        }
+
+        .offset {
+          position: relative;
+          top: -90px;
+        }
+        .review {
+          color: black;
+          margin-top: 5px;
+          .rating {
+            margin-left: 15px;
+            color: #FFB400;
+          }
+          .review-num {
+            margin-right: 15px;
+          }
+
+          .vehicle {
+            margin-right: 10px;
+            font-size:14px;
+          }
+        }
+        .avatar {
+          width: 60px;
+          height: 60px;
+          position: relative;
+          top: -280px;
+          left: 300px;
+
+          .item-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 100%;
+            border: 3px solid white;
+          }
         }
       }
     }

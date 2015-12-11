@@ -9,9 +9,6 @@ Rails.application.routes.draw do
   get 'feedback' => 'welcome#feedback'
   get 'privacy' => 'welcome#privacy'
   get 'about' => 'welcome#about'
-  get 'tourists/new'
-  get 'tourists/show'
- 
   post 'drivers' => 'drivers#find_drivers'
   
   resources :tourists, only: [:new, :show]
@@ -24,6 +21,8 @@ Rails.application.routes.draw do
   namespace :api do
     resources :drivers, defaults: {format: :json}
   end
+
+  get 'book/:trip_id/:driver_id' => 'trips#book'   
 
   devise_for :normal_users, :controllers => { :omniauth_callbacks => 'auth/omniauth' }
   devise_for :admin_users, ActiveAdmin::Devise.config

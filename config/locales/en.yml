@@ -21,3 +21,4 @@
 
 en:
   hello: "Hello world"
+  driver_selection_head: "Drivers available for this trip"

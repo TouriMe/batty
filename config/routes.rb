@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'welcome#index' 
-  get 'trips/index'
-  get 'trips/show'
+  get 'tours/index'
+  get 'tours/show'
   get 'drivers/index'
   get 'drivers/show' 
   get 'terms' => 'welcome#terms'
@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   
   resources :tourists, only: [:new, :show]
   resources :drivers, only: [:index, :show]
-  resources :trips, only: [:index, :show ] 
+  resources :tours, :controller => "trips", only: [:index, :show ] 
   resources :guides, only: [:index, :show]
   resources :purchases, only: [:create, :edit,:update]
   resources :comments, only: [:create, :update, :destroy]

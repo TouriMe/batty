@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     resources :drivers, defaults: {format: :json}
   end
 
-  get 'book/:trip_id/:driver_id' => 'trips#book'   
+  get 'book/:tour_id/:driver_id' => 'purchases#new'   
 
   devise_for :normal_users, :controllers => { :omniauth_callbacks => 'auth/omniauth' }
   devise_for :admin_users, ActiveAdmin::Devise.config

@@ -5,17 +5,6 @@ class TripsController < ApplicationController
     @trips = Trip.all
   end
 
-
-  # book the tour(:tour_id)
-  # with driver (:driver_id)
-  def book
-    @driver = Driver.find(params[:driver_id])
-    @trip   = Trip.find(params[:trip_id]) 
-
-    return render json: @driver
-  end
- 
-
   def show
     @trip = Trip.find(params[:id])
  

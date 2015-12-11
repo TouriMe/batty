@@ -1,0 +1,13 @@
+<form id="checkout" method="post" action="/payment/callback">
+  <div id="payment-form"></div>
+  <input type="submit" value="Pay $10">
+</form>
+
+<script src="https://js.braintreegateway.com/v2/braintree.js"></script>
+<script>
+var clientToken = "<%= @braintree_key %>";
+
+braintree.setup(clientToken, "dropin", {
+  container: "payment-form"
+});
+</script>

@@ -1,7 +1,7 @@
 class PurchasesController < ApplicationController
-  before_action(except: :create) { @purchase = Purchase.find(params[:id])}
+  before_action(except: :new) { @purchase = Purchase.find(params[:id])}
   
-  def create
+  def create()
     @purchase = Purchase.new(purchase_params)
     @purchase.status = 'unpaid'
     
@@ -29,6 +29,23 @@ class PurchasesController < ApplicationController
         end
       end
     end
+  end
+  
+  # book the tour(:tour_id)
+  # with driver (:driver_id) 
+  def new
+    @trip   = Trip.friendly.find(params[:tour_id])
+    @driver = Driver.friendly.find(params[:driver_id])  
+    
+    if @trip.down_payment
+      @charge = @trip.down_payment + @trip.booking_fee
+    elsif @trip.booking_fee
+      @charge = @trip.booking_fee
+    else
+      @charge = 0
+    end
+
+    @braintree_key = Braintree::ClientToken.generate
   end
 
   def edit

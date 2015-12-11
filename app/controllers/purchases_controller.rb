@@ -36,7 +36,9 @@ class PurchasesController < ApplicationController
   def new
     @trip   = Trip.friendly.find(params[:tour_id])
     @driver = Driver.friendly.find(params[:driver_id])  
-    
+    @purchase = Purchase.new
+    @no_show_title = true
+
     if @trip.down_payment
       @charge = @trip.down_payment + @trip.booking_fee
     elsif @trip.booking_fee

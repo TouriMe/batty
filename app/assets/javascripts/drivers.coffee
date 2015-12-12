@@ -7,6 +7,8 @@
 $( ->
   $imgUrl = $('.hero-background').attr("data-img");
   $('.hero-background').attr('style','background-image:url('+ $imgUrl + ')');
+
+
 )
 
 

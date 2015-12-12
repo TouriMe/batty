@@ -35,7 +35,7 @@
       </div>
     <% end %>
     
-    <br /><br />
+    <br />
     <h2>Payment</h2>
     <div id="paypal-container"></div>
 
@@ -124,14 +124,14 @@
           <h2><%= @charge %> $</h2>
 
           <p class="meta_info">
-            The total amount of USD $176 is payable 
+            The total amount of USD $<%= @later_pay %> is payable 
             when you finish your tour. </p>
 
       </section>
+      
+      <p class="share">Share your plans!</p>    
     </div>
-    <!-- End of Box Wrapper ---!>
-    
-    <p class="share">Share your plans!</p>
+    <!-- End of Box Wrapper ---!> 
   </div>
 
 </div>

@@ -47,6 +47,7 @@ class PurchasesController < ApplicationController
       @charge = 0
     end
 
+    @later_pay = @trip.tuktuk_price_cents - @charge
     @braintree_key = Braintree::ClientToken.generate
   end
 

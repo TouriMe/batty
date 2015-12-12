@@ -103,17 +103,18 @@ nav.top-bar {
 .payment_wrapper {
   .payment_info {
     padding-top: 60px;
-    p.share {
-      text-align: center;
-      font-weight: 500;
-      font-size: 20px;
-      line-height: 21px;
-      font-family: 'Open Sans', sans-serif;
-    }
+    padding-right: 0px;
     .box_wrapper {
       width: 80%;
-      margin: auto; 
+      margin-left:19%;
       color: #323232;    
+      p.share {
+        text-align: center;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 21px;
+        font-family: 'Open Sans', sans-serif;
+      }
       header#info_top {
         background: #FFB94E;
         border-radius: 7px 7px 0px 0px;
@@ -183,7 +184,7 @@ nav.top-bar {
     }
   }
   .form_wrapper {
-    padding: 40px 20px;
+    padding: 60px 20px;
     .braintree-paypal-loggedin {
       max-width: 100%;
     }

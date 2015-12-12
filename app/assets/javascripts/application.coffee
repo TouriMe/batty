@@ -28,6 +28,8 @@ $(()->
 
   $("#startdate").datepicker();
 
+  $("#payment_details").validate();
+
   $(".ellipsis").dotdotdot({
     ellipsis	: '... ',
     height		: 30

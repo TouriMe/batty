@@ -11,7 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151212090815) do
+
+ActiveRecord::Schema.define(version: 20151212122246) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -139,8 +141,8 @@ ActiveRecord::Schema.define(version: 20151212090815) do
     t.string   "purchasable_type"
     t.decimal  "price"
     t.integer  "buyer_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.integer  "status"
     t.string   "email"
     t.date     "start_date"
@@ -149,6 +151,9 @@ ActiveRecord::Schema.define(version: 20151212090815) do
     t.integer  "driver_id"
     t.integer  "vehicle_id"
     t.text     "comments"
+    t.string   "email_confirmation"
+    t.string   "country_code"
+    t.string   "phone_number"
   end
 
   create_table "seos", force: :cascade do |t|

@@ -1,6 +1,5 @@
 class PurchasesController < ApplicationController
-  before_action(except: :new) { @purchase = Purchase.find(params[:id])}
-  
+  before_action(except: :new) { @purchase = Purchase.find(params[:id])} 
   def create()
     @purchase = Purchase.new(purchase_params)
     @purchase.status = 'unpaid'
@@ -47,6 +46,7 @@ class PurchasesController < ApplicationController
       @charge = 0
     end
 
+    @later_pay = @trip.tuktuk_price_cents - @charge
     @braintree_key = Braintree::ClientToken.generate
   end
 
@@ -84,7 +84,7 @@ class PurchasesController < ApplicationController
   private
   def purchase_params
     params.require(:purchase).permit(:purchasable_id, :purchasable_type, :start_date, :email, :driver_id,
-                                     :vehicle_id, :country, :contact, :comments)
+                                     :vehicle_id, :country, :email_confirmation, :country_code, :phone_number, :contact, :comments)
   end
 
 end

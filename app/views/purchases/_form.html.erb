@@ -1,41 +1,41 @@
 <div class="payment_wrapper row">
   <div class="form_wrapper large-7 small-12 columns">
     <h2>Tour Details</h2> 
-    <%= form_tag("/book", method: "get", id: "payment_details") do %>
-      
+    
+    <%= form_for Purchase.new , url: {action: "create"}, html: { id: "payment_details" } do |f| %> 
       <div id="payment_detail">
         <div class="form-group">
-          <%= label_tag(:startdate, "Start Date") %>
-          <%= text_field_tag(:startdate) %>
+          <%= f.label :startdate, "Start Date" %>
+          <%= f.text_field :start_date, id: "startdate", :required =>"", placeholder: "1/02/2016" %>
         </div>
 
         <div class="form-group">
-          <%= label_tag(:email, "Your Email") %>
-          <%= email_field(:email, :address) %>
+          <%= f.label :email, "Your Email" %>
+          <%= f.email_field :email, :required =>"", placeholder: "Your Email" %>
         </div>
         
         <div class="form-group">
-          <%= label_tag(:confirm_email, "Confirm Your Email") %>
-          <%= email_field(:confirm_email, :address) %>
+          <%= f.label :email_confirmation, "Confirm Your Email" %>
+          <%= f.email_field :email_confirmation, :required =>"", placeholder: "Confirm Your Email" %>
         </div>
         
         <div class="form-group phone_block">
-          <%= label_tag(:phone_number, "Phone Number") %>
-          <%= text_field_tag(:country_code) %>
-          <%= text_field_tag(:phone_number) %>
+          <%= f.label :phone_number, "Phone Number" %>
+          <%= f.text_field  :country_code, id: "country_code", placeholder: "+01" %>
+          <%= f.text_field  :phone_number, id: "phone_number", placeholder: "203 002 00" %>
         </div>
-
 
         <div class="form-group">
-          <%= label_tag(:note, "Your Comment") %>
-          <%= text_field_tag(:note) %>
+          <%= f.label :comments, "Your Comment" %>
+          <%= f.text_field :comments %>
         </div>
+        
         <!-- All the necessary input fields should be here -->
-
+      
       </div>
     <% end %>
     
-    <br /><br />
+    <br />
     <h2>Payment</h2>
     <div id="paypal-container"></div>
 
@@ -59,18 +59,79 @@
         </div>
 
         <div class="form-group">
-            <label for="cvv">CVV</label>
+            <label for="cvv">Security Code</label>
             <div id="cvv">
             </div>
         </div>
-      
+
+        <div class="form-group info">
+          <p>By clicking on “Confirm Payment”, you agree to pay the total amount shown, which includes
+          Service Fees on the right and to the Terms of Service, Cancellation Policy and Refund Policy.</p>
+        </div>
+
+        <div class="form-group">
+          <%= submit_tag("Confirm Payment") %>
+        </div>
       </div>
 
     <% end %>
   </div>
 
-  <div class="large-5 small-12 columns">
+  <div class="large-5 payment_info small-12 columns">
     <!-- sidebar information goes here -->
+  
+    <div class="box_wrapper">
+    
+      <header id="info_top">
+        <h4><%= @trip.name %></h4>
+
+        <p><span class="bold">Driver: </span> <%= @driver.nickname %><br >
+          <span class="bold">Vehicle Type: </span>Tuk Tuk</p>
+      </header>
+
+      <section id="driver_image" style="background-image:url(<%= @driver.background_url %>">
+        <div class="profile_set">
+          <%= image_tag(@driver.avatar_url, class: "profile_image") %>
+        </div>
+      </section>
+
+      <section id="bill_info">
+        <table class="table">
+          <tbody>
+              <tr>
+                <td>Tour Pirce</td>
+                <td><%= @trip.tuktuk_price_cents %> USD</td>
+              </tr>
+              <tr>
+                <td>Downpayment/Deposit</td>
+                <% if @trip.down_payment %>
+                  <td><%= @trip.down_payment %> USD</td>
+                <% else %>
+                  <td>0 USD</td>
+                <% end %>
+              </tr>
+              <tr>
+                <td>Booking Fee</td>
+                <% if @trip.booking_fee %>
+                  <td><%= @trip.booking_fee %> USD</td>
+                <% else %>
+                  <td>0 USD</td>
+                <% end %>
+              </tr>
+            </tbody>
+          </table>
+          <h1>Total Payment Now</h1>
+          <h2><%= @charge %> $</h2>
+
+          <p class="meta_info">
+            The total amount of USD $<%= @later_pay %> is payable 
+            when you finish your tour. </p>
+
+      </section>
+      
+      <p class="share">Share your plans!</p>    
+    </div>
+    <!-- End of Box Wrapper ---!> 
   </div>
 
 </div>

@@ -26,7 +26,9 @@ html, body{
     padding: 50px 0;
   }
 }
-
+.bold {
+  font-weight: bold;
+}
 #content{
   @media #{$media-phone-smaller}{
     padding-bottom: $footer-height;
@@ -99,8 +101,91 @@ nav.top-bar {
 
 /** Payment thungs **/
 .payment_wrapper {
+  max-width: 960px;
+  .payment_info {
+    padding-top: 60px;
+    padding-right: 0px;
+    .box_wrapper {
+      width: 80%;
+      margin-left:19%;
+      color: #323232;    
+      p.share {
+        text-align: center;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 21px;
+        font-family: 'Open Sans', sans-serif;
+      }
+      header#info_top {
+        background: #FFB94E;
+        border-radius: 7px 7px 0px 0px;
+        padding-bottom: 20px;
+        h4 {
+          text-align: center;
+          font-family: "Open Sans", sans-serif;
+          color: #ffffff;
+          font-size: 20px;
+          font-weight: 600;
+          padding: 30px 20px 20px 20px;
+        }
+        p {
+          font-weight: 600px;
+          color: #ffffff;
+          font-size: 14px;
+          line-height: 20x;
+          padding: 0px 20px 0px 20px;
+        }
+      }
+      section#driver_image {
+        min-height: 170px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        .profile_set {
+          width: 100%;
+          margin: auto;
+          display: inline-block;
+          margin-top: 50px; 
+          text-align: center;
+          margin-bottom: 50px;
+          .profile_image {
+            max-width: 100px;
+            border-radius: 50%;
+            border: 5px solid #FFFFFF;
+          }
+        }
+      }
+      section#bill_info { 
+        padding:0px;
+        background: #EEEEEE;
+        table {
+          width: 100%;
+          margin: auto;
+        }
+        h1 {
+          margin-top: 20px;
+          font-size: 24px;
+          font-weight: 600;
+          text-align: center;
+          line-height: 25px;
+        }
+        h2 {
+          font-size: 48px;
+          line-height: 50px;
+          font-weight: 600;
+          text-align: center;
+        }
+        p.meta_info {
+          padding: 20px 20px;
+          font-weight: 500;
+          text-align: center;
+          font-size: 12px;
+          line-height: 15px;
+        } 
+      }
+    }
+  }
   .form_wrapper {
-    padding: 40px 20px;
+    padding: 60px 20px;
     .braintree-paypal-loggedin {
       max-width: 100%;
     }
@@ -139,12 +224,27 @@ nav.top-bar {
         #cvv {
           width: 10%;
         }
+        input[type=submit] {
+          display: block;
+          font-size: 16px;
+          font-weight: 600;
+          background: #323232;
+          color: #ffffff;
+          padding: 10px 30px;
+          border-radius: 3px;
+          border: 0px;
+        }
       }
+      .info p {
+        font-size: 10px;
+        font-weight: 500;
+      } 
     }
     form#payment_details {
       padding-top: 25px;
       .form-group {
         display: block;
+        min-height: 57px;
         width: 100%;
         height: auto;
         position: relative;
@@ -155,6 +255,12 @@ nav.top-bar {
           width: 29%;
           float: left;
           vertical-align: middle;
+        }
+        label.error {
+          margin-left: 29%;
+          font-size: 10px;
+          text-transform: uppercase;
+          width: 100%;
         }
         input {
           display: inline-table;

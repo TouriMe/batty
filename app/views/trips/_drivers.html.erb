@@ -1,0 +1,47 @@
+<header class="content_head">
+  <h1>Drivers available for this trip</h1>
+</header>
+
+
+<% @drivers.each do |driver| %>
+  
+  <% if driver.vehicles.first %>
+    <div class="row tour-driver">
+
+      <div class="profile-avatar large-2 small-4 columns">
+        <% if driver.avatar_url.present? %>
+          <%= image_tag driver.avatar_url, class: 'avatar-image' %>
+        <% else %>
+          <%= image_tag 'avatar.jpg', class: 'avatar-image' %>
+        <% end %>
+      </div>
+
+      <div class="rating-review large-2 small-4 columns">
+        <div class="section rating">
+          <%= render 'partials/rating', rating: driver.rating %>
+        </div>
+        <div class="section comment">
+          <%= pluralize(driver.comments.count, 'review') %>
+        </div>
+      </div>
+    
+      <div class="vehicles large-5 small-8 columns">
+        <div class="vehicle">
+          <% driver.vehicles.each do |vehicle| %>
+            <% if vehicle.name.downcase == "tuk tuk" %>
+              <%= image_tag 'tuktuk.png', class: "vehicle-icon" %>
+              <span><%= vehicle.name %></span> 
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="book-btn large-3 small-4 columns">
+        <%= link_to "BOOK ME", "/book/#{@trip.id}/#{driver.id}", class: "btn btn-book" %>
+      </div>
+    
+    </div>
+  
+  <% end %>
+<% end %>
+  

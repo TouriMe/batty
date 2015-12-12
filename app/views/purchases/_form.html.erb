@@ -1,0 +1,25 @@
+<div class="payment_wrapper row">
+  <div class="large-8 small-12 columns">
+    
+    <form id="checkout" action="/book" method="post">
+      
+      <div id="payment-form">
+        <!-- All the necessary input fields should be here -->
+        <input data-braintree-name="number" value="4111111111111111">
+        <input data-braintree-name="expiration_date" value="10/20">
+        
+
+        <input type="submit" id="submit" value="Pay">
+      </div>
+
+      <input type="hidden" id="tour_id" value="<%= @trip.id %>" >
+      <input type="hidden" id="driver_id" value="<%= @driver.id%>" >
+    
+    </form> 
+  </div>
+
+  <div class="large-4 small-12 columns">
+    <!-- sidebar information goes here -->
+  </div>
+
+</div>

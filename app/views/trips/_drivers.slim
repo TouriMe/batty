@@ -29,7 +29,8 @@ h3
     .price.large-2.small-4.columns
         strong = number_to_currency(price, :precision => 0)
     .book-btn.large-3.small-4.columns
-      = link_to 'Book Me'.upcase, '#', class: 'btn btn-book book-tour-via-driver', data: {driver_id: driver.id, vehicle: vehicle, driver_img_url: driver.avatar_url, driver_name: driver.full_name, price: price}
+      = link_to "BOOK ME', "/"@trip.id/@driver.id", class: "btn btn-book book-tour-via-driver"
+   
 div[class='reveal-modal billing-info' id='fill-purchase-info-modal' data-reveal]
   .row
     span.booking_label

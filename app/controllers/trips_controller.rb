@@ -13,7 +13,8 @@ class TripsController < ApplicationController
     else 
       @f_pay = @trip.tuktuk_price
     end
-    
+   
+    @drivers = Driver.all
     @page_title = @trip.name
   end
 

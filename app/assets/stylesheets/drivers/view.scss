@@ -17,24 +17,25 @@
     .hero-content {
       text-align: center;
       height: 565px;
-      margin-top:100px;
+      margin-top: 100px;
       padding-bottom: 104px;
       position: relative;
       z-index: 2;
       top: -500px;
 
-      h1{
+      h1 {
         color: white;
       }
 
-      .video-play{
-        width:100px;
-        height:100px;
+      .video-play {
+        width: 100px;
+        height: 100px;
       }
     }
   }
 
   .profile-page-body {
+
     .profile-basic-info {
       background-color: white;
       padding: 0;
@@ -56,6 +57,16 @@
 
         margin-top: -15%;
         margin-left: 15%;
+      }
+
+      .profile-name {
+        font-size: 36px;
+        font-weight: 700;
+        text-align: center;
+      }
+
+      .profile-rating{
+        text-align: center;
       }
 
       .profile {
@@ -163,8 +174,10 @@
         margin: 2px;
         font-weight: 300;
       }
-    }
 
+
+
+    }
     height: 100%;
   }
 }

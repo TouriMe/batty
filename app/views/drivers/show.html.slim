@@ -12,38 +12,41 @@
         iframe.embed-video [src="https://www.youtube.com/embed/fhEhlv8mNP4?" frameborder="0" allowfullscreen]
 
   .profile-page-body.row.full-width[data-equalizer]
-    .columns.large-9.small-12.profile-basic-info[data-equalizer-watch]
+    .columns.small-12.profile-basic-info[data-equalizer-watch]
       .row.full-width
         .columns.medium-3.small-12
           .profile-avatar
             img.avatar-image[src=@driver.avatar_url]
-        .columns.medium-6.small-12
-            .profile-rating
-              .section.rating
-                = render 'partials/rating', rating: @driver.rating
+          .profile-name
+            span = @driver.full_name
+            .divider
+            span = @driver.nickname
+          .profile-rating
+            .section.rating
+              = render 'partials/rating', rating: @driver.rating
 
-            .profile-name
-              h3 = @driver.full_name
-              .divider
-              h6 = @driver.nickname
-
-            .contact-info
-              - if @driver.facebook_url
-                div.contact-info-facebook
-                  a(href=@driver.facebook_url size='1')
-                    = fa_icon('facebook-square')
-                    | Profile
-                    br
-              - if @driver.email
-                div.contact-info-email
-                  = fa_icon('envelope-o')
-                  = @driver.email
-                  br
-              - if @driver.phone
-                div.contact-info-phone
-                  = fa_icon('phone')
-                  = @driver.phone
-        .columns.small-12.medium-3.share-box
+        .columns.medium-3.small-12
+          .vehicle
+            h4
+              | Vehicle Type
+            - @driver.vehicles.each do |v|
+              - if (v.name.downcase == 'tuk tuk')
+                = image_tag 'tuktuk.png', class: 'vehicle-icon'
+                span
+                  strong
+                    | Tuk Tuk
+              - elsif (v.name.downcase == 'car')
+                = image_tag 'car.png', class: 'vehicle-icon'
+                span
+                  strong
+                    | Car
+          .location
+            h4
+              | Location
+            - @driver.cities.each do |c|
+              span
+                strong = c.name
+        /.columns.medium-3.small-12.share-box
           .columns.small-6.medium-12
             h6.butt-favorite
               = fa_icon 'heart-o', size: 2
@@ -53,20 +56,67 @@
             | Share
             span = social_share_button_tag('Welcome to TouriMe')
 
+        .columns.medium-3.small-12
+          span
+            strong
+              | English Communication
+          br
+          span
+            strong
+              | 6 Years Above Driving Experience
+          br
+          span
+            strong
+              | Basic history
+          br
+          span
+            strong
+              | Smartphone Photography
+          br
+          span
+            strong
+              | Basic DSLR
+        .columns.medium-3.small-12
+          span
+            strong
+              | English Communication
+          br
+          span
+            strong
+              | 6 Years Above Driving Experience
+          br
+          span
+            strong
+              | Basic history
+          br
+          span
+            strong
+              | Smartphone Photography
+          br
+          span
+            strong
+              | Basic DSLR
+
       .row.full-width
         .small-12.columns.profile-page-details
           .section
-            h4 About this driver
-            p
+            /h4 About this driver
+            /p
               - if @driver.description and (not @driver.description.empty?)
                 = @driver.description
               - else
               | We don't know much about this driver yet...
 
-            .line
+            .driver-gallery
+              ul.clearing-thumbs.small-block-grid-3 [data-clearing]
+                - @driver.images.each do |i|
+                  li
+                    a [href=i.url]
+                      img [src = i.url_small ]
 
-            = render 'comments/comments', target: @driver
-    .large-3.small-12.columns.profile-page-matrix[data-equalizer-watch]
+          = render 'comments/comments', target: @driver
+
+    /.large-3.small-12.columns.profile-page-matrix[data-equalizer-watch]
       .section
         h4
           = fa_icon 'comment'

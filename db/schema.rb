@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151205081436) do
+ActiveRecord::Schema.define(version: 20151212122246) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -138,8 +138,8 @@ ActiveRecord::Schema.define(version: 20151205081436) do
     t.string   "purchasable_type"
     t.decimal  "price"
     t.integer  "buyer_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.integer  "status"
     t.string   "email"
     t.date     "start_date"
@@ -148,6 +148,9 @@ ActiveRecord::Schema.define(version: 20151205081436) do
     t.integer  "driver_id"
     t.integer  "vehicle_id"
     t.text     "comments"
+    t.string   "email_confirmation"
+    t.string   "country_code"
+    t.string   "phone_number"
   end
 
   create_table "seos", force: :cascade do |t|
@@ -181,15 +184,6 @@ ActiveRecord::Schema.define(version: 20151205081436) do
     t.string   "down_payment_currency"
     t.decimal  "booking_fee"
     t.string   "booking_fee_currency"
-  end
-
-  create_table "uimages", force: :cascade do |t|
-    t.string   "model"
-    t.string   "image_url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "trip_id"
-    t.string   "alt_text"
   end
 
   create_table "users", force: :cascade do |t|

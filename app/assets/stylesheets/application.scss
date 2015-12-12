@@ -83,7 +83,6 @@ nav.top-bar {
   display: block;
 }
 
-
 /** header **/
 .main-container {
   .page-header {
@@ -98,3 +97,119 @@ nav.top-bar {
   }
 }
 
+/** Payment thungs **/
+.payment_wrapper {
+  .form_wrapper {
+    padding: 40px 20px;
+    .braintree-paypal-loggedin {
+      max-width: 100%;
+    }
+    h2 {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 35px;
+      font-weight: 500;
+    }
+    form#payment_form {
+      padding-top: 25px;
+      .form-group {
+        display: inline-block;
+        width: 100%;
+        height: auto;
+        position: relative;
+        label {
+          font-family: 'Open Sans', sans-serif;
+          font-size: 17px;
+          font-weight: 500;
+          width: 29%;
+          float: left;
+          vertical-align: middle;
+        }
+        img.paymentCards{
+          width: 59%;
+          margin: 0px 5%;
+        }
+        #card-number, #expiration-date, #cvv {
+          display: inline-table;
+          width: 70%;
+          height: 40px;
+        }
+        #expiration-date {
+          width: 30%;
+        }
+        #cvv {
+          width: 10%;
+        }
+      }
+    }
+    form#payment_details {
+      padding-top: 25px;
+      .form-group {
+        display: block;
+        width: 100%;
+        height: auto;
+        position: relative;
+        label {
+          font-family: 'Open Sans', sans-serif;
+          font-size: 17px;
+          font-weight: 500;
+          width: 29%;
+          float: left;
+          vertical-align: middle;
+        }
+        input {
+          display: inline-table;
+          width: 70%;
+        }
+        input#country_code {
+          width:10%;
+        }
+        input#phone_number {
+          display: inline-table;
+          width: 59.5%;
+        }
+      }
+    }
+  }
+}
+
+#card-number,#expiration-date, #cvv  {
+  border: 1px solid #333;
+  -webkit-transition: border-color 160ms;
+  transition: border-color 160ms;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border-radius: 0;
+  background-color: #FFFFFF;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #cccccc;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.75);
+  display: block;
+  font-family: inherit;
+  font-size: 0.875rem;
+  height: 2.3125rem;
+  margin: 0 0 1rem 0;
+  padding: 0.5rem;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: border-color 0.15s linear, background 0.15s linear;
+  -moz-transition: border-color 0.15s linear, background 0.15s linear;
+  -ms-transition: border-color 0.15s linear, background 0.15s linear;
+  -o-transition: border-color 0.15s linear, background 0.15s linear;
+  transition: border-color 0.15s linear, background 0.15s linear;
+}
+
+#card-number.braintree-hosted-fields-focused {
+  border-color: #777;
+}
+
+#card-number.braintree-hosted-fields-invalid {
+  border-color: tomato;
+}
+
+#card-number.braintree-hosted-fields-valid {
+  border-color: limegreen;
+}

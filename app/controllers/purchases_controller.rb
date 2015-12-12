@@ -1,6 +1,5 @@
 class PurchasesController < ApplicationController
-  before_action(except: :new) { @purchase = Purchase.find(params[:id])}
-  
+  before_action(except: :new) { @purchase = Purchase.find(params[:id])} 
   def create()
     @purchase = Purchase.new(purchase_params)
     @purchase.status = 'unpaid'

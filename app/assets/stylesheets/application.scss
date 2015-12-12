@@ -139,7 +139,21 @@ nav.top-bar {
         #cvv {
           width: 10%;
         }
+        input[type=submit] {
+          display: block;
+          font-size: 16px;
+          font-weight: 600;
+          background: #323232;
+          color: #ffffff;
+          padding: 10px 30px;
+          border-radius: 3px;
+          border: 0px;
+        }
       }
+      .info p {
+        font-size: 10px;
+        font-weight: 500;
+      } 
     }
     form#payment_details {
       padding-top: 25px;

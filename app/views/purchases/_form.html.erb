@@ -59,18 +59,31 @@
         </div>
 
         <div class="form-group">
-            <label for="cvv">CVV</label>
+            <label for="cvv">Security Code</label>
             <div id="cvv">
             </div>
         </div>
-      
+
+        <div class="form-group info">
+          <p>By clicking on “Confirm Payment”, you agree to pay the total amount shown, which includes
+          Service Fees on the right and to the Terms of Service, Cancellation Policy and Refund Policy.</p>
+        </div>
+
+        <div class="form-group">
+          <%= submit_tag("Confirm Payment") %>
+        </div>
       </div>
 
     <% end %>
   </div>
 
-  <div class="large-5 small-12 columns">
+  <div class="large-5 payment_info small-12 columns">
     <!-- sidebar information goes here -->
+  
+    <div class="box_wrapper">
+
+
+    </div>
   </div>
 
 </div>

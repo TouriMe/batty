@@ -15,7 +15,7 @@ class Driver < ActiveRecord::Base
   has_many :cities, through: :driver_cities
   has_many :vehicles, through: :driver_vehicles
 
-
+  has_many :purchases, as: :purchasable  
   validates_presence_of :first_name, :phone
 
   scope :active, ->{where(is_active: true)}
@@ -30,6 +30,4 @@ class Driver < ActiveRecord::Base
   def normalize_friendly_id(input)
     input.to_s.to_slug.normalize.to_s
   end
-
-  has_many :purchases, as: :purchasable
 end

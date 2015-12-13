@@ -11,9 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20151212122246) do
-
+ActiveRecord::Schema.define(version: 20151213130448) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +36,21 @@ ActiveRecord::Schema.define(version: 20151212122246) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "certificates", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "certificates_drivers", id: false, force: :cascade do |t|
+    t.integer "certificate_id"
+    t.integer "driver_id"
+  end
+
+  add_index "certificates_drivers", ["certificate_id"], name: "index_certificates_drivers_on_certificate_id", using: :btree
+  add_index "certificates_drivers", ["driver_id"], name: "index_certificates_drivers_on_driver_id", using: :btree
 
   create_table "cities", force: :cascade do |t|
     t.string   "name"
@@ -94,14 +107,19 @@ ActiveRecord::Schema.define(version: 20151212122246) do
     t.string   "facebook_url"
     t.string   "wechat_id"
     t.string   "whatsapp_id"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.integer  "driving_years"
     t.boolean  "childsafe"
-    t.boolean  "is_active",      default: true
+    t.boolean  "is_active",              default: true
     t.integer  "user_id"
     t.string   "slug"
     t.decimal  "rating"
+    t.boolean  "english_communication"
+    t.string   "driving_experience"
+    t.boolean  "basic_history"
+    t.boolean  "smartphone_photography"
+    t.boolean  "basic_dslr"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|

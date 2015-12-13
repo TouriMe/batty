@@ -1,9 +1,10 @@
 ActiveAdmin.register Driver do
-  particulars = {first_name:nil, last_name: nil, nickname: nil, short_desc: nil, description: :text, is_active: nil}
+  particulars = {first_name:nil, last_name: nil, nickname: nil, short_desc: nil, description: :text, is_active: nil }
   contacts = {phone:nil, email:nil, wechat_id: nil, whatsapp_id: nil, facebook_url: nil }
   intros  = {childsafe: nil, avatar_url: nil, video_url: nil, driving_years:nil}
+  certificates = { english_communication: nil, basic_dslr: nil, basic_history: nil, driving_experience: nil, smartphone_photography: nil }
 
-  all_fields = particulars.keys + contacts.keys + intros.keys
+  all_fields = particulars.keys + contacts.keys + intros.keys + certificates.keys
 
   index do
     selectable_column
@@ -53,7 +54,16 @@ ActiveAdmin.register Driver do
         l.input :language_code, as: :select, collection: LanguageList::COMMON_LANGUAGES.map{|l| [l.name, l.iso_639_3]}
         l.input :proficiency, as: :select, collection: DriverLanguage.proficiencies.keys.to_a
       end
+    end 
+    
+    f.inputs 'Certificates' do
+      f.input :english_communication, label: "English Communication Skill"
+      f.input :basic_history, label: "Basic History"
+      f.input :smartphone_photography, label: "Smart Phone Photography"
+      f.input :basic_dslr, label: "Basic DSLR"
+      f.input :driving_experience, label: "Years of driving expereience"
     end
+
 
     f.inputs 'Images' do
       f.has_many :images, allow_destroy: true do |i|

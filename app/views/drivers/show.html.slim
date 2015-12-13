@@ -19,8 +19,8 @@
             img.avatar-image[src=@driver.avatar_url]
           .profile-name
             span = @driver.full_name
-            .divider
-            span = @driver.nickname
+            /.divider
+            /span = @driver.nickname
           .profile-rating
             .section.rating
               = render 'partials/rating', rating: @driver.rating

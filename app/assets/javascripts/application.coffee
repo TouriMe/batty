@@ -13,13 +13,13 @@
 
 $(()->
   $(document).foundation()
-  
 
-  $('#sign_banner > .close').click( (evt)->
+
+  $('#sign_banner > .close').click((evt)->
     $(evt.target).parent().hide()
     localStorage.setItem("banner_check", "1")
   )
-  
+
   if (localStorage.getItem("banner_check"))
     $('#sign_banner').hide()
 
@@ -28,10 +28,10 @@ $(()->
 
   $("#startdate").datepicker();
 
-  $("#payment_details").validate();
-
   $(".ellipsis").dotdotdot({
-    ellipsis	: '... ',
-    height		: 30
+    ellipsis: '... ',
+    height: 30
   });
+
+  $("#payment_details").validate();
 )

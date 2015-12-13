@@ -19,7 +19,7 @@ ActiveAdmin.register Driver do
   permit_params *all_fields,
                 languages_attributes: [:id, :_destroy, :language_code, :proficiency],
                 driver_cities_attributes: [:id, :city_id, :_destroy],
-                images_attributes: [:id, :url, :alt_text, :_destroy],
+                images_attributes: [:id, :url, :url_small, :alt_text, :_destroy],
                 driver_vehicles_attributes: [:id, :vehicle_id, :_destroy]
 
   register_fields = Proc.new do |f, fields|
@@ -58,6 +58,7 @@ ActiveAdmin.register Driver do
     f.inputs 'Images' do
       f.has_many :images, allow_destroy: true do |i|
         i.input :url
+        i.input :url_small
         i.input :alt_text
       end
     end

@@ -9,6 +9,17 @@ $( ->
     $('.carousel ul li:first-child img').click();
   );
 
+#  $driverImages = $('.driver-gallery .thumb-nail');
+#  for img in $driverImages
+#    $imgUrl = img.getAttribute("data-img")
+#    img.setAttribute('style','background-image:url('+ $imgUrl + ');height:300px;width:300px;margin:10px 5px;')
+#
+##    img.className += "thumb-img"
+#
+#  $('.thumb-nail').click( (evt)->
+#    $('.carousel ul li:first-child img').click();
+#  );
+
   if ($('#detail-content').length == 0 || $('#payment-form').length == 0)
     return
 
@@ -26,6 +37,8 @@ $( ->
     $ele.click( (evt) ->
       driver_id = $ele.data('driver_id')
     )
+
+
 )
 
 

@@ -27,7 +27,7 @@
 
         <div class="form-group">
           <%= f.label :comments, "Your Comment" %>
-          <%= f.text_field :comments %>
+          <%= f.text_area :comments %>
         </div>
         
         <!-- All the necessary input fields should be here -->
@@ -70,7 +70,7 @@
         </div>
 
         <div class="form-group">
-          <%= submit_tag("Confirm Payment") %>
+          <%= submit_tag("Confirm Payment", id: "bt_charge", onclick: "clickedChargebt(callback)") %>
         </div>
       </div>
 

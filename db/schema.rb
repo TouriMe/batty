@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151213130448) do
+ActiveRecord::Schema.define(version: 20151214072936) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -120,6 +120,7 @@ ActiveRecord::Schema.define(version: 20151213130448) do
     t.boolean  "basic_history"
     t.boolean  "smartphone_photography"
     t.boolean  "basic_dslr"
+    t.string   "youtube_url"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|

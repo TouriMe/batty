@@ -37,6 +37,11 @@
             }
           }
         },
+        onFieldEvent: function(event) {
+          if (event.isValid) {
+            console.log("seem right");
+          }
+        },
         number: {
             selector: "#card-number"
           },

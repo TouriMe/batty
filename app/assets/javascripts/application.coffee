@@ -13,8 +13,7 @@
 
 $(()->
   $(document).foundation()
-
-
+  
   $('#sign_banner > .close').click((evt)->
     $(evt.target).parent().hide()
     localStorage.setItem("banner_check", "1")
@@ -32,6 +31,21 @@ $(()->
     ellipsis: '... ',
     height: 30
   });
+  
+  $("#bt_charge").click((e)->
+    $("#payment_form").attr("action", "book?newone")  
+    getInput()
+    clickedChargebt()
+    console.log("Clicked!")
+  )
 
-  $("#payment_details").validate();
+  
+  $("#payment_details").validate({
+    rules: {
+      phone_number: {
+        required: true,
+        number: true
+      }
+    }
+  });
 )

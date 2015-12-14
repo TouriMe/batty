@@ -9,7 +9,7 @@
 
     #videoModal.reveal-modal.large [ data-reveal aria-labelledby="videoModalTitle" aria-hidden="true" role="dialog"]
       .flex-video.widescreen
-        iframe.embed-video [src="https://www.youtube.com/embed/fhEhlv8mNP4?" frameborder="0" allowfullscreen]
+        iframe.embed-video [src=@driver.youtube_url frameborder="0" allowfullscreen]
 
   .profile-page-body.row.full-width[data-equalizer]
     .columns.small-12.profile-basic-info[data-equalizer-watch]
@@ -57,45 +57,81 @@
             span = social_share_button_tag('Welcome to TouriMe')
 
         .columns.medium-3.small-12
-          span
-            strong
-              | English Communication
-          br
-          span
-            strong
-              | 6 Years Above Driving Experience
-          br
-          span
-            strong
+          .certificate-container
+            span.driver-certificate
+              - if (@driver.english_communication)
+                i.fa.fa-check.cert-icon &nbsp;&nbsp;
+              - else
+                i.fa.fa-times.cert-icon &nbsp;&nbsp;
+                | English Communication
+            br
+            span.driver-certificate
+              - if (@driver.driving_experience.to_i >=6)
+                i.fa.fa-check.cert-icon &nbsp;&nbsp;
+              - else
+              i.fa.fa-times.cert-icon &nbsp;&nbsp;
+              | 6 Years Driving Experience
+            br
+            span.driver-certificate
+              - if (@driver.basic_history)
+                i.fa.fa-check.cert-icon &nbsp;&nbsp;
+              - else
+              i.fa.fa-times.cert-icon &nbsp;&nbsp;
               | Basic history
-          br
-          span
-            strong
+            br
+            span.driver-certificate
+              - if (@driver.smartphone_photography)
+                i.fa.fa-check.cert-icon &nbsp;&nbsp;
+              - else
+              i.fa.fa-times.cert-icon &nbsp;&nbsp;
               | Smartphone Photography
-          br
-          span
-            strong
+            br
+            span.driver-certificate
+              - if (@driver.basic_dslr)
+                i.fa.fa-check.cert-icon &nbsp;&nbsp;
+              - else
+              i.fa.fa-times.cert-icon &nbsp;&nbsp;
               | Basic DSLR
+            br
+
+
         .columns.medium-3.small-12
-          span
-            strong
+          .certificate-container
+            span.driver-certificate
+              - if (@driver.english_communication)
+                i.fa.fa-check.cert-icon &nbsp;&nbsp;
+              - else
+              i.fa.fa-times.cert-icon &nbsp;&nbsp;
               | English Communication
-          br
-          span
-            strong
-              | 6 Years Above Driving Experience
-          br
-          span
-            strong
+            br
+            span.driver-certificate
+              - if (@driver.driving_experience.to_i >=6)
+                i.fa.fa-check.cert-icon &nbsp;&nbsp;
+              - else
+              i.fa.fa-times.cert-icon &nbsp;&nbsp;
+              | 6 Years Driving Experience
+            br
+            span.driver-certificate
+              - if (@driver.basic_history)
+                i.fa.fa-check.cert-icon &nbsp;&nbsp;
+              - else
+              i.fa.fa-times.cert-icon &nbsp;&nbsp;
               | Basic history
-          br
-          span
-            strong
+            br
+            span.driver-certificate
+              - if (@driver.smartphone_photography)
+                i.fa.fa-check.cert-icon &nbsp;&nbsp;
+              - else
+              i.fa.fa-times.cert-icon &nbsp;&nbsp;
               | Smartphone Photography
-          br
-          span
-            strong
+            br
+            span.driver-certificate
+              - if (@driver.basic_dslr)
+                i.fa.fa-check.cert-icon &nbsp;&nbsp;
+              - else
+              i.fa.fa-times.cert-icon &nbsp;&nbsp;
               | Basic DSLR
+            br
 
       .row.full-width
         .small-12.columns.profile-page-details

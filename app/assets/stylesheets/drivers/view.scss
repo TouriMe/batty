@@ -119,6 +119,16 @@
         }
       }
 
+      .certificate-container{
+        margin: 20px;
+        line-height: 40px;
+        font-weight: 700;
+        .cert-icon{
+          color:#FFB400;
+          font-size:22px;
+        }
+      }
+
       height: 100%;
     }
 

@@ -100,22 +100,22 @@
           <tbody>
               <tr>
                 <td>Tour Pirce</td>
-                <td><%= @trip.tuktuk_price_cents %> USD</td>
+                <td class="charge"><%= @trip.tuktuk_price_cents %> USD</td>
               </tr>
               <tr>
                 <td>Downpayment/Deposit</td>
                 <% if @trip.down_payment %>
-                  <td><%= @trip.down_payment %> USD</td>
+                  <td class="charge"><%= @trip.down_payment %> USD</td>
                 <% else %>
-                  <td>0 USD</td>
+                  <td class="charge">0 USD</td>
                 <% end %>
               </tr>
               <tr>
                 <td>Booking Fee</td>
                 <% if @trip.booking_fee %>
-                  <td><%= @trip.booking_fee %> USD</td>
+                  <td class="charge"><%= @trip.booking_fee %> USD</td>
                 <% else %>
-                  <td>0 USD</td>
+                  <td class="charge">0 USD</td>
                 <% end %>
               </tr>
             </tbody>

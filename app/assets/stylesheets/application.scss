@@ -160,6 +160,9 @@ nav.top-bar {
         table {
           width: 100%;
           margin: auto;
+          tr td.charge{
+            text-align: right;
+          }
         }
         h1 {
           margin-top: 20px;
@@ -190,32 +193,36 @@ nav.top-bar {
       max-width: 100%;
     }
     h2 {
-      font-family: 'Open Sans', sans-serif;
-      font-size: 35px;
-      font-weight: 500;
+      font-family: 'Lato', sans-serif;
+      font-size: 40px;
+      font-weight: 600;
+      text-transform: uppercase;
     }
     form#payment_form {
       padding-top: 25px;
       .form-group {
         display: inline-block;
         width: 100%;
+        min-height: 57px;
         height: auto;
         position: relative;
         label {
           font-family: 'Open Sans', sans-serif;
           font-size: 17px;
           font-weight: 500;
-          width: 29%;
+          width: 39%;
           float: left;
+          text-transform: uppercase;
           vertical-align: middle;
+          font-style: italic;
         }
         img.paymentCards{
-          width: 59%;
+          width: 49%;
           margin: 0px 5%;
         }
         #card-number, #expiration-date, #cvv {
           display: inline-table;
-          width: 70%;
+          width: 60%;
           height: 40px;
         }
         #expiration-date {
@@ -252,26 +259,29 @@ nav.top-bar {
           font-family: 'Open Sans', sans-serif;
           font-size: 17px;
           font-weight: 500;
-          width: 29%;
+          width: 39%;
           float: left;
           vertical-align: middle;
+          text-transform: uppercase;
+          font-style: italic;
         }
         label.error {
-          margin-left: 29%;
+          margin-left: 39%;
           font-size: 10px;
+          font-style: normal;
           text-transform: uppercase;
           width: 100%;
         }
         input {
           display: inline-table;
-          width: 70%;
+          width: 60%;
         }
         input#country_code {
           width:10%;
         }
         input#phone_number {
           display: inline-table;
-          width: 59.5%;
+          width: 49.5%;
         }
       }
     }
@@ -298,6 +308,7 @@ nav.top-bar {
   margin: 0 0 1rem 0;
   padding: 0.5rem;
   width: 100%;
+  font-family: Lato, sans-serif;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;

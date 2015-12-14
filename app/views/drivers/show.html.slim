@@ -26,26 +26,31 @@
               = render 'partials/rating', rating: @driver.rating
 
         .columns.medium-3.small-12
-          .vehicle
-            h4
-              | Vehicle Type
-            - @driver.vehicles.each do |v|
-              - if (v.name.downcase == 'tuk tuk')
-                = image_tag 'tuktuk.png', class: 'vehicle-icon'
-                span
-                  strong
-                    | Tuk Tuk
-              - elsif (v.name.downcase == 'car')
-              = image_tag 'car.png', class: 'vehicle-icon'
-              span
+          .vehicle-location
+            .vehicle
+              h4
                 strong
-                  | Car
-          .location
-            h4
-              | Location
-            - @driver.cities.each do |c|
-              span
-                strong = c.name
+                  | Vehicle Type
+              - @driver.vehicles.each do |v|
+                - if (v.name.downcase == 'tuk tuk')
+                  = image_tag 'tuktuk.png', class: 'vehicle-icon'
+                  span
+                    strong
+                      | Tuk Tuk
+                - elsif (v.name.downcase == 'car')
+                  = image_tag 'car.png', class: 'vehicle-icon'
+                  span
+                    strong
+                      | Car
+            .location
+              h4
+                strong
+                  | Location
+              - @driver.cities.each do |c|
+                span
+                  i.fa.fa-location-arrow &nbsp;&nbsp;
+                  strong = c.name
+                br
         /.columns.medium-3.small-12.share-box
           .columns.small-6.medium-12
             h6.butt-favorite
@@ -151,52 +156,4 @@
                       img [src = i.url_small ]
 
           = render 'comments/comments', target: @driver
-
-            /.large-3.small-12.columns.profile-page-matrix[data-equalizer-watch]
-      .section
-        h4
-          = fa_icon 'comment'
-          span Language Spoken
-        - @driver.languages.each do |l|
-          .tag = LanguageList::LanguageInfo.find(l.language_code).name
-
-      .section
-        h4
-          = fa_icon 'pencil'
-          span Language Written
-        - @driver.languages.each do |l|
-          .tag = LanguageList::LanguageInfo.find(l.language_code).name if l.proficiency == 'written'
-
-      .section
-        h4
-          = fa_icon 'home'
-          span City
-        - @driver.cities.each do |c|
-          .tag = c.name
-
-      .section
-        h4
-          = fa_icon 'taxi'
-          span Vehicle
-        - @driver.vehicles.each do |v|
-          .tag = v.name
-
-      .section
-        h4
-          = fa_icon 'tachometer'
-          span Driving Experience
-        .tag
-          - if @driver.driving_years
-            = @driver.driving_years
-            | &nbsp;years
-          - else
-          | N.A.
-
-      - if @driver.childsafe
-        .section
-          h4
-            = fa_icon 'child'
-            span Child Safe
-          .tag
-            | ChildSafe Member
 

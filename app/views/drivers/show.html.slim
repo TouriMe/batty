@@ -19,8 +19,8 @@
             img.avatar-image[src=@driver.avatar_url]
           .profile-name
             span = @driver.full_name
-            /.divider
-            /span = @driver.nickname
+          /.divider
+          /span = @driver.nickname
           .profile-rating
             .section.rating
               = render 'partials/rating', rating: @driver.rating
@@ -36,10 +36,10 @@
                   strong
                     | Tuk Tuk
               - elsif (v.name.downcase == 'car')
-                = image_tag 'car.png', class: 'vehicle-icon'
-                span
-                  strong
-                    | Car
+              = image_tag 'car.png', class: 'vehicle-icon'
+              span
+                strong
+                  | Car
           .location
             h4
               | Location
@@ -63,34 +63,34 @@
                 i.fa.fa-check.cert-icon &nbsp;&nbsp;
               - else
                 i.fa.fa-times.cert-icon &nbsp;&nbsp;
-                | English Communication
+              | English Communication
             br
             span.driver-certificate
               - if (@driver.driving_experience.to_i >=6)
                 i.fa.fa-check.cert-icon &nbsp;&nbsp;
               - else
-              i.fa.fa-times.cert-icon &nbsp;&nbsp;
+                i.fa.fa-times.cert-icon &nbsp;&nbsp;
               | 6 Years Driving Experience
             br
             span.driver-certificate
               - if (@driver.basic_history)
                 i.fa.fa-check.cert-icon &nbsp;&nbsp;
               - else
-              i.fa.fa-times.cert-icon &nbsp;&nbsp;
+                i.fa.fa-times.cert-icon &nbsp;&nbsp;
               | Basic history
             br
             span.driver-certificate
               - if (@driver.smartphone_photography)
                 i.fa.fa-check.cert-icon &nbsp;&nbsp;
               - else
-              i.fa.fa-times.cert-icon &nbsp;&nbsp;
+                i.fa.fa-times.cert-icon &nbsp;&nbsp;
               | Smartphone Photography
             br
             span.driver-certificate
               - if (@driver.basic_dslr)
                 i.fa.fa-check.cert-icon &nbsp;&nbsp;
               - else
-              i.fa.fa-times.cert-icon &nbsp;&nbsp;
+                i.fa.fa-times.cert-icon &nbsp;&nbsp;
               | Basic DSLR
             br
 
@@ -101,35 +101,35 @@
               - if (@driver.english_communication)
                 i.fa.fa-check.cert-icon &nbsp;&nbsp;
               - else
-              i.fa.fa-times.cert-icon &nbsp;&nbsp;
+                i.fa.fa-times.cert-icon &nbsp;&nbsp;
               | English Communication
             br
             span.driver-certificate
               - if (@driver.driving_experience.to_i >=6)
                 i.fa.fa-check.cert-icon &nbsp;&nbsp;
               - else
-              i.fa.fa-times.cert-icon &nbsp;&nbsp;
+                i.fa.fa-times.cert-icon &nbsp;&nbsp;
               | 6 Years Driving Experience
             br
             span.driver-certificate
               - if (@driver.basic_history)
                 i.fa.fa-check.cert-icon &nbsp;&nbsp;
               - else
-              i.fa.fa-times.cert-icon &nbsp;&nbsp;
+                i.fa.fa-times.cert-icon &nbsp;&nbsp;
               | Basic history
             br
             span.driver-certificate
               - if (@driver.smartphone_photography)
                 i.fa.fa-check.cert-icon &nbsp;&nbsp;
               - else
-              i.fa.fa-times.cert-icon &nbsp;&nbsp;
+                i.fa.fa-times.cert-icon &nbsp;&nbsp;
               | Smartphone Photography
             br
             span.driver-certificate
               - if (@driver.basic_dslr)
                 i.fa.fa-check.cert-icon &nbsp;&nbsp;
               - else
-              i.fa.fa-times.cert-icon &nbsp;&nbsp;
+                i.fa.fa-times.cert-icon &nbsp;&nbsp;
               | Basic DSLR
             br
 
@@ -152,7 +152,7 @@
 
           = render 'comments/comments', target: @driver
 
-    /.large-3.small-12.columns.profile-page-matrix[data-equalizer-watch]
+            /.large-3.small-12.columns.profile-page-matrix[data-equalizer-watch]
       .section
         h4
           = fa_icon 'comment'

@@ -33,12 +33,12 @@
                   | Vehicle Type
               - @driver.vehicles.each do |v|
                 - if (v.name.downcase == 'tuk tuk')
-                  = image_tag 'tuktuk.png', class: 'vehicle-icon'
+                  = image_tag 'tuktuk_yellow.png', class: 'vehicle-icon'
                   span
                     strong
                       | Tuk Tuk
                 - elsif (v.name.downcase == 'car')
-                  = image_tag 'car.png', class: 'vehicle-icon'
+                  = image_tag 'car_yellow.png', class: 'vehicle-icon'
                   span
                     strong
                       | Car
@@ -47,10 +47,9 @@
                 strong
                   | Location
               - @driver.cities.each do |c|
-                span
-                  i.fa.fa-location-arrow &nbsp;&nbsp;
+                  = image_tag 'location_yellow.png', class: 'location-icon'
                   strong = c.name
-                br
+                  br
         /.columns.medium-3.small-12.share-box
           .columns.small-6.medium-12
             h6.butt-favorite
@@ -65,37 +64,37 @@
           .certificate-container
             span.driver-certificate
               - if (@driver.english_communication)
-                i.fa.fa-check.cert-icon &nbsp;&nbsp;
+                = image_tag 'checked_yellow.png', class: 'cert-icon'
               - else
-                i.fa.fa-times.cert-icon &nbsp;&nbsp;
+                = image_tag 'unchecked_red.png', class: 'cert-icon'
               | English Communication
             br
             span.driver-certificate
               - if (@driver.driving_experience.to_i >=6)
-                i.fa.fa-check.cert-icon &nbsp;&nbsp;
+                = image_tag 'checked_yellow.png', class: 'cert-icon'
               - else
-                i.fa.fa-times.cert-icon &nbsp;&nbsp;
+                = image_tag 'unchecked_red.png', class: 'cert-icon'
               | 6 Years Driving Experience
             br
             span.driver-certificate
               - if (@driver.basic_history)
-                i.fa.fa-check.cert-icon &nbsp;&nbsp;
+                = image_tag 'checked_yellow.png', class: 'cert-icon'
               - else
-                i.fa.fa-times.cert-icon &nbsp;&nbsp;
+                = image_tag 'unchecked_red.png', class: 'cert-icon'
               | Basic history
             br
             span.driver-certificate
               - if (@driver.smartphone_photography)
-                i.fa.fa-check.cert-icon &nbsp;&nbsp;
+                = image_tag 'checked_yellow.png', class: 'cert-icon'
               - else
-                i.fa.fa-times.cert-icon &nbsp;&nbsp;
+                = image_tag 'unchecked_red.png', class: 'cert-icon'
               | Smartphone Photography
             br
             span.driver-certificate
               - if (@driver.basic_dslr)
-                i.fa.fa-check.cert-icon &nbsp;&nbsp;
+                = image_tag 'checked_yellow.png', class: 'cert-icon'
               - else
-                i.fa.fa-times.cert-icon &nbsp;&nbsp;
+                = image_tag 'unchecked_red.png', class: 'cert-icon'
               | Basic DSLR
             br
 
@@ -104,37 +103,37 @@
           .certificate-container
             span.driver-certificate
               - if (@driver.english_communication)
-                i.fa.fa-check.cert-icon &nbsp;&nbsp;
+                = image_tag 'checked_yellow.png', class: 'cert-icon'
               - else
-                i.fa.fa-times.cert-icon &nbsp;&nbsp;
+                = image_tag 'unchecked_red.png', class: 'cert-icon'
               | English Communication
             br
             span.driver-certificate
               - if (@driver.driving_experience.to_i >=6)
-                i.fa.fa-check.cert-icon &nbsp;&nbsp;
+                = image_tag 'checked_yellow.png', class: 'cert-icon'
               - else
-                i.fa.fa-times.cert-icon &nbsp;&nbsp;
+                = image_tag 'unchecked_red.png', class: 'cert-icon'
               | 6 Years Driving Experience
             br
             span.driver-certificate
               - if (@driver.basic_history)
-                i.fa.fa-check.cert-icon &nbsp;&nbsp;
+                = image_tag 'checked_yellow.png', class: 'cert-icon'
               - else
-                i.fa.fa-times.cert-icon &nbsp;&nbsp;
+                = image_tag 'unchecked_red.png', class: 'cert-icon'
               | Basic history
             br
             span.driver-certificate
               - if (@driver.smartphone_photography)
-                i.fa.fa-check.cert-icon &nbsp;&nbsp;
+                = image_tag 'checked_yellow.png', class: 'cert-icon'
               - else
-                i.fa.fa-times.cert-icon &nbsp;&nbsp;
+                = image_tag 'unchecked_red.png', class: 'cert-icon'
               | Smartphone Photography
             br
             span.driver-certificate
               - if (@driver.basic_dslr)
-                i.fa.fa-check.cert-icon &nbsp;&nbsp;
+                = image_tag 'checked_yellow.png', class: 'cert-icon'
               - else
-                i.fa.fa-times.cert-icon &nbsp;&nbsp;
+                = image_tag 'unchecked_red.png', class: 'cert-icon'
               | Basic DSLR
             br
 

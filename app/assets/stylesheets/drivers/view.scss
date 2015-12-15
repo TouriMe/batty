@@ -59,7 +59,7 @@
         text-align: center;
       }
 
-      .profile-rating{
+      .profile-rating {
         text-align: center;
       }
 
@@ -113,22 +113,29 @@
         }
       }
 
-      .vehicle-location{
-        margin: 15px 0;
-        .vehicle{
-          .vehicle-icon{
-            width:30px;
+      .vehicle-location {
+        margin-top: 15px;
+        .vehicle {
+          .vehicle-icon {
+            height: 30px;
+            margin-right: 10px;
+          }
+        }
+        .location {
+          .location-icon {
+            height: 30px;
+            margin-right: 10px;
           }
         }
       }
 
-      .certificate-container{
+
+      .certificate-container {
         margin: 15px 0;
         line-height: 30px;
         font-weight: 700;
-        .cert-icon{
-          color:#FFB400;
-          font-size:22px;
+        .cert-icon {
+          margin-right: 10px;
         }
       }
 
@@ -187,8 +194,6 @@
         margin: 2px;
         font-weight: 300;
       }
-
-
 
     }
     height: 100%;

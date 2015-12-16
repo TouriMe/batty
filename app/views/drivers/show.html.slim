@@ -70,11 +70,9 @@
               | English Communication
             br
             span.driver-certificate
-              - if (@driver.driving_experience.to_i >=6)
-                = image_tag 'checked_yellow.png', class: 'cert-icon'
-              - else
-                = image_tag 'unchecked_red.png', class: 'cert-icon'
-              | 6 Years Driving Experience
+              = image_tag 'checked_yellow.png', class: 'cert-icon'
+              - @driver.driving_experience
+              | Years Driving Experience
             br
             span.driver-certificate
               - if (@driver.basic_history)
@@ -109,11 +107,9 @@
               | English Communication
             br
             span.driver-certificate
-              - if (@driver.driving_experience.to_i >=6)
-                = image_tag 'checked_yellow.png', class: 'cert-icon'
-              - else
-                = image_tag 'unchecked_red.png', class: 'cert-icon'
-              | 6 Years Driving Experience
+              = image_tag 'checked_yellow.png', class: 'cert-icon'
+              - @driver.driving_experience
+              | Years Driving Experience
             br
             span.driver-certificate
               - if (@driver.basic_history)

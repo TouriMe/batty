@@ -41,8 +41,8 @@
 
         .large-3.small-12.trip_top_info.columns
           h1
-            span = @trip.tuktuk_price
-            span  $
+            span = @trip.tuktuk_price.to_i
+            span $
           .meta_func
             a.trip_book_now href="#drivers-selection"
               | Book Now

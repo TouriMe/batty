@@ -3,7 +3,7 @@
 #content .driver-profile {
   background-color: white;
   .profile-page-hero {
-    height: 515px;
+    height: 480px;
     overflow: hidden;
 
     .hero-background {
@@ -61,6 +61,7 @@
 
       .profile-rating {
         text-align: center;
+        color: #FFB400;
       }
 
       .profile {
@@ -117,7 +118,6 @@
         margin-top: 15px;
         .vehicle {
           .vehicle-icon {
-            height: 30px;
             margin-right: 10px;
           }
         }

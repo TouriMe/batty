@@ -11,14 +11,14 @@
       .flex-video.widescreen
         iframe.embed-video [src=@driver.youtube_url frameborder="0" allowfullscreen]
 
-  .profile-page-body.row.full-width[data-equalizer]
-    .columns.small-12.profile-basic-info[data-equalizer-watch]
+  .profile-page-body[data-equalizer]
+    .profile-basic-info[data-equalizer-watch]
       .row.full-width
         .columns.medium-3.small-12
           .profile-avatar
             img.avatar-image[src=@driver.avatar_url]
           .profile-name
-            span = @driver.full_name
+            span = @driver.first_name
           /.divider
           /span = @driver.nickname
           .profile-rating

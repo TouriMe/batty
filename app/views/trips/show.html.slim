@@ -57,41 +57,38 @@
         .row
           .highlight.small-12.large-5.columns
             h4
-              | Highlight
-            br
-            | Highlight
-            br
-            | Highlight
-            br
-            | Highlight
-            br
-            | Highlight
-            br
-            | Highlight
-          .highlight.small-12.large-5.columns
+              span.header
+                | Highlight
+              - if @trip.highlight_html?
+                  = @trip.highlight_html.html_safe
+
+          .include-exclude.small-12.large-5.columns
             h4
-              | Include
-            br
-            | Include
-            br
-            | Include
-            br
+              span.header
+                | Include
+              - if @trip.include_html?
+                = @trip.include_html.html_safe
             h4
-              | Exclude
-            br
-            | Exclude
-            br
-            | Exclude
-          .highlight.small-12.large-2.columns
+              span.header
+                | Exclude
+              - if @trip.exclude_html?
+                = @trip.exclude_html.html_safe
+
+          .tour-start-end.small-12.large-2.columns
             h4
-              | Start
+              span.header
+                | Start
+                br
+              - if @trip.tour_start?
+                = @trip.tour_start
             br
-            | 9:00 am
             br
             h4
-              | End
-            br
-            | 6:00 pm
+              span.header
+                | End
+                br
+              - if @trip.tour_end?
+                = @trip.tour_end
         .detail
           h3
             | Tour description

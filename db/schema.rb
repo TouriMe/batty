@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151214072936) do
+ActiveRecord::Schema.define(version: 20151219044802) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -145,6 +145,12 @@ ActiveRecord::Schema.define(version: 20151214072936) do
     t.datetime "updated_at",                           null: false
   end
 
+  create_table "highlights", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "images", force: :cascade do |t|
     t.string   "imagable_type"
     t.integer  "imagable_id"
@@ -185,6 +191,13 @@ ActiveRecord::Schema.define(version: 20151214072936) do
     t.string   "page"
   end
 
+  create_table "trip_highlights", force: :cascade do |t|
+    t.integer  "trip_id"
+    t.integer  "highlight_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
   create_table "trips", force: :cascade do |t|
     t.string   "name"
     t.text     "content"
@@ -206,6 +219,11 @@ ActiveRecord::Schema.define(version: 20151214072936) do
     t.string   "down_payment_currency"
     t.decimal  "booking_fee"
     t.string   "booking_fee_currency"
+    t.string   "highlight_html"
+    t.string   "include_html"
+    t.string   "exclude_html"
+    t.string   "tour_start"
+    t.string   "tour_end"
   end
 
   create_table "users", force: :cascade do |t|

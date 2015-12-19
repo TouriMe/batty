@@ -21,6 +21,11 @@ ActiveAdmin.register Trip do
       input :booking_fee_currency
       input :content, as: :html_editor
       input :important_info, as: :html_editor
+      input :highlight_html, as: :html_editor
+      input :include_html, as: :html_editor
+      input :exclude_html, as: :html_editor
+      input :tour_start
+      input :tour_end
     end
 
     f.inputs 'Images' do

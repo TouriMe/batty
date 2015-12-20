@@ -32,6 +32,8 @@
                         <%= image_tag 'tuktuk.png', class: "vehicle-icon" %>
                     <% elsif vehicle.name.downcase == "mini van" %>
                         <%= image_tag 'car.png', class: "vehicle-icon" %>
+                    <% else %>
+                        <%= image_tag 'car.png', class: "vehicle-icon" %>
                     <% end %>
                         <span><%= vehicle.name %></span>
                   </div>

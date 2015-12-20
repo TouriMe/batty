@@ -25,7 +25,7 @@ $(()->
   $(document).bind 'DOMNodeInserted', (evt)->
     window.ReactRailsUJS.mountComponents()
 
-  $("#startdate").datepicker();
+  $("#startdate").datepicker({ minDate: 0 });
 
   $(".ellipsis").dotdotdot({
     ellipsis: '... ',

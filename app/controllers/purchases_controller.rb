@@ -33,6 +33,7 @@ class PurchasesController < ApplicationController
   # book the tour(:tour_id)
   # with driver (:driver_id) 
   def new
+    @vehicle_type = params[:vehicle_type]
     @trip   = Trip.friendly.find(params[:tour_id])
     @driver = Driver.friendly.find(params[:driver_id])  
     @purchase = Purchase.new
@@ -46,7 +47,11 @@ class PurchasesController < ApplicationController
       @charge = 0
     end
 
-    @later_pay = @trip.tuktuk_price_cents - @charge
+    if @vehicle_type == "Tuk Tuk" 
+      @later_pay = (@trip.tuktuk_price_cents/100) - @charge   
+    else
+      @later_pay = (@trip.car_price_cents/100) - @charge
+    end 
     @braintree_key = Braintree::ClientToken.generate
   end
 

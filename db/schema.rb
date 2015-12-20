@@ -145,12 +145,6 @@ ActiveRecord::Schema.define(version: 20151219044802) do
     t.datetime "updated_at",                           null: false
   end
 
-  create_table "highlights", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "images", force: :cascade do |t|
     t.string   "imagable_type"
     t.integer  "imagable_id"
@@ -189,13 +183,6 @@ ActiveRecord::Schema.define(version: 20151219044802) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "page"
-  end
-
-  create_table "trip_highlights", force: :cascade do |t|
-    t.integer  "trip_id"
-    t.integer  "highlight_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
   end
 
   create_table "trips", force: :cascade do |t|

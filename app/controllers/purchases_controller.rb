@@ -1,6 +1,13 @@
 class PurchasesController < ApplicationController
-  
 
+
+
+  #### 
+  # refactoring needed
+  #
+  #
+  ####
+  
   # Create a purchase record 
   # before making a transcations 
   def create()
@@ -35,14 +42,16 @@ class PurchasesController < ApplicationController
     if @vehicle_type == "Tuk Tuk" 
       @later_pay = (@trip.tuktuk_price_cents/100) - @charge  
       @driver.vehicles.each do |v| 
-        v.name.downcase == "tuk tuk"
-        @vehicle_id = v.id
+        if v.name.downcase == "tuk tuk"
+          @vehicle_id = v.id
+        end
       end
     else
       @later_pay = (@trip.car_price_cents/100) - @charge
       @driver.vehicles.each do |v| 
-        v.name.downcase != "tuk tuk"
-        @vehicle_id = v.id
+        if v.name.downcase != "tuk tuk"
+          @vehicle_id = v.id
+        end
       end
     end 
     @braintree_key = Braintree::ClientToken.generate
@@ -54,7 +63,13 @@ class PurchasesController < ApplicationController
     @nonce = params[:payment_method_nonce]
     @purchase = Purchase.find(params[:id])
     @trip = Trip.find(@purchase.purchasable_id)
-    @charge = @trip.down_payment + @trip.booking_fee
+    
+    if @trip.down_payment && @trip.booking_fee
+      @charge = @trip.down_payment + @trip.booking_fee
+    else
+      @charge = 0
+    end
+
     if (@charge > 0 )
       result = Braintree::Transaction.sale(
         :amount => @charge,
@@ -64,10 +79,11 @@ class PurchasesController < ApplicationController
         }
       ) 
       if result
-           
+        @purchase.status = :paid
+        @purchase.save
+        return render json: @purchase
       end
     end
-   
   end
   
 
@@ -103,14 +119,14 @@ class PurchasesController < ApplicationController
   end
 
   private
-
-  def ajax_params
-    params.require(:purchase).permit(:purchasable_id, :purchasable_type, :start_date, :email, :email_confirmation, :country_code, :phone_number, :comments, :driver_id, :vehicle_id)
+  def ajax_params # params that needed for an ajax create request
+    params.require(:purchase).permit(:purchasable_id, :purchasable_type, :start_date, :email, 
+                                      :email_confirmation, :country_code, :phone_number, :comments, :driver_id, :vehicle_id)
   end
 
   def purchase_params
     params.require(:purchase).permit(:purchasable_id, :purchasable_type, :start_date, :email, :driver_id,
-                                     :vehicle_id, :country, :email_confirmation, :country_code, :phone_number, :contact, :comments)
+                                      :vehicle_id, :country, :email_confirmation, :country_code, :phone_number, :contact, :comments)
   end
 
 end

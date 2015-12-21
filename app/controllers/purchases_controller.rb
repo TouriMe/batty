@@ -1,35 +1,20 @@
 class PurchasesController < ApplicationController
-  before_action(except: :new) { @purchase = Purchase.find(params[:id])} 
-  def create()
-    @purchase = Purchase.new(purchase_params)
-    @purchase.status = 'unpaid'
-    
-    if @purchase.vehicle.name == 'Car'
-      @purchase.price = @purchase.purchasable.car_price
-    else
-      @purchase.price = @purchase.purchasable.tuktuk_price
-    end
-    @purchase.tourist = current_normal_user if current_normal_user
-
-    respond_to do |f|
-      f.js do
-        if @purchase.save
-          render js: "window.location = '#{edit_purchase_path(@purchase)}'"
-        else
-          render
-        end
-      end
-
-      f.html do
-        if @purchase.save
-          redirect_to edit_purchase_path(@purchase)
-        else
-          redirect_to :back, error: "Error in your input: #{@purchase.errors.messages}"
-        end
-      end
-    end
-  end
   
+
+  # Create a purchase record 
+  # before making a transcations 
+  def create()
+    @purchase = Purchase.new(ajax_params)
+    @purchase.save
+
+    if @purchase.save    
+      render json: @purchase
+    else 
+      render json: { "message" => "Not succcess" }
+    end 
+  end
+ 
+
   # book the tour(:tour_id)
   # with driver (:driver_id) 
   def new
@@ -48,12 +33,43 @@ class PurchasesController < ApplicationController
     end
 
     if @vehicle_type == "Tuk Tuk" 
-      @later_pay = (@trip.tuktuk_price_cents/100) - @charge   
+      @later_pay = (@trip.tuktuk_price_cents/100) - @charge  
+      @driver.vehicles.each do |v| 
+        v.name.downcase == "tuk tuk"
+        @vehicle_id = v.id
+      end
     else
       @later_pay = (@trip.car_price_cents/100) - @charge
+      @driver.vehicles.each do |v| 
+        v.name.downcase != "tuk tuk"
+        @vehicle_id = v.id
+      end
     end 
     @braintree_key = Braintree::ClientToken.generate
   end
+
+
+  # checkout that previous purchase
+  def checkout
+    @nonce = params[:payment_method_nonce]
+    @purchase = Purchase.find(params[:id])
+    @trip = Trip.find(@purchase.purchasable_id)
+    @charge = @trip.down_payment + @trip.booking_fee
+    if (@charge > 0 )
+      result = Braintree::Transaction.sale(
+        :amount => @charge,
+        :payment_method_nonce => @nonce,
+        :options => {
+          :submit_for_settlement => true
+        }
+      ) 
+      if result
+           
+      end
+    end
+   
+  end
+  
 
   def edit
     if @purchase.status == :paid
@@ -87,6 +103,11 @@ class PurchasesController < ApplicationController
   end
 
   private
+
+  def ajax_params
+    params.require(:purchase).permit(:purchasable_id, :purchasable_type, :start_date, :email, :email_confirmation, :country_code, :phone_number, :comments, :driver_id, :vehicle_id)
+  end
+
   def purchase_params
     params.require(:purchase).permit(:purchasable_id, :purchasable_type, :start_date, :email, :driver_id,
                                      :vehicle_id, :country, :email_confirmation, :country_code, :phone_number, :contact, :comments)

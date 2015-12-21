@@ -25,21 +25,13 @@ $(()->
   $(document).bind 'DOMNodeInserted', (evt)->
     window.ReactRailsUJS.mountComponents()
 
-  $("#startdate").datepicker({ minDate: 0 });
+  $("#startdate").datepicker({ minDate: 0, dateFormat: 'D, dd M yy' });
 
   $(".ellipsis").dotdotdot({
     ellipsis: '... ',
     height: 30
   });
-  
-  $("#bt_charge").click((e)->
-    $("#payment_form").attr("action", "book?newone")  
-    getInput()
-    clickedChargebt()
-    console.log("Clicked!")
-  )
-
-  
+   
   $("#payment_details").validate({
     rules: {
       phone_number: {

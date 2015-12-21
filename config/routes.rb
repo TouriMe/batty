@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 
   get 'checkout/:id' => 'purchases#checkout'
   get 'book/:tour_id/:driver_id' => 'purchases#new'   
-  get 'checkout/success' => 'purchases#success'
+  get 'payment_success' => 'purchases#success'
 
   devise_for :normal_users, :controllers => { :omniauth_callbacks => 'auth/omniauth' }
   devise_for :admin_users, ActiveAdmin::Devise.config

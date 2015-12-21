@@ -1,8 +1,5 @@
 class PurchasesController < ApplicationController
-
-
-
-  #### 
+  ####################
   # refactoring needed
   #
   #
@@ -81,12 +78,11 @@ class PurchasesController < ApplicationController
       if result
         @purchase.status = :paid
         @purchase.save
-        return render json: @purchase
+        redirect_to checkout_success_path
       end
     end
   end
   
-
   def edit
     if @purchase.status == :paid
       redirect_to request.referer
@@ -94,6 +90,10 @@ class PurchasesController < ApplicationController
     end
   end
 
+  def success
+    @custom_title = "Your payment has been successful"
+  end
+  
   def update
     @purchase.status = :paid
 

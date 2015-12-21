@@ -78,7 +78,7 @@ class PurchasesController < ApplicationController
       if result
         @purchase.status = :paid
         @purchase.save
-        redirect_to checkout_success_path
+        redirect_to payment_success_path
       end
     end
   end

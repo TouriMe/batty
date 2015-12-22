@@ -3,11 +3,22 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $( ->
 
-  $imgUrl = $('.trip-cover-img').attr("data-img");
-  $('.trip-cover-img').attr('style','background-image:url('+ $imgUrl + ')');
+  $imgUrl = $('.trip-cover-img').attr("data-img")
+  headerHeight = $('#fixed-head').height()
+  tripHeaderHeight = $('.trip_head_wrapper').height()
+  heroHight = $(window).height()-headerHeight-tripHeaderHeight
+  $('.trip-cover-img').attr('style',' background-image:url('+ $imgUrl + ');height:' + heroHight + 'px;');
   $('.trip-cover-img').click( (evt)->
     $('.carousel ul li:first-child img').click();
   );
+
+  $driverImgUrl = $('.hero-background').attr("data-img")
+  driverHeaderHeight = $('.profile-head').height()
+  driverHeroHight = $(window).height()-headerHeight-driverHeaderHeight
+  $('.hero-background').attr('style',' background-image:url('+ $driverImgUrl + ');height:' + driverHeroHight + 'px;');
+  $('.hero-content').attr('style', 'height:' + driverHeroHight + 'px;');
+  $('.profile-page-hero').attr('style', 'height:' + driverHeroHight + 'px;');
+
 
 #  $driverImages = $('.driver-gallery .thumb-nail');
 #  for img in $driverImages

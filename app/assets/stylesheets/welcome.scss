@@ -8,7 +8,7 @@
     }
 
     @media #{$media-pad-larger}{
-      width: 640px;
+      max-width: 960px;
     }
 
     text-align: center;

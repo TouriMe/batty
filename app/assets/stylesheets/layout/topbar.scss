@@ -52,6 +52,9 @@
   .top-bar-section {
     .login-logout-btn {
       color: white;
+      .login-icon {
+        margin-right: 10px;
+      }
     }
   }
 }
@@ -66,6 +69,7 @@
     .top-bar-section {
       .login-logout-btn {
         color: white;
+
       }
     }
   }

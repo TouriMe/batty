@@ -20,6 +20,7 @@ function create_purchase(ele_info) {
         dataType: "JSON" // you want a difference between normal and ajax-calls, and json is standard
     }).success(function(purchase) {
       add_attr(purchase.id, callback_form);
+      console.log(purchase);
     });
 
   return false;

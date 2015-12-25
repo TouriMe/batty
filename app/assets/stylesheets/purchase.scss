@@ -2,6 +2,32 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#paypal-container {
+  display: inline-block;
+  margin: auto;
+}
+
+#braintree-paypal-button {
+  width: 100%!important;
+  height: auto!important;
+}
+
+.payment_box_wrapper {
+  
+  .cards_wrapper {
+    p {
+      text-align: center;
+      font-size: 15px;
+      font-weight: 500;
+    }
+  }
+
+}
+
+#card_details {
+  display: none;
+}
+
 .success_wrapper {
   background: transparent;  
   padding-bottom: 100px;

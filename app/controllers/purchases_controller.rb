@@ -29,24 +29,25 @@ class PurchasesController < ApplicationController
     @no_show_title = true
 
     @charge = 0
+    @deposit = 0
     if @trip.down_payment
       @charge += @trip.down_payment
+      @deposit += @trip.down_payment
     end
 
-    @booking_fee = 0
     if @trip.booking_fee
-      @booking_fee += @trip.booking_fee
+      @charge += @trip.booking_fee
     end
 
     if @vehicle_type == "Tuk Tuk"
-      @later_pay = (@trip.tuktuk_price_cents/100) + @booking_fee - @charge
+      @later_pay = (@trip.tuktuk_price_cents/100) - @deposit
       @driver.vehicles.each do |v|
         if v.name.downcase == "tuk tuk"
           @vehicle_id = v.id
         end
       end
     elsif @vehicle_type == "Car"
-      @later_pay = (@trip.car_price_cents/100) + @booking_fee - @charge
+      @later_pay = (@trip.car_price_cents/100) - @deposit
       @driver.vehicles.each do |v|
         if v.name.downcase == "Car"
           @vehicle_id = v.id

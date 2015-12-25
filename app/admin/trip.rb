@@ -9,16 +9,11 @@ ActiveAdmin.register Trip do
     f.inputs do
       input :name
       input :description
-      input :tuktuk_price
-      input :car_price
+
       input :image_url, hint: 'The image shown as the background when listing trips'
       input :distance, hint: 'integer, unit is `km`'
       input :duration, hint: 'text, for example: 4 days'
       input :checkpoint_num, hint: 'integer, number of checkpoints'
-      input :down_payment, hint: 'Can use decimal number'
-      input :down_payment_currency, hint: 'By Default: USD'
-      input :booking_fee
-      input :booking_fee_currency
       input :content, as: :html_editor
       input :important_info, as: :html_editor
       input :highlight_html, as: :html_editor
@@ -26,6 +21,12 @@ ActiveAdmin.register Trip do
       input :exclude_html, as: :html_editor
       input :tour_start
       input :tour_end
+      input :tuktuk_price
+      input :car_price
+      input :down_payment, hint: 'Can use decimal number'
+      input :down_payment_currency, hint: 'By Default: USD'
+      input :booking_fee
+      input :booking_fee_currency
     end
 
     f.inputs 'Images' do

@@ -16,6 +16,9 @@
           </div>
 
           <div class="rating-review large-2 small-4 columns">
+            <div class ="driver-name">
+              <span><%=driver.first_name %></span>
+            </div>
             <div class="section rating">
               <%= render 'partials/rating', rating: driver.rating %>
             </div>

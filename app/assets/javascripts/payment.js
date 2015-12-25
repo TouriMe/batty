@@ -20,6 +20,7 @@ function create_purchase(ele_info) {
         dataType: "JSON" // you want a difference between normal and ajax-calls, and json is standard
     }).success(function(purchase) {
       add_attr(purchase.id, callback_form);
+      console.log(purchase);
     });
 
   return false;
@@ -30,4 +31,17 @@ function create_purchase(ele_info) {
 function clicked_chargebt() {  
   ele_info = $('#payment_details'); // get user inputed purchase details 
   create_purchase(ele_info);
-} 
+}
+
+$(document).ready(function() {
+  
+  $("#cards_toggle").click(function(event) {
+    event.preventDefault();
+    $("#card_details").toggle();
+  });
+
+  $("#paypal-container").click(function(event) {
+    $("#card_details").hide();
+  });
+
+});

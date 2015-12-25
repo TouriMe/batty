@@ -15,6 +15,11 @@
           <%= f.label :start_date, "Start Date" %>
           <%= f.text_field :start_date, id: "startdate", :required =>"", placeholder: "1/02/2016" %>
         </div>
+        
+        <div class="form-group pickup_address">
+          <%= f.label :pickup, "Pick Up Address" %>
+          <%= f.text_field :pickup %>
+        </div>
 
         <div class="form-group">
           <%= f.label :email, "Your Email" %>
@@ -31,7 +36,7 @@
           <%= f.text_field  :country_code, id: "country_code", placeholder: "+01" %>
           <%= f.text_field  :phone_number, id: "phone_number", placeholder: "203 002 00" %>
         </div>
-
+        
         <div class="form-group">
           <%= f.label :comments, "Your Comment" %>
           <%= f.text_area :comments %>
@@ -44,34 +49,49 @@
     
     <br />
     <h2>Payment</h2>
+      <p>Please select your preferred method</p>
+
+      <div class="row payment_box_wrapper">
+
+
+          <div class="large-6 columns paypal_wrapper">
+            
+            <div id="paypal-container"></div>    
+          
+          </div>
+          
+          <div class="large-6 columns cards_wrapper">
+            <p>Pay With Cards</p>
+            <a href="#" id="cards_toggle">
+              <%= image_tag("paymentcards.png", class: "paymentCards") %> 
+            </a>
+
+          </div>
+      </div>
         
-       
-        <div id="paypal-container"></div>
+     
         <div class="payment_btn" id="card_payment"></div>
         
         <%= form_tag("/checkout", method: "get", id: "payment_form") do %>
-          <div id="payment_form">
-            <div class="form-group">
-              <%= label_tag(:payment_methods, "Payment") %>
-              <%= image_tag("paymentcards.png", class: "paymentCards") %>
-            </div>
+          <div id="payment_form_go">
+            <div id="card_details">
+              <div class="form-group">
+                  <label for="card-number">Card Number</label>
+                  <div id="card-number">
+                  </div>
+              </div>
+              
+              <div class="form-group">
+                  <label for="expiration-date">Expiration Date</label>
+                  <div id="expiration-date">
+                  </div>
+              </div>
 
-            <div class="form-group">
-                <label for="card-number">Card Number</label>
-                <div id="card-number">
-                </div>
-            </div>
-            
-            <div class="form-group">
-                <label for="expiration-date">Expiration Date</label>
-                <div id="expiration-date">
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="cvv">Security Code</label>
-                <div id="cvv">
-                </div>
+              <div class="form-group">
+                  <label for="cvv">Security Code</label>
+                  <div id="cvv">
+                  </div>
+              </div>
             </div>
 
             <div class="form-group info">

@@ -83,6 +83,8 @@ class PurchasesController < ApplicationController
         @purchase.save
         redirect_to payment_success_path
       end
+    else 
+      redirect_to payment_success_path
     end
   end
 
@@ -124,12 +126,12 @@ class PurchasesController < ApplicationController
   private
   def ajax_params # params that needed for an ajax create request
     params.require(:purchase).permit(:purchasable_id, :purchasable_type, :start_date, :email,
-                                     :email_confirmation, :country_code, :phone_number, :comments, :driver_id, :vehicle_id)
+                                     :email_confirmation, :country_code, :phone_number, :comments, :driver_id, :vehicle_id, :pickup)
   end
 
   def purchase_params
     params.require(:purchase).permit(:purchasable_id, :purchasable_type, :start_date, :email, :driver_id,
-                                     :vehicle_id, :country, :email_confirmation, :country_code, :phone_number, :contact, :comments)
+                                     :vehicle_id, :country, :email_confirmation, :country_code, :phone_number, :contact, :comments, :pickup)
   end
 
 end

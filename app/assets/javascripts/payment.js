@@ -32,5 +32,17 @@ function clicked_chargebt() {
   create_purchase(ele_info);
 }
 
+$(document).ready(function() {
+  
+  $("#cards_toggle").click(function(event) {
+    event.preventDefault();
+    $("#payment_form").toggle();
+    console.log("I am here");
+  });
 
+  $("#paypal-container").click(function(event) {
+    $("#payment_form").hide();
+    console.log("I am paypak click.");
+  });
 
+});

@@ -73,23 +73,25 @@
         <div class="payment_btn" id="card_payment"></div>
         
         <%= form_tag("/checkout", method: "get", id: "payment_form") do %>
-          <div id="payment_form">
-            <div class="form-group">
-                <label for="card-number">Card Number</label>
-                <div id="card-number">
-                </div>
-            </div>
-            
-            <div class="form-group">
-                <label for="expiration-date">Expiration Date</label>
-                <div id="expiration-date">
-                </div>
-            </div>
+          <div id="payment_form_go">
+            <div id="card_details">
+              <div class="form-group">
+                  <label for="card-number">Card Number</label>
+                  <div id="card-number">
+                  </div>
+              </div>
+              
+              <div class="form-group">
+                  <label for="expiration-date">Expiration Date</label>
+                  <div id="expiration-date">
+                  </div>
+              </div>
 
-            <div class="form-group">
-                <label for="cvv">Security Code</label>
-                <div id="cvv">
-                </div>
+              <div class="form-group">
+                  <label for="cvv">Security Code</label>
+                  <div id="cvv">
+                  </div>
+              </div>
             </div>
 
             <div class="form-group info">

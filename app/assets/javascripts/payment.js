@@ -36,13 +36,11 @@ $(document).ready(function() {
   
   $("#cards_toggle").click(function(event) {
     event.preventDefault();
-    $("#payment_form").toggle();
-    console.log("I am here");
+    $("#card_details").toggle();
   });
 
   $("#paypal-container").click(function(event) {
-    $("#payment_form").hide();
-    console.log("I am paypak click.");
+    $("#card_details").hide();
   });
 
 });

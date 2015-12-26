@@ -1,4 +1,5 @@
-ActiveAdmin.register Trip do
+ActiveAdmin.register Trip, as: "Tour" do
+
   controller do
     def permitted_params
       params.permit!
@@ -43,7 +44,7 @@ ActiveAdmin.register Trip do
     f. actions
   end
 
-  index do
+  index :title => "Tours" do
     selectable_column
     column :name
     column(:tuktuk_price){|c| c.tuktuk_price.to_s + ' ' + c.tuktuk_price.currency}

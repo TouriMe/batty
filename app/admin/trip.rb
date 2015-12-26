@@ -35,11 +35,10 @@ ActiveAdmin.register Trip, as: "Tour" do
     end
 
     f.inputs 'Media' do
-      input :card_img, label: 'Card Img', hint: 'The image shown as the card image when listing trips'
-      input :image_url, label: 'Banner Img', hint: 'The image shown as the background in trip detail'
+      input :card_img, label: 'Card Img', hint: 'The image should be standard as 800*500'
       f.inputs 'Photo Gallery' do
       f.has_many :images, allow_destroy: true do |i|
-        i.input :url, label: "Gallery Img"
+        i.input :url, label: "Gallery Image"
         i.input :alt_text
       end
     end

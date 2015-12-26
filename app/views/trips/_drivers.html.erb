@@ -28,20 +28,20 @@
             <% driver.vehicles.each do |vehicle| %>
                 <div class="row">
                   <div class="vehicle small-4 columns">
-                    <% if vehicle.name.downcase == "remork (tuk tuk)" %>
-                        <%= image_tag 'tuktuk.png', class: "vehicle-icon" %>
-                    <% elsif vehicle.name.downcase == "mini van" %>
-                        <%= image_tag 'car.png', class: "vehicle-icon" %>
+                    <% if vehicle.name.downcase == 'remork (tuk tuk)'%>
+                        <%= image_tag 'tuktuk.png', class: 'vehicle-icon' %>
+                    <% elsif vehicle.name.downcase == 'mini van' %>
+                        <%= image_tag 'car.png', class: 'vehicle-icon' %>
                     <% else %>
-                        <%= image_tag 'car.png', class: "vehicle-icon" %>
+                        <%= image_tag 'car.png', class: 'vehicle-icon' %>
                     <% end %>
                         <span><%= vehicle.name %></span>
                   </div>
                   <div class="price small-4 columns">
                     <strong>
-                      <% if vehicle.name.downcase == "tuk tuk" %>
+                      <% if vehicle.name.downcase == 'remork (tuk tuk' %>
                           <%= number_to_currency((@trip.tuktuk_price), :precision => 0) %>
-                      <% else %>
+                      <% elsif vehicle.name.downcase == 'car' %>
                           <%= number_to_currency((@trip.car_price), :precision => 0) %>
                       <% end %>
                     </strong>

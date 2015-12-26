@@ -3,6 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 $themeFont: 'Avenir Next', Helvetica;
 
+.hidden {
+  display: none;
+}
+
 .trip_wrapper {
   background: #F5F5F5;
 

@@ -1,10 +1,10 @@
 ActiveAdmin.register Driver do
-  particulars = {first_name:nil, last_name: nil, nickname: nil, short_desc: nil, description: :text, is_active: nil , youtube_url: nil}
+  particulars = {first_name:nil, last_name: nil, nickname: nil, short_desc: nil, description: :text, is_active: nil}
   contacts = {phone:nil, email:nil, wechat_id: nil, whatsapp_id: nil, facebook_url: nil }
-  intros  = {childsafe: nil, avatar_url: nil, video_url: nil, driving_years:nil}
+  medias  = {childsafe: nil, avatar_url: nil,background_url: nil, video_url: nil }
   certificates = { english_communication: nil, basic_dslr: nil, basic_history: nil, driving_experience: nil, smartphone_photography: nil }
 
-  all_fields = particulars.keys + contacts.keys + intros.keys + certificates.keys
+  all_fields = particulars.keys + contacts.keys + medias.keys + certificates.keys
 
   index do
     selectable_column
@@ -47,7 +47,7 @@ ActiveAdmin.register Driver do
       end
     end
     f.inputs('Contacts'){ register_fields[f, contacts]}
-    f.inputs('Intro'){ register_fields[f, intros]}
+    f.inputs('Intro'){ register_fields[f, medias]}
 
     f.inputs 'Language' do
       f.has_many :languages, allow_destroy: true do |l|

@@ -24,7 +24,7 @@ $(()->
   # Configure infinite table
   $('#drivers-selection').infinitePages
     # debug: true
-    buffer: 0
+    buffer: -20
     loading: ->
       $(this).text('Loading more drivers...')
     error: ->

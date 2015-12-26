@@ -28,7 +28,7 @@
             <% driver.vehicles.each do |vehicle| %>
                 <div class="row">
                   <div class="vehicle small-4 columns">
-                    <% if vehicle.name.downcase == "tuk tuk" %>
+                    <% if vehicle.name.downcase == "remork (tuk tuk)" %>
                         <%= image_tag 'tuktuk.png', class: "vehicle-icon" %>
                     <% elsif vehicle.name.downcase == "mini van" %>
                         <%= image_tag 'car.png', class: "vehicle-icon" %>

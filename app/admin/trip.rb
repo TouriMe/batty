@@ -25,12 +25,14 @@ ActiveAdmin.register Trip do
     f.inputs 'Price Calculation' do
       input :tuktuk_price
       input :car_price
-      input :down_payment, hint: 'Can use decimal number'
-      input :down_payment_currency, hint: 'By Default: USD'
-      input :booking_fee
-      input :booking_fee_currency
+      
+      input :down_payment, hint: 'Can use decimal number' 
+      input :booking_fee, hint: 'Can use decimal number'  
+      
+      input :booking_fee_currency , hint: 'By Default: USD'
+      input :down_payment_currency, hint: 'By Default: USD' 
     end
-
+    
     f.inputs 'Images' do
       input :image_url, hint: 'The image shown as the background when listing trips'
       f.has_many :images, allow_destroy: true do |i|

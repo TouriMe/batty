@@ -53,7 +53,7 @@
 
   .trip_detail_wrapper
     .row
-      #detail-content.small-12.large-9.columns
+      #detail-content.small-12.large-12.columns
         .row
           .highlight.small-12.large-5.columns
             h4
@@ -105,13 +105,4 @@
           = render 'drivers'
           = render 'comments/comments', target: @trip
 
-
-      #trip_sidebar.rhs.small-12.large-3.columns
-
-        / #payment-form
-          /= render 'purchases/form'
-
-        #important-info
-          - if @trip.important_info
-            h2 Important Info
-            = @trip.important_info.html_safe
+  

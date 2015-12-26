@@ -21,14 +21,18 @@ ActiveAdmin.register Trip do
       input :exclude_html, as: :html_editor
       input :tour_start
       input :tour_end
+    end
+    f.inputs 'Price Calculation' do
       input :tuktuk_price
       input :car_price
-      input :down_payment, hint: 'Can use decimal number'
-      input :down_payment_currency, hint: 'By Default: USD'
-      input :booking_fee
-      input :booking_fee_currency
+      
+      input :down_payment, hint: 'Can use decimal number' 
+      input :booking_fee, hint: 'Can use decimal number'  
+      
+      input :booking_fee_currency , hint: 'By Default: USD'
+      input :down_payment_currency, hint: 'By Default: USD' 
     end
-
+    
     f.inputs 'Images' do
       f.has_many :images, allow_destroy: true do |i|
         i.input :url

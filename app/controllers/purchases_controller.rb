@@ -42,11 +42,11 @@ class PurchasesController < ApplicationController
       @charge += @trip.booking_fee
     end
 
-    if @vehicle_type == "Tuk Tuk"
+    if @vehicle_type == "Remork (tuk tuk)"
       @later_pay = (@trip.tuktuk_price_cents/100) - @deposit
       @price = (@trip.tuktuk_price_cents/100)
       @driver.vehicles.each do |v|
-        if v.name.downcase == "tuk tuk"
+        if v.name.downcase == "remork (tuk tuk)"
           @vehicle_id = v.id
         end
       end

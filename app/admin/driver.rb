@@ -65,10 +65,10 @@ ActiveAdmin.register Driver do
     end
 
 
-    f.inputs 'Images' do
+    f.inputs 'Photo Gallery' do
       f.has_many :images, allow_destroy: true do |i|
-        i.input :url
-        i.input :url_small
+        i.input :url, label: "Gallery Img"
+        i.input :url_small,label: "Thumbnail Img"
         i.input :alt_text
       end
     end

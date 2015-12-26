@@ -34,11 +34,11 @@ ActiveAdmin.register Trip, as: "Tour" do
       input :down_payment_currency, hint: 'By Default: USD' 
     end
     
-    f.inputs 'Images' do
-      input :card_img, hint: 'The image shown as the card image when listing trips'
-      input :image_url, hint: 'The image shown as the background in trip detail'
+    f.inputs 'Photo Gallery' do
+      input :card_img, label: 'Card Img', hint: 'The image shown as the card image when listing trips'
+      input :image_url,label: 'Banner Img', hint: 'The image shown as the background in trip detail'
       f.has_many :images, allow_destroy: true do |i|
-        i.input :url
+        i.input :url,label: "Gallery Img"
         i.input :alt_text
       end
     end

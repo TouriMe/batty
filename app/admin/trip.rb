@@ -9,8 +9,6 @@ ActiveAdmin.register Trip do
     f.inputs do
       input :name
       input :description
-
-      input :image_url, hint: 'The image shown as the background when listing trips'
       input :distance, hint: 'integer, unit is `km`'
       input :duration, hint: 'text, for example: 4 days'
       input :checkpoint_num, hint: 'integer, number of checkpoints'
@@ -21,6 +19,10 @@ ActiveAdmin.register Trip do
       input :exclude_html, as: :html_editor
       input :tour_start
       input :tour_end
+
+    end
+
+    f.inputs 'Price Calculation' do
       input :tuktuk_price
       input :car_price
       input :down_payment, hint: 'Can use decimal number'
@@ -30,6 +32,7 @@ ActiveAdmin.register Trip do
     end
 
     f.inputs 'Images' do
+      input :image_url, hint: 'The image shown as the background when listing trips'
       f.has_many :images, allow_destroy: true do |i|
         i.input :url
         i.input :alt_text

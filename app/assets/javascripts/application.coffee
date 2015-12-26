@@ -8,6 +8,8 @@
 #= require react_ujs
 #= require components
 #= require jquery.dotdotdot
+#= require jquery.infinitescroll
+#= require jquery.infinite-pages
 #= require_tree .
 
 
@@ -19,6 +21,15 @@ $(()->
     localStorage.setItem("banner_check", "1")
   )
 
+  # Configure infinite table
+  $('#drivers-selection').infinitePages
+    # debug: true
+    buffer: 0
+    loading: ->
+      $(this).text('Loading more drivers...')
+    error: ->
+      $(this).button('There was an error, please try again')
+  
   if (localStorage.getItem("banner_check"))
     $('#sign_banner').hide()
 

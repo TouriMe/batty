@@ -1,11 +1,14 @@
+<header class="content_head">
+  <h1>Drivers available for this trip</h1>
+</header>
 
 <section id="driver_wrapper">
-<% @drivers.each do |driver| %>
-    <% if driver.vehicles.first %>
+
+    <% if @driver.vehicles.first %>
         <div class="row tour-driver">
           
           <div class="profile-avatar large-2 small-4 columns">
-            <% if driver.avatar_url.present? %>
+            <% if @driver.avatar_url.present? %>
                 <%= image_tag driver.avatar_url, class: 'avatar-image' %>
             <% else %>
                 <%= image_tag 'avatar.jpg', class: 'avatar-image' %>
@@ -14,18 +17,18 @@
 
           <div class="rating-review large-2 small-4 columns">
             <div class ="driver-name">
-              <span><%=driver.first_name %></span>
+              <span><%= @driver.first_name %></span>
             </div>
             <div class="section rating">
-              <%= render 'partials/rating', rating: driver.rating %>
+              <%= render 'partials/rating', rating: @driver.rating %>
             </div>
             <div class="section comment">
-              <%= pluralize(driver.comments.count, 'review') %>
+              <%= pluralize(@driver.comments.count, 'review') %>
             </div>
           </div>
 
           <div class="vehicles large-7 small-8 columns">
-            <% driver.vehicles.each do |vehicle| %>
+            <% @driver.vehicles.each do |vehicle| %>
                 <div class="row">
                   <div class="vehicle small-4 columns">
                     <% if vehicle.name.downcase == "tuk tuk" %>
@@ -47,7 +50,7 @@
                     </strong>
                   </div>
                   <div class="book-btn small-4 columns">
-                    <%= link_to "BOOK ME", "/book/#{@trip.id}/#{driver.id}?vehicle_type=#{vehicle.name}", class: "btn btn-book" %>
+                    <%= link_to "BOOK ME", "/book/#{@trip.id}/#{@driver.id}?vehicle_type=#{vehicle.name}", class: "btn btn-book" %>
                   </div>
                 </div>
             <% end %>
@@ -55,7 +58,6 @@
         </div>
 
     <% end %>
-<% end %>
+
 
 </section>
-

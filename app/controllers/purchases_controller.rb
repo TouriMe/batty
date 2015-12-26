@@ -44,6 +44,7 @@ class PurchasesController < ApplicationController
 
     if @vehicle_type == "Tuk Tuk"
       @later_pay = (@trip.tuktuk_price_cents/100) - @deposit
+      @price = (@trip.tuktuk_price_cents/100)
       @driver.vehicles.each do |v|
         if v.name.downcase == "tuk tuk"
           @vehicle_id = v.id
@@ -51,6 +52,7 @@ class PurchasesController < ApplicationController
       end
     elsif @vehicle_type == "Car"
       @later_pay = (@trip.car_price_cents/100) - @deposit
+      @price = (@trip.car_price_cents/100)
       @driver.vehicles.each do |v|
         if v.name.downcase == "Car"
           @vehicle_id = v.id
@@ -128,7 +130,7 @@ class PurchasesController < ApplicationController
 
   private
   def ajax_params # params that needed for an ajax create request
-    params.require(:purchase).permit(:purchasable_id, :purchasable_type, :start_date, :email, :reference_id,
+    params.require(:purchase).permit(:purchasable_id, :purchasable_type, :start_date, :email, :reference_id, :price,
                                      :email_confirmation, :country_code, :phone_number, :comments, :driver_id, :vehicle_id, :pickup)
   end
 

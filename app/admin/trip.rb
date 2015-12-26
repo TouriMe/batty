@@ -26,49 +26,51 @@ ActiveAdmin.register Trip, as: "Tour" do
     f.inputs 'Price Calculation' do
       input :tuktuk_price
       input :car_price
-      
-      input :down_payment, hint: 'Can use decimal number' 
-      input :booking_fee, hint: 'Can use decimal number'  
-      
-      input :booking_fee_currency , hint: 'By Default: USD'
-      input :down_payment_currency, hint: 'By Default: USD' 
+
+      input :down_payment, hint: 'Can use decimal number'
+      input :booking_fee, hint: 'Can use decimal number'
+
+      input :booking_fee_currency, hint: 'By Default: USD'
+      input :down_payment_currency, hint: 'By Default: USD'
     end
-    
-    f.inputs 'Images' do
-      input :card_img, hint: 'The image shown as the card image when listing trips'
-      input :image_url, hint: 'The image shown as the background in trip detail'
+
+    f.inputs 'Media' do
+      input :card_img, label: 'Card Img', hint: 'The image shown as the card image when listing trips'
+      input :image_url, label: 'Banner Img', hint: 'The image shown as the background in trip detail'
+      f.inputs 'Photo Gallery' do
       f.has_many :images, allow_destroy: true do |i|
-        i.input :url
+        i.input :url, label: "Gallery Img"
         i.input :alt_text
       end
     end
-
-    f.actions
   end
 
-  index :title => "Tours" do
-    selectable_column
-    column :name
-    column(:tuktuk_price){|c| c.tuktuk_price.to_s + ' ' + c.tuktuk_price.currency}
-    column(:car_price){|c| c.car_price.to_s + ' ' + c.car_price.currency}
-    column :down_payment 
-    column :booking_fee
-    column :duration
-    column :checkpoints_num
-    column :distance
-    column :updated_at
-    actions
-  end
+  f.actions
+end
 
-  show do
-    attributes_table do
-      row :name
-      row :description
-      row(:tuktuk_price){ tour.tuktuk_price.to_s + ' ' + tour.tuktuk_price.currency}
-      row(:car_price){tour.car_price.to_s + ' ' + tour.car_price.currency}
-      row :content
-      row(:images){ tour.images.map(&:url).join ' ,'}
-    end
-    active_admin_comments
+index :title => "Tours" do
+  selectable_column
+  column :name
+  column(:tuktuk_price) { |c| c.tuktuk_price.to_s + ' ' + c.tuktuk_price.currency }
+  column(:car_price) { |c| c.car_price.to_s + ' ' + c.car_price.currency }
+  column :down_payment
+  column :booking_fee
+  column :duration
+  column :checkpoints_num
+  column :distance
+  column :updated_at
+  actions
+end
+
+show do
+  attributes_table do
+    row :name
+    row :description
+    row(:tuktuk_price) { tour.tuktuk_price.to_s + ' ' + tour.tuktuk_price.currency }
+    row(:car_price) { tour.car_price.to_s + ' ' + tour.car_price.currency }
+    row :content
+    row(:images) { tour.images.map(&:url).join ' ,' }
   end
+  active_admin_comments
+end
 end

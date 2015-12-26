@@ -120,16 +120,16 @@
       <header id="info_top">
         <h4><%= @trip.name %></h4>
 
-        <p><span class="bold">Driver: </span> <%= @driver.nickname %><br >
+        <p><span class="bold">Driver: </span> <%= @driver.first_name %><br >
           <span class="bold">Vehicle Type: </span><%= @vehicle_type %><br >
           <span class="bold">Reference ID: </span><%= @reference_id %><br >
           </p>
       </header>
 
       <section id="driver_image" style="background-image:url(<%= @driver.background_url %>">
-        <div class="profile_set">
-          <%= image_tag(@driver.avatar_url, class: "profile_image") %>
-        </div>
+        <!--<div class="profile_set">-->
+          <!--<%= image_tag(@driver.avatar_url, class: "profile_image") %>-->
+        <!--</div>-->
       </section>
 
       <section id="bill_info">

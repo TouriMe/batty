@@ -311,6 +311,7 @@ GEM
       binding_of_caller (>= 0.7.2)
       railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
+    will_paginate (3.0.7)
     wysiwyg-rails (1.2.8)
       font-awesome-rails (>= 4.3.0.0)
       railties (>= 3.2, < 5.0)
@@ -354,7 +355,8 @@ DEPENDENCIES
   social-share-button (~> 0.1.6)
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
+  will_paginate
   wysiwyg-rails
 
 BUNDLED WITH
-   1.10.6
+   1.11.2

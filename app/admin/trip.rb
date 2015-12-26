@@ -42,7 +42,7 @@ ActiveAdmin.register Trip, as: "Tour" do
       end
     end
 
-    f. actions
+    f.actions
   end
 
   index :title => "Tours" do

@@ -27,6 +27,9 @@ class PurchasesController < ApplicationController
     @driver = Driver.friendly.find(params[:driver_id])
     @purchase = Purchase.new
     @no_show_title = true
+  
+    ## Reference ID
+    @reference_id = SecureRandom.hex(7) # we will release this logic after 9 Millions purchases
 
     @charge = 0
     @deposit = 0
@@ -125,12 +128,12 @@ class PurchasesController < ApplicationController
 
   private
   def ajax_params # params that needed for an ajax create request
-    params.require(:purchase).permit(:purchasable_id, :purchasable_type, :start_date, :email,
+    params.require(:purchase).permit(:purchasable_id, :purchasable_type, :start_date, :email, :reference_id,
                                      :email_confirmation, :country_code, :phone_number, :comments, :driver_id, :vehicle_id, :pickup)
   end
 
   def purchase_params
-    params.require(:purchase).permit(:purchasable_id, :purchasable_type, :start_date, :email, :driver_id,
+    params.require(:purchase).permit(:purchasable_id, :purchasable_type, :start_date, :email, :driver_id, :reference_id,
                                      :vehicle_id, :country, :email_confirmation, :country_code, :phone_number, :contact, :comments, :pickup)
   end
 

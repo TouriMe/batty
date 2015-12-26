@@ -2,7 +2,6 @@
   <div class="search-results row full-width">
     <% @trips.each do |trip| %>
       <div class="small-12 medium-6 large-4 columns card-wrapper">
-        <%= trip.card_img %>
         <%= render 'trip_item', trip: trip %>
       </div>
     <% end %>

@@ -1,5 +1,5 @@
 class OrderConfirmation < ApplicationMailer
-  default from: 'order@tourime.com'
+  default from: 'support@tourime.com'
 
   def confirm(purchase)
     @purchase = purchase

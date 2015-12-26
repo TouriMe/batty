@@ -1,7 +1,7 @@
 ActiveAdmin.register Driver do
   particulars = {first_name:nil, last_name: nil, nickname: nil, short_desc: nil, description: :text, is_active: nil}
   contacts = {phone:nil, email:nil, wechat_id: nil, whatsapp_id: nil, facebook_url: nil }
-  medias  = {childsafe: nil, avatar_url: nil,background_url: nil, video_url: nil }
+  medias  = {childsafe: nil, avatar_url: nil, card_img: nil, background_url: nil, video_url: nil }
   certificates = { english_communication: nil, basic_dslr: nil, basic_history: nil, driving_experience: nil, smartphone_photography: nil }
 
   all_fields = particulars.keys + contacts.keys + medias.keys + certificates.keys

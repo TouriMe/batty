@@ -35,7 +35,8 @@ ActiveAdmin.register Trip, as: "Tour" do
     end
     
     f.inputs 'Images' do
-      input :image_url, hint: 'The image shown as the background when listing trips'
+      input :card_img, hint: 'The image shown as the card image when listing trips'
+      input :image_url, hint: 'The image shown as the background in trip detail'
       f.has_many :images, allow_destroy: true do |i|
         i.input :url
         i.input :alt_text

@@ -35,6 +35,6 @@ module CombodianSmile
     config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
     config.active_record.raise_in_transactional_callbacks = true
     config.middleware.use ActionDispatch::Flash
-    config.serve_static_assets = true
+    config.serve_static_files = true
   end
 end

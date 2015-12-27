@@ -470,7 +470,6 @@ GEM
       font-awesome-rails (~> 4.4, >= 4.4.0.0)
       railties (>= 3.2, < 5.0)
     xml-simple (1.1.5)
-    yui-compressor (0.12.0)
 
 PLATFORMS
   ruby
@@ -521,7 +520,6 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
   wysiwyg-rails
-  yui-compressor
 
 BUNDLED WITH
    1.11.2

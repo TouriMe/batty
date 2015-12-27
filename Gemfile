@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 gem 'rails', '4.2.2'
 
 gem 'pg'
@@ -57,4 +56,5 @@ gem 'fog', require: 'fog/aws'
 gem 'rmagick', '2.13.2'
 
 gem 'jquery-dotdotdot-rails', '~> 1.6', '>= 1.6.5'
+gem 'rails_12factor'
 

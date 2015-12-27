@@ -1,13 +1,28 @@
-#fixed-head.contain-to-grid.sticky
-  nav.top-bar[data-topbar role="navigation"]
-    ul.title-area
-      li.name
-        h1.site-title.left
-          a[href="/"]
-            .logo-wrap
-              = image_tag 'tourime_logo.png'
-      li.toggle-topbar.menu-icon
-        a[href='#']
-          span
-    section.top-bar-section
-      = render 'partials/login'
+- if @transparent_header
+  #home-head.contain-to-grid.sticky
+    nav.top-bar[data-topbar role="navigation"]
+      ul.title-area
+        li.name
+          h1.site-title.left
+            a[href="/"]
+              .logo-wrap
+                = image_tag 'tourime_logo_yellow.png'
+        li.toggle-topbar.menu-icon
+          a[href='#']
+            span
+      .home-top-bar-section
+        = render 'partials/login'
+- else
+    #fixed-head.contain-to-grid.sticky
+      nav.top-bar[data-topbar role="navigation"]
+        ul.title-area
+          li.name
+            h1.site-title.left
+              a[href="/"]
+                .logo-wrap
+                  = image_tag 'tourime_logo.png'
+          li.toggle-topbar.menu-icon
+            a[href='#']
+              span
+        .top-bar-section
+          = render 'partials/login'

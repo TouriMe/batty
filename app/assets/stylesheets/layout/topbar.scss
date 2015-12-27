@@ -57,6 +57,15 @@
       }
     }
   }
+  .home-top-bar-section {
+    .login-logout-btn {
+      color: #FFB94E;
+      font-weight: 600;
+      .login-icon {
+        margin-right: 10px;
+      }
+    }
+  }
 }
 
 @media (min-width: 640px) {
@@ -70,6 +79,13 @@
       .login-logout-btn {
         color: white;
 
+      }
+    }
+
+    .home-top-bar-section {
+      .login-logout-btn {
+        color: #FFB94E;
+        font-weight: 600;
       }
     }
   }

@@ -71,7 +71,12 @@ html, body, h1, h2, h3, h4, h5, h6, p, a, label, select {
 #header {
   #fixed-head {
     //padding: 5px 0px;
-    background: #FFB94E;
+    background: rgba(255,185,78,0.92);
+  }
+
+  #home-head {
+    //padding: 5px 0px;
+    background: transparent;
   }
 }
 .alert-box{

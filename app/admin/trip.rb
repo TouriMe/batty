@@ -14,11 +14,11 @@ ActiveAdmin.register Trip, as: "Tour" do
       input :distance, hint: 'integer, unit is `km`'
       input :duration, hint: 'text, for example: 4 days'
       input :checkpoint_num, hint: 'integer, number of checkpoints'
-      input :content, as: :html_editor
-      input :important_info, as: :html_editor
-      input :highlight_html, as: :html_editor
-      input :include_html, as: :html_editor
-      input :exclude_html, as: :html_editor
+      input :content, as: :ckeditor
+      input :important_info, as: :ckeditor
+      input :highlight_html, as: :ckeditor
+      input :include_html, as: :ckeditor
+      input :exclude_html, as: :ckeditor
       input :tour_start
       input :tour_end
 

@@ -56,7 +56,8 @@ gem 'fog', require: 'fog/aws'
 gem 'rmagick', '2.13.2'
 gem 'ckeditor'
 gem 'mini_magick'
+gem 'active_skin'
 
 gem 'jquery-dotdotdot-rails', '~> 1.6', '>= 1.6.5'
-gem 'rails_12factor'
+gem 'rails_12factor', group: :production
 

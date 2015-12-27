@@ -77,9 +77,6 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.assets.css_compressor = :yui
-  config.assets.js_compressor = :yui
-  
   config.logger = Logger.new(STDOUT)
   config.logger.level = Logger::INFO
 end

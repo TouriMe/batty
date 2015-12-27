@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   get 'book/:tour_id/:driver_id' => 'purchases#new'   
   get 'payment_success' => 'purchases#success'
 
+  mount Ckeditor::Engine => '/ckeditor' 
   devise_for :normal_users, :controllers => { :omniauth_callbacks => 'auth/omniauth' }
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

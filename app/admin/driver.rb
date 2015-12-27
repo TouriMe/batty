@@ -1,5 +1,5 @@
 ActiveAdmin.register Driver do
-  particulars = {first_name:nil, last_name: nil, nickname: nil, short_desc: nil, description: :text, is_active: nil}
+  particulars = {first_name:nil, last_name: nil, nickname: nil, short_desc: nil, is_active: nil}
   contacts = {phone:nil, email:nil, wechat_id: nil, whatsapp_id: nil, facebook_url: nil }
   medias  = {childsafe: nil, avatar_url: nil, card_img: nil, background_url: nil, video_url: nil }
   certificates = { english_communication: nil, basic_dslr: nil, basic_history: nil, driving_experience: nil, smartphone_photography: nil }
@@ -37,6 +37,7 @@ ActiveAdmin.register Driver do
   form do |f|
     f.inputs('Particulars') do
       register_fields[f, particulars]
+      f.input :description, as: :ckeditor 
 
       f.has_many :driver_cities, allow_destroy: true do |city|
         city.input :city_id, label: 'Name', as: :select, collection: (City.all.map {|c| [c.name, c.id]})
@@ -48,11 +49,11 @@ ActiveAdmin.register Driver do
     end
     f.inputs('Contacts'){ register_fields[f, contacts]}
  
-    f.inputs('Intro') do
+    f.inputs'Intro', :multipart => true do  
       f.input :childsafe, label: "Child Safe"
       f.input :video_url, label: "Youtube Url"
       f.input :avatar_url, :as => :file, :hint => f.driver.avatar_url.present? \
-        ? image_tag(f.driver.avatar_url.square.url, class: "active_admin_img")
+        ? image_tag(f.driver.avatar_url.url(:square), class: "active_admin_img")
         : content_tag(:span, "No Dirver Avatar Yet")
       f.input :avatar_url_cache , :as => :hidden
 

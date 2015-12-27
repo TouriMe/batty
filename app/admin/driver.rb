@@ -50,6 +50,7 @@ ActiveAdmin.register Driver do
  
     f.inputs('Intro') do
       f.input :childsafe, label: "Child Safe"
+      f.input :video_url, label: "Youtube Url"
       f.input :avatar_url, :as => :file, :hint => f.driver.avatar_url.present? \
         ? image_tag(f.driver.avatar_url.square.url, class: "active_admin_img")
         : content_tag(:span, "No Dirver Avatar Yet")

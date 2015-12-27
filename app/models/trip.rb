@@ -17,6 +17,5 @@ class Trip < ActiveRecord::Base
   # to support chinese (utf8) slugs
   def normalize_friendly_id(input)
     input.to_s.to_slug.normalize.to_s
-  end
- 
+  end 
 end

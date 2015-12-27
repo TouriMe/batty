@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151226064619) do
+ActiveRecord::Schema.define(version: 20151227062405) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -215,6 +215,7 @@ ActiveRecord::Schema.define(version: 20151226064619) do
     t.string   "tour_start"
     t.string   "tour_end"
     t.string   "card_img"
+    t.boolean  "is_active",             default: true
   end
 
   create_table "users", force: :cascade do |t|

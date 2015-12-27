@@ -58,6 +58,7 @@ gem 'ckeditor'
 gem 'mini_magick'
 gem 'active_skin'
 
+gem 'yui-compressor'
 gem 'jquery-dotdotdot-rails', '~> 1.6', '>= 1.6.5'
 gem 'rails_12factor', group: :production
 

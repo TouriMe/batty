@@ -47,8 +47,25 @@ ActiveAdmin.register Driver do
       end
     end
     f.inputs('Contacts'){ register_fields[f, contacts]}
-    f.inputs('Intro'){ register_fields[f, medias]}
+ 
+    f.inputs('Intro') do
+      f.input :childsafe, label: "Child Safe"
+      f.input :avatar_url, :as => :file, :hint => f.driver.avatar_url.present? \
+        ? image_tag(f.driver.avatar_url.square.url, class: "active_admin_img")
+        : content_tag(:span, "No Dirver Avatar Yet")
+      f.input :avatar_url_cache , :as => :hidden
 
+      f.input :background_url, :as => :file, :hint => f.driver.background_url.present? \
+        ? image_tag(f.driver.background_url.url, class: "active_admin_img")
+        : content_tag(:span, "No Dirver Background Yet")
+      f.input :background_url_cache , :as => :hidden
+      
+      f.input :card_img, :as => :file, :hint => f.driver.card_img.present? \
+        ? image_tag(f.driver.card_img.url, class: "active_admin_img")
+        : content_tag(:span, "No Dirver Card Image Yet")
+      f.input :card_img_cache, :as => :hidden
+    end
+    
     f.inputs 'Language' do
       f.has_many :languages, allow_destroy: true do |l|
         l.input :language_code, as: :select, collection: LanguageList::COMMON_LANGUAGES.map{|l| [l.name, l.iso_639_3]}

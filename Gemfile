@@ -32,7 +32,8 @@ group :development, :test do
 end
 
 group :development do
-  gem 'rails-erd' 
+  gem 'rails-erd'
+  gem 'letter_opener'
 end
 
 gem 'font-awesome-rails'

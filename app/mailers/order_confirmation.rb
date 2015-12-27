@@ -4,6 +4,6 @@ class OrderConfirmation < ApplicationMailer
   def confirm(purchase)
     @purchase = purchase
     puts 'purchase created.'
-    mail(to: @purchase.email, subject: 'Your Order with TouriMe has been confirmed')
+    mail(to: @purchase.email, subject: 'Your Booking with TouriMe has been confirmed')
   end
 end

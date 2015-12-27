@@ -10,5 +10,6 @@ ActiveAdmin.register Purchase do
     column :reference_id
     column :status
     column :start_date
+    actions
   end
 end

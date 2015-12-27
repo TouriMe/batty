@@ -52,5 +52,9 @@ gem 'babosa'
 gem "dynamic_sitemaps"
 gem 'kaminari'
 gem 'jquery-infinite-pages'
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+gem 'fog', require: 'fog/aws'
+gem 'rmagick', '2.13.2'
 
 gem 'jquery-dotdotdot-rails', '~> 1.6', '>= 1.6.5'
+

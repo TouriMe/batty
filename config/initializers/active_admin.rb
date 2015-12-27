@@ -182,6 +182,7 @@ ActiveAdmin.setup do |config|
   config.register_stylesheet 'font-awesome'
   config.register_stylesheet 'froala_editor.min'
   config.register_stylesheet 'froala_style.min'
+  config.register_stylesheet 'active_custom.css'
   #
   # You can provide an options hash for more control, which is passed along to stylesheet_link_tag():
   #   config.register_stylesheet 'my_print_stylesheet.css', media: :print

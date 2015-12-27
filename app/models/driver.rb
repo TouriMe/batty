@@ -2,6 +2,10 @@ class Driver < ActiveRecord::Base
   include Commentable
   extend FriendlyId
 
+  mount_uploader :avatar_url, DriverAvatarUploader
+  mount_uploader :card_img, DriverCardUploader
+  mount_uploader :background_url, DriverBackgroundUploader
+
   friendly_id :full_name, use: [:slugged, :finders]
   # obfuscate_id
 

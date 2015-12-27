@@ -36,10 +36,15 @@ ActiveAdmin.register Trip, as: "Tour" do
     end
 
     f.inputs 'Media' do
-      input :card_img, label: 'Card Img', hint: 'The image should be standard as 800*500'
+      f.input :card_img, :as => :file, label: "Card Image ( Image Size Should be 800* 500 )", :hint => f.tour.card_img.url.present? \
+        ? image_tag(f.tour.card_img.url, class: "active_admin_img")
+        : content_tag(:span, "No Card Image Yet")
+      
       f.inputs 'Photo Gallery' do
       f.has_many :images, allow_destroy: true do |i|
-        i.input :url, label: "Gallery Image"
+        i.input :url, as: :file , label: "Gallery Image", :hint => i.object.url.present? \
+          ? image_tag(i.object.url, class: "active_admin_img")
+          : content_tag(:span, "No Image Was Uploaded")
         i.input :alt_text
       end
     end

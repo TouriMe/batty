@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'info@tourime.com'
+  default from: 'support@tourime.com'
   layout 'mailer'
 end

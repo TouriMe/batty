@@ -1,7 +1,9 @@
 class Trip < ActiveRecord::Base
   include Commentable
   extend FriendlyId
-  
+ 
+  mount_uploader :card_img, TourCardUploader 
+
   has_many :purchases, as: :purchasable
   has_many :images, as: :imagable
   

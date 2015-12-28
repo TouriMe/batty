@@ -15,7 +15,7 @@ class TourCardUploader < CarrierWave::Uploader::Base
   version :org do
     process :resize_to_fill => [800, 500]
   end
-
+  
   version :square do
     process :resize_to_fill => [ 500, 500 ]
   end

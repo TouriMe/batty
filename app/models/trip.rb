@@ -12,7 +12,7 @@ class Trip < ActiveRecord::Base
   monetize :tuktuk_price_cents
   monetize :car_price_cents
 
-  validates_presence_of :name, :tuktuk_price_cents, :tuktuk_price_currency
+  validates_presence_of :name
 
   accepts_nested_attributes_for :images, allow_destroy: true
   

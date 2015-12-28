@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151227181217) do
+ActiveRecord::Schema.define(version: 20151228122340) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,12 @@ ActiveRecord::Schema.define(version: 20151227181217) do
 
   create_table "add_image_url_to_trips", force: :cascade do |t|
     t.string   "image_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "addresses", force: :cascade do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -192,6 +198,7 @@ ActiveRecord::Schema.define(version: 20151227181217) do
     t.string   "phone_number"
     t.string   "pickup"
     t.string   "reference_id"
+    t.integer  "address_id"
   end
 
   create_table "seos", force: :cascade do |t|

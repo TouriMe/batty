@@ -18,10 +18,11 @@
           <%= f.label :start_date, "Start Date" %>
           <%= f.text_field :start_date, id: "startdate", :required =>"", placeholder: "1/02/2016" %>
         </div>
+
         
         <div class="form-group pickup_address">
-          <%= f.label :pickup, "Pick Up Address" %>
-          <%= f.text_field :pickup %>
+          <%= f.label :address_id, "Pick Up Address" %>
+          <%= f.collection_select(:address_id, Address.all, :id, :name,  { :prompt => 'Select Pickup Address', :selected => @purchase.address_id }) %> 
         </div>
 
         <div class="form-group">

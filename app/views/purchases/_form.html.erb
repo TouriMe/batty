@@ -138,7 +138,7 @@
           <tbody>
               <tr>
                 <td>Tour Pirce</td>
-                <% if @vehicle_type == "Tuk Tuk" %>
+                <% if @vehicle_type == "Remork (tuk tuk)" %>
                   <td class="charge"><%= number_to_currency((@trip.tuktuk_price), :precision => 0) %> USD</td>
                 <% else %>
                   <td class="charge"><%= number_to_currency((@trip.car_price), :precision => 0) %> USD</td>

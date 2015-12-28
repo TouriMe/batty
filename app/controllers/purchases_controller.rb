@@ -33,6 +33,7 @@ class PurchasesController < ApplicationController
 
     @charge = 0
     @deposit = 0
+
     if @trip.down_payment
       @charge += @trip.down_payment
       @deposit += @trip.down_payment
@@ -54,7 +55,7 @@ class PurchasesController < ApplicationController
       @later_pay = (@trip.car_price_cents/100) - @deposit
       @price = (@trip.car_price_cents/100)
       @driver.vehicles.each do |v|
-        if v.name.downcase == "Car"
+        if v.name.downcase == "car"
           @vehicle_id = v.id
         end
       end

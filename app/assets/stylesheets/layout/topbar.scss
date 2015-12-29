@@ -1,3 +1,5 @@
+@import 'settings';
+
 #sign_banner.banner {
   display: block;
   background-color: black;
@@ -7,49 +9,23 @@
 
   padding: 10px 0;
 
-  .button {
-    background: transparent;
-
-    border-radius: 4px;
-    border: 1px solid white;
-
-    font-weight: 300;
-    letter-spacing: 1px;
-
-    padding: 5px 10px;
-    margin: 0 5px;
-  }
-
-  .close {
-    vertical-align: middle;
-    margin: 10px;
-  }
 }
 
 .top-bar {
 
-  .site-title {
-    color: white;
-    text-transform: uppercase;
-    &:hover {
-      color: white;
+  .title-area {
+    width: 150px;
+    float: left;
+    .logo-wrap{
+      @media #{$media-pad-smaller}{
+        width: 80%;
+      }
+      width: 100%;
     }
   }
-  text-align: center;
-
-  .site-title {
-    display: inline-block;
-    letter-spacing: 1px;
-
-    img {
-      display: inline-block;
-      vertical-align: middle;
-      height: 50px;
-      max-width: 100%;
-    }
-  }
-
   .top-bar-section {
+    width: 150px;
+    float: right;
     .login-logout-btn {
       color: white;
       .login-icon {
@@ -58,9 +34,18 @@
     }
   }
   .home-top-bar-section {
+    float: right;
     .login-logout-btn {
       color: #FFB94E;
-      font-weight: 600;
+      font-weight: 500;
+      font-size: 18px;
+      @media #{$media-pad-smaller}{
+        font-weight: 300;
+        font-size: 16px;
+        text-align: right ;
+        margin-right: 20px;
+      }
+
       .login-icon {
         margin-right: 10px;
       }
@@ -68,26 +53,4 @@
   }
 }
 
-@media (min-width: 640px) {
-  .top-bar .title-area {
-    float: left;
-    margin: 0 auto;
-    width: calc(100% - 100px);
-    position: unset;
-    z-index: 100;
-    .top-bar-section {
-      .login-logout-btn {
-        color: white;
-
-      }
-    }
-
-    .home-top-bar-section {
-      .login-logout-btn {
-        color: #FFB94E;
-        font-weight: 600;
-      }
-    }
-  }
-}
 

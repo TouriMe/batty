@@ -24,10 +24,17 @@
     }
   }
   .top-bar-section {
-    width: 150px;
     float: right;
     .login-logout-btn {
       color: white;
+      font-weight: 500;
+      font-size: 18px;
+      @media #{$media-pad-smaller}{
+        font-weight: 400;
+        font-size: 16px;
+        text-align: right ;
+        margin-right: 20px;
+      }
       .login-icon {
         margin-right: 10px;
       }
@@ -40,7 +47,7 @@
       font-weight: 500;
       font-size: 18px;
       @media #{$media-pad-smaller}{
-        font-weight: 300;
+        font-weight: 400;
         font-size: 16px;
         text-align: right ;
         margin-right: 20px;

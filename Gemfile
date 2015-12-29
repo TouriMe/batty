@@ -60,4 +60,5 @@ gem 'active_skin'
 
 gem 'jquery-dotdotdot-rails', '~> 1.6', '>= 1.6.5'
 gem 'rails_12factor', group: :production
+gem 'rails_serve_static_assets'
 

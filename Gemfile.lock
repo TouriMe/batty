@@ -510,6 +510,7 @@ DEPENDENCIES
   rails (= 4.2.2)
   rails-erd
   rails_12factor
+  rails_serve_static_assets
   react-rails (~> 1.4.0)
   rmagick (= 2.13.2)
   rspec-rails

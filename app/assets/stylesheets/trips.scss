@@ -1,6 +1,8 @@
 // Place all the styles related to the trips controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'settings';
+
 $themeFont: 'Avenir Next', Helvetica;
 
 .hidden {
@@ -21,9 +23,16 @@ $themeFont: 'Avenir Next', Helvetica;
     max-width: 100%;
     background: #FFFFFF;
     #trip_header {
+
+      @media #{$media-pad-smaller}{
+        display: block;
+      }
+
+      @media #{$media-pad-larger}{
+        display: inline-flex;
+      }
       width: 100%;
-      display: block;
-      display: inline-flex;
+
       padding-top: 0px;
       .trip_top_head {
         padding-top: 32px;
@@ -157,13 +166,18 @@ $themeFont: 'Avenir Next', Helvetica;
       }
 
       .detail {
-        h3 {
+        .trip-label {
           font-size: 20px;
           font-family: $themeFont;
           font-weight: 500;
           color: #464646;
+          margin-left: 15px;
+
         }
         .trip_content {
+          h3 {
+            font-size: 20px;
+          }
           margin: 5px 20px;
           color: #464646;
           font-size: 16px;
@@ -179,61 +193,132 @@ $themeFont: 'Avenir Next', Helvetica;
         }
 
       }
-
-      .tour-driver {
-        border-bottom: 1px solid grey;
-        padding: 10px 0;
-
-        .avatar-image {
-          width: 80px;
-          height: 80px;
-          border-radius: 50em;
-          border: 2px solid white;
-        }
-
-        .rating-review {
-          padding-right: 20px;
+      .driver-container {
+        .content_head {
+          font-size: 24px;
           font-weight: 500;
-          .rating {
-            color: #FFB400
-          }
-
-          .comment {
-
-          }
+          margin-left: 10px;
         }
+        .tour-driver {
+          border-bottom: 1px solid grey;
+          padding: 10px 0;
+          margin: 0;
+          .profile-avatar {
 
-        .vehicles {
-          line-height: 60px;
-          margin: 0px;
-          padding: 0px;
-          .vehicle {
-            .vehicle-icon {
-              margin: 15px 0;
+            .avatar-container {
+              width: 80px;
+              height: 80px;
+              @media #{$media-pad-smaller}{
+                margin-left: auto;
+                margin-right: auto;
+              }
+              .avatar-image {
+                border-radius: 50em;
+                border: 2px solid white;
+                width: 100%;
+              }
+
+            }
+          }
+
+          .rating-review {
+            @media #{$media-pad-smaller}{
+              text-align: center;
+            }
+
+            text-align: left;
+            padding-right: 20px;
+            font-weight: 500;
+            .rating {
+              color: #FFB400
+            }
+
+            .comment {
+
+            }
+          }
+
+          .vehicles {
+            @media #{$media-pad-smaller}{
+              line-height: 30px;
+            }
+
+            @media #{$media-pad-larger}{
+              line-height: 60px;
+            }
+
+            margin: 0px;
+            padding: 0px;
+            .vehicle {
+              margin: 0;
+              @media #{$media-pad-smaller}{
+                padding-top: 10px;
+              }
+
+              .vehicle-detail {
+
+                @media #{$media-pad-larger}{
+                  display: inline-flex;
+                }
+
+                .icon-container {
+                  width: 50px;
+                  @media #{$media-pad-smaller}{
+                    margin: auto;
+                  }
+                }
+
+                .vehicle-name {
+                  @media #{$media-pad-smaller}{
+                    line-height: 30px;
+                    text-align: center;
+                  }
+
+                  @media #{$media-pad-larger}{
+                    line-height: 70px;
+                    margin-left: 10px;
+                  }
+
+                }
+              }
+
             }
 
           }
 
-        }
+          .price {
+            @media #{$media-pad-smaller}{
+              line-height: 80px;
+              padding: 0;
+              text-align: left;
+            }
 
-        .price {
-          line-height: 60px;
-          padding: 6px 0;
-          text-align: right;
-        }
-        .book-btn {
-          padding: 15px 0;
-          .btn-book {
-            float:right;
-            background-color: black;
-            color: white;
-            padding: 2px 15px;
-            font-size: 12px;
-            font-weight: 400;
-            line-height: 29px;
+            @media #{$media-pad-larger}{
+              line-height: 60px;
+              padding: 6px 0;
+              text-align: right;
+            }
+          }
+          .book-btn {
+            padding: 15px 0;
+            .btn-book {
+              @media #{$media-pad-smaller}{
+                margin-top: 10px;
+                float: left;
+              }
+
+              float: right;
+              background-color: black;
+              color: white;
+              padding: 2px 15px;
+              font-size: 12px;
+              font-weight: 400;
+              line-height: 29px;
+            }
           }
         }
       }
+
     }
   }
 }

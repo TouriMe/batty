@@ -10,9 +10,9 @@ class DriverBackgroundUploader < CarrierWave::Uploader::Base
   end
 
 
-  # version :thumb do
-  #   process :resize_to_fit => [50, 50]
-  # end
+  version :processed do
+    process :resize_to_fill => [800, 450]
+  end
 
   def extension_white_list
     %w(jpg jpeg gif png)

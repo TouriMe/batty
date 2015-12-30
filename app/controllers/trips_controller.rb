@@ -3,6 +3,7 @@ class TripsController < ApplicationController
 
   def index
     @trips = Trip.where(is_active: true).all
+    @seotags = Seo.find_by_page('tour_listing')
   end
 
   def show
@@ -15,7 +16,8 @@ class TripsController < ApplicationController
     end
     
     @drivers = Driver.where(is_active: true).page(params[:page]).per(10)
-    @page_title = @trip.name
+    @seotags = Seo.find_by_page(@trip.name)
+
   end
 
   def drivers

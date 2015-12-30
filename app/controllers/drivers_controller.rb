@@ -5,10 +5,12 @@ class DriversController < ApplicationController
 
   def index
     @drivers = Driver.active
+    @seotags = Seo.find_by_page('driver_listing')
   end
 
   def show
     @dirver = Driver.friendly.find(params[:id])
+    @seotags = Seo.find_by_page(@dirver.first_name)
   end
 
   def find_drivers

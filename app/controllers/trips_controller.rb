@@ -16,7 +16,8 @@ class TripsController < ApplicationController
     end
     
     @drivers = Driver.where(is_active: true).page(params[:page]).per(10)
-    @seotags = Seo.find_by_page(@trip.name)
+    @seotags = Seo.find_by_page('tour_detail')
+    @page_title = @trip.name
 
   end
 

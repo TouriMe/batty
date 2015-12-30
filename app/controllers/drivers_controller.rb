@@ -11,6 +11,7 @@ class DriversController < ApplicationController
   def show
     @dirver = Driver.friendly.find(params[:id])
     @seotags = Seo.find_by_page(@dirver.first_name)
+    @page_title = @driver.first_name
   end
 
   def find_drivers
@@ -21,7 +22,6 @@ class DriversController < ApplicationController
     #else
       #@drivers = City.find(city_id).drivers.active
     #end
-
     render 'index'
   end
 

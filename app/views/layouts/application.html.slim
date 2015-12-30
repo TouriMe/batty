@@ -1,11 +1,14 @@
 doctype html
 html
   head
-    title 
-      - if @seotags.nil? or @seotags.title.nil?
-        = "Cambodian Tours, Private Drivers, Guides, Attractions, Travel Experiences & Activities - TouriMe"
-      - else
+    title
+
+      - if !@page_title.nil?
+        = "#{@page_title} - "
+      - if !@seotags.nil? and !@seotags.title.nil?
         = "#{@seotags.title}"
+      - else
+        = "Cambodian Tours, Private Drivers, Guides, Attractions, Travel Experiences & Activities - TouriMe"
 
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible' content='IE=edge')

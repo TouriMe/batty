@@ -13,7 +13,7 @@ class TripsController < ApplicationController
     else 
       @f_pay = @trip.tuktuk_price
     end
-   
+    
     @drivers = Driver.where(is_active: true).page(params[:page]).per(10)
     @page_title = @trip.name
   end

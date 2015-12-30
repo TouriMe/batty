@@ -113,16 +113,16 @@
         </div>
         <div class="row">
           <div class="detail">
-            <h3>Tour Description</h3>
+            <div class="trip-label">Tour Description</div>
 
             <div class="trip_content">
               <%= @trip.content.html_safe %>
             </div>
           </div>
 
-          <div id="drivers-selection">
+          <div id="drivers-selection" class="driver-container">
             <header class="content_head">
-              <h1>Drivers available for this trip</h1>
+              Drivers available for this trip
             </header>
             <%= render :partial => 'trips/drivers', :object => @drivers %>
             <p class="pagination">

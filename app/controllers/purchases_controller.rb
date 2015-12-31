@@ -12,13 +12,14 @@ class PurchasesController < ApplicationController
     @purchase.save
 
     if @purchase.save
-      render json: @purchase
+      # render json: @purchase
+      redirect_to payment_success_path
     else
-      render json: {"message" => "Not succcess"}
+      # render json: {"message" => "Not succcess"}
+      redirect_to :back 
     end
   end
-
-
+  
   # book the tour(:tour_id)
   # with driver (:driver_id) 
   def new

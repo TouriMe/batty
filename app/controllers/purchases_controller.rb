@@ -13,6 +13,7 @@ class PurchasesController < ApplicationController
 
     if @purchase.save
       # render json: @purchase
+      OrderConfirmation.confirm(@purchase).deliver_now
       redirect_to payment_success_path
     else
       # render json: {"message" => "Not succcess"}

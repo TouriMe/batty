@@ -1,122 +1,140 @@
 <div class="payment_wrapper row">
   <div class="form_wrapper large-7 small-12 columns">
-    <h2>Tour Details</h2> 
-    
-    <%= form_for(@purchase, url: {action: "create"}, html: { id: "payment_details" }) do |f| %> 
-      <div id="payment_detail">
+    <h2>Tour Details</h2>
 
-        <%= f.hidden_field :purchasable_id, value: @trip.id %>
-        <%= f.hidden_field :purchasable_type, value: "Trip" %>
-  
-        <%= f.hidden_field :driver_id, value: @driver.id %>
-        <%= f.hidden_field :vehicle_id, value: @vehicle_id %>
+    <%= form_for(@purchase, url: {action: "create"}, html: {id: "payment_details"}) do |f| %>
+        <div id="payment_detail">
 
-        <%= f.hidden_field :price, value: @price %>
-        <%= f.hidden_field :reference_id,  value: @reference_id %>
+          <%= f.hidden_field :purchasable_id, value: @trip.id %>
+          <%= f.hidden_field :purchasable_type, value: "Trip" %>
 
-        <div class="form-group">
-          <%= f.label :start_date, "Start Date" %>
-          <%= f.text_field :start_date, id: "startdate", :required =>"", placeholder: "1/02/2016" %>
-        </div>
+          <%= f.hidden_field :driver_id, value: @driver.id %>
+          <%= f.hidden_field :vehicle_id, value: @vehicle_id %>
 
-        
-        <div class="form-group pickup_address">
-          <%= f.label :address_id, "Pick Up Address" %>
-          <%= f.collection_select(:address_id, Address.all, :id, :name,  { :prompt => 'Select Pickup Address', :selected => @purchase.address_id }) %> 
-        </div>
+          <%= f.hidden_field :price, value: @price %>
+          <%= f.hidden_field :reference_id, value: @reference_id %>
 
-        <div class="form-group">
-          <%= f.label :email, "Your Email" %>
-          <%= f.email_field :email, :required =>"", placeholder: "Your Email" %>
-        </div>
-        
-        <div class="form-group">
-          <%= f.label :email_confirmation, "Confirm Your Email" %>
-          <%= f.email_field :email_confirmation, :required =>"", placeholder: "Confirm Your Email" %>
-        </div>
-        
-        <div class="form-group phone_block">
-          <%= f.label :phone_number, "Phone Number" %>
-          <%= f.text_field  :country_code, id: "country_code", placeholder: "+01" %>
-          <%= f.text_field  :phone_number, id: "phone_number", placeholder: "203 002 00" %>
-        </div>
-        
-        <div class="form-group">
-          <%= f.label :comments, "Your Comment" %>
-          <%= f.text_area :comments %>
-        </div>
-
-        <div class="form-group">
-              <%= f.submit("Confirm Booking", id: "bt_charge", onclick: "clicked_chargebt()") %>
+          <div class="form-group">
+            <%= f.label :start_date, "Start Date" %>
+            <%= f.text_field :start_date, id: "startdate", :required => "", placeholder: "1/02/2016" %>
           </div>
-        <!-- All the necessary input fields should be here -->
-      
-      </div>
+
+
+          <div class="form-group pickup_address">
+            <%= f.label :address_id, "Pick Up Address" %>
+            <%= f.collection_select(:address_id, Address.all, :id, :name, {:prompt => 'Select Pickup Address', :selected => @purchase.address_id}) %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :email, "Your Email" %>
+            <%= f.email_field :email, :required => "", placeholder: "Your Email" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :email_confirmation, "Confirm Your Email" %>
+            <%= f.email_field :email_confirmation, :required => "", placeholder: "Confirm Your Email" %>
+          </div>
+
+          <div class="form-group phone_block">
+            <%= f.label :phone_number, "Phone Number" %>
+            <%= f.text_field :country_code, id: "country_code", placeholder: "+01" %>
+            <%= f.text_field :phone_number, id: "phone_number", placeholder: "203 002 00" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :comments, "Your Comment" %>
+            <%= f.text_area :comments %>
+          </div>
+
+          <div class="form-group">
+            <%= f.submit("Confirm Booking", id: "bt_charge", onclick: "clicked_chargebt()") %>
+          </div>
+          <!-- All the necessary input fields should be here -->
+
+        </div>
     <% end %>
-    
-    <br />
-        
+
+    <br/>
+
   </div>
 
   <div class="large-5 payment_info small-12 columns">
     <!-- sidebar information goes here -->
-  
+
     <div class="box_wrapper">
-    
+
       <header id="info_top">
         <h4><%= @trip.name %></h4>
 
-        <p><span class="bold">Driver: </span> <%= @driver.first_name %><br >
-          <span class="bold">Vehicle Type: </span><%= @vehicle_type %><br >
-          <span class="bold">Reference ID: </span><%= @reference_id %><br >
-          </p>
+        <p><span class="bold">Driver: </span> <%= @driver.first_name %><br>
+          <span class="bold">Vehicle Type: </span><%= @vehicle_type %><br>
+          <span class="bold">Reference ID: </span><%= @reference_id %><br>
+        </p>
       </header>
 
       <section id="driver_image" style="background-image:url(<%= @driver.background_url %>">
         <!--<div class="profile_set">-->
-          <!--<%= image_tag(@driver.avatar_url, class: "profile_image") %>-->
+        <!--<%= image_tag(@driver.avatar_url, class: "profile_image") %>-->
         <!--</div>-->
       </section>
 
       <section id="bill_info">
         <table class="table">
           <tbody>
-              <tr>
-                <td>Tour Pirce</td>
-                <% if @vehicle_type == "Remork (tuk tuk)" %>
-                  <td class="charge"><%= number_to_currency((@trip.tuktuk_price), :precision => 0) %> USD</td>
-                <% else %>
-                  <td class="charge"><%= number_to_currency((@trip.car_price), :precision => 0) %> USD</td>
-                <% end %>
-              </tr>
-              <tr>
-                <td>Downpayment/Deposit</td>
-                <% if @trip.down_payment %>
-                  <td class="charge"><%= @trip.down_payment %> USD</td>
-                <% else %>
-                  <td class="charge">0 USD</td>
-                <% end %>
-              </tr>
-              <tr>
-                <td>Booking Fee</td>
-                <% if @trip.booking_fee %>
-                  <td class="charge"><%= @trip.booking_fee %> USD</td>
-                <% else %>
-                  <td class="charge">0 USD</td>
-                <% end %>
-              </tr>
-            </tbody>
-          </table>
-          <h1>Total Payment Now</h1>
-          <h2><%= @charge %> $</h2>
+          <tr>
+            <td>Tour Pirce</td>
+            <% if @vehicle_type.downcase == "remork (tuk tuk)" %>
+                <td class="charge"><%= number_to_currency((@trip.tuktuk_price), :precision => 0) %> USD</td>
+            <% else %>
+                <td class="charge"><%= number_to_currency((@trip.car_price), :precision => 0) %> USD</td>
+            <% end %>
+          </tr>
+          <tr>
+            <td>Downpayment/Deposit</td>
+            <!--
+            <% if @trip.down_payment %>-->
+                <!--<td class="charge"><%= @trip.down_payment %> USD</td>-->
+                <!--
+            <% else %>-->
+                <!--<td class="charge">0 USD</td>-->
+                <!--
+            <% end %>-->
+            <td class="charge">0 USD</td>
+          </tr>
+          <tr>
+            <td>Booking Fee</td>
+            <!--
+            <% if @trip.booking_fee %>-->
+                <!--<td class="charge"><%= @trip.booking_fee %> USD</td>-->
+                <!--
+            <% else %>-->
+                <!--<td class="charge">0 USD</td>-->
+                <!--
+            <% end %>-->
+            <td class="charge">0 USD</td>
+          </tr>
+          </tbody>
+        </table>
+        <h1>Total Payment Now</h1>
+        <!--<h2><%= @charge %> $</h2>-->
+        <h2>0 $</h2>
+        <% if @vehicle_type.downcase == "remork (tuk tuk)" %>
+            <p class="meta_info">
+              The total amount of USD <%= number_to_currency((@trip.tuktuk_price), :precision => 0) %> is payable
+              when you finish your tour. </p>
 
-          <p class="meta_info">
-            The total amount of USD $<%= @later_pay %> is payable 
-            when you finish your tour. </p>
+        <% else %>
+            <p class="meta_info">
+              The total amount of USD <%= number_to_currency((@trip.car_price), :precision => 0) %> is payable
+              when you finish your tour. </p>
+            <!--<p class="meta_info">-->
+            <!--The total amount of USD $<%= number_to_currency((@later_pay), :precision => 0) %> is payable-->
+            <!--when you finish your tour. </p>-->
+        <% end %>
 
       </section>
-      
-      <p class="share">Share your plans!</p>    
+
+      <p class="share">Share your plans!</p>
     </div>
     <!-- End of Box Wrapper ---!> 
   </div>

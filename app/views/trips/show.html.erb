@@ -54,8 +54,11 @@
         </div>
 
         <div class="large-3 small-12 trip_top_info columns">
-          <h1><span><%= @trip.tuktuk_price.to_i %></span><span> $</span></h1>
-
+          <% if @trip.tuktuk_price.to_i != 0%>
+              <h1><span><%= @trip.tuktuk_price.to_i %></span><span> $</span></h1>
+          <% else %>
+              <h1><span><%= @trip.car_price.to_i %></span><span> $</span></h1>
+          <% end %>
           <div class="meta_func">
             <a href="#drivers-selection" class="trip_book_now">Book Now</a>
             <a href="#" class="share"><i class="fa fa-herat-o"></i> Share</a>

@@ -1,7 +1,7 @@
 class DriversController < ApplicationController
-  before_filter(only:[:show, :add_comment]){
+  before_filter(only: [:show, :add_comment]) {
     @driver = Driver.find(params[:id])
-    @no_show_title = true}
+    @no_show_title = true }
 
   def index
     @drivers = Driver.active
@@ -10,17 +10,32 @@ class DriversController < ApplicationController
 
   def show
     @dirver = Driver.friendly.find(params[:id])
-    @seotags = Seo.find_by_page(@dirver.first_name)
-    @page_title = @driver.first_name
+    @seotags = Seo.create()
+    @citys = ''
+    @languages = ''
+    @driver.cities.each do |c|
+      @citys += ',' + c.name
+    end
+    @seotags.title = @driver.first_name + '-' + @driver.short_desc  + @citys
+    @driver.languages.each do |l|
+      @languages += l.language_code + ', '
+    end
+    if !@driver.description.nil?
+      @seotags.description = @driver.first_name + ' - ' + @driver.description
+    else
+      @seotags.description = @driver.first_name
+    end
+    @seotags.keywords = @driver.first_name + @citys + ', Speak ' + @languages + ' ' + @driver.driving_experience.to_s + ' years of driving experience'
+
   end
 
   def find_drivers
     @drivers = Driver.active
     #city_id = params['city_id']
     #if city_id.empty?
-      #@drivers = Driver.active
+    #@drivers = Driver.active
     #else
-      #@drivers = City.find(city_id).drivers.active
+    #@drivers = City.find(city_id).drivers.active
     #end
     render 'index'
   end
@@ -30,7 +45,7 @@ class DriversController < ApplicationController
     comment = @driver.comments.new comment_params
     comment.normal_user = current_normal_user
 
-    if(comment.save)
+    if (comment.save)
       flash[:notice] = 'Comment Added.'
       redirect_to driver_path(@driver)+'#comment-section'
       return

@@ -1,5 +1,5 @@
 class TripsController < ApplicationController
-  before_filter(only: :show){ @no_show_title = true }
+  before_filter(only: :show) { @no_show_title = true }
 
   def index
     @trips = Trip.where(is_active: true).all
@@ -8,17 +8,18 @@ class TripsController < ApplicationController
 
   def show
     @trip = Trip.find(params[:id])
- 
+
     if (@trip.down_payment) && (@trip.booking_fee)
       @f_pay = @trip.down_payment + @trip.booking_fee
-    else 
+    else
       @f_pay = @trip.tuktuk_price
     end
-    
-    @drivers = Driver.where(is_active: true).page(params[:page]).per(10)
-    @seotags = Seo.find_by_page('tour_detail')
-    @page_title = @trip.name
 
+    @drivers = Driver.where(is_active: true).page(params[:page]).per(10)
+    @seotags = Seo.new()
+    @seotags.title = @trip.name + '-' + @trip.description
+    @seotags.description = @trip.name + '-' + @trip.description
+    @seotags.keywords = @trip.name + ' - Distance ' + @trip.distance.to_s + 'km, Duration ' + @trip.duration.to_s + ', ' + @trip.checkpoint_num.to_s + ' Checkpoints potential visit, Start at ' + @trip.tour_start + ', End at ' + @trip.tour_end  + ', Price by Remork (tuk tuk)' + @trip.tuktuk_price.to_i.to_s + ' USD, by Car ' + @trip.car_price.to_i.to_s + ' USD'
   end
 
   def drivers

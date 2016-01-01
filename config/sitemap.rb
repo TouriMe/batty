@@ -13,5 +13,7 @@ end
 # using "resources :pages" in config/routes.rb. This will also
 # automatically set <lastmod> to the date and time in page.updated_at:
 #
-sitemap_for Trip
-sitemap_for Driver
+# sitemap_for Trip
+ sitemap_for Driver
+
+ping_with "http://#{host}/sitemap.xml"

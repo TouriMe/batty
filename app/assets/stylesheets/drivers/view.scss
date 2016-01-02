@@ -43,6 +43,10 @@
       height: 100%;
 
       .profile-avatar {
+        width: 160px;
+        margin-top: -20%;
+        margin-left: auto;
+        margin-right: auto;
         img.avatar-image {
           width: 160px;
           height: 160px;
@@ -50,8 +54,6 @@
           //border: 4px solid white;
         }
 
-        margin-top: -20%;
-        margin-left: 25%;
       }
 
       .profile-name {
@@ -129,7 +131,6 @@
           }
         }
       }
-
 
       .certificate-container {
         margin: 15px 0;

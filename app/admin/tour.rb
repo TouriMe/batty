@@ -45,7 +45,7 @@ ActiveAdmin.register Tour, as: "Tour" do
           ? image_tag(i.object.url, class: "active_admin_img")
           : content_tag(:span, "No Image Was Uploaded")
         i.input :alt_text
-        i.input :is_hero
+        i.input :is_hero, hint: 'Each tour can have at most one Hero Image'
       end
     end
   end
@@ -64,6 +64,7 @@ index :title => "Tours" do
   column :checkpoints_num
   column :distance
   column :updated_at
+  column :is_active
   actions
 end
 

@@ -14,6 +14,7 @@ ActiveAdmin.register Driver do
     column :email
     column :driving_years
     column :updated_at
+    column :is_active
     actions
   end
 

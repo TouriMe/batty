@@ -3,7 +3,7 @@
       <% if @tour.tuktuk_price.to_i > 0 || (@tour.tuktuk_price.to_i == 0 && (driver.vehicles.count > 1 || (driver.vehicles.count == 1 && driver.vehicles.first.name.downcase == 'car'))) %>
 
           <div class="row tour-driver">
-
+<a></a>
             <div class="profile-avatar large-2 small-6 columns">
               <div class="avatar-container">
                 <% if driver.avatar_url.present? %>

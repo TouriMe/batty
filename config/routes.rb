@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   get 'book/:tour_id/:driver_id' => 'purchases#new'   
   get 'payment_success' => 'purchases#success'
 
-  get 'booking/:reference_id' => 'booking#show'
+  get 'booking/:reference_id' => 'bookings#show'
 
   mount Ckeditor::Engine => '/ckeditor'  
   devise_for :normal_users, :controllers => { :omniauth_callbacks => 'auth/omniauth' }

@@ -1,2 +1,2 @@
-module TripsHelper
+module ToursHelper
 end

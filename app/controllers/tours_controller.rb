@@ -16,11 +16,13 @@ class ToursController < ApplicationController
     end
 
     if @tour.tuktuk_price.to_i == 0
-      @drivers = Driver.includes(:vehicles).where('vehicles.name = ?', 'Car').references(:vehicles).where(is_active: true).page(params[:page]).per(10)
+      @drivers_query = Driver.includes(:vehicles).where('vehicles.name = ?', 'Car').references(:vehicles).where(is_active: true).page(params[:page]).per(10)
     else
-      @drivers = Driver.where(is_active: true).page(params[:page]).per(10)
+      @drivers_query = Driver.where(is_active: true).page(params[:page]).per(10)
     end
     
+    @drivers = @drivers_query.page(params[:page]).per(10)
+
     @seotags = Seo.new()
     @seotags.title = @tour.name + '-' + @tour.description
     @seotags.description = @tour.name + '-' + @tour.description

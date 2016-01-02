@@ -1,0 +1,31 @@
+<%= link_to(tour_path(tour)) do %>
+    <div class="card-item">
+      <%= image_tag(tour.card_img, class: 'item-bg') %>
+      <div class="name ellipsis">
+        <%= tour.name %>
+      </div>
+
+      <div class="price">
+        <% if tour.tuktuk_price.to_i == 0 %>
+            <%= number_to_currency(tour.car_price, :precision => 0) %>
+        <% else %>
+            <%= number_to_currency(tour.tuktuk_price, :precision => 0) %>
+        <% end %>
+      </div>
+      <div class="divider offset">
+      </div>
+      <div class="review offset">
+        <div class="rating left">
+          <% rating = if tour.comments.present? then
+                        tr = tour.comments.pluck(:rating); tr.sum * 2 / tr.size / 2.0
+                      else
+                        5
+                      end %>
+          <%= render 'partials/rating', rating: rating %>
+        </div>
+      <span class="review-num right">
+        <strong><%= pluralize(tour.comments.count, 'review') %></strong>
+      </span>
+      </div>
+    </div>
+<% end %>

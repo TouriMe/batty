@@ -25,7 +25,7 @@ class PurchasesController < ApplicationController
   # with driver (:driver_id) 
   def new
     @vehicle_type = params[:vehicle_type]
-    @trip = Trip.friendly.find(params[:tour_id])
+    @trip = Tour.friendly.find(params[:tour_id])
     @driver = Driver.friendly.find(params[:driver_id])
     @purchase = Purchase.new
     @no_show_title = true

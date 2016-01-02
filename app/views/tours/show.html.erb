@@ -1,12 +1,12 @@
 <div class="container trip_wrapper">
 
-  <% if @trip.images.any? %>
-      <div class="trip-cover-img" data-img="<%= @trip.images.first.url %>">
+  <% if @tour.images.any? %>
+      <div class="trip-cover-img" data-img="<%= @tour.images.first.url %>">
       </div>
   <% end %>
 
   <ul class="clearing-thumbs hide" data-clearing>
-    <%= @trip.images.each do |image| %>
+    <%= @tour.images.each do |image| %>
         <li>
           <%= image_tag(image.url) %>
         </li>
@@ -18,14 +18,14 @@
       <section id="trip_header">
 
         <div class="large-9 small-12 trip_top_head columns">
-          <h1><%= @trip.name %></h1>
+          <h1><%= @tour.name %></h1>
 
           <div class="meta_head">
             <section class="trip_info_distance meta_block left">
               <%= image_tag("tour_distance.png", class: "trip-logo") %>
               <p class="right">
                 <span class="distance block center">
-                  <%= @trip.distance.blank? ? "0" : @trip.distance %>
+                  <%= @tour.distance.blank? ? "0" : @tour.distance %>
                 </span>
                 <span class="meta">Distance</span>
               </p>
@@ -35,7 +35,7 @@
               <%= image_tag("tour_duration.png", class: "trip-logo") %>
               <p class="right">
                 <span class="distance block center">
-                  <%= @trip.duration.blank? ? "0" : @trip.duration %>
+                  <%= @tour.duration.blank? ? "0" : @tour.duration %>
                 </span>
                 <span class="meta">Duration</span>
               </p>
@@ -45,7 +45,7 @@
               <%= image_tag("tour_checkpoint.png", class: "trip-logo") %>
               <p class="right">
                 <span class="distance block center">
-                  <%= @trip.checkpoint_num.blank? ? "0" : @trip.checkpoint_num %>
+                  <%= @tour.checkpoint_num.blank? ? "0" : @tour.checkpoint_num %>
                 </span>
                 <span class="meta">Checkpoints</span>
               </p>
@@ -54,10 +54,10 @@
         </div>
 
         <div class="large-3 small-12 trip_top_info columns">
-          <% if @trip.tuktuk_price.to_i != 0 %>
-              <h1><span><%= @trip.tuktuk_price.to_i %></span><span> $</span></h1>
+          <% if @tour.tuktuk_price.to_i != 0 %>
+              <h1><span><%= @tour.tuktuk_price.to_i %></span><span> $</span></h1>
           <% else %>
-              <h1><span><%= @trip.car_price.to_i %></span><span> $</span></h1>
+              <h1><span><%= @tour.car_price.to_i %></span><span> $</span></h1>
           <% end %>
           <div class="meta_func">
             <a href="#drivers-selection" class="trip_book_now">Book Now</a>
@@ -73,43 +73,43 @@
     <div class="row">
       <div id="detail-content" class="small-12 large-12 columns">
         <div class="row">
-          <% if @trip.highlight_html? %>
+          <% if @tour.highlight_html? %>
               <div class="highlight small-12 large-5 columns">
                 <h4>
                   <span class="header">Highlight</span>
 
-                  <%= @trip.highlight_html.html_safe %>
+                  <%= @tour.highlight_html.html_safe %>
 
                 </h4>
               </div>
           <% end %>
-          <% if @trip.include_html? || @trip.exclude_html? %>
+          <% if @tour.include_html? || @tour.exclude_html? %>
               <div class="include-exclude small-12 large-4 columns">
                 <h4>
                   <span class="header">Include</span>
-                  <% if @trip.include_html? %>
-                      <%= @trip.include_html.html_safe %>
+                  <% if @tour.include_html? %>
+                      <%= @tour.include_html.html_safe %>
                   <% end %>
                 </h4>
                 <h4>
                   <span class="header">Exclude</span>
-                  <% if @trip.exclude_html? %>
-                      <%= @trip.exclude_html.html_safe %>
+                  <% if @tour.exclude_html? %>
+                      <%= @tour.exclude_html.html_safe %>
                   <% end %>
                 </h4>
               </div>
           <% end %>
-          <% if @trip.tour_start? || @trip.tour_end %>
+          <% if @tour.tour_start? || @tour.tour_end %>
               <div class="tour-start-end small-12 large-3 columns">
                 <h4><span class="header">Start<br></span>
-                  <% if @trip.tour_start? %>
-                      <%= @trip.tour_start %>
+                  <% if @tour.tour_start? %>
+                      <%= @tour.tour_start %>
                   <% end %>
                 </h4>
                 <br><br>
                 <h4><span class="header">End<br></span>
-                  <% if @trip.tour_end %>
-                      <%= @trip.tour_end %>
+                  <% if @tour.tour_end %>
+                      <%= @tour.tour_end %>
                   <% end %>
                 </h4>
               </div>
@@ -121,7 +121,7 @@
             <div class="trip-label">Tour Description</div>
 
             <div class="trip_content">
-              <%= @trip.content.html_safe %>
+              <%= @tour.content.html_safe %>
             </div>
           </div>
 
@@ -129,11 +129,11 @@
             <header class="content_head">
               Drivers available for this trip
             </header>
-            <%= render :partial => 'trips/drivers', :object => @drivers %>
+            <%= render :partial => 'tours/drivers', :object => @drivers %>
             <p class="pagination">
               <%= link_to_next_page(@drivers, 'More Drivers', :remote => true, class: "hidden") %>
             </p>
-            <%= render 'comments/comments', target: @trip %>
+            <%= render 'comments/comments', target: @tour %>
           </div>
 
         </div>

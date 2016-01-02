@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   
   resources :tourists, only: [:new, :show]
   resources :drivers, only: [:index, :show]
-  resources :tours, :controller => "trips", only: [:index, :show ] 
+  resources :tours, only: [:index, :show ] 
   resources :guides, only: [:index, :show]
   resources :purchases, only: [:create, :edit,:update]
   resources :comments, only: [:create, :update, :destroy]
@@ -25,6 +25,8 @@ Rails.application.routes.draw do
   get 'checkout/:id' => 'purchases#checkout'
   get 'book/:tour_id/:driver_id' => 'purchases#new'   
   get 'payment_success' => 'purchases#success'
+
+  get 'booking/:reference_id' => 'booking#show'
 
   mount Ckeditor::Engine => '/ckeditor'  
   devise_for :normal_users, :controllers => { :omniauth_callbacks => 'auth/omniauth' }

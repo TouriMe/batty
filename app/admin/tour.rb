@@ -1,4 +1,4 @@
-ActiveAdmin.register Trip, as: "Tour" do
+ActiveAdmin.register Tour, as: "Tour" do
 
   controller do
     def permitted_params
@@ -21,7 +21,6 @@ ActiveAdmin.register Trip, as: "Tour" do
       input :exclude_html, as: :ckeditor
       input :tour_start
       input :tour_end
-
     end
 
     f.inputs 'Price Calculation' do

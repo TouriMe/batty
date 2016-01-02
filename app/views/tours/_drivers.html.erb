@@ -1,6 +1,6 @@
 <section id="driver_wrapper">
   <% @drivers.each do |driver| %>
-      <% if @trip.tuktuk_price.to_i > 0 || (@trip.tuktuk_price.to_i == 0 && (driver.vehicles.count > 1 || (driver.vehicles.count == 1 && driver.vehicles.first.name.downcase == 'car'))) %>
+      <% if @tour.tuktuk_price.to_i > 0 || (@tour.tuktuk_price.to_i == 0 && (driver.vehicles.count > 1 || (driver.vehicles.count == 1 && driver.vehicles.first.name.downcase == 'car'))) %>
 
           <div class="row tour-driver">
 
@@ -29,7 +29,7 @@
 
             <div class="vehicles large-7 small-12 columns">
               <% driver.vehicles.each do |vehicle| %>
-                  <% if @trip.tuktuk_price.to_i != 0 %>
+                  <% if @tour.tuktuk_price.to_i != 0 %>
                       <div class="row vehicle">
                         <div class="vehicle-detail small-6 columns">
                           <div class="icon-container">
@@ -47,14 +47,14 @@
                         <div class="price small-2 columns">
                           <strong>
                             <% if vehicle.name.downcase == 'remork (tuk tuk)' %>
-                                <%= number_to_currency((@trip.tuktuk_price), :precision => 0) %>
+                                <%= number_to_currency((@tour.tuktuk_price), :precision => 0) %>
                             <% elsif vehicle.name.downcase == 'car' %>
-                                <%= number_to_currency((@trip.car_price), :precision => 0) %>
+                                <%= number_to_currency((@tour.car_price), :precision => 0) %>
                             <% end %>
                           </strong>
                         </div>
                         <div class="book-btn small-4 columns">
-                          <%= link_to "BOOK ME", "/book/#{@trip.id}/#{driver.id}?vehicle_type=#{vehicle.name}", class: "btn btn-book" %>
+                          <%= link_to "BOOK ME", "/book/#{@tour.id}/#{driver.id}?vehicle_type=#{vehicle.name}", class: "btn btn-book" %>
                         </div>
                       </div>
                   <% elsif vehicle.name.downcase != 'remork (tuk tuk)'%>
@@ -73,12 +73,12 @@
                         <div class="price small-2 columns">
                           <strong>
                             <% if vehicle.name.downcase == 'car' %>
-                                <%= number_to_currency((@trip.car_price), :precision => 0) %>
+                                <%= number_to_currency((@tour.car_price), :precision => 0) %>
                             <% end %>
                           </strong>
                         </div>
                         <div class="book-btn small-4 columns">
-                          <%= link_to "BOOK ME", "/book/#{@trip.id}/#{driver.id}?vehicle_type=#{vehicle.name}", class: "btn btn-book" %>
+                          <%= link_to "BOOK ME", "/book/#{@tour.id}/#{driver.id}?vehicle_type=#{vehicle.name}", class: "btn btn-book" %>
                         </div>
                       </div>
                   <% end %>

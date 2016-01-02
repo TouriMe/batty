@@ -1,4 +1,4 @@
-class Trip < ActiveRecord::Base
+class Tour < ActiveRecord::Base
   include Commentable
   extend FriendlyId
  

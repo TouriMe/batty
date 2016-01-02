@@ -31,6 +31,9 @@ class PurchasesController < ApplicationController
     @no_show_title = true
   
     ## Reference ID
+    # todo \
+    # format this to 5 chars
+    # [A-Z][0-9][0-9][0-9][A-Z]
     @reference_id = SecureRandom.hex(7) # we will release this logic after 9 Millions purchases
 
     @charge = 0

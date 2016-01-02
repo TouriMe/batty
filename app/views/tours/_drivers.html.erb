@@ -1,91 +1,191 @@
 <section id="driver_wrapper">
   <% @drivers.each do |driver| %>
       <% if @tour.tuktuk_price.to_i > 0 || (@tour.tuktuk_price.to_i == 0 && (driver.vehicles.count > 1 || (driver.vehicles.count == 1 && driver.vehicles.first.name.downcase == 'car'))) %>
+          <a href="#" data-reveal-id="<%= driver.first_name.downcase %>">
+            <div class="row tour-driver">
 
-          <div class="row tour-driver">
-<a></a>
-            <div class="profile-avatar large-2 small-6 columns">
-              <div class="avatar-container">
-                <% if driver.avatar_url.present? %>
-                    <%= image_tag driver.avatar_url, class: 'avatar-image' %>
-                <% else %>
-                    <%= image_tag 'avatar.jpg', class: 'avatar-image' %>
+              <div class="profile-avatar large-2 small-6 columns">
+                <div class="avatar-container">
+                  <% if driver.avatar_url.present? %>
+                      <%= image_tag driver.avatar_url, class: 'avatar-image' %>
+                  <% else %>
+                      <%= image_tag 'avatar.jpg', class: 'avatar-image' %>
+                  <% end %>
+                </div>
+
+              </div>
+
+              <div class="rating-review large-2 small-6 columns">
+                <div class="driver-name">
+                  <span><%= driver.first_name %></span>
+                </div>
+                <div class="section rating">
+                  <%= render 'partials/rating', rating: driver.rating %>
+                </div>
+                <div class="section comment">
+                  <%= pluralize(driver.comments.count, 'review') %>
+                </div>
+              </div>
+
+              <div class="vehicles large-7 small-12 columns">
+                <% driver.vehicles.each do |vehicle| %>
+                    <% if @tour.tuktuk_price.to_i != 0 %>
+                        <div class="row vehicle">
+                          <div class="vehicle-detail small-6 columns">
+                            <div class="icon-container">
+                              <% if vehicle.name.downcase == 'remork (tuk tuk)' %>
+                                  <%= image_tag 'tuktuk.png', class: 'vehicle-icon' %>
+                              <% elsif vehicle.name.downcase == 'mini van' %>
+                                  <%= image_tag 'car.png', class: 'vehicle-icon' %>
+                              <% else %>
+                                  <%= image_tag 'car.png', class: 'vehicle-icon' %>
+                              <% end %>
+                            </div>
+
+                            <div class="vehicle-name"><%= vehicle.name %></div>
+                          </div>
+                          <div class="price small-2 columns">
+                            <strong>
+                              <% if vehicle.name.downcase == 'remork (tuk tuk)' %>
+                                  <%= number_to_currency((@tour.tuktuk_price), :precision => 0) %>
+                              <% elsif vehicle.name.downcase == 'car' %>
+                                  <%= number_to_currency((@tour.car_price), :precision => 0) %>
+                              <% end %>
+                            </strong>
+                          </div>
+                          <div class="book-btn small-4 columns">
+                            <%= link_to "BOOK ME", "/book/#{@tour.id}/#{driver.id}?vehicle_type=#{vehicle.name}", class: "btn btn-book" %>
+                          </div>
+                        </div>
+                    <% elsif vehicle.name.downcase != 'remork (tuk tuk)' %>
+                        <div class="row vehicle">
+                          <div class="vehicle-detail small-6 columns">
+                            <div class="icon-container">
+                              <% if vehicle.name.downcase == 'car' %>
+                                  <%= image_tag 'car.png', class: 'vehicle-icon' %>
+                              <% else %>
+                                  <%= image_tag 'car.png', class: 'vehicle-icon' %>
+                              <% end %>
+                            </div>
+
+                            <div class="vehicle-name"><%= vehicle.name %></div>
+                          </div>
+                          <div class="price small-2 columns">
+                            <strong>
+                              <% if vehicle.name.downcase == 'car' %>
+                                  <%= number_to_currency((@tour.car_price), :precision => 0) %>
+                              <% end %>
+                            </strong>
+                          </div>
+                          <div class="book-btn small-4 columns">
+                            <%= link_to "BOOK ME", "/book/#{@tour.id}/#{driver.id}?vehicle_type=#{vehicle.name}", class: "btn btn-book" %>
+                          </div>
+                        </div>
+                    <% end %>
+
                 <% end %>
               </div>
 
-            </div>
 
-            <div class="rating-review large-2 small-6 columns">
-              <div class="driver-name">
-                <span><%= driver.first_name %></span>
-              </div>
-              <div class="section rating">
-                <%= render 'partials/rating', rating: driver.rating %>
-              </div>
-              <div class="section comment">
-                <%= pluralize(driver.comments.count, 'review') %>
-              </div>
             </div>
+          </a>
 
-            <div class="vehicles large-7 small-12 columns">
-              <% driver.vehicles.each do |vehicle| %>
-                  <% if @tour.tuktuk_price.to_i != 0 %>
-                      <div class="row vehicle">
-                        <div class="vehicle-detail small-6 columns">
-                          <div class="icon-container">
-                            <% if vehicle.name.downcase == 'remork (tuk tuk)' %>
-                                <%= image_tag 'tuktuk.png', class: 'vehicle-icon' %>
-                            <% elsif vehicle.name.downcase == 'mini van' %>
-                                <%= image_tag 'car.png', class: 'vehicle-icon' %>
+          <div id="<%= driver.first_name.downcase %>" class="driver-popup-modal reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+            <div class="row">
+              <div class="medium-8 small-12 columns">
+                <div class="driver-popup-img">
+                  <!--<image src="<%= driver.background_url %>">-->
+                  <image src="https://tourimeassets.s3.amazonaws.com/uploads/driver/background_url/69/Kea_Sambath_Background.jpg">
+                  </image>
+                </div>
+              </div>
+              <div class="medium-4 small-12 columns">
+                <div class="driver-popup-detail">
+                  <div class="name">
+                    <%= driver.first_name %>
+                  </div>
+                  <div class="reviews">
+                    <div class="section rating">
+                      <%= render 'partials/rating', rating: driver.rating %>
+                    </div>
+                    <div class="section comment">
+                      <%= pluralize(driver.comments.count, 'review') %>
+                    </div>
+                  </div>
+                  <div class="vehicle-location">
+                    <div class="vehicle">
+                      <div><h5><strong>Vehicle Type</strong></h5></div>
+                      <% driver.vehicles.each do |d| %>
+                          <div>
+                            <% if d.name.downcase == 'remork (tuk tuk)' %>
+                                <%=image_tag('tuktuk_yellow.png') %>
+                                <span class="vehicle-text">Remork (Tuk Tuk)</span>
+
                             <% else %>
-                                <%= image_tag 'car.png', class: 'vehicle-icon' %>
+                                <%=image_tag('car_yellow.png') %>
+                                <span class="vehicle-text">Car</span>
                             <% end %>
                           </div>
-
-                          <div class="vehicle-name"><%= vehicle.name %></div>
-                        </div>
-                        <div class="price small-2 columns">
-                          <strong>
-                            <% if vehicle.name.downcase == 'remork (tuk tuk)' %>
-                                <%= number_to_currency((@tour.tuktuk_price), :precision => 0) %>
-                            <% elsif vehicle.name.downcase == 'car' %>
-                                <%= number_to_currency((@tour.car_price), :precision => 0) %>
-                            <% end %>
-                          </strong>
-                        </div>
-                        <div class="book-btn small-4 columns">
-                          <%= link_to "BOOK ME", "/book/#{@tour.id}/#{driver.id}?vehicle_type=#{vehicle.name}", class: "btn btn-book" %>
-                        </div>
-                      </div>
-                  <% elsif vehicle.name.downcase != 'remork (tuk tuk)'%>
-                      <div class="row vehicle">
-                        <div class="vehicle-detail small-6 columns">
-                          <div class="icon-container">
-                            <% if vehicle.name.downcase == 'car' %>
-                                <%= image_tag 'car.png', class: 'vehicle-icon' %>
-                            <% else %>
-                                <%= image_tag 'car.png', class: 'vehicle-icon' %>
-                            <% end %>
+                      <% end %>
+                    </div>
+                    <div class="location">
+                      <div><h5><strong>Location</strong></h5></div>
+                      <% driver.cities.each do |c| %>
+                          <div>
+                            <%=image_tag('location_yellow.png') %>
+                            <span><%=c.name %></span>
                           </div>
-
-                          <div class="vehicle-name"><%= vehicle.name %></div>
-                        </div>
-                        <div class="price small-2 columns">
-                          <strong>
-                            <% if vehicle.name.downcase == 'car' %>
-                                <%= number_to_currency((@tour.car_price), :precision => 0) %>
-                            <% end %>
-                          </strong>
-                        </div>
-                        <div class="book-btn small-4 columns">
-                          <%= link_to "BOOK ME", "/book/#{@tour.id}/#{driver.id}?vehicle_type=#{vehicle.name}", class: "btn btn-book" %>
-                        </div>
+                      <% end %>
+                    </div>
+                    <div class="certificates">
+                      <div>
+                        <h5><strong>Certificate</strong></h5>
                       </div>
-                  <% end %>
+                      <div class="certificate">
+                        <% if driver.english_communication %>
+                            <%=image_tag('checked_yellow.png')%>
+                        <% else %>
+                            <%=image_tag('unchecked_red.png')%>
+                        <% end %>
+                        <span>English Communication</span>
+                      </div>
+                      <div class="certificate">
+                        <%=image_tag('checked_yellow.png')%>
+                        <span><%= driver.driving_experience %> Years Driving Experience</span>
+                      </div>
+                      <div class="certificate">
+                        <% if driver.basic_history %>
+                            <%=image_tag('checked_yellow.png')%>
+                        <% else %>
+                            <%=image_tag('unchecked_red.png')%>
+                        <% end %>
+                        <span>Basic history</span>
+                      </div>
+                      <div class="certificate">
+                        <% if driver.smartphone_photography %>
+                            <%=image_tag('checked_yellow.png')%>
+                        <% else %>
+                            <%=image_tag('unchecked_red.png')%>
+                        <% end %>
+                        <span>Smartphone Photography</span>
+                      </div>
+                      <div class="certificate">
+                        <% if driver.basic_dslr %>
+                            <%=image_tag('checked_yellow.png')%>
+                        <% else %>
+                            <%=image_tag('unchecked_red.png')%>
+                        <% end %>
+                        <span>Basic DSLR</span>
+                      </div>
 
-              <% end %>
+                    </div>
+                    <div class="driver-link">
+                      <%= link_to 'View full driver profile>', driver_path(driver) %>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-
           </div>
 
       <% end %>

@@ -8,28 +8,29 @@
  *= require_tree .
  *= require_self
  */
-
 @import 'settings';
 @import 'foundation_and_overrides';
 
-html, body{
+html, body {
   margin: 0;
   padding: 0;
   height: 100%;
 }
 
-#wrapper{
+#wrapper {
   min-height: 100%;
   position: relative;
 
-  .page-header{
+  .page-header {
     padding: 50px 0;
   }
 }
+
 .bold {
   font-weight: bold;
 }
-#content{
+
+#content {
   @media #{$media-phone-smaller}{
     padding-bottom: $footer-height;
   }
@@ -42,7 +43,8 @@ html, body{
   }
 
 }
-#footer{
+
+#footer {
   @media #{$media-phone-smaller}{
     height: $footer-height;
   }
@@ -71,7 +73,7 @@ html, body, h1, h2, h3, h4, h5, h6, p, a, label, select {
 #header {
   #fixed-head {
     //padding: 5px 0px;
-    background: rgba(255,185,78,0.92);
+    background: rgba(255, 185, 78, 0.92);
   }
 
   #home-head {
@@ -79,12 +81,13 @@ html, body, h1, h2, h3, h4, h5, h6, p, a, label, select {
     background: transparent;
   }
 }
-.alert-box{
+
+.alert-box {
   margin: 5px 10px;
 }
 
 /* Top Bar Looks Tight */
-nav.top-bar { 
+nav.top-bar {
   height: auto;
   padding: 5px 0;
   display: block;
@@ -112,8 +115,8 @@ nav.top-bar {
     padding-right: 0px;
     .box_wrapper {
       width: 80%;
-      margin-left:19%;
-      color: #323232;    
+      margin-left: 19%;
+      color: #323232;
       p.share {
         text-align: center;
         font-weight: 500;
@@ -149,7 +152,7 @@ nav.top-bar {
           width: 100%;
           margin: auto;
           display: inline-block;
-          margin-top: 50px; 
+          margin-top: 50px;
           text-align: center;
           margin-bottom: 50px;
           .profile_image {
@@ -159,14 +162,14 @@ nav.top-bar {
           }
         }
       }
-      section#bill_info { 
-        padding:0px;
+      section#bill_info {
+        padding: 0px;
         background: #EEEEEE;
         border-radius: 0px 0px 5px 5px;
         table {
           width: 100%;
           margin: auto;
-          tr td.charge{
+          tr td.charge {
             text-align: right;
           }
         }
@@ -189,14 +192,14 @@ nav.top-bar {
           text-align: center;
           font-size: 12px;
           line-height: 15px;
-        } 
+        }
       }
     }
   }
   .form_wrapper {
     padding: 60px 20px;
     .braintree-paypal-loggedin {
-      max-width: 100%!important;
+      max-width: 100% !important;
     }
     h2 {
       font-family: 'Lato', sans-serif;
@@ -222,7 +225,7 @@ nav.top-bar {
           vertical-align: middle;
           //font-style: italic;
         }
-        img.paymentCards{
+        img.paymentCards {
           width: 49%;
           margin: 0px 5%;
         }
@@ -251,7 +254,7 @@ nav.top-bar {
       .info p {
         font-size: 10px;
         font-weight: 500;
-      } 
+      }
     }
     form#payment_details {
       padding-top: 25px;
@@ -278,7 +281,7 @@ nav.top-bar {
           text-transform: uppercase;
           width: 100%;
         }
-        input , textarea, select{
+        input, textarea, select {
           display: inline-table;
           width: 60%;
         }
@@ -287,7 +290,7 @@ nav.top-bar {
           min-height: 100px;
         }
         input#country_code {
-          width:10%;
+          width: 10%;
         }
         input#phone_number {
           display: inline-table;
@@ -298,7 +301,7 @@ nav.top-bar {
   }
 }
 
-#card-number,#expiration-date, #cvv  {
+#card-number, #expiration-date, #cvv {
   border: 1px solid #333;
   -webkit-transition: border-color 160ms;
   transition: border-color 160ms;
@@ -329,15 +332,58 @@ nav.top-bar {
   transition: border-color 0.15s linear, background 0.15s linear;
 }
 
-#expiration-date.braintree-hosted-fields-focused , #cvv.braintree-hosted-fields-focused , #card-number.braintree-hosted-fields-focused {
+#expiration-date.braintree-hosted-fields-focused, #cvv.braintree-hosted-fields-focused, #card-number.braintree-hosted-fields-focused {
   border-color: #777;
 }
 
-#expiration-date.braintree-hosted-fields-focused , #cvv.braintree-hosted-fields-focused , #card-number.braintree-hosted-fields-invalid {
+#expiration-date.braintree-hosted-fields-focused, #cvv.braintree-hosted-fields-focused, #card-number.braintree-hosted-fields-invalid {
   border-color: tomato;
 }
 
-#expiration-date.braintree-hosted-fields-focused , #cvv.braintree-hosted-fields-focused , #card-number.braintree-hosted-fields-valid {
+#expiration-date.braintree-hosted-fields-focused, #cvv.braintree-hosted-fields-focused, #card-number.braintree-hosted-fields-valid {
   border-color: limegreen;
+}
+
+.driver-popup-modal {
+  max-width: 800px;
+  padding: 40px 20px;
+
+  .driver-popup-detail {
+    .name {
+      font-size: 36px;
+      text-align: center;
+      font-weight: 700;
+    }
+    .reviews {
+      text-align: center;
+      font-size:22px;
+      font-weight:400;
+      .section.rating {
+        color: rgb(255, 185, 78);
+
+      }
+      .section.comment {
+        font-weight:400;
+      }
+    }
+
+    .vehicle-location{
+      img{
+        padding-left: 10px;
+        margin-right:10px;
+      }
+      font-weight:400;
+    }
+
+    .driver-link{
+      margin-top:30px;
+      a{
+        color:black;
+        font-weight:400;
+        float:right;
+      }
+    }
+  }
+
 }
 

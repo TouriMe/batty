@@ -20,7 +20,7 @@ class ToursController < ApplicationController
     else
       @drivers = Driver.where(is_active: true).page(params[:page]).per(10)
     end
-    
+
     @seotags = Seo.new()
     @seotags.title = @tour.name + '-' + @tour.description
     @seotags.description = @tour.name + '-' + @tour.description

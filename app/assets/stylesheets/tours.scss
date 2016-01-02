@@ -203,6 +203,9 @@ $themeFont: 'Avenir Next', Helvetica;
           border-bottom: 1px solid grey;
           padding: 10px 0;
           margin: 0;
+          a{
+            color:black;
+          }
           .profile-avatar {
 
             .avatar-container {
@@ -239,6 +242,7 @@ $themeFont: 'Avenir Next', Helvetica;
           }
 
           .vehicles {
+
             @media #{$media-pad-smaller}{
               line-height: 30px;
             }

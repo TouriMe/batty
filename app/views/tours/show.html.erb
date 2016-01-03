@@ -21,8 +21,17 @@
       <section id="trip_header">
 
         <div class="large-9 small-12 trip_top_head columns">
-          <h1><%= @tour.name %></h1>
-
+          <div class="trip-title">
+            <h1><%= @tour.name %></h1>
+          <span class="rating ">
+            <% rating = if @tour.comments.present? then
+                          tr = @tour.comments.pluck(:rating); tr.sum * 2 / tr.size / 2.0
+                        else
+                          5
+                        end %>
+            <%= render 'partials/rating', rating: rating %>
+          </span>
+          </div>
           <div class="meta_head">
             <section class="trip_info_distance meta_block left">
               <%= image_tag("tour_distance.png", class: "trip-logo") %>

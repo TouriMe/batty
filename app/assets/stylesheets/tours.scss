@@ -36,10 +36,19 @@ $themeFont: 'Avenir Next', Helvetica;
       padding-top: 0px;
       .trip_top_head {
         padding-top: 32px;
-        h1 {
-          font-family: $themeFont;
-          font-weight: 600;
-          font-size: 30px;
+        .trip-title {
+          display: inline-flex;
+
+          h1 {
+            font-family: $themeFont;
+            font-weight: 600;
+            font-size: 30px;
+          }
+          .rating {
+            color: #FFB400;
+            font-size: 20px;
+            margin:10px 0 0 20px;
+          }
         }
         .meta_head {
           //width: 50%;
@@ -203,8 +212,8 @@ $themeFont: 'Avenir Next', Helvetica;
           border-bottom: 1px solid grey;
           padding: 10px 0;
           margin: 0;
-          a{
-            color:black;
+          a {
+            color: black;
           }
           .profile-avatar {
 

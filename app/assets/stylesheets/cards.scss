@@ -12,18 +12,18 @@
       margin: 0 auto;
     }
     .card-wrapper {
-      margin-bottom: -60px;
+      margin-bottom: -50px;
       @media #{$media-pad-smaller}{
         margin-bottom: -80px;
       }
       .card-item {
         text-align: left;
-        background-color: #fff;
+        background-color: transparent;
         position: relative;
         cursor: pointer;
         margin-lfet: auto;
         margin-right: auto;
-        margin-bottom: -60px;
+        margin-bottom: -50px;
         @media #{$media-pad-smaller}{
           margin-bottom: -80px;
         }

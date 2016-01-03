@@ -356,40 +356,47 @@ nav.top-bar {
     }
     .reviews {
       text-align: center;
-      font-size:22px;
-      font-weight:400;
+      font-size: 22px;
+      font-weight: 400;
       .section.rating {
         color: rgb(255, 185, 78);
 
       }
       .section.comment {
-        font-weight:400;
+        font-weight: 400;
       }
     }
 
-    .vehicle-location{
-      img{
+    .vehicle-location {
+      img {
         padding-left: 10px;
-        margin-right:10px;
+        margin-right: 10px;
       }
-      font-weight:400;
+      font-weight: 400;
     }
 
-    .driver-link{
-      margin-top:30px;
-      a{
-        color:black;
-        font-weight:400;
-        float:right;
+    .driver-link {
+      margin-top: 30px;
+      a {
+        color: black;
+        font-weight: 400;
+        float: right;
       }
     }
   }
 
 }
 
-.visible-img{
-  img{
+.visible-img {
+  img {
     margin-top: 50px;
   }
 }
 
+.social-share-button {
+  width: 150px;
+  a {
+    margin-right: 10px;
+  }
+
+}

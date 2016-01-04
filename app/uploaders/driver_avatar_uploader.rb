@@ -9,13 +9,14 @@ class DriverAvatarUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-  version :processed do
-    process :resize_to_fill => [150, 150]
-  end
-  
   version :square do
     process :resize_to_fill => [150, 150]
   end
+
+  version :popup do
+    process :resize_to_fill => [300, 300]
+  end
+
 
   def extension_white_list
     %w(jpg jpeg gif png)

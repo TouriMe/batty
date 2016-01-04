@@ -34,3 +34,23 @@ $ rake db:migrate
 $ rails s
 ```
 
+### IMAGE PROCESSOR
+8. to process the uploaded images (crop,resolution manipulation etc ..) 
+you need to install imagemagick or rmagick.j 
+
+
+In Mac; 
+```
+$ brew install imagemagick
+``` 
+
+#### HANDY COMMANDs
+
+Heroku Postgres backup and sync with local dev
+``` 
+$ heroku pg:backups capture --app cambodia-smile # for production
+$ heroku pg:backups capture --app cambodian-smile-staging # for staging
+$ curl -o latest.dump `heroku pg:backups public-url --app your_app_name`
+$ pg_restore --verbose --clean --no-acl --no-owner -h localhost -U your_user -d cams_dev db/data/latest.dump
+```
+

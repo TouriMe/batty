@@ -87,43 +87,36 @@
         <div class="row">
           <% if @tour.highlight_html? %>
               <div class="highlight small-12 large-5 columns">
-                <h4>
-                  <span class="header">Highlight</span>
-
-                  <%= @tour.highlight_html.html_safe %>
-
-                </h4>
+                <label class="header">Highlight</label>
+                <%= @tour.highlight_html.html_safe %>
               </div>
           <% end %>
           <% if @tour.include_html? || @tour.exclude_html? %>
               <div class="include-exclude small-12 large-4 columns">
-                <h4>
-                  <span class="header">Include</span>
-                  <% if @tour.include_html? %>
+                <% if @tour.include_html? %>
+                    <div class="include ">
+                      <label class="header">Include</label>
                       <%= @tour.include_html.html_safe %>
-                  <% end %>
-                </h4>
-                <h4>
-                  <span class="header">Exclude</span>
-                  <% if @tour.exclude_html? %>
+                    </div>
+                <% end %>
+                <% if @tour.exclude_html? %>
+                    <div class="exclude">
+                      <label class="header">Exclude</label>
                       <%= @tour.exclude_html.html_safe %>
-                  <% end %>
-                </h4>
+                    </div>
+                <% end %>
               </div>
           <% end %>
           <% if @tour.tour_start? || @tour.tour_end %>
               <div class="tour-start-end small-12 large-3 columns">
-                <h4><span class="header">Start<br></span>
-                  <% if @tour.tour_start? %>
-                      <%= @tour.tour_start %>
-                  <% end %>
-                </h4>
-                <br><br>
-                <h4><span class="header">End<br></span>
-                  <% if @tour.tour_end %>
-                      <%= @tour.tour_end %>
-                  <% end %>
-                </h4>
+                <label class="header">Start Time</label>
+                <% if @tour.tour_start? %>
+                    <%= @tour.tour_start %>
+                <% end %>
+                <label class="header">End Time</label>
+                <% if @tour.tour_end %>
+                    <%= @tour.tour_end %>
+                <% end %>
               </div>
           <% end %>
         </div>

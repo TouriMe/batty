@@ -39,5 +39,5 @@ drivers.each do |driver|
 end
 
 CSV.foreach('db/data/trips.csv') do |r|
-  Trip.create!(name: r[1], content: r[2], tuktuk_price_cents: r[3].to_i, tuktuk_price_currency: r[4], image_url: r[7], description: r[8])
+  Tour.create!(name: r[1], content: r[2], tuktuk_price_cents: r[3].to_i, tuktuk_price_currency: r[4], image_url: r[7], description: r[8])
 end

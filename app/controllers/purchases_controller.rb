@@ -73,7 +73,7 @@ class PurchasesController < ApplicationController
   def checkout
     @nonce = params[:payment_method_nonce]
     @purchase = Purchase.find(params[:id])
-    @trip = Trip.find(@purchase.purchasable_id)
+    @trip = Tour.find(@purchase.purchasable_id)
 
     if @trip.down_payment && @trip.booking_fee
       @charge = @trip.down_payment + @trip.booking_fee

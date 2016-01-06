@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe TripsController, type: :controller do
+RSpec.describe TrousController, type: :controller do
 
   describe "GET #index" do
     it "returns http success" do

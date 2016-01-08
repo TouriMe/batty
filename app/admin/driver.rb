@@ -65,7 +65,7 @@ ActiveAdmin.register Driver do
       
       f.input :card_img, :as => :file, :hint => f.driver.card_img.present? \
         ? image_tag(f.driver.card_img.url, class: "active_admin_img")
-        : content_tag(:span, "No Dirver Card Image Yet")
+        : content_tag(:span, "No Dirver Card Image Yet"), label: "Card Image Url"
       f.input :card_img_cache, :as => :hidden
     end
     
@@ -87,9 +87,9 @@ ActiveAdmin.register Driver do
 
     f.inputs 'Photo Gallery' do
       f.has_many :images, allow_destroy: true do |i|
-        i.input :url, label: "Gallery Img"
-        i.input :url_small,label: "Thumbnail Img"
-        i.input :alt_text
+        i.input :url, label: "Gallery Image"
+        i.input :url_small,label: "Thumbnail Image"
+        i.input :alt_text,label: "Alternative Text"
       end
     end
 

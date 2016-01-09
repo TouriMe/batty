@@ -6,7 +6,7 @@ class Driver < ActiveRecord::Base
   mount_uploader :card_img, DriverCardUploader
   mount_uploader :background_url, DriverBackgroundUploader
 
-  friendly_id :full_name, use: [:slugged, :finders]
+  friendly_id :first_name, use: [:slugged, :finders]
   # obfuscate_id
 
   belongs_to :normal_user
@@ -26,9 +26,9 @@ class Driver < ActiveRecord::Base
 
   accepts_nested_attributes_for :languages, :driver_cities, :driver_vehicles, :images, allow_destroy: true
 
-  def full_name
-    self.first_name + ' ' + self.last_name
-  end
+  # def full_name
+  #   self.first_name + ' ' + self.last_name
+  # end
 
   # to support chinese (utf8) slugs
   def normalize_friendly_id(input)

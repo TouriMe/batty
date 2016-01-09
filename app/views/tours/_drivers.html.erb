@@ -1,6 +1,7 @@
 <section id="driver_wrapper">
   <% @drivers.each do |driver| %>
-      <% if @tour.tuktuk_price.to_i > 0 || (@tour.tuktuk_price.to_i == 0 && (driver.vehicles.count > 1 || (driver.vehicles.count == 1 && driver.vehicles.first.name.downcase == 'car'))) %>
+      <% if @tour.tuktuk_price.to_i > 0 || (@tour.tuktuk_price.to_i == 0 && (driver.vehicles.count > 1 \
+      || (driver.vehicles.count == 1 && driver.vehicles.first.name.downcase == 'car'))) %>
           <a href="#" data-reveal-id="<%= driver.first_name.downcase %>">
             <div class="row tour-driver">
 
@@ -54,7 +55,8 @@
                             </strong>
                           </div>
                           <div class="book-btn small-4 columns">
-                            <%= link_to "BOOK ME", "/book/#{@tour.id}/#{driver.id}?vehicle_type=#{vehicle.name}", class: "btn btn-book" %>
+                            <%= link_to "BOOK ME", "/book/#{@tour.id}/#{driver.id}?vehicle_type=#{vehicle.name}", \
+                            class: "btn btn-book" %>
                           </div>
                         </div>
                     <% elsif vehicle.name.downcase != 'remork (tuk tuk)' %>
@@ -78,7 +80,8 @@
                             </strong>
                           </div>
                           <div class="book-btn small-4 columns">
-                            <%= link_to "BOOK ME", "/book/#{@tour.id}/#{driver.id}?vehicle_type=#{vehicle.name}", class: "btn btn-book" %>
+                            <%= link_to "BOOK ME", "/book/#{@tour.id}/#{driver.id}?vehicle_type=#{vehicle.name}",\
+                             class: "btn btn-book" %>
                           </div>
                         </div>
                     <% end %>
@@ -90,7 +93,8 @@
             </div>
           </a>
 
-          <div id="<%= driver.first_name.downcase %>" class="driver-popup-modal reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+          <div id="<%= driver.first_name.downcase %>" class="driver-popup-modal reveal-modal" data-reveal \
+               aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
             <div class="row">
               <div class="medium-8 small-12 columns">
                 <div class="driver-popup-img">
@@ -117,11 +121,11 @@
                       <% driver.vehicles.each do |d| %>
                           <div>
                             <% if d.name.downcase == 'remork (tuk tuk)' %>
-                                <%=image_tag('tuktuk_yellow.png') %>
+                                <%= image_tag('tuktuk_yellow.png') %>
                                 <span class="vehicle-text">Remork (Tuk Tuk)</span>
 
                             <% else %>
-                                <%=image_tag('car_yellow.png') %>
+                                <%= image_tag('car_yellow.png') %>
                                 <span class="vehicle-text">Car</span>
                             <% end %>
                           </div>
@@ -131,8 +135,8 @@
                       <div><h5><strong>Location</strong></h5></div>
                       <% driver.cities.each do |c| %>
                           <div>
-                            <%=image_tag('location_yellow.png') %>
-                            <span><%=c.name %></span>
+                            <%= image_tag('location_yellow.png') %>
+                            <span><%= c.name %></span>
                           </div>
                       <% end %>
                     </div>
@@ -142,37 +146,37 @@
                       </div>
                       <div class="certificate">
                         <% if driver.english_communication %>
-                            <%=image_tag('checked_yellow.png')%>
+                            <%= image_tag('checked_yellow.png') %>
                         <% else %>
-                            <%=image_tag('unchecked_red.png')%>
+                            <%= image_tag('unchecked_red.png') %>
                         <% end %>
                         <span>English Communication</span>
                       </div>
                       <div class="certificate">
-                        <%=image_tag('checked_yellow.png')%>
+                        <%= image_tag('checked_yellow.png') %>
                         <span><%= driver.driving_experience %> Years Driving Experience</span>
                       </div>
                       <div class="certificate">
                         <% if driver.basic_history %>
-                            <%=image_tag('checked_yellow.png')%>
+                            <%= image_tag('checked_yellow.png') %>
                         <% else %>
-                            <%=image_tag('unchecked_red.png')%>
+                            <%= image_tag('unchecked_red.png') %>
                         <% end %>
                         <span>Basic history</span>
                       </div>
                       <div class="certificate">
                         <% if driver.smartphone_photography %>
-                            <%=image_tag('checked_yellow.png')%>
+                            <%= image_tag('checked_yellow.png') %>
                         <% else %>
-                            <%=image_tag('unchecked_red.png')%>
+                            <%= image_tag('unchecked_red.png') %>
                         <% end %>
                         <span>Smartphone Photography</span>
                       </div>
                       <div class="certificate">
                         <% if driver.basic_dslr %>
-                            <%=image_tag('checked_yellow.png')%>
+                            <%= image_tag('checked_yellow.png') %>
                         <% else %>
-                            <%=image_tag('unchecked_red.png')%>
+                            <%= image_tag('unchecked_red.png') %>
                         <% end %>
                         <span>Basic DSLR</span>
                       </div>

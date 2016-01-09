@@ -16,7 +16,7 @@
   .title-area {
     width: 150px;
     float: left;
-    .logo-wrap{
+    .logo-wrap {
       @media #{$media-pad-smaller}{
         width: 80%;
       }
@@ -32,12 +32,19 @@
       @media #{$media-pad-smaller}{
         font-weight: 400;
         font-size: 16px;
-        text-align: right ;
+        text-align: right;
         margin-right: 20px;
       }
       .login-icon {
         margin-right: 10px;
       }
+
+      .user-profile-img {
+        width: 40px;
+        border-radius: 100%;
+        margin-right: 10px;
+      }
+
     }
   }
   .home-top-bar-section {
@@ -49,11 +56,17 @@
       @media #{$media-pad-smaller}{
         font-weight: 400;
         font-size: 16px;
-        text-align: right ;
+        text-align: right;
         margin-right: 20px;
       }
 
       .login-icon {
+        margin-right: 10px;
+      }
+
+      .user-profile-img {
+        width: 40px;
+        border-radius: 100%;
         margin-right: 10px;
       }
     }

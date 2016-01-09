@@ -9,7 +9,7 @@
     .small-12.columns
       .comment
         .profile.left
-          = image_tag 'avatar.jpg', class: 'profile-img'
+          = image_tag current_normal_user.image, class: 'profile-img'
           br
           span [class='tourist-name']
             strong = c.normal_user.name

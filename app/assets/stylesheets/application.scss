@@ -65,10 +65,16 @@ html, body {
   left: 0;
 }
 
-html, body, h1, h2, h3, h4, h5, h6, p, a, label, select {
-  font-family: 'Lato', sans-serif;
+html, body, p, a, label, select {
+  font-family: 'Muli', sans-serif;
   font-weight: 300;
 }
+
+h1, h2, h3, h4, h5, h6{
+  font-family: 'Nunito', sans-serif;
+  font-weight: 300;
+}
+
 
 #header {
   #fixed-head {
@@ -97,11 +103,14 @@ nav.top-bar {
 .main-container {
   .page-header {
     .tag-line {
-      h2 {
+      h1 {
         text-transform: uppercase;
-        font-weight: 400;
         color: #FFFFFF;
         text-align: center;
+        font-size: 3em;
+      }
+      h3{
+        font-size: 1.15em;
       }
     }
   }

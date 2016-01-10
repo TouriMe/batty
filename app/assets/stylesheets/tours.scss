@@ -3,8 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import 'settings';
 
-$themeFont: 'Avenir Next', Helvetica;
-
 .hidden {
   display: none;
 }
@@ -40,9 +38,8 @@ $themeFont: 'Avenir Next', Helvetica;
           display: inline-flex;
 
           h1 {
-            font-family: $themeFont;
             font-weight: 600;
-            font-size: 30px;
+            font-size: 1.6rem;
           }
           .rating {
             color: #FFB400;
@@ -51,32 +48,31 @@ $themeFont: 'Avenir Next', Helvetica;
           }
         }
         .meta_head {
-          //width: 50%;
-          float: left;
           margin-top: 20px;
 
           .meta_block {
-            //width: 32%;
             display: inline-block;
             .trip-logo {
               margin-right: 10px;
+              font-size: 1.2em;
             }
+
             p {
-              font-size: 18px;
-              font-family: $themeFont;
-              font-weight: 500;
-              line-height: 18px;
+              font-size: 0.85em;
               margin-right: 30px;
               text-align: center;
+
               .block {
                 display: block;
+                font-weight: 600;
+                font-size: 1.2rem;
               }
+
               span.checkpoints {
                 text-align: left;
               }
+
               span.meta {
-                font-size: 14px;
-                font-weight: normal;
                 float: left;
               }
             }
@@ -90,26 +86,22 @@ $themeFont: 'Avenir Next', Helvetica;
         padding-bottom: 20px;
         h1 {
           text-align: center;
-          font-size: 36px;
-          font-family: $themeFont;
-          font-weight: 600;
         }
         .meta_func {
           display: block;
           text-align: center;
           margin: auto;
           width: 80%;
+
           a {
             display: block;
             width: 90%;
             margin: auto;
             padding: 10px 5px;
-            font-size: 20px;
-            font-family: $themeFont;
-            font-weight: 500;
             text-transform: uppercase;
             padding: 10px 10px;
           }
+
           a.trip_book_now {
             color: #FFFFFF;
             background: #323232;
@@ -117,6 +109,7 @@ $themeFont: 'Avenir Next', Helvetica;
             margin-bottom: 8px;
             border: 1px solid #323232;
           }
+
           a.share {
             color: #464646;
             border: 1px solid #979797;
@@ -127,13 +120,13 @@ $themeFont: 'Avenir Next', Helvetica;
     }
   }
 
+
   .trip_detail_wrapper {
     #trip_sidebar {
       border-left: 1px solid #979797;
       padding-top: 35px;
       h3 {
         font-size: 20px;
-        font-family: $themeFont;
         font-weight: 500;
         color: #464646;
       }
@@ -141,7 +134,8 @@ $themeFont: 'Avenir Next', Helvetica;
 
     #detail-content {
       .header {
-        font-size: 24px;
+        font-size: 1.3rem;
+        font-family: 'Nunito', sans-serif;
         color: #FFB400;
         margin: 20px 0;
       }
@@ -166,23 +160,21 @@ $themeFont: 'Avenir Next', Helvetica;
 
       .detail {
         .trip-label {
-          font-size: 20px;
-          font-family: $themeFont;
-          font-weight: 500;
-          color: #464646;
-          margin-left: 15px;
+          h5{
+            font-size: 1.12em;
+            font-weight: 600;
+            color: #464646;
+            margin-left: 15px;
+          }
 
         }
         .trip_content {
-          h3 {
-            font-size: 20px;
-          }
           margin: 5px 20px;
           color: #464646;
-          font-size: 16px;
-          font-weight: 400;
-          font-family: $themeFont;
+          font-size: 0.93rem;
+          font-weight: 300;
           line-height: 22px;
+          font-family: 'Nunito', sans-serif;
           padding-bottom: 30px;
           border-bottom: 1px solid #C8C8C8;
         }
@@ -194,14 +186,14 @@ $themeFont: 'Avenir Next', Helvetica;
       }
       .driver-container {
         .content_head {
-          font-size: 24px;
-          font-weight: 500;
+          font-size: 1.2rem;
+          font-weight: 600;
           margin-left: 10px;
         }
         .tour-driver {
           border-bottom: 1px solid grey;
-          padding: 10px 0;
           margin: 0;
+          font-family: 'Muli', sans-serif;
           a {
             color: black;
           }
@@ -210,6 +202,7 @@ $themeFont: 'Avenir Next', Helvetica;
             .avatar-container {
               width: 80px;
               height: 80px;
+              margin:10px 0;
               @media #{$media-pad-smaller}{
                 margin-left: auto;
                 margin-right: auto;
@@ -231,6 +224,9 @@ $themeFont: 'Avenir Next', Helvetica;
             text-align: left;
             padding-right: 20px;
             font-weight: 500;
+            margin:18px 0;
+            color:black;
+
             .rating {
               color: #FFB400
             }
@@ -248,6 +244,7 @@ $themeFont: 'Avenir Next', Helvetica;
 
             @media #{$media-pad-larger}{
               line-height: 60px;
+              margin:13px 0;
             }
 
             margin: 0px;
@@ -262,13 +259,16 @@ $themeFont: 'Avenir Next', Helvetica;
 
                 @media #{$media-pad-larger}{
                   display: inline-flex;
+
                 }
 
                 .icon-container {
                   width: 50px;
+                  margin:12px 5px;
                   @media #{$media-pad-smaller}{
                     margin: auto;
                   }
+
                 }
 
                 .vehicle-name {
@@ -303,7 +303,7 @@ $themeFont: 'Avenir Next', Helvetica;
             }
           }
           .book-btn {
-            padding: 15px 0;
+            margin: 20px 0;
             .btn-book {
               @media #{$media-pad-smaller}{
                 margin-top: 10px;

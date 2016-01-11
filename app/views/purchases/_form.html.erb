@@ -1,9 +1,11 @@
 <div class="payment_wrapper row">
   <div class="form_wrapper large-7 small-12 columns">
-    <h2>Tour Details</h2>
 
     <%= form_for(@purchase, url: {action: "create"}, html: {id: "payment_details"}) do |f| %>
         <div id="payment_detail">
+          <div class="header">
+            <label><h3>Booking Details</h3></label>
+          </div>
 
           <%= f.hidden_field :purchasable_id, value: @trip.id %>
           <%= f.hidden_field :purchasable_type, value: "Tour" %>
@@ -14,37 +16,66 @@
           <%= f.hidden_field :price, value: @price %>
           <%= f.hidden_field :reference_id, value: @reference_id %>
 
-          <div class="form-group">
-            <%= f.label :start_date, "Start Date" %>
-            <%= f.text_field :start_date, id: "startdate", :required => "", placeholder: "1/02/2016" %>
+
+          <div class="row">
+            <div class="form-group small-12 medium-6 columns">
+              <%= f.label :start_date, "Start Date" %>
+              <%= f.text_field :start_date, id: "startdate", :required => "", placeholder: 'Please enter Start Date' %>
+            </div>
+
+            <div class="form-group small-12 medium-6 columns">
+              <%= f.label :address_id, "Pick Up Address" %>
+              <%= f.collection_select(:address_id, Address.all, :id, :name, {:prompt => 'Please select Pickup Address', :selected => @purchase.address_id}) %>
+            </div>
+
+            <div class="form-group small-12 medium-6 columns">
+              <%= f.label :pickup_time, "Pick Up Time" %>
+              <%= f.text_field :pickup_time, id: "pickuptime", :required => "", placeholder: 'Pickup Time ( eg:8am )' %>
+            </div>
+
+            <div class="form-group small-12 medium-6 columns">
+              <%= f.label :traveller_number, "No. of Travellers" %>
+              <%= f.text_field :traveller_number, id: "travellernumber", :required => '', placeholder: 'Please enter No. of Travellers' %>
+            </div>
+
           </div>
 
+          <div class="header">
+            <label><h3>Traveller Details</h3></label>
+          </div>
+          <div class="row">
+            <div class="form-group small-12 medium-6 columns">
+              <%= f.label :first_name, "First Name" %>
+              <%= f.text_field :first_name, :required => "", placeholder: 'Please enter First Name' %>
+            </div>
 
-          <div class="form-group pickup_address">
-            <%= f.label :address_id, "Pick Up Address" %>
-            <%= f.collection_select(:address_id, Address.all, :id, :name, {:prompt => 'Select Pickup Address', :selected => @purchase.address_id}) %>
+            <div class="form-group small-12 medium-6 columns">
+              <%= f.label :last_name, "Last Name" %>
+              <%= f.text_field :last_name, :required => "", placeholder: 'Please enter Last Name' %>
+            </div>
+
+            <div class="form-group small-12 medium-6 columns">
+              <%= f.label :email, "Your Email" %>
+              <%= f.email_field :email, :required => "", placeholder: 'Please enter your Email' %>
+            </div>
+
+            <div class="form-group small-12 medium-6 columns">
+              <%= f.label :email_confirmation, "Confirm Your Email" %>
+              <%= f.email_field :email_confirmation, :required => "", placeholder: 'Please confirm Your Email' %>
+            </div>
+
+            <div class="form-group columns">
+              <%= f.label :phone_number, "Phone Number", class:'phone-label' %>
+              <%= f.text_field :country_code, id: "country_code", placeholder: '+country code' %>
+              <%= f.text_field :phone_number, id: "phone_number", placeholder: 'Phone number' %>
+            </div>
+
+            <div class="form-group small-12 columns">
+              <%= f.label :comments, "Your Comment" %>
+              <%= f.text_area :comments %>
+            </div>
           </div>
 
-          <div class="form-group">
-            <%= f.label :email, "Your Email" %>
-            <%= f.email_field :email, :required => "", placeholder: "Your Email" %>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :email_confirmation, "Confirm Your Email" %>
-            <%= f.email_field :email_confirmation, :required => "", placeholder: "Confirm Your Email" %>
-          </div>
-
-          <div class="form-group phone_block">
-            <%= f.label :phone_number, "Phone Number" %>
-            <%= f.text_field :country_code, id: "country_code", placeholder: "+01" %>
-            <%= f.text_field :phone_number, id: "phone_number", placeholder: "203 002 00" %>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :comments, "Your Comment" %>
-            <%= f.text_area :comments %>
-          </div>
 
           <div class="form-group">
             <%= f.submit("Confirm Booking", id: "bt_charge", onclick: "clicked_chargebt()") %>
@@ -135,7 +166,7 @@
       </section>
 
       <p class="share">Share your plans!</p>
-      <span><%= social_share_button_tag(@trip.name)%></span>
+      <span><%= social_share_button_tag(@trip.name) %></span>
     </div>
     <!-- End of Box Wrapper ---!> 
   </div>

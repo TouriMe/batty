@@ -17,10 +17,10 @@ class PurchasesController < ApplicationController
       redirect_to payment_success_path
     else
       # render json: {"message" => "Not succcess"}
-      redirect_to :back 
+      redirect_to :back
     end
   end
-  
+
   # book the tour(:tour_id)
   # with driver (:driver_id) 
   def new
@@ -29,7 +29,7 @@ class PurchasesController < ApplicationController
     @driver = Driver.friendly.find(params[:driver_id])
     @purchase = Purchase.new
     @no_show_title = true
-  
+
     ## Reference ID
     # todo \
     # format this to 5 chars
@@ -94,7 +94,7 @@ class PurchasesController < ApplicationController
         @purchase.save
         redirect_to payment_success_path
       end
-    else 
+    else
       redirect_to payment_success_path
     end
   end
@@ -136,13 +136,17 @@ class PurchasesController < ApplicationController
 
   private
   def ajax_params # params that needed for an ajax create request
-    params.require(:purchase).permit(:purchasable_id, :purchasable_type, :start_date, :email, :reference_id, :price, :address_id,
-                                     :email_confirmation, :country_code, :phone_number, :comments, :driver_id, :vehicle_id, :pickup)
+    params.require(:purchase).permit(:purchasable_id, :purchasable_type, :start_date, :email, :reference_id,
+                                     :price, :address_id, :email_confirmation, :country_code, :phone_number,
+                                     :comments, :driver_id, :vehicle_id, :pickup, :pickup_time, :traveller_number,
+                                     :first_name, :last_name)
   end
 
   def purchase_params
-    params.require(:purchase).permit(:purchasable_id, :purchasable_type, :start_date, :email, :driver_id, :reference_id, :address_id,
-                                     :vehicle_id, :country, :email_confirmation, :country_code, :phone_number, :contact, :comments, :pickup)
+    params.require(:purchase).permit(:purchasable_id, :purchasable_type, :start_date, :email, :driver_id, :reference_id,
+                                     :address_id, :vehicle_id, :country, :email_confirmation, :country_code, :phone_number,
+                                     :contact, :comments, :pickup, :pickup_time, :traveller_number,
+                                     :first_name, :last_name)
   end
 
 end

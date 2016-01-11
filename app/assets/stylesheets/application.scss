@@ -70,11 +70,10 @@ html, body, p, a, label, select {
   font-weight: 300;
 }
 
-h1, h2, h3, h4, h5, h6{
+h1, h2, h3, h4, h5, h6 {
   font-family: 'Nunito', sans-serif;
   font-weight: 300;
 }
-
 
 #header {
   #fixed-head {
@@ -109,7 +108,7 @@ nav.top-bar {
         text-align: center;
         font-size: 3em;
       }
-      h3{
+      h3 {
         font-size: 1.15em;
       }
     }
@@ -220,7 +219,7 @@ nav.top-bar {
       padding-top: 25px;
       .form-group {
         display: inline-block;
-        width: 100%;
+        //width: 100%;
         min-height: 57px;
         height: auto;
         position: relative;
@@ -228,7 +227,6 @@ nav.top-bar {
           font-family: 'Open Sans', sans-serif;
           font-size: 17px;
           font-weight: 500;
-          width: 39%;
           float: left;
           //text-transform: uppercase;
           vertical-align: middle;
@@ -240,7 +238,6 @@ nav.top-bar {
         }
         #card-number, #expiration-date, #cvv {
           display: inline-table;
-          width: 60%;
           height: 40px;
         }
         #expiration-date {
@@ -266,40 +263,54 @@ nav.top-bar {
       }
     }
     form#payment_details {
-      padding-top: 25px;
+
+      .header {
+        margin-bottom: 20px;
+        background-color: #FFBE5B;
+        h3 {
+          padding: 5px 10px;
+          font-size: 1.4rem;
+          color: white;
+        }
+      }
+
       .form-group {
         display: block;
         min-height: 57px;
-        width: 100%;
         height: auto;
         position: relative;
+        margin-bottom: 10px;
         label {
           font-family: 'Open Sans', sans-serif;
-          font-size: 17px;
-          font-weight: 500;
-          width: 39%;
+          font-size: 14px;
+          font-weight: 700;
           float: left;
           vertical-align: middle;
-          //text-transform: uppercase;
-          //font-style: italic;
+          margin-bottom: 5px;
         }
         label.error {
-          margin-left: 39%;
           font-size: 10px;
           font-style: normal;
           text-transform: uppercase;
           width: 100%;
+          float: left;
         }
         input, textarea, select {
           display: inline-table;
-          width: 60%;
+          font-weight: 300;
+        }
+
+        .phone-label{
+          height: 37px;
+          line-height: 37px;
+          margin-right: 20px;
         }
         textarea {
-          resize: off;
-          min-height: 100px;
+          min-height: 60px;
         }
         input#country_code {
-          width: 10%;
+          width: 25%;
+          margin-right: 7px;
         }
         input#phone_number {
           display: inline-table;

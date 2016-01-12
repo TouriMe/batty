@@ -111,6 +111,12 @@ nav.top-bar {
       h3 {
         font-size: 1.15em;
       }
+
+      .line {
+        width: 72%;
+        border-bottom: 1px solid white;
+        margin: 0 auto;
+      }
     }
   }
 }
@@ -134,7 +140,6 @@ nav.top-bar {
       }
       header#info_top {
         background: #FFB94E;
-        border-radius: 7px 7px 0px 0px;
         padding-bottom: 20px;
         h4 {
           text-align: center;
@@ -300,7 +305,7 @@ nav.top-bar {
           font-weight: 300;
         }
 
-        .phone-label{
+        .phone-label {
           height: 37px;
           line-height: 37px;
           margin-right: 20px;

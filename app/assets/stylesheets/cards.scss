@@ -6,8 +6,8 @@
 .cards {
   background-color: white;
   .search-results {
+    padding: 30px 15px 10px;
     @media #{$media-pad-larger}{
-
       max-width: 1240px;
       margin: 0 auto;
     }

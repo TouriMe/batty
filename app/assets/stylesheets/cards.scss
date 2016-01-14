@@ -6,14 +6,19 @@
 .cards {
   background-color: white;
   .search-results {
-    padding: 30px 15px 10px;
     @media #{$media-pad-larger}{
+
       max-width: 1240px;
       margin: 0 auto;
+    }
+
+    @media #{$media-pad-smaller}{
+      padding: 2px 0;
     }
     .card-wrapper {
       margin-bottom: -50px;
       @media #{$media-pad-smaller}{
+        padding:0;
         margin-bottom: -80px;
       }
       .card-item {
@@ -59,8 +64,8 @@
           @media #{$media-pad-smaller}{
             width: 50px;
             height: 50px;
-            top: -190px;
-            left: 68%;
+            top: -220px;
+            left: 78%;
           }
         }
 

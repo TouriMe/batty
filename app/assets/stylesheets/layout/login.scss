@@ -8,7 +8,7 @@
       text-transform: uppercase;
     }
     .user-icon{
-      font-size: 3em;
+      font-size: 3rem;
     }
     padding: 25px 0 10px 0;
   }
@@ -22,20 +22,20 @@
       margin: 10px;
       background: transparent;
       border: 1px solid black;
-      font-size: 1.2em;
+      font-size: 1.2rem;
       padding: 10px 20px;
       font-weight: 400;
 
       &.facebook{
         color: #344488;
         border-color: #344488;
-        .fa{ font-size: 1.4em; }
+        .fa{ font-size: 1.4rem; }
       }
 
       &.google{
         color: #be4133;
         border-color: #be4133;
-        .fa{ font-size: 1.4em; }
+        .fa{ font-size: 1.4rem; }
       }
     }
   }

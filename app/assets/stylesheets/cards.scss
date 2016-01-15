@@ -18,7 +18,7 @@
     .card-wrapper {
       margin-bottom: -50px;
       @media #{$media-pad-smaller}{
-        padding:0;
+        padding: 0;
         margin-bottom: -80px;
       }
       .card-item {
@@ -40,7 +40,7 @@
           top: -40px;
           padding-left: 15px;
           color: white;
-          font-size: 18px;
+          font-size: 1.12rem;
           font-weight: 700;
           background-color: rgba(0, 0, 0, 0.5);
           padding-top: 5px;
@@ -52,7 +52,7 @@
           height: 60px;
           border-radius: 100%;
           background-color: #474747;
-          font-size: 22px;
+          font-size: 1.37rem;
           font-weight: 700;
           color: white;
           text-align: center;
@@ -90,8 +90,7 @@
           }
 
           .vehicle {
-            margin-right: 10px;
-            font-size: 14px;
+            @extend .review-num
           }
         }
         .avatar {

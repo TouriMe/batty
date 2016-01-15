@@ -130,7 +130,7 @@ nav.top-bar {
 .payment_wrapper {
   max-width: 960px;
   .payment_info {
-    padding-top: 60px;
+    padding-top: 30px;
     padding-right: 0px;
     .box_wrapper {
       width: 80%;
@@ -139,8 +139,8 @@ nav.top-bar {
       p.share {
         text-align: center;
         font-weight: 500;
-        font-size: 20px;
-        line-height: 21px;
+        font-size: 1.25rem;
+        line-height: 1.3rem;
         font-family: 'Open Sans', sans-serif;
       }
       header#info_top {
@@ -150,16 +150,16 @@ nav.top-bar {
           text-align: center;
           font-family: "Open Sans", sans-serif;
           color: #ffffff;
-          font-size: 20px;
+          font-size: 1.25rem;
           font-weight: 500;
           padding: 30px 20px 20px 20px;
         }
         p {
           font-weight: 600px;
           color: #ffffff;
-          font-size: 14px;
-          line-height: 20x;
-          padding: 0px 20px 0px 20px;
+          font-size: 0.87rem;
+          line-height: 1.25rem;
+          padding: 0px 20px;
         }
       }
       section#driver_image {
@@ -192,36 +192,35 @@ nav.top-bar {
           }
         }
         h1 {
-          margin-top: 20px;
-          font-size: 24px;
+          font-size: 2.5rem;
           font-weight: 500;
           text-align: center;
-          line-height: 25px;
         }
         h2 {
-          font-size: 48px;
-          line-height: 50px;
+          margin-top: 20px;
+          font-size: 1.5rem;
           font-weight: 500;
           text-align: center;
         }
+
         p.meta_info {
-          padding: 20px 20px;
+          padding:0 20px 20px 20px;
           font-weight: 500;
           text-align: center;
-          font-size: 12px;
-          line-height: 15px;
+          font-size: 0.75rem;
+          line-height: 1rem;
         }
       }
     }
   }
   .form_wrapper {
-    padding: 60px 20px;
+    padding: 30px 20px;
     .braintree-paypal-loggedin {
       max-width: 100% !important;
     }
     h2 {
       font-family: 'Lato', sans-serif;
-      font-size: 40px;
+      font-size: 2.5rem;
       font-weight: 500;
       text-transform: uppercase;
     }
@@ -235,7 +234,7 @@ nav.top-bar {
         position: relative;
         label {
           font-family: 'Open Sans', sans-serif;
-          font-size: 17px;
+          font-size: 1.12rem;
           font-weight: 500;
           float: left;
           //text-transform: uppercase;
@@ -258,7 +257,6 @@ nav.top-bar {
         }
         input[type=submit] {
           display: block;
-          font-size: 16px;
           font-weight: 500;
           background: #323232;
           color: #ffffff;
@@ -292,14 +290,13 @@ nav.top-bar {
         margin-bottom: 10px;
         label {
           font-family: 'Open Sans', sans-serif;
-          font-size: 14px;
           font-weight: 700;
           float: left;
           vertical-align: middle;
           margin-bottom: 5px;
         }
         label.error {
-          font-size: 10px;
+          font-size: 0.87rem;
           font-style: normal;
           text-transform: uppercase;
           width: 100%;
@@ -380,13 +377,13 @@ nav.top-bar {
 
   .driver-popup-detail {
     .name {
-      font-size: 36px;
+      font-size: 2.25rem;
       text-align: center;
       font-weight: 700;
     }
     .reviews {
       text-align: center;
-      font-size: 22px;
+      font-size: 1.37rem;
       font-weight: 400;
       .section.rating {
         color: rgb(255, 185, 78);

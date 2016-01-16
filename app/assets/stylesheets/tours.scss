@@ -264,7 +264,7 @@
 
                 .icon-container {
                   width: 50px;
-                  margin:12px 5px;
+                  margin:10px 5px;
                   @media #{$media-pad-smaller}{
                     margin: auto;
                   }
@@ -278,7 +278,7 @@
                   }
 
                   @media #{$media-pad-larger}{
-                    line-height: 70px;
+                    line-height: 84px;
                     margin-left: 10px;
                   }
 
@@ -297,13 +297,13 @@
             }
 
             @media #{$media-pad-larger}{
-              line-height: 60px;
+              line-height: 72px;
               padding: 6px 0;
               text-align: right;
             }
           }
           .book-btn {
-            margin: 20px 0;
+            margin: 25px 0;
             .btn-book {
               @media #{$media-pad-smaller}{
                 margin-top: 10px;

@@ -1,14 +1,90 @@
-<p>Dear Customer, <br ><br >
-
-  Welcome to TouriMe, your order has been confirmed with the following reference id.
+<p>Dear <strong><%= @purchase.first_name %></strong>,
   <br><br>
-  <span id="reference_id"><%= @purchase.reference_id %></span>
-
-  <br ><br >
-  And the tour would start in <%= @purchase.start_date %>, according to your booking.
-  
-  <br ><br >
-  Thanks For Travelling With Us.<br >
-  <a href="http://tourime.com">TOURIME TEAM</a.
+  Congratulations! Your booking has been confirmed.
+  <br>
+  Now get ready for an unforgettable memory with TouriMe!
 </p>
+
+<h3 style="color:#FFB94E" >
+  <span id="reference_id">Booking Reference: <%= @purchase.reference_id %></span>
+</h3>
+
+
+<h4>
+    <span class="booking-detail">
+      Booking Details
+    </span>
+</h4>
+<p>
+<span>
+Tour Name: <%= @purchase.purchasable.name %>
+</span>
+  <br>
+<span>
+  Start Date: <%= @purchase.start_date %>
+</span>
+  <br>
+<span>
+  Pick Up Time: <%= @purchase.pickup_time %>
+</span>
+  <br>
+<span>
+Pick Up Address: <%= @purchase.address.name %>
+</span>
+  <br>
+<span>
+  No. of Traveller: <%= @purchase.traveller_number %>
+</span>
+</p>
+
+
+<h4>
+    <span class="payment-detail">
+       Payment Details
+    </span>
+</h4>
+<p>
+<span>
+Paid (USD ): $0
+</span>
+  <br>
+
+  <span>
+    <% if @purchase.vehicle.name.downcase == 'remork (tuk tuk)' %>
+    <span>To be paid to driver in cash (USD): <%= @purchase.tour.tuktuk_price %></span>
+    <% else %>
+ <span>To be paid to driver in cash (USD): <%= @purchase.purchasable.car_price %></span>
+    <% end %>
+  </span>
+</p>
+
+<h4>
+    <span class="driver-detail">
+       Driver Details
+    </span>
+</h4>
+<p>
+<span>
+Driver Name: <%= @purchase.driver.first_name %>
+</span>
+  <br>
+<span>
+  Phone No: <%= @purchase.driver.phone %>
+</span>
+</p>
+<p>
+
+</p>
+<p>
+  Thanks for choosing <a href="http://tourime.com">TouriMe</a> to be your best travel companion.Wish you a great journey
+  in amazing Cambodia!
+</p>
+
+<p>
+  Cheers,<br>
+  TouriMe Team
+</p>
+
+
+
 

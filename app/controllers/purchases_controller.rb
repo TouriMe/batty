@@ -9,11 +9,11 @@ class PurchasesController < ApplicationController
   # before making a transcations 
   def create()
     @purchase = Purchase.new(ajax_params)
+    @host = request.host
     @purchase.save
-
     if @purchase.save
       # render json: @purchase
-      OrderConfirmation.confirm(@purchase).deliver_now
+      OrderConfirmation.confirm(@purchase, @host).deliver_now
       redirect_to payment_success_path
     else
       # render json: {"message" => "Not succcess"}

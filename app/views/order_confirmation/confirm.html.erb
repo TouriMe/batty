@@ -5,7 +5,7 @@
   Now get ready for an unforgettable memory with TouriMe!
 </p>
 
-<h3 style="color:#FFB94E" >
+<h3 style="color:#FFB94E">
   <span id="reference_id">Booking Reference: <%= @purchase.reference_id %></span>
 </h3>
 
@@ -16,8 +16,12 @@
     </span>
 </h4>
 <p>
+  <span>
+  Customer Name: <%= @purchase.first_name %> &nbsp; <%= @purchase.last_name %>
+</span>
+  <br>
 <span>
-Tour Name: <%= @purchase.purchasable.name %>
+Tour Name: <%= link_to @purchase.purchasable.name, tour_path(@purchase.purchasable) %></a>
 </span>
   <br>
 <span>
@@ -29,11 +33,15 @@ Tour Name: <%= @purchase.purchasable.name %>
 </span>
   <br>
 <span>
-Pick Up Address: <%= @purchase.address.name %>
+  No. of Traveller: <%= @purchase.traveller_number %>
+</span>
+<br>
+<span>
+  Customer Phone Number: <%= @purchase.phone_number %>
 </span>
   <br>
 <span>
-  No. of Traveller: <%= @purchase.traveller_number %>
+Pick Up Address: <%= @purchase.address.name %>
 </span>
 </p>
 

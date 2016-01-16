@@ -139,14 +139,14 @@ class PurchasesController < ApplicationController
     params.require(:purchase).permit(:purchasable_id, :purchasable_type, :start_date, :email, :reference_id,
                                      :price, :address_id, :email_confirmation, :country_code, :phone_number,
                                      :comments, :driver_id, :vehicle_id, :pickup, :pickup_time, :traveller_number,
-                                     :first_name, :last_name)
+                                     :passport_number, :nationality, :first_name, :last_name)
   end
 
   def purchase_params
     params.require(:purchase).permit(:purchasable_id, :purchasable_type, :start_date, :email, :driver_id, :reference_id,
                                      :address_id, :vehicle_id, :country, :email_confirmation, :country_code, :phone_number,
-                                     :contact, :comments, :pickup, :pickup_time, :traveller_number,
-                                     :first_name, :last_name)
+                                     :contact, :comments, :pickup, :pickup_time, :traveller_number, :passport_number,
+                                     :nationality, :first_name, :last_name)
   end
 
 end

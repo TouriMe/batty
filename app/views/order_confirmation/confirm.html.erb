@@ -16,10 +16,6 @@
     </span>
 </h4>
 <p>
-  <span>
-  Customer Name: <%= @purchase.first_name %> &nbsp; <%= @purchase.last_name %>
-</span>
-  <br>
 <span>
 Tour Name: <%= link_to @purchase.purchasable.name, @domainName + tour_path(@purchase.purchasable) %></a>
 </span>
@@ -35,14 +31,28 @@ Tour Name: <%= link_to @purchase.purchasable.name, @domainName + tour_path(@purc
 <span>
   No. of Traveller: <%= @purchase.traveller_number %>
 </span>
-<br>
-<span>
-  Customer Phone Number: <%= @purchase.phone_number %>
-</span>
   <br>
 <span>
 Pick Up Address: <%= @purchase.address.name %>
 </span>
+  <br>
+    <span>
+  Customer Name: <%= @purchase.first_name %> &nbsp; <%= @purchase.last_name %>
+</span>
+  <br>
+
+  <span>
+  Customer Nationality: <%= @purchase.nationality %>
+</span>
+  <br>
+  <span>
+  Customer Passport Number: <%= @purchase.passport_number %>
+</span>
+  <br>
+  <span>
+  Customer Phone Number: <%= @purchase.phone_number %>
+</span>
+  <br>
 </p>
 
 

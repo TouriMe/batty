@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160111153704) do
+ActiveRecord::Schema.define(version: 20160116121729) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -205,6 +205,8 @@ ActiveRecord::Schema.define(version: 20160111153704) do
     t.integer  "traveller_number"
     t.string   "first_name"
     t.string   "last_name"
+    t.string   "passport_number"
+    t.string   "nationality"
   end
 
   create_table "seos", force: :cascade do |t|

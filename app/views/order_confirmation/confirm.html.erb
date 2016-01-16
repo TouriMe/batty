@@ -51,7 +51,7 @@ Paid (USD ): $0
 
   <span>
     <% if @purchase.vehicle.name.downcase == 'remork (tuk tuk)' %>
-    <span>To be paid to driver in cash (USD): <%= @purchase.tour.tuktuk_price %></span>
+    <span>To be paid to driver in cash (USD): <%= @purchase.purchasable.tuktuk_price %></span>
     <% else %>
  <span>To be paid to driver in cash (USD): <%= @purchase.purchasable.car_price %></span>
     <% end %>

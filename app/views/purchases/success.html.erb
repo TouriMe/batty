@@ -13,7 +13,7 @@
       <%= image_tag('line.png', class: 'line_break') %>
 
       <h4>Share around your plans!</h4>
-      <span><%= social_share_button_tag('Wish you a great journey in amazing Cambodia!')%></span>
+      <span><%= social_share_button_tag('Wish you a great journey in amazing Cambodia!', :url => @domain + tour_path(@trip))%></span>
     </section>
   </div><!-- end of columns -->
 </div><!-- end of success_wrapper -->

@@ -14,7 +14,7 @@ class PurchasesController < ApplicationController
     if @purchase.save
       # render json: @purchase
       OrderConfirmation.confirm(@purchase, @host).deliver_now
-      redirect_to payment_success_path
+      redirect_to payment_success_path(purchaseid: @purchase)
     else
       # render json: {"message" => "Not succcess"}
       redirect_to :back
@@ -107,6 +107,8 @@ class PurchasesController < ApplicationController
   end
 
   def success
+    @trip = Purchase.find(params[:purchaseid]).purchasable
+    @domain = request.host
     @custom_title = "Your payment has been successful"
   end
 

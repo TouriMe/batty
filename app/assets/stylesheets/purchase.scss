@@ -1,6 +1,7 @@
 // Place all the styles related to the purchase controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'settings';
 
 #paypal-container {
   display: inline-block;
@@ -35,7 +36,9 @@
   border-radius: 0px; 
   border: 0px;
   padding: 10px 20px;
-  width: auto!important; 
+  @media #{$media-phone-smaller}{
+    width: 100%;
+  }
 }
 
 .success_wrapper {

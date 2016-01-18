@@ -130,11 +130,8 @@ nav.top-bar {
 .payment_wrapper {
   max-width: 960px;
   .payment_info {
-    padding-top: 30px;
-    padding-right: 0px;
+    padding: 30px 15px;
     .box_wrapper {
-      width: 80%;
-      margin-left: 19%;
       color: #323232;
       p.share {
         text-align: center;
@@ -204,7 +201,7 @@ nav.top-bar {
         }
 
         p.meta_info {
-          padding:0 20px 20px 20px;
+          padding: 0 20px 20px 20px;
           font-weight: 500;
           text-align: center;
           font-size: 0.75rem;
@@ -214,7 +211,7 @@ nav.top-bar {
     }
   }
   .form_wrapper {
-    padding: 30px 20px;
+    padding: 30px 10px;
     .braintree-paypal-loggedin {
       max-width: 100% !important;
     }
@@ -316,12 +313,19 @@ nav.top-bar {
           min-height: 60px;
         }
         input#country_code {
-          width: 25%;
-          margin-right: 7px;
+          width: 28%;
+          margin-right: 29px;
+          @media #{$media-phone-smaller}{
+            width: 60%;
+            margin-right: 0;
+          }
         }
         input#phone_number {
           display: inline-table;
-          width: 49.5%;
+          width: 47%;
+          @media #{$media-phone-smaller}{
+            width: 100%;
+          }
         }
       }
     }
@@ -421,11 +425,10 @@ nav.top-bar {
 }
 
 .social-share-button {
-  width:200px;
+  width: 200px;
   margin: 0 auto;
   a {
-    margin:0 10px;
+    margin: 0 10px;
   }
-
 
 }

@@ -3,11 +3,11 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $( ->
 
-  $imgUrl = $('.trip-cover-img').attr("data-img")
+#  $imgUrl = $('.trip-cover-img').attr("data-img")
   headerHeight = $('#fixed-head').height()
   tripHeaderHeight = $('.trip_head_wrapper').height()
   heroHight = $(window).height()-tripHeaderHeight
-  $('.trip-cover-img').attr('style',' background-image:url('+ $imgUrl + ');height:' + heroHight + 'px;');
+  $('.trip-cover-img').attr('style','height:' + heroHight + 'px;');
   $('.trip-cover-img').click( (evt)->
     $('.carousel ul li:first-child img').click();
   );

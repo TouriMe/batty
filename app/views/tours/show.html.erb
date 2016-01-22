@@ -1,10 +1,10 @@
 <div class="container trip_wrapper">
 
   <% if @tour.images.where(is_hero: true).any? %>
-      <div class="trip-cover-img" data-img="<%= @tour.images.where(is_hero: true).first.url %>">
+      <div class="trip-cover-img" style="background-image:url('<%= @tour.images.where(is_hero: true).first.url %>')">
       </div>
   <% elsif @tour.images.any? %>
-      <div class="trip-cover-img" data-img="<%= @tour.images.first.url %>">
+      <div class="trip-cover-img" style="background-image:url('<%= @tour.images.first.url %>')">
       </div>
   <% end %>
 

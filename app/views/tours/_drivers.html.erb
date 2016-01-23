@@ -47,7 +47,7 @@
                           </div>
                           <div class="price small-2 columns">
                             <strong>
-                              <% if vehicle.name.downcase == 'remork (tuk tuk)' %>
+                              <% if vehicle.name.downcase == 'remork/tuk tuk' %>
                                   <%= number_to_currency((@tour.tuktuk_price), :precision => 0) %>
                               <% elsif vehicle.name.downcase == 'car' %>
                                   <%= number_to_currency((@tour.car_price), :precision => 0) %>
@@ -59,7 +59,7 @@
                             class: "btn btn-book" %>
                           </div>
                         </div>
-                    <% elsif vehicle.name.downcase != 'remork (tuk tuk)' %>
+                    <% elsif vehicle.name.downcase != 'remork/tuk tuk' %>
                         <div class="row vehicle">
                           <div class="vehicle-detail small-6 columns">
                             <div class="icon-container">

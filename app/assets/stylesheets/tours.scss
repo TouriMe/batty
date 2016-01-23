@@ -33,8 +33,13 @@
 
       padding-top: 0px;
       .trip_top_head {
+
         padding-top: 20px;
+
         .trip-title {
+          @media #{$media-pad-smaller}{
+            text-align: center;
+          }
           display: block;
 
           h1 {
@@ -49,10 +54,12 @@
         }
         .meta_head {
           margin-top: 20px;
-
+          @media #{$media-pad-smaller}{
+            margin-top: 5px;
+          }
           .meta_block {
             display: inline-block;
-            .trip-logo {
+            .trip-logo, .distance-logo {
               margin-right: 10px;
               font-size: 1.2rem;
             }
@@ -61,6 +68,11 @@
               font-size: 0.85rem;
               margin-right: 30px;
               text-align: center;
+              margin-bottom: 0;
+
+              @media #{$media-pad-smaller}{
+                margin-right: 10px;
+              }
 
               .block {
                 display: block;
@@ -68,13 +80,10 @@
                 font-size: 1.2rem;
               }
 
-              span.checkpoints {
+              span.checkpoints, span.meta {
                 text-align: left;
               }
 
-              span.meta {
-                float: left;
-              }
             }
           }
         }
@@ -83,7 +92,10 @@
       .trip_top_info {
         border-left: 1px solid #979797;
         h1 {
-          margin:10px 0 0 0;
+          @media #{$media-pad-smaller}{
+            margin: 0;
+          }
+          margin: 10px 0 0 0;
           text-align: center;
         }
         .meta_func {
@@ -91,6 +103,7 @@
           text-align: center;
           margin: auto;
           width: 80%;
+          padding-bottom: 10px;
 
           a {
             display: block;
@@ -119,7 +132,6 @@
     }
   }
 
-
   .trip_detail_wrapper {
     #trip_sidebar {
       border-left: 1px solid #979797;
@@ -137,61 +149,73 @@
         font-family: 'Nunito', sans-serif;
         color: #FFB400;
         margin: 20px 0;
-      }
-      ol,ul {
-        display: list-item;
-        //list-style: decimal;
-        line-height: 1.6;
-
-        li{
-          padding-bottom: 10px;
+        @media #{$media-pad-smaller}{
+          margin: 10px 0;
         }
       }
-      .highlight {
-        text-align: left;
 
+      .highlight, .include-exclude, .tour-start-end {
+        text-align: left;
+        ol, ul {
+          display: list-item;
+          //list-style: decimal;
+          line-height: 1.6;
+          @media #{$media-pad-smaller}{
+            margin-bottom: 0;
+          }
+          li {
+            padding-bottom: 10px;
+            @media #{$media-pad-smaller}{
+              padding-bottom: 0;
+            }
+          }
+        }
+
+      }
+
+      @media #{$media-pad-smaller}{
+        .highlight, .include-exclude, .tour-start-end {
+          text-align: center;
+          ol, ul {
+            text-align: left;
+          }
+        }
       }
 
       .include-exclude {
         border-right: solid 3px white;
         border-left: solid 3px white;
-        text-align: left;
-      }
-      .tour-start-end {
-        text-align: left;
       }
 
-      .detail {
-        .trip-label {
-          h5{
-            font-size: 1.12rem;
-            font-weight: 500;
-            color: #464646;
-            margin-left: 15px;
-          }
-
-        }
-        .trip_content {
-          margin: 5px 20px;
+      .trip-label {
+        h3 {
+          font-size: 1.5rem;
+          font-weight: 500;
           color: #464646;
-          font-size: 0.93rem;
-          font-weight: 300;
-          line-height: 22px;
-          font-family: 'Nunito', sans-serif;
-          padding-bottom: 30px;
-          border-bottom: 1px solid #C8C8C8;
-        }
-        .price {
-          margin: 20px 0;
-          color: green;
+          margin-left: 15px;
         }
 
       }
+      .trip_content {
+        margin: 5px 20px;
+        color: #464646;
+        font-size: 0.93rem;
+        font-weight: 300;
+        line-height: 22px;
+        font-family: 'Nunito', sans-serif;
+        padding-bottom: 30px;
+        border-bottom: 1px solid #C8C8C8;
+      }
+      .price {
+        margin: 20px 0;
+        color: green;
+      }
+
       .driver-container {
         .content_head {
           font-size: 1.2rem;
           font-weight: 500;
-          margin-left: 10px;
+          margin-left: 20px;
         }
         .tour-driver {
           border-bottom: 1px solid grey;
@@ -205,7 +229,7 @@
             .avatar-container {
               width: 80px;
               height: 80px;
-              margin:10px 0;
+              margin: 10px 0;
               @media #{$media-pad-smaller}{
                 margin-left: auto;
                 margin-right: auto;
@@ -227,8 +251,8 @@
             text-align: left;
             padding-right: 20px;
             font-weight: 500;
-            margin:18px 0;
-            color:black;
+            margin: 18px 0;
+            color: black;
 
             .rating {
               color: #FFB400
@@ -247,7 +271,7 @@
 
             @media #{$media-pad-larger}{
               line-height: 60px;
-              margin:13px 0;
+              margin: 13px 0;
             }
 
             margin: 0px;
@@ -267,7 +291,7 @@
 
                 .icon-container {
                   width: 50px;
-                  margin:10px 5px;
+                  margin: 10px 5px;
                   @media #{$media-pad-smaller}{
                     margin: auto;
                   }
@@ -293,6 +317,8 @@
           }
 
           .price {
+            font-weight: 700;
+            color: black;
             @media #{$media-pad-smaller}{
               line-height: 80px;
               padding: 0;
@@ -300,7 +326,7 @@
             }
 
             @media #{$media-pad-larger}{
-              line-height: 72px;
+              line-height: 32px;
               padding: 6px 0;
               text-align: right;
             }

@@ -28,10 +28,11 @@
     .login-logout-btn {
       color: white;
       font-weight: 400;
-      font-size: 0.93rem;
+      font-size: 1.25rem;
       @media #{$media-pad-smaller}{
         text-align: right;
         margin-right: 20px;
+        font-size: 0.93rem;
       }
       .login-icon {
         margin-right: 10px;

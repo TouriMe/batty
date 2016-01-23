@@ -43,16 +43,16 @@
                               <% end %>
                             </div>
 
-                            <div class="vehicle-name"><%= vehicle.name %> (<strong><%=vehicle.seat_number%></strong> seats)</div>
+                            <div class="vehicle-name"><%= vehicle.name %> (<strong><%= vehicle.seat_number %></strong>
+                              seats)
+                            </div>
                           </div>
                           <div class="price small-2 columns">
-                            <strong>
-                              <% if vehicle.name.downcase == 'remork/tuk tuk' %>
-                                  <%= number_to_currency((@tour.tuktuk_price), :precision => 0) %>
-                              <% elsif vehicle.name.downcase == 'car' %>
-                                  <%= number_to_currency((@tour.car_price), :precision => 0) %>
-                              <% end %>
-                            </strong>
+                            <% if vehicle.name.downcase == 'remork/tuk tuk' %>
+                                <%= number_to_currency((@tour.tuktuk_price), :precision => 0) %>
+                            <% elsif vehicle.name.downcase == 'car' %>
+                                <%= number_to_currency((@tour.car_price), :precision => 0) %>
+                            <% end %>
                           </div>
                           <div class="book-btn small-4 columns">
                             <%= link_to "BOOK ME", "/book/#{@tour.id}/#{driver.id}?vehicle_type=#{vehicle.name}", \
@@ -70,7 +70,9 @@
                               <% end %>
                             </div>
 
-                            <div class="vehicle-name"><%= vehicle.name %> (<strong><%=vehicle.seat_number%></strong> seats)</div>
+                            <div class="vehicle-name"><%= vehicle.name %> (<strong><%= vehicle.seat_number %></strong>
+                              seats)
+                            </div>
                           </div>
                           <div class="price small-2 columns">
                             <strong>
@@ -80,7 +82,7 @@
                             </strong>
                           </div>
                           <div class="book-btn small-4 columns">
-                            <%= link_to "BOOK ME", "/book/#{@tour.id}/#{driver.id}?vehicle_type=#{vehicle.name}",\
+                            <%= link_to "BOOK ME", "/book/#{@tour.id}/#{driver.id}?vehicle_type=#{vehicle.name}", \
                              class: "btn btn-book" %>
                           </div>
                         </div>

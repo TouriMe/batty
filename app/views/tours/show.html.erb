@@ -34,7 +34,7 @@
           </div>
           <div class="meta_head">
             <section class="meta_block left">
-              <%= image_tag("tour_distance.png", class: "trip-logo") %>
+              <%= image_tag("tour_distance.png", class: "distance-logo") %>
               <p class="right">
                 <span class="main-value block center">
                   <%= @tour.distance.blank? ? "0" : @tour.distance %> km
@@ -123,7 +123,7 @@
 
         <div class="row">
           <div class="detail">
-            <div class="trip-label"><h5>Tour Description</h5></div>
+            <div class="trip-label"><h3>Tour Description</h3></div>
 
             <div class="trip_content">
               <%= @tour.content.html_safe %>

@@ -7,7 +7,7 @@ class DriversController < ApplicationController
     @drivers = Driver.active
     @seotags = Seo.find_by_page('driver_listing')
     @custom_title = 'Drivers'
-    @custom_subtitle = 'Pick a driver you like and have an amazing experience.'
+    @custom_subtitle = 'Rated and certified English speaking driver at your selection.'
   end
 
   def show

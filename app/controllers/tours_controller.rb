@@ -5,7 +5,7 @@ class ToursController < ApplicationController
     @tours = Tour.where(is_active: true).all
     @seotags = Seo.find_by_page('tour_listing')
     @custom_title = 'Tours'
-    @custom_subtitle = 'Have some real Cambodian adventure by your preference.'
+    @custom_subtitle = 'Handpicked local tours, adventures and activities guided by driver.'
   end
 
   def show

@@ -2,7 +2,7 @@
   <% @drivers.each do |driver| %>
       <% if @tour.tuktuk_price.to_i > 0 || (@tour.tuktuk_price.to_i == 0 && (driver.vehicles.count > 1 \
       || (driver.vehicles.count == 1 && driver.vehicles.first.name.downcase == 'car'))) %>
-          <a href="#" data-reveal-id="<%= driver.first_name.downcase %>">
+          <!--<a href="#" data-reveal-id="<%= driver.first_name.downcase %>">-->
             <div class="row tour-driver">
 
               <div class="profile-avatar large-2 small-6 columns">
@@ -28,7 +28,7 @@
                 </div>
               </div>
 
-              <div class="vehicles large-7 small-12 columns">
+              <div class="vehicles large-8 small-12 columns">
                 <% driver.vehicles.each do |vehicle| %>
                     <% if @tour.tuktuk_price.to_i != 0 %>
                         <div class="row vehicle">
@@ -93,7 +93,7 @@
 
 
             </div>
-          </a>
+          <!--</a>-->
 
           <div id="<%= driver.first_name.downcase %>" class="driver-popup-modal reveal-modal" data-reveal \
                aria-labelledby="modalTitle" aria-hidden="true" role="dialog">

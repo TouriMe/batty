@@ -139,10 +139,14 @@
         color: #FFB400;
         margin: 20px 0;
       }
-      ol {
+      ol,ul {
         display: list-item;
-        list-style: decimal;
-        line-height: 30px;
+        //list-style: decimal;
+        line-height: 1.6;
+
+        li{
+          padding-bottom: 10px;
+        }
       }
       .highlight {
         text-align: left;

@@ -34,7 +34,7 @@
                         <div class="row vehicle">
                           <div class="vehicle-detail small-6 columns">
                             <div class="icon-container">
-                              <% if vehicle.name.downcase == 'remork (tuk tuk)' %>
+                              <% if vehicle.name.downcase == 'remork/tuk tuk' %>
                                   <%= image_tag 'tuktuk.png', class: 'vehicle-icon' %>
                               <% elsif vehicle.name.downcase == 'mini van' %>
                                   <%= image_tag 'car.png', class: 'vehicle-icon' %>
@@ -43,7 +43,7 @@
                               <% end %>
                             </div>
 
-                            <div class="vehicle-name"><%= vehicle.name %></div>
+                            <div class="vehicle-name"><%= vehicle.name %> (<strong><%=vehicle.seat_number%></strong> seats)</div>
                           </div>
                           <div class="price small-2 columns">
                             <strong>
@@ -70,7 +70,7 @@
                               <% end %>
                             </div>
 
-                            <div class="vehicle-name"><%= vehicle.name %></div>
+                            <div class="vehicle-name"><%= vehicle.name %> (<strong><%=vehicle.seat_number%></strong> seats)</div>
                           </div>
                           <div class="price small-2 columns">
                             <strong>
@@ -120,9 +120,9 @@
                       <div><h5><strong>Vehicle Type</strong></h5></div>
                       <% driver.vehicles.each do |d| %>
                           <div>
-                            <% if d.name.downcase == 'remork (tuk tuk)' %>
+                            <% if d.name.downcase == 'remork/tuk tuk' %>
                                 <%= image_tag('tuktuk_yellow.png') %>
-                                <span class="vehicle-text">Remork (Tuk Tuk)</span>
+                                <span class="vehicle-text">Remork/Tuk Tuk</span>
 
                             <% else %>
                                 <%= image_tag('car_yellow.png') %>

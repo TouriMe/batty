@@ -32,10 +32,10 @@
                 strong
                   | Vehicle Type
               - @driver.vehicles.each do |v|
-                - if (v.name.downcase == 'remork (tuk tuk)')
+                - if (v.name.downcase == 'remork/tuk tuk')
                   = image_tag 'tuktuk_yellow.png', class: 'vehicle-icon'
                   span
-                      | Remork (Tuk Tuk)
+                      | Remork/Tuk Tuk
                   br
                 - elsif (v.name.downcase == 'car')
                   = image_tag 'car_yellow.png', class: 'vehicle-icon'

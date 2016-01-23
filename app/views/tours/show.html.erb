@@ -35,7 +35,7 @@
           <div class="meta_head">
             <section class="meta_block left">
               <%= image_tag("tour_distance.png", class: "distance-logo") %>
-              <p class="right">
+              <p>
                 <span class="main-value block center">
                   <%= @tour.distance.blank? ? "0" : @tour.distance %> km
                 </span>
@@ -45,7 +45,7 @@
 
             <section class="meta_block left">
               <%= image_tag("tour_duration.png", class: "trip-logo") %>
-              <p class="right">
+              <p>
                 <span class="main-value block center">
                   <%= @tour.duration.blank? ? "0" : @tour.duration %>
                 </span>
@@ -55,7 +55,7 @@
 
             <section class="meta_block left">
               <%= image_tag("tour_checkpoint.png", class: "trip-logo") %>
-              <p class="right">
+              <p>
                 <span class="main-value block center">
                   <%= @tour.checkpoint_num.blank? ? "0" : @tour.checkpoint_num %>
                 </span>

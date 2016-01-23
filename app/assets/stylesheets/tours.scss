@@ -65,14 +65,11 @@
             }
 
             p {
+              float: right;
               font-size: 0.85rem;
               margin-right: 30px;
               text-align: center;
               margin-bottom: 0;
-
-              @media #{$media-pad-smaller}{
-                margin-right: 10px;
-              }
 
               .block {
                 display: block;
@@ -83,8 +80,15 @@
               span.checkpoints, span.meta {
                 text-align: left;
               }
-
             }
+
+            @media #{$media-pad-smaller}{
+              display: block;
+              p {
+                margin-right: 10px;
+              }
+            }
+
           }
         }
       }
@@ -204,7 +208,6 @@
         line-height: 22px;
         font-family: 'Nunito', sans-serif;
         padding-bottom: 30px;
-        border-bottom: 1px solid #C8C8C8;
       }
       .price {
         margin: 20px 0;
@@ -217,8 +220,12 @@
           font-weight: 500;
           margin-left: 20px;
         }
-        .tour-driver {
+
+        #driver_wrapper {
           border-bottom: 1px solid grey;
+        }
+        .tour-driver {
+          border-top: 1px solid grey;
           margin: 0;
           font-family: 'Muli', sans-serif;
           a {
@@ -231,8 +238,8 @@
               height: 80px;
               margin: 10px 0;
               @media #{$media-pad-smaller}{
-                margin-left: auto;
-                margin-right: auto;
+                margin: 10px auto 0 auto;
+
               }
               .avatar-image {
                 border-radius: 50rem;
@@ -246,6 +253,7 @@
           .rating-review {
             @media #{$media-pad-smaller}{
               text-align: center;
+              margin: 8px 0 0 0;
             }
 
             text-align: left;
@@ -278,10 +286,6 @@
             padding: 0px;
             .vehicle {
               margin: 0;
-              @media #{$media-pad-smaller}{
-                padding-top: 10px;
-              }
-
               .vehicle-detail {
 
                 @media #{$media-pad-larger}{
@@ -293,20 +297,19 @@
                   width: 50px;
                   margin: 10px 5px;
                   @media #{$media-pad-smaller}{
-                    margin: auto;
+                    margin-left: auto;
+                    margin-right: auto;
+                    margin-bottom: 5px;
                   }
 
                 }
 
                 .vehicle-name {
+                  line-height: 84px;
+                  margin-left: 10px;
                   @media #{$media-pad-smaller}{
-                    line-height: 30px;
+                    line-height: 22px;
                     text-align: center;
-                  }
-
-                  @media #{$media-pad-larger}{
-                    line-height: 84px;
-                    margin-left: 10px;
                   }
 
                 }
@@ -320,7 +323,7 @@
             font-weight: 700;
             color: black;
             @media #{$media-pad-smaller}{
-              line-height: 80px;
+              line-height: 60px;
               padding: 0;
               text-align: left;
             }
@@ -333,12 +336,8 @@
           }
           .book-btn {
             margin: 25px 0;
-            .btn-book {
-              @media #{$media-pad-smaller}{
-                margin-top: 10px;
-                float: left;
-              }
 
+            .btn-book {
               float: right;
               background-color: black;
               color: white;
@@ -346,6 +345,14 @@
               font-size: 0.75rem;
               font-weight: 400;
               line-height: 29px;
+            }
+
+            @media #{$media-pad-smaller}{
+              padding: 0;
+              .btn-book {
+                margin-top: 10px;
+                float: left;
+              }
             }
           }
         }

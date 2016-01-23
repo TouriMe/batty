@@ -35,7 +35,7 @@
       .trip_top_head {
         padding-top: 32px;
         .trip-title {
-          display: inline-flex;
+          display: block;
 
           h1 {
             font-weight: 500;
@@ -44,7 +44,6 @@
           .rating {
             color: #FFB400;
             font-size: 1.25rem;
-            margin: 10px 0 0 20px;
           }
         }
         .meta_head {

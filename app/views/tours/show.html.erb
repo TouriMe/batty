@@ -33,7 +33,7 @@
           </span>
           </div>
           <div class="meta_head">
-            <section class="meta_block left">
+            <section class="meta_block">
               <%= image_tag("tour_distance.png", class: "distance-logo") %>
               <p>
                 <span class="main-value block center">
@@ -43,7 +43,17 @@
               </p>
             </section>
 
-            <section class="meta_block left">
+            <section class="meta_block">
+              <%= image_tag("tour_checkpoint.png", class: "trip-logo") %>
+              <p>
+                <span class="main-value block center">
+                  <%= @tour.checkpoint_num.blank? ? "0" : @tour.checkpoint_num %>
+                </span>
+                <span class="meta">Checkpoints</span>
+              </p>
+            </section>
+
+            <section class="meta_block">
               <%= image_tag("tour_duration.png", class: "trip-logo") %>
               <p>
                 <span class="main-value block center">
@@ -53,15 +63,6 @@
               </p>
             </section>
 
-            <section class="meta_block left">
-              <%= image_tag("tour_checkpoint.png", class: "trip-logo") %>
-              <p>
-                <span class="main-value block center">
-                  <%= @tour.checkpoint_num.blank? ? "0" : @tour.checkpoint_num %>
-                </span>
-                <span class="meta">Checkpoints</span>
-              </p>
-            </section>
           </div>
         </div>
 

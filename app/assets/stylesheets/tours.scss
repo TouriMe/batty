@@ -192,6 +192,9 @@
       }
 
       .trip-label {
+        @media #{$media-pad-smaller}{
+          text-align: center;
+        }
         h3 {
           font-size: 1.5rem;
           font-weight: 500;

@@ -55,6 +55,10 @@
 
   .copyright {
     padding: 7px 0;
+    @media #{$media-phone-smaller}{
+      padding: 0;
+    }
+
     p {
       margin-right: 25px;
       margin-bottom:0;

@@ -41,8 +41,8 @@ html
                 h1 #{@custom_title}
               - else 
                 h1 Welcome To Cambodia
-              h3 #{@custom_subtitle}
-              .line
+              h3.hide-for-small-only #{@custom_subtitle}
+              .line.hide-for-small-only
         - if(@no_white_background)
           = render 'partials/flash'
           = yield

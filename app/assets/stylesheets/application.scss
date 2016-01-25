@@ -211,7 +211,15 @@ nav.top-bar {
     }
   }
   .form_wrapper {
-    padding: 30px 10px;
+
+    @media #{$media-pad-larger}{
+      padding: 30px 10px;
+    }
+
+    @media #{$media-pad-smaller}{
+      padding-top:20px;
+      padding-right: 20px;
+    }
     .braintree-paypal-loggedin {
       max-width: 100% !important;
     }

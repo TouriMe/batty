@@ -5,20 +5,19 @@
   span.comments-num'
     strong = pluralize(comments.count, 'comment')
 - comments.each do |c|
-  .row
-    .small-12.columns
-      .comment
-        .profile.left
-          = image_tag c.normal_user.image, class: 'profile-img'
-          br
-          span [class='tourist-name']
-            strong = c.normal_user.name
-        .comment-detail
-          span [class="comment-date" ] = c.created_at.strftime("%b %d %Y")
-          sapn [class="rating-star right"]
-            = render 'partials/rating', rating: c.rating
-          br
-          = c.message
+  .small-12.columns
+    .comment
+      .profile.left
+        = image_tag c.normal_user.image, class: 'profile-img'
+        br
+        span [class='tourist-name']
+          strong = c.normal_user.name
+      .comment-detail
+        span [class="comment-date" ] = c.created_at.strftime("%b %d %Y")
+        sapn [class="rating-star right"]
+          = render 'partials/rating', rating: c.rating
+        br
+        = c.message
 
 - if normal_user_signed_in?
   = form_for Comment.new, remote: true do |f|

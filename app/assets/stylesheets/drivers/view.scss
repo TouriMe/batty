@@ -8,7 +8,6 @@
     margin-top: -70px;
 
     .hero-background {
-      //height: 515px;
       background-repeat: no-repeat;
       background-size: cover;
       background-position: 50% 50%;
@@ -44,15 +43,13 @@
 
       .profile-avatar {
         width: 160px;
-        margin-top: -20%;
-        margin-left: auto;
-        margin-right: auto;
+        margin:-40px auto 0 auto;
+
         img.avatar-image {
-          width: 160px;
-          height: 160px;
+          width: 100%;
           border-radius: 100%;
-          //border: 4px solid white;
         }
+
 
       }
 

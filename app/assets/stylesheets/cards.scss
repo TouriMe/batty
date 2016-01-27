@@ -99,6 +99,10 @@
           position: relative;
           top: -270px;
           left: 78%;
+          @media #{$media-pad-smaller}{
+            top: -220px;
+            left: 75%;
+          }
 
           .item-avatar {
             width: 60px;

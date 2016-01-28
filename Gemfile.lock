@@ -490,7 +490,7 @@ DEPENDENCIES
   dynamic_sitemaps
   fog
   font-awesome-rails
-  foundation-rails
+  foundation-rails (~> 5.5.0)
   friendly_id (~> 5.1.0)
   jbuilder (~> 2.0)
   jquery-dotdotdot-rails (~> 1.6, >= 1.6.5)

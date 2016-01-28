@@ -36,7 +36,7 @@ group :development do
 end
 
 gem 'font-awesome-rails'
-gem 'foundation-rails'
+gem 'foundation-rails', '~> 5.5.0'
 gem 'social-share-button', '~> 0.1.6'
 
 gem 'active_admin_editor', github: 'boontdustie/active_admin_editor'

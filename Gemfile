@@ -81,6 +81,7 @@ group :development do
   gem 'letter_opener'
   gem 'web-console', '~> 3.0'
   gem 'rubocop', '~> 0.32.1', require: false
+  gem 'rubocop-git', require: false
 end
 
 group :development, :test do

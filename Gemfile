@@ -60,7 +60,7 @@ gem 'active_model_serializers'
 ## IMAGE HANDLER ##
 gem 'fog', require: 'fog/aws'
 gem 'rmagick'
-gem 'carrierwave'
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 
 ## EXTERNAL SERVICES ##
 gem 'braintree'

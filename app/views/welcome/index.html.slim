@@ -1,31 +1,30 @@
-= render 'partials/bg_video'
-= render 'partials/flash'
+.container
+  = render 'partials/bg_video'
+  .row.home
+    .header-content
+      .tag-line
+        h1
+          | WELCOME TO CAMBODIA
+        h3.hide-for-small-only
+          | Best travel experiences for independent travelers at the lowest price.
+        .line.hide-for-small-only
+    .home-page-content
+      .small-6.columns
+        = render 'partials/show_subject_button', \
+        subject: 'Tours', subject_link: tours_path, \
+        desc_text: 'Handpicked local tours, adventures and activities guided by driver.', \
+        logo_url: 'hp_tours.png'
 
-.row.home
-  .header-content
-    .tag-line
-      h1
-        | WELCOME TO CAMBODIA
-      h3.hide-for-small-only
-        | Best travel experiences for independent travelers at the lowest price.
-      .line.hide-for-small-only
-  .home-page-content
-    .small-12.large-6.columns
-      = render 'partials/show_subject_button', \
-      subject: 'Tours', subject_link: tours_path, \
-      desc_text: 'Handpicked local tours, adventures and activities guided by driver.', \
-      logo_url: 'hp_tours.png'
 
-
-    .small-12.large-6.columns
-      = render 'partials/show_subject_button', \
+      .small-6.columns
+        = render 'partials/show_subject_button', \
         subject: 'Drivers', subject_link: drivers_path, \
         desc_text: 'Rated and certified English speaking driver at your selection.', \
         logo_url: 'hp_drivers.png'
 
 
-    /.small-12.large-4.columns
-      = render 'partials/show_subject_button', \
-        subject: 'Guides', subject_link: guides_path, \
-        desc_text: 'You can even choose your tour guide that will show you around.', \
-        logo_url: 'hp_guides.png'
+          /.small-12.large-4.columns
+          = render 'partials/show_subject_button', \
+            subject: 'Guides', subject_link: guides_path, \
+            desc_text: 'You can even choose your tour guide that will show you around.', \
+            logo_url: 'hp_guides.png'

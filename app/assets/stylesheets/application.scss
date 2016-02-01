@@ -85,11 +85,6 @@ h1, h2, h3, h4, h5, h6 {
     //padding: 5px 0px;
     background: rgba(255, 185, 78, 0.92);
   }
-
-  #home-head {
-    //padding: 5px 0px;
-    background: transparent;
-  }
 }
 
 .alert-box {
@@ -112,7 +107,13 @@ nav.top-bar {
         color: #FFFFFF;
         text-align: center;
         font-size: 3rem;
+
+        @media #{$media-phone-smaller}{
+          font-size: 1.4rem;
+          font-weight: 500;
+        }
       }
+
       h3 {
         font-size: 1.15rem;
       }
@@ -217,7 +218,7 @@ nav.top-bar {
     }
 
     @media #{$media-pad-smaller}{
-      padding-top:20px;
+      padding-top: 20px;
       padding-right: 20px;
     }
     .braintree-paypal-loggedin {

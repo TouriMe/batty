@@ -34,4 +34,37 @@ class Driver < ActiveRecord::Base
   def normalize_friendly_id(input)
     input.to_s.to_slug.normalize.to_s
   end
+
+  def tours
+    if vehicles.count > 1
+      Tour.where(is_active: true)
+    else
+      Tour.where(is_active: true).where.not(tuktuk_price_cents: 0)
+    end
+  end
+
+  def cities_label
+    cities.pluck('name').join(',')
+  end
+
+  def language_codes_label
+    languages.pluck('language_code').join(',')
+  end
+
+  def full_description
+    if description.present?
+      first_name + ' - ' + description
+    else
+      first_name
+    end
+  end
+
+  def seo_tags
+    {
+      title: "#{first_name} - #{short_desc}, #{cities_label}",
+      keywords: "#{first_name}, #{cities_label}, Speak #{language_codes_label}, "\
+      "#{driving_experience} years of driving experience",
+      description: "#{full_description}"
+    }
+  end
 end

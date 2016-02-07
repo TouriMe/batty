@@ -1,5 +1,5 @@
 <section id="driver_wrapper">
-  <% @drivers.each do |driver| %>
+  <% @tour_drivers.each do |driver| %>
       <% if @tour.tuktuk_price.to_i > 0 || (@tour.tuktuk_price.to_i == 0 && (driver.vehicles.count > 1 \
       || (driver.vehicles.count == 1 && driver.vehicles.first.name.downcase == 'car'))) %>
           <!--<a href="#" data-reveal-id="<%= driver.first_name.downcase %>">-->

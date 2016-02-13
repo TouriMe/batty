@@ -37,6 +37,9 @@
   }
 
   .home-page-content {
+    @media #{$media-phone-smaller} {
+      width: 100%;
+    }
     width: 80%;
     margin-left: auto;
     margin-right: auto;
@@ -46,18 +49,22 @@
         width: 130px;
         height: 130px;
         border: 2px solid white;
+        background-color: transparent;
         .show-subject-button-content {
           padding-top: 10%;
           padding-left: 20px;
           padding-right: 20px;
           color: black;
-          h3 i.fa {
+          h3{
             font-size: 1.2rem;
             margin-bottom: 10px;
+            color:white;
+            font-weight: 500;
           }
           .logo-img {
             .logo {
-              width: 80px;
+              padding-top:10px;
+              width: 86px;
             }
           }
         }
@@ -84,7 +91,7 @@
 
           .logo-img {
             .logo {
-              width: 80px;
+              width: 86px;
             }
           }
         }
@@ -111,7 +118,7 @@
 
         .logo-img {
           .logo {
-            width: 80px;
+            width: 86px;
           }
         }
         text-align: center;

@@ -10,21 +10,31 @@
         .line.hide-for-small-only
     .home-page-content
       .small-6.columns
-        = render 'partials/show_subject_button', \
-        subject: 'Tours', subject_link: tours_path, \
-        desc_text: 'Handpicked local tours, adventures and activities guided by driver.', \
-        logo_url: 'hp_tours.png'
+        .show-subject-button
+          = link_to tours_path do
+            .show-subject-button-content
+              .logo-img
+                = image_tag 'hp_tours.png', class: 'logo hidden-for-small-only'
+                = image_tag 'hp_tours_white.png', class: 'logo show-for-small-only'
+              h3
+                | Tours
+              p.hide-for-small-only
+                | Handpicked local tours, adventures and activities guided by driver.
+                br
+                = fa_icon 'chevron-down'
 
 
       .small-6.columns
-        = render 'partials/show_subject_button', \
-        subject: 'Drivers', subject_link: drivers_path, \
-        desc_text: 'Rated and certified English speaking driver at your selection.', \
-        logo_url: 'hp_drivers.png'
+        .show-subject-button
+          = link_to drivers_path do
+            .show-subject-button-content
+              .logo-img
+                = image_tag 'hp_drivers.png', class: 'logo hidden-for-small-only'
+                = image_tag 'hp_drivers_white.png', class: 'logo show-for-small-only'
+              h3
+                | Drivers
+              p.hide-for-small-only
+                | Rated and certified English speaking driver at your selection.
+                br
+                = fa_icon 'chevron-down'
 
-
-          /.small-12.large-4.columns
-          = render 'partials/show_subject_button', \
-            subject: 'Guides', subject_link: guides_path, \
-            desc_text: 'You can even choose your tour guide that will show you around.', \
-            logo_url: 'hp_guides.png'

@@ -1,14 +1,14 @@
 .page.driver-profile
   .profile-page-hero
-    .hero-background [ data-img = @driver.background_url]
+    .hero-background[data-img = @driver.background_url]
     .hero-content
-        h1
-          | Travel with the best driver is just AMAZING!
-        a [data-reveal-id="videoModal"]
-          = image_tag 'video_play.png', class: 'video-play'
+      h1
+        | Travel with the best driver is just AMAZING!
+      a [data-reveal-id="videoModal"]
+        = image_tag 'video_play.png', class: 'video-play'
 
     #videoModal.reveal-modal.large [ data-reveal aria-labelledby="videoModalTitle" aria-hidden="true" role="dialog"]
-      .flex-video.widescreen 
+      .flex-video.widescreen
         iframe[class="embed-video" width="560" height="315" src=@driver.video_url.gsub('/watch?v=','/embed/') frameborder="0" allowfullscreen]
 
   .profile-page-body[data-equalizer]
@@ -32,24 +32,24 @@
                 strong
                   | Vehicle Type
               - @driver.vehicles.each do |v|
-                - if (v.name.downcase == 'remork/tuk tuk')
+                - if v.name.downcase == 'remork/tuk tuk'
                   = image_tag 'tuktuk_yellow.png', class: 'vehicle-icon'
                   span
-                      | Remork/Tuk Tuk
+                    | Remork/Tuk Tuk
                   br
                 - elsif (v.name.downcase == 'car')
                   = image_tag 'car_yellow.png', class: 'vehicle-icon'
                   span
-                      | Car
+                    | Car
                   br
             .location
               h5
                 strong
                   | Location
               - @driver.cities.each do |c|
-                  = image_tag 'location_yellow.png', class: 'location-icon'
-                  = c.name
-                  br
+                = image_tag 'location_yellow.png', class: 'location-icon'
+                = c.name
+                br
         /.columns.medium-3.small-12.share-box
           .columns.small-6.medium-12
             h6.butt-favorite
@@ -100,7 +100,7 @@
             br
 
 
-        /.columns.medium-3.small-12
+      /.columns.medium-3.small-12
           .certificate-container
             span.driver-certificate
               - if (@driver.english_communication)
@@ -154,4 +154,8 @@
                       img [src = i.url_small ]
 
           = render 'comments/comments', target: @driver
+
+      .row.full-width
+        - @driver.tours.each do |d|
+          .small-12.medium-6.large-4.columns.card-wrapper = render 'tours/tour_item', tour: d
 

@@ -1,10 +1,10 @@
-$("<%=j render(:partial => 'tours/drivers', :object => @drivers) %>")
+$("<%=j render(:partial => 'tours/drivers', :object => @tour_drivers) %>")
   .appendTo($("#driver_wrapper"));
 
 // Update pagination link
-<% if @drivers.last_page? %>
+<% if @tour_drivers.last_page? %>
   $('.pagination').html("That's all we have now!");
 <% else %>
   $('.pagination')
-    .html("<%=j link_to_next_page(@drivers, 'More Drivers', :remote => true) %>");
+    .html("<%=j link_to_next_page(@tour_drivers, 'More Drivers', :remote => true) %>");
 <% end %>

@@ -8,12 +8,18 @@
 /.bundle
 
 # Ignore all logfiles and tempfiles.
-/log/*
-!/log/.keep
-/tmp
+/**/log/*.log*
+/**/tmp
 
 /erd.pdf
 /public
 
 /.env
 /.idea
+
+# OSX files
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*

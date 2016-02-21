@@ -1,64 +1,103 @@
 source 'https://rubygems.org'
 
+ruby '2.2.4'
+
 gem 'rails', '4.2.2'
 
+## DATABASE ACCESS ##
 gem 'pg'
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.1.0'
 
-gem 'jquery-rails'
-gem 'jbuilder', '~> 2.0'
-gem 'sdoc', '~> 0.4.0', group: :doc
+## ASSET PIPELINE ##
+gem 'uglifier', '>= 1.3.0'
 gem 'slim-rails'
+gem 'sass-rails', '~> 5.0'
+gem 'coffee-rails', '~> 4.1.0'
+gem 'wysiwyg-rails'
+gem 'rails_serve_static_assets'
+
+## FRONTEND ##
+gem 'react-rails', '~> 1.4.0'
+gem 'foundation-rails', '~> 5.5.0'
+gem 'font-awesome-rails'
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem 'jquery-infinite-pages'
+gem 'jquery-dotdotdot-rails', '~> 1.6', '>= 1.6.5'
+gem 'social-share-button', '~> 0.1.6'
+
+## TRANSLATION ##
+gem 'i18n-js'
+gem 'language_list'
+
+## ROUTE HELPER ##
+gem 'babosa'
+gem 'friendly_id', '~> 5.1.0'
+
+## VIEW HELPER ##
+gem 'ckeditor'
+gem 'kaminari'
+gem 'dynamic_sitemaps'
+
+## ACTIVERECORD HELPER ##
+gem 'ransack'
+gem 'money-rails'
 gem 'obfuscate_id'
 
-gem 'bcrypt', '~> 3.1.7'
-gem 'language_list'
+## ActiveSkin ##
+gem 'active_skin'
 gem 'activeadmin', github: 'activeadmin'
+gem 'active_admin_editor', github: 'boontdustie/active_admin_editor'
 
-# Authentication related
+## AUTHORIZATION ##
+gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 
-group :development, :test do
-  gem 'byebug'
-  gem 'web-console', '~> 2.0'
-  gem 'rspec-rails'
-  gem 'dotenv-rails'
-end
+## SERIALIZER ##
+gem 'jbuilder', '~> 2.0'
+gem 'active_model_serializers'
 
-group :development do
-  gem 'rails-erd'
-  gem 'letter_opener'
-end
-
-gem 'font-awesome-rails'
-gem 'foundation-rails'
-gem 'social-share-button', '~> 0.1.6'
-
-gem 'active_admin_editor', github: 'boontdustie/active_admin_editor'
-gem 'wysiwyg-rails'
-gem 'money-rails'
-gem 'braintree'
-gem 'jquery-ui-rails'
-
-gem 'react-rails', '~> 1.4.0'
-gem 'friendly_id', '~> 5.1.0'
-gem 'babosa'
-gem "dynamic_sitemaps"
-gem 'kaminari'
-gem 'jquery-infinite-pages'
-gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+## IMAGE HANDLER ##
 gem 'fog', require: 'fog/aws'
-gem 'rmagick', '2.13.2'
-gem 'ckeditor'
-gem 'mini_magick'
-gem 'active_skin'
+gem 'rmagick'
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 
-gem 'jquery-dotdotdot-rails', '~> 1.6', '>= 1.6.5'
-gem 'rails_12factor', group: :production
-gem 'rails_serve_static_assets'
+## EXTERNAL SERVICES ##
+gem 'braintree'
 
+## DOCUMENTATION ##
+gem 'sdoc', '~> 0.4.0', group: :doc
+
+## PRODUCTION STACK ##
+group :production do
+  gem 'rails_12factor'
+end
+
+## DEVELOPMENT STACK ##
+group :development do
+  gem 'annotate'
+  gem 'rails-erd'
+  gem 'quiet_assets'
+  gem 'letter_opener'
+  gem 'web-console', '~> 3.0'
+  gem 'rubocop', '~> 0.32.1', require: false
+  gem 'rubocop-git', require: false
+end
+
+group :development, :test do
+  gem 'faker'
+  gem 'dotenv-rails'
+  gem 'pry-rails'
+  gem 'pry-byebug'
+end
+
+## TEST STACK ##
+group :test do
+  gem 'rspec-rails'
+  gem 'rspec-its'
+  gem 'timecop'
+  gem 'factory_girl_rails'
+  gem 'test_after_commit', require: false
+end

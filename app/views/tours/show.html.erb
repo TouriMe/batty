@@ -1,15 +1,13 @@
 <div class="container trip_wrapper">
 
   <% if @tour.images.where(is_hero: true).any? %>
-      <div class="trip-cover-img" data-img="<%= @tour.images.where(is_hero: true).first.url %>">
-      </div>
+      <div class="trip-cover-img" data-img="<%= @tour.images.where(is_hero: true).first.url %>"></div>
   <% elsif @tour.images.any? %>
-      <div class="trip-cover-img" data-img="<%= @tour.images.first.url %>">
-      </div>
+      <div class="trip-cover-img" data-img="<%= @tour.cover_image %>"></div>
   <% end %>
 
   <ul class="clearing-thumbs hide" data-clearing>
-    <%= @tour.images.each do |image| %>
+    <% @tour.images.each do |image| %>
         <li>
           <%= image_tag(image.url) %>
         </li>
@@ -24,12 +22,7 @@
           <div class="trip-title">
             <h1><%= @tour.name %></h1>
           <span class="rating ">
-            <% rating = if @tour.comments.present? then
-                          tr = @tour.comments.pluck(:rating); tr.sum * 2 / tr.size / 2.0
-                        else
-                          5
-                        end %>
-            <%= render 'partials/rating', rating: rating %>
+            <%= render 'partials/rating', rating: @tour.rating > 0 ? @tour.rating : 5 %>
           </span>
           </div>
           <div class="meta_head">
@@ -135,9 +128,9 @@
             <header class="content_head">
               Drivers available for this tour
             </header>
-            <%= render :partial => 'tours/drivers', :object => @drivers %>
+            <%= render :partial => 'tours/drivers', :object => @tour_drivers %>
             <p class="pagination">
-              <%= link_to_next_page(@drivers, 'More Drivers', :remote => true, class: "hidden") %>
+              <%= link_to_next_page(@tour_drivers, 'More Drivers', :remote => true, class: "hidden") %>
             </p>
             <%= render 'comments/comments', target: @tour %>
           </div>

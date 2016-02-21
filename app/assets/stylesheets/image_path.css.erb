@@ -5,6 +5,13 @@
   z-index: -100;
 }
 
+@media screen and (max-width: 480px){
+  .bg-img {
+    background-image: url(<%= asset_path "mobile_bg_homepage.jpg" %>);
+  }
+}
+
+
 .profile-page-body {
   background: url(<%= asset_path 'bg-blur-23.jpg' %>) no-repeat center center fixed;
 }

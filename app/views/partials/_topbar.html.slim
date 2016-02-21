@@ -4,11 +4,10 @@
       ul.title-area
         li.name
           h1.site-title.left
-                a.logo-wrap [href="/"]
+                a.logo-wrap.hidden-for-small-only [href="/"]
                   = image_tag 'tourime_logo_yellow.png'
-        /li.toggle-topbar.menu-icon
-          a[href='#']
-            span
+                a.logo-wrap.show-for-small-only [href="/"]
+                  = image_tag 'tourime_logo.png'
       .home-top-bar-section
         = render 'partials/login'
 - else

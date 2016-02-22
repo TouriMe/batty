@@ -314,6 +314,7 @@ GEM
       mime-types (>= 1.16, < 3)
     method_source (0.8.2)
     mime-types (2.6.1)
+    mini_magick (4.4.0)
     mini_portile2 (2.0.0)
     minitest (5.8.3)
     monetize (1.1.0)
@@ -550,6 +551,7 @@ DEPENDENCIES
   kaminari
   language_list
   letter_opener
+  mini_magick
   money-rails
   obfuscate_id
   omniauth

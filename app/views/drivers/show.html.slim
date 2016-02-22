@@ -156,6 +156,9 @@
           = render 'comments/comments', target: @driver
 
       .row.full-width
-        - @driver.tours.each do |d|
-          .small-12.medium-6.large-4.columns.card-wrapper = render 'tours/tour_item', tour: d
+        .small-12.columns.profile-page-details
+          .section
+            h4 Tours from this driver
+            - @driver.tours.each do |d|
+              .small-12.medium-6.large-4.columns.card-wrapper = render 'tours/tour_item', tour: d
 

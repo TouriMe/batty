@@ -29,8 +29,10 @@
         margin-lfet: auto;
         margin-right: auto;
         margin-bottom: -50px;
+        min-height: 300px;
         @media #{$media-pad-smaller}{
           margin-bottom: -80px;
+          min-height: 180px;
         }
         .item-bg {
           width: 100%;

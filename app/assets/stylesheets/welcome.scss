@@ -8,7 +8,8 @@
     padding-bottom: 5px;
     margin: 0 auto;
     @media #{$media-phone-smaller} {
-      margin: 50px auto;
+      margin: 0 auto;
+      padding-bottom: 0;
     }
     h1 {
       color: white;

@@ -1,0 +1,8 @@
+<h1>
+  Listing articles
+  </h1>
+<% @articles.each do |article| %>
+    <div class="small-12">
+      <%= render 'article_item', article: article %>
+    </div>
+<% end %>

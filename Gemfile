@@ -26,7 +26,8 @@ gem 'jquery-dotdotdot-rails', '~> 1.6', '>= 1.6.5'
 gem 'social-share-button', '~> 0.1.6'
 
 ## TRANSLATION ##
-gem 'i18n-js'
+gem 'rails-i18n', '~> 4.0.0' # For 4.0.x
+gem 'i18n-js','>= 3.0.0.rc11'
 gem 'language_list'
 
 ## ROUTE HELPER ##

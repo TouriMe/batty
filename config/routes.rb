@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :articles
   root 'welcome#index'
 
   # @todo use static pages if possible
@@ -18,6 +17,7 @@ Rails.application.routes.draw do
   resources :tourists, only: [:new, :show]
   resources :purchases, only: [:create, :edit,:update]
   resources :comments, only: [:create, :update, :destroy]
+  resources :articles, only: [:index, :show ]
 
   namespace :api do
     resources :drivers, defaults: {format: :json}

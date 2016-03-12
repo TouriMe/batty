@@ -1,14 +1,11 @@
-  <%= link_to(article_path(article)) do %>
-      <h1>
-        <% article.title %>
-      </h1>
+<%= link_to(article_path(article)) do %>
+    <% article.title %>
+<% end %>
+<br>
+<div class="">
+  <% if article.content? %>
+        <span class="">
+          <%= article.content.html_safe %>
+        </span>
   <% end %>
-  <div class="divider offset"></div>
-  <div class="review offset">
-    <div class="rating left">
-      <%= render 'partials/rating', rating: tour.rating > 0 ? tour.rating : 5 %>
-    </div>
-      <span class="review-num right">
-        <strong><%= pluralize(tour.comments.size, 'review') %></strong>
-      </span>
-  </div>
+</div>

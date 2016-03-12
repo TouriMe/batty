@@ -13,4 +13,5 @@ class ToursController < ApplicationController
     @seotags = Seo.new(@tour.seo_tags)
     @tour_drivers = @tour.drivers.page(params[:page]).per(10)
   end
+
 end

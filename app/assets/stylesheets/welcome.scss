@@ -15,8 +15,9 @@
       color: white;
       font-size: 3rem;
       @media #{$media-phone-smaller} {
-        font-size: 1.4rem;
+        font-size: 1.6rem;
         font-weight: 500;
+        margin:5px
       }
     }
     h3 {

@@ -1,0 +1,8 @@
+<h1>
+  Listing Blogs
+</h1>
+<% @blogs.each do |blog| %>
+    <div class="small-12">
+      <%= render 'blog_item', blog: blog %>
+    </div>
+<% end %>

@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :purchases, only: [:create, :edit,:update]
   resources :comments, only: [:create, :update, :destroy]
   resources :articles, only: [:index, :show ]
+  resources :blogs, only:[:index, :show ]
 
   namespace :api do
     resources :drivers, defaults: {format: :json}

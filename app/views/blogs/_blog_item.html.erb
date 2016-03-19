@@ -1,0 +1,14 @@
+<%= link_to(blog_path(blog)) do %>
+    <% blog.title %>
+<% end %>
+<br>
+<%= blog.author %>
+<%= blog.publish_date %>
+<%= %>
+<div class="">
+  <% if blog.content? %>
+        <span class="">
+          <%= blog.content.html_safe %>
+        </span>
+  <% end %>
+</div>

@@ -1,5 +1,5 @@
-ActiveAdmin.register Article do
-  permit_params :title, :content
+ActiveAdmin.register Blog do
+  permit_params :title, :content, :author, :publish_date
 
   controller do
     def permitted_params
@@ -11,6 +11,8 @@ ActiveAdmin.register Article do
     f.inputs do
       input :title
       input :content, as: :ckeditor
+      input :author
+      input :publish_date
     end
 
     f.actions

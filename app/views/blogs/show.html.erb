@@ -1,0 +1,16 @@
+<h1>
+  Blog Title:
+  <%= @blog.title %>
+</h1>
+
+<p>
+  <%= @blog.author %>
+  <%= @blog.publish_date %>
+</p>
+
+<p>
+  Blog Content:
+  <br>
+  <%= @blog.content.html_safe %>
+</p>
+

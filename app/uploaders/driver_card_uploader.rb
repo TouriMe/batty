@@ -10,9 +10,11 @@ class DriverCardUploader < CarrierWave::Uploader::Base
   end
 
   # Create different versions of your uploaded files:
-  version :processed do
-    process :resize_to_fill => [400, 250]
+  version :org do
+    process :convert => 'jpg'
   end
+
+    process :resize_to_fill => [800, 500]
 
   def extension_white_list
     %w(jpg jpeg gif png)

@@ -13,10 +13,11 @@ class DriverAvatarUploader < CarrierWave::Uploader::Base
     process :resize_to_fill => [150, 150]
   end
 
-  version :popup do
-    process :resize_to_fill => [300, 300]
+  version :org do
+    process :convert => 'jpg'
   end
 
+  process :resize_to_fill => [300, 300]
 
   def extension_white_list
     %w(jpg jpeg gif png)

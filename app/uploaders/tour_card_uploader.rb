@@ -11,17 +11,15 @@ class TourCardUploader < CarrierWave::Uploader::Base
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
-  
+
   version :org do
-    process :resize_to_fill => [800, 500]
+    process :convert => 'jpg'
   end
-  
-  version :processed do
-    process :resize_to_fill => [800, 500]
-  end
-  
+
+  process :resize_to_fill => [800, 500]
+
   version :square do
-    process :resize_to_fill => [ 500, 500 ]
+    process :resize_to_fill => [500, 500]
   end
 
   def extension_white_list

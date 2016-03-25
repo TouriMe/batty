@@ -25,7 +25,8 @@
 
             <div class="form-group small-12 medium-6 columns">
               <%= f.label :address_id, "Pick Up Address" %>
-              <%= f.collection_select(:address_id, Address.all, :id, :name, {:prompt => 'Please select Pickup Address', :selected => @purchase.address_id}) %>
+              <!--<%= f.collection_select(:address_id, Address.all, :id, :name, {:prompt => 'Please select Pickup Address', :selected => @purchase.address_id}) %>-->
+              <%= f.text_field :pickup, id: "address_id", :required => "", placeholder: 'Pickup Time Address' %>
             </div>
 
             <div class="form-group small-12 medium-6 columns">

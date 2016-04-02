@@ -63,16 +63,31 @@ Pick Up Address: <%= @purchase.pickup %>
 </h4>
 <p>
 <span>
-Paid (USD ): $0
+  <% if @purchase.purchasable.down_payment %>
+      <% if @purchase.vehicle.name.downcase == 'remork/tuk tuk' %>
+          Paid (USD ): <%= number_to_currency(@purchase.purchasable.tuktuk_price * @purchase.purchasable.down_payment/100, :precision => 0) %>
+    <% else %>
+          Paid (USD ): <%= number_to_currency(@purchase.purchasable.car_price * @purchase.purchasable.down_payment/100, :precision => 0) %>
+    <% end %>
+
+  <% else %>
+      <% if @purchase.vehicle.name.downcase == 'remork/tuk tuk' %>
+          Paid (USD ): $<%= number_to_currency(@purchase.purchasable.tuktuk_price, :precision => 0) %>
+    <% else %>
+          Paid (USD ): $<%= number_to_currency(@purchase.purchasable.car_price, :precision => 0) %>
+    <% end %>
+  <% end %>
+
 </span>
   <br>
-
   <span>
-    <% if @purchase.vehicle.name.downcase == 'remork/tuk tuk' %>
-    <span>To be paid to driver in cash (USD): <%= @purchase.purchasable.tuktuk_price %></span>
-    <% else %>
- <span>To be paid to driver in cash (USD): <%= @purchase.purchasable.car_price %></span>
-    <% end %>
+    <% if @purchase.purchasable.down_payment %>
+      <% if @purchase.vehicle.name.downcase == 'remork/tuk tuk' %>
+          To be paid to driver in cash (USD): <%= number_to_currency(@purchase.purchasable.tuktuk_price * (100-@purchase.purchasable.down_payment)/100, :precision => 0) %>
+      <% else %>
+          To be paid to driver in cash (USD): <%= number_to_currency(@purchase.purchasable.car_price * (100-@purchase.purchasable.down_payment)/100, :precision => 0) %>
+      <% end %>
+   <% end %>
   </span>
 </p>
 

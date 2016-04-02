@@ -12,12 +12,12 @@ class PurchasesController < ApplicationController
     @host = request.host
     @purchase.save
     if @purchase.save
-      render json: @purchase
-      # OrderConfirmation.confirm(@purchase, @host).deliver_now
-      # redirect_to payment_success_path(purchaseid: @purchase)
+      # render json: @purchase
+      OrderConfirmation.confirm(@purchase, @host).deliver_now
+      redirect_to payment_success_path(purchaseid: @purchase)
     else
-      render json: {"message" => "Not succcess"}
-      # redirect_to :back
+      # render json: {"message" => "Not succcess"}
+      redirect_to :back
     end
   end
 

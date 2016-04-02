@@ -36,29 +36,25 @@ class PurchasesController < ApplicationController
     # [A-Z][0-9][0-9][0-9][A-Z]
     @reference_id = SecureRandom.hex(7) # we will release this logic after 9 Millions purchases
 
-    @charge = 0
-    @deposit = 0
+    @rate = 100
 
     if @trip.down_payment
-      @charge += @trip.down_payment
-      @deposit += @trip.down_payment
-    end
-
-    if @trip.booking_fee
-      @charge += @trip.booking_fee
+      @rate = @trip.down_payment
     end
 
     if @vehicle_type.downcase == 'remork/tuk tuk'
-      @later_pay = (@trip.tuktuk_price_cents/100) - @deposit
-      @price = (@trip.tuktuk_price_cents/100)
+      @online_pay = (@trip.tuktuk_price_cents/100 * @rate/100)
+      @later_pay = @trip.tuktuk_price_cents/100 - @online_pay
+
       @driver.vehicles.each do |v|
         if v.name.downcase == "remork/tuk tuk"
           @vehicle_id = v.id
         end
       end
     elsif @vehicle_type == "Car"
-      @later_pay = (@trip.car_price_cents/100) - @deposit
-      @price = (@trip.car_price_cents/100)
+      @online_pay = (@trip.car_price_cents/100 * @rate/100)
+      @later_pay = @trip.car_price_cents/100 - @online_pay
+
       @driver.vehicles.each do |v|
         if v.name.downcase == "car"
           @vehicle_id = v.id

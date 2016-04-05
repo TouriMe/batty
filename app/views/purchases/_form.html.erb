@@ -97,12 +97,8 @@
     <p>Please select your preferred method</p>
 
     <div class="row payment_box_wrapper">
-
-
       <div class="large-6 columns paypal_wrapper">
-
         <div id="paypal-container"></div>
-
       </div>
 
       <div class="large-6 columns cards_wrapper">
@@ -110,7 +106,6 @@
         <a href="#" id="cards_toggle">
           <%= image_tag("paymentcards.png", class: "paymentCards") %>
         </a>
-
       </div>
 
     </div>
@@ -119,7 +114,7 @@
 
     </div>
 
-    <%= form_tag("/checkout", method: "get", id: "payment_form") do %>
+    <%= form_tag('/checkout', method: "get", id: "payment_form") do %>
         <div id="payment_form_go">
           <div id="card_details">
             <div class="form-group">
@@ -188,18 +183,18 @@
           </tr>
           <tr>
             <td>Pay Online</td>
-                <td class="charge"><%= number_to_currency((@online_pay), :precision => 0) %> USD</td>
+                <td class="charge"><%= @online_pay %> USD</td>
           </tr>
           <tr>
             <td>Pay Onsite</td>
-            <td class="charge"><%= number_to_currency((@later_pay), :precision => 0) %> USD</td>
+            <td class="charge"><%= @later_pay %> USD</td>
           </tr>
           </tbody>
         </table>
         <h2>Total Payment Now</h2>
-        <h2><%= number_to_currency((@online_pay), :precision => 0) %> $</h2>
+        <h2><%= @online_pay %> $</h2>
         <p class="meta_info">
-          The total amount of USD $<%= number_to_currency((@later_pay), :precision => 0) %> is payable
+          The total amount of USD $<%= @later_pay %> is payable
           when you finish your tour. </p>
       </section>
 

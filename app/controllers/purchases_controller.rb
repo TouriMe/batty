@@ -12,12 +12,12 @@ class PurchasesController < ApplicationController
     @host = request.host
     @purchase.save
     if @purchase.save
-      # render json: @purchase
-      OrderConfirmation.confirm(@purchase, @host).deliver_now
-      redirect_to payment_success_path(purchaseid: @purchase)
+      render json: @purchase
+      # OrderConfirmation.confirm(@purchase, @host).deliver_now
+      # redirect_to payment_success_path(purchaseid: @purchase)
     else
-      # render json: {"message" => "Not succcess"}
-      redirect_to :back
+      render json: {"message" => "Not succcess"}
+      # redirect_to :back
     end
   end
 
@@ -43,8 +43,15 @@ class PurchasesController < ApplicationController
     end
 
     if @vehicle_type.downcase == 'remork/tuk tuk'
-      @online_pay = (@trip.tuktuk_price_cents/100 * @rate/100)
-      @later_pay = @trip.tuktuk_price_cents/100 - @online_pay
+      @online_pay = (@trip.tuktuk_price.to_i * @rate/100).to_i
+
+      @change = (@trip.tuktuk_price.to_i * @rate % 100)
+
+      if @change >= 50
+        @online_pay += 1
+      end
+
+      @later_pay = @trip.tuktuk_price.to_i - @online_pay
 
       @driver.vehicles.each do |v|
         if v.name.downcase == "remork/tuk tuk"
@@ -52,8 +59,12 @@ class PurchasesController < ApplicationController
         end
       end
     elsif @vehicle_type == "Car"
-      @online_pay = (@trip.car_price_cents/100 * @rate/100)
-      @later_pay = @trip.car_price_cents/100 - @online_pay
+      @online_pay = (@trip.car_price.to_i * @rate / 100).to_i
+      @change = (@trip.car_price.to_i * @rate % 100)
+      if @change >= 50
+        @online_pay += 1
+      end
+      @later_pay = @trip.car_price.to_i - @online_pay
 
       @driver.vehicles.each do |v|
         if v.name.downcase == "car"
@@ -71,13 +82,30 @@ class PurchasesController < ApplicationController
     @purchase = Purchase.find(params[:id])
     @trip = Tour.find(@purchase.purchasable_id)
 
-    if @trip.down_payment && @trip.booking_fee
-      @charge = @trip.down_payment + @trip.booking_fee
+    @charge = 0
+    if @purchase.vehicle.name.downcase == "remork/tuk tuk"
+      if @trip.down_payment
+        @charge = (@trip.tuktuk_price.to_i * @trip.down_payment/100).to_i
+        @change = (@trip.tuktuk_price.to_i * @trip.down_payment%100)
+        if @change >= 50
+          @charge += 1
+        end
+      else
+        @charge = @trip.tuktuk_price.to_i
+      end
     else
-      @charge = 0
+      if @trip.down_payment
+        @charge = (@trip.car_price.to_i * @trip.down_payment/100).to_i
+        @change = (@trip.car_price.to_i * @trip.down_payment%100).to_i
+        if @change >= 50
+          @charge += 1
+        end
+      else
+        @charge = @trip.car_price.to_i
+      end
     end
 
-    if (@charge > 0)
+    if @charge > 0
       result = Braintree::Transaction.sale(
           :amount => @charge,
           :payment_method_nonce => @nonce,
@@ -88,10 +116,12 @@ class PurchasesController < ApplicationController
       if result
         @purchase.status = :paid
         @purchase.save
-        redirect_to payment_success_path
+        redirect_to payment_success_path(purchaseid: @purchase)
+      else
+
       end
     else
-      redirect_to payment_success_path
+        redirect_to payment_success_path(purchaseid: @purchase)
     end
   end
 

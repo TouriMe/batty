@@ -1,7 +1,8 @@
 <div class="payment_wrapper row">
+
   <div class="form_wrapper large-8 small-12 columns">
 
-    <%= form_for(@purchase, url: {action: "create"}, html: {id: "payment_details"}) do |f| %>
+    <%= form_for(@purchase, remote: true, url: {action: "create"}, html: {id: "payment_details"}) do |f| %>
         <div id="payment_detail">
           <div class="header">
             <label><h3>Booking Details</h3></label>
@@ -74,7 +75,7 @@
             </div>
 
             <div class="form-group columns">
-              <%= f.label :phone_number, "Phone Number", class:'phone-label' %>
+              <%= f.label :phone_number, "Phone Number", class: 'phone-label' %>
               <%= f.text_field :country_code, id: "country_code", placeholder: '+country code' %>
               <%= f.text_field :phone_number, id: "phone_number", placeholder: 'Phone number' %>
             </div>
@@ -86,17 +87,68 @@
           </div>
 
 
-          <div class="form-group">
-            <%= f.submit("Confirm Booking", id: "bt_charge", onclick: "clicked_chargebt()") %>
-          </div>
-          <!-- All the necessary input fields should be here -->
-
         </div>
     <% end %>
 
     <br/>
 
-  </div>
+    <h2>Payment</h2>
+
+    <p>Please select your preferred method</p>
+
+    <div class="row payment_box_wrapper">
+      <div class="large-6 columns paypal_wrapper">
+        <div id="paypal-container"></div>
+      </div>
+
+      <div class="large-6 columns cards_wrapper">
+        <p>Pay With Cards</p>
+        <a href="#" id="cards_toggle">
+          <%= image_tag("paymentcards.png", class: "paymentCards") %>
+        </a>
+      </div>
+
+    </div>
+
+    <div class="payment_btn" id="card_payment">
+
+    </div>
+
+    <%= form_tag('/checkout', method: "get", id: "payment_form") do %>
+        <div id="payment_form_go">
+          <div id="card_details">
+            <div class="form-group">
+              <label for="card-number">Card Number</label>
+              <div id="card-number">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="expiration-date">Expiration Date</label>
+              <div id="expiration-date">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="cvv">Security Code</label>
+              <div id="cvv">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group info">
+            <p>By clicking on “Confirm Payment”, you agree to pay the total amount shown, which includes
+              Service Fees on the right and to the Terms of Service, Cancellation Policy and Refund Policy.</p>
+          </div>
+
+          <div class="form-group">
+            <%= submit_tag("Confirm Payment", id: "bt_charge", onclick: "clicked_chargebt()") %>
+          </div>
+        </div>
+    <% end %>
+
+
+</div>
 
   <div class="large-4 payment_info small-12 columns">
     <!-- sidebar information goes here -->
@@ -130,52 +182,27 @@
             <% end %>
           </tr>
           <tr>
-            <td>Downpayment/Deposit</td>
-            <!--
-            <% if @trip.down_payment %>-->
-                <!--<td class="charge"><%= @trip.down_payment %> USD</td>-->
-                <!--
-            <% else %>-->
-                <!--<td class="charge">0 USD</td>-->
-                <!--
-            <% end %>-->
-            <td class="charge">0 USD</td>
+            <td>Pay Online</td>
+                <td class="charge"><%= @online_pay %> USD</td>
           </tr>
           <tr>
-            <td>Booking Fee</td>
-            <!--
-            <% if @trip.booking_fee %>-->
-                <!--<td class="charge"><%= @trip.booking_fee %> USD</td>-->
-                <!--
-            <% else %>-->
-                <!--<td class="charge">0 USD</td>-->
-                <!--
-            <% end %>-->
-            <td class="charge">0 USD</td>
+            <td>Pay Onsite</td>
+            <td class="charge"><%= @later_pay %> USD</td>
           </tr>
           </tbody>
         </table>
         <h2>Total Payment Now</h2>
-        <!--<h2><%= @charge %> $</h2>-->
-        <h1>0 $</h1>
-        <% if @vehicle_type.downcase == 'remork/tuk tuk' %>
-            <p class="meta_info">
-              The total amount of USD <%= number_to_currency((@trip.tuktuk_price), :precision => 0) %> is payable
-              when you finish your tour. </p>
-
-        <% else %>
-            <p class="meta_info">
-              The total amount of USD <%= number_to_currency((@trip.car_price), :precision => 0) %> is payable
-              when you finish your tour. </p>
-            <!--<p class="meta_info">-->
-            <!--The total amount of USD $<%= number_to_currency((@later_pay), :precision => 0) %> is payable-->
-            <!--when you finish your tour. </p>-->
-        <% end %>
-
+        <h2><%= @online_pay %> $</h2>
+        <p class="meta_info">
+          The total amount of USD $<%= @later_pay %> is payable
+          when you finish your tour. </p>
       </section>
+
     </div>
-    <!-- End of Box Wrapper ---!> 
+
   </div>
 
 </div>
+
+
 

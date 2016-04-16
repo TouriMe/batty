@@ -8,18 +8,10 @@
   margin: auto;
 }
 
-#braintree-paypal-button {
-  width: 100%!important;
-  height: auto!important;
-}
-
 .payment_box_wrapper {
-  
-  .cards_wrapper {
-    p {
-      text-align: center;
-      font-weight: 500;
-    }
+
+  p {
+    font-weight: 500;
   }
 }
 
@@ -28,12 +20,12 @@
 }
 
 #bt_charge {
-  cursor:pointer;
+  cursor: pointer;
   background: #FEBD5A;
   color: #ffffff;
   font-size: 20px;
   text-transform: uppercase;
-  border-radius: 0px; 
+  border-radius: 0px;
   border: 0px;
   padding: 10px 20px;
   @media #{$media-phone-smaller}{
@@ -42,19 +34,19 @@
 }
 
 .success_wrapper {
-  background: transparent;  
+  background: transparent;
   padding-bottom: 100px;
   img.success_check {
     margin: auto;
     text-align: center;
     max-width: 100px;
-    margin-top: -30px; 
+    margin-top: -30px;
   }
   .success_body {
     padding: 30px 0px 20px 0px;
     text-align: center;
     max-width: 650px;
-    margin:auto;
+    margin: auto;
     width: 100%;
     p {
       font-size: 1.12rem;

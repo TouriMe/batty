@@ -27,12 +27,12 @@
             <div class="form-group small-12 medium-6 columns">
               <%= f.label :address_id, "Pick Up Address" %>
               <!--<%= f.collection_select(:address_id, Address.all, :id, :name, {:prompt => 'Please select Pickup Address', :selected => @purchase.address_id}) %>-->
-              <%= f.text_field :pickup, id: "address_id", :required => "", placeholder: 'Pickup Time Address' %>
+              <%= f.text_field :pickup, id: "address_id", :required => "", placeholder: 'Please enter Pick Up Address' %>
             </div>
 
             <div class="form-group small-12 medium-6 columns">
               <%= f.label :pickup_time, "Pick Up Time" %>
-              <%= f.text_field :pickup_time, id: "pickuptime", :required => "", placeholder: 'Pickup Time ( eg:8am )' %>
+              <%= f.text_field :pickup_time, id: "pickuptime", :required => "", placeholder: 'Please enter Pick Up Time ( eg:8am )' %>
             </div>
 
             <div class="form-group small-12 medium-6 columns">
@@ -55,24 +55,24 @@
               <%= f.label :last_name, "Last Name" %>
               <%= f.text_field :last_name, :required => "", placeholder: 'Please enter Last Name' %>
             </div>
-            <div class="form-group small-12 medium-6 columns">
-              <%= f.label :passport_number, "Passport Number" %>
-              <%= f.text_field :passport_number, :required => "", placeholder: 'Please enter Passport Number' %>
-            </div>
+            <!--<div class="form-group small-12 medium-6 columns">-->
+              <!--<%= f.label :passport_number, "Passport Number" %>-->
+              <!--<%= f.text_field :passport_number, :required => "", placeholder: 'Please enter Passport Number' %>-->
+            <!--</div>-->
             <div class="form-group small-12 medium-6 columns">
               <%= f.label :nationality, "Nationality" %>
               <%= f.text_field :nationality, :required => "", placeholder: 'Please enter Nationality' %>
             </div>
 
             <div class="form-group small-12 medium-6 columns">
-              <%= f.label :email, "Your Email" %>
-              <%= f.email_field :email, :required => "", placeholder: 'Please enter your Email' %>
+              <%= f.label :email, "Email" %>
+              <%= f.email_field :email, :required => "", placeholder: 'Please enter Email' %>
             </div>
 
-            <div class="form-group small-12 medium-6 columns">
-              <%= f.label :email_confirmation, "Confirm Your Email" %>
-              <%= f.email_field :email_confirmation, :required => "", placeholder: 'Please confirm Your Email' %>
-            </div>
+            <!--<div class="form-group small-12 medium-6 columns">-->
+              <!--<%= f.label :email_confirmation, "Confirm Your Email" %>-->
+              <!--<%= f.email_field :email_confirmation, :required => "", placeholder: 'Please confirm Your Email' %>-->
+            <!--</div>-->
 
             <div class="form-group columns">
               <%= f.label :phone_number, "Phone Number", class: 'phone-label' %>

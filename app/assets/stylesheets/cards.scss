@@ -48,6 +48,17 @@
           padding-top: 5px;
           padding-bottom: 10px;
         }
+        .inactive-item {
+          position: relative;
+          top: 40px;
+          padding-left: 15px;
+          color: white;
+          font-size: 1.12rem;
+          font-weight: 700;
+          background-color: rgba(0, 0, 0, 0.5);
+          padding-top: 5px;
+          padding-bottom: 10px;
+        }
 
         .price {
           width: 60px;

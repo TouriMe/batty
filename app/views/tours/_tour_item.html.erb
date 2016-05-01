@@ -1,7 +1,20 @@
 <div class="card-item">
+
   <%= link_to(tour_path(tour)) do %>
+      <%
+        if normal_user_signed_in? && !current_normal_user.nil? \
+        && current_normal_user.internal_user? && !tour.is_active?
+      %>
+          <div class="inactive-item">
+            Inactive Tour
+          </div>
+      <%
+        end
+      %>
       <%= image_tag(tour.card_img, class: 'item-bg') %>
-  <% end %>
+  <%
+    end
+  %>
   <div class="name ellipsis">
     <%= tour.name %>
   </div>
@@ -17,7 +30,7 @@
     <div class="rating left">
       <%= render 'partials/rating', rating: tour.rating > 0 ? tour.rating : 5 %>
     </div>
-      <span class="review-num right">
+    <span class="review-num right">
         <strong><%= pluralize(tour.comments.size, 'review') %></strong>
       </span>
   </div>

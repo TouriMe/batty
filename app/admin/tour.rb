@@ -10,7 +10,7 @@ ActiveAdmin.register Tour do
     f.inputs do
       input :name
       input :description
-      input :is_active, label: 'Is This Tour Is Active?'
+      input :is_active, label: 'Is this an active tour?'
       input :distance, hint: 'integer, unit is `km`'
       input :duration, hint: 'text, for example: 4 days'
       input :checkpoint_num, hint: 'integer, number of checkpoints'

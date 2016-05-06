@@ -12,7 +12,7 @@ ActiveAdmin.register Tour do
       input :description
       input :is_active, label: 'Is this an active tour?'
       input :distance, hint: 'integer, unit is `km`'
-      input :duration, hint: 'text, for example: 4 days'
+      input :duration, hint: 'integer, for example: 4 hrs'
       input :checkpoint_num, hint: 'integer, number of checkpoints'
       input :content, as: :ckeditor
       input :important_info, as: :ckeditor

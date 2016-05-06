@@ -125,12 +125,16 @@
           </div>
 
           <div id="drivers-selection" class="driver-container">
-            <header class="content_head">
-              Drivers available for this tour
-            </header>
-            <%= render :partial => 'tours/drivers', :object => @tour_drivers %>
+            <!--<header class="content_head">-->
+              <!--Drivers available for this tour-->
+            <!--</header>-->
+            <%=
+              # render :partial => 'tours/drivers', :object => @tour_drivers
+            %>
             <p class="pagination">
-              <%= link_to_next_page(@tour_drivers, 'More Drivers', :remote => true, class: "hidden") %>
+              <%=
+                # link_to_next_page(@tour_drivers, 'More Drivers', :remote => true, class: "hidden")
+              %>
             </p>
             <%= render 'comments/comments', target: @tour %>
           </div>

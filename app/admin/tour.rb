@@ -32,6 +32,7 @@ ActiveAdmin.register Tour do
     end
 
     f.inputs 'Media' do
+      f.input :video_url, label: 'Video URL'
       f.input :card_img, :as => :file, label: 'Card Image ( Image Size Should be 800* 500 )', :hint => f.tour.card_img.url.present? \
         ? image_tag(f.tour.card_img.url, class: 'active_admin_img')
         : content_tag(:span, 'No Card Image Yet')

@@ -143,6 +143,12 @@
   }
 
   .trip_detail_wrapper {
+
+    .tab-menu-item{
+      padding: 0;
+      text-align: center;
+    }
+
     #trip_sidebar {
       border-left: 1px solid #979797;
       padding-top: 35px;
@@ -190,11 +196,6 @@
             text-align: left;
           }
         }
-      }
-
-      .include-exclude {
-        border-right: solid 3px white;
-        border-left: solid 3px white;
       }
 
       .trip-label {

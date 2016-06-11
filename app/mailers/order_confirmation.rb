@@ -9,6 +9,6 @@ class OrderConfirmation < ApplicationMailer
       @charge = @purchase.purchasable.car_price.to_i + @purchase.purchasable.ticket_price_cents.to_i
     end
     puts 'purchase created.'
-    mail(to: @purchase.email, subject: 'Your Booking with TouriMe has been confirmed')
+    # mail(to: @purchase.email, subject: 'Your Booking with TouriMe has been confirmed')
   end
 end

@@ -12,12 +12,12 @@ class PurchasesController < ApplicationController
     @host = request.host
     @purchase.save
     if @purchase.save
-      render json: @purchase
-      # OrderConfirmation.confirm(@purchase, @host).deliver_now
-      # redirect_to payment_success_path(purchaseid: @purchase)
+      # render json: @purchase
+      OrderConfirmation.confirm(@purchase).deliver_now
+      redirect_to payment_success_path(purchaseid: @purchase)
     else
-      render json: {"message" => "Not succcess"}
-      # redirect_to :back
+      # render json: {"message" => "Not succcess"}
+      redirect_to :back
     end
   end
 
@@ -41,40 +41,10 @@ class PurchasesController < ApplicationController
     # [A-Z][0-9][0-9][0-9][A-Z]
     @reference_id = SecureRandom.hex(7) # we will release this logic after 9 Millions purchases
 
-    # @rate = 100
-    # if @trip.down_payment
-    #   @rate = @trip.down_payment
-    # end
-
     if @vehicle_type.downcase == 'remork/tuk tuk'
       @online_pay = @trip.tuktuk_price.to_i + @trip.ticket_price_cents.to_i
-
-      # @change = (@trip.tuktuk_price.to_i * @rate % 100)
-
-      # if @change >= 50
-      #   @online_pay += 1
-      # end
-
-      # @later_pay = @trip.tuktuk_price.to_i - @online_pay
-
-      # @driver.vehicles.each do |v|
-      #   if v.name.downcase == "remork/tuk tuk"
-      #     @vehicle_id = v.id
-      #   end
-      # end
     elsif @vehicle_type == "car"
       @online_pay = @trip.car_price._cents.to_i + @trip.ticket_price_cents.to_i
-    #   @change = (@trip.car_price.to_i * @rate % 100)
-    #   if @change >= 50
-    #     @online_pay += 1
-    #   end
-    #   @later_pay = @trip.car_price.to_i - @online_pay
-    #
-    #   @driver.vehicles.each do |v|
-    #     if v.name.downcase == "car"
-    #       @vehicle_id = v.id
-    #     end
-    #   end
     end
     @braintree_key = Braintree::ClientToken.generate
   end
@@ -88,26 +58,8 @@ class PurchasesController < ApplicationController
 
     @charge = 0
     if @trip.tuktuk_price.to_i > 0
-      # if @trip.down_payment
-      #   @charge = (@trip.tuktuk_price.to_i * @trip.down_payment/100).to_i
-      #   @change = (@trip.tuktuk_price.to_i * @trip.down_payment%100)
-      #   if @change >= 50
-      #     @charge += 1
-      #   end
-      # else
-      #   @charge = @trip.tuktuk_price.to_i
-      # end
       @charge = @trip.tuktuk_price.to_i + @trip.ticket_price_cents.to_i
     else
-      # if @trip.down_payment
-      #   @charge = (@trip.car_price.to_i * @trip.down_payment/100).to_i
-      #   @change = (@trip.car_price.to_i * @trip.down_payment%100).to_i
-      #   if @change >= 50
-      #     @charge += 1
-      #   end
-      # else
-      #   @charge = @trip.car_price.to_i
-      # end
       @charge = @trip.car_price.to_i + @trip.ticket_price_cents.to_i
     end
 

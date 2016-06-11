@@ -15,8 +15,8 @@ ActiveAdmin.register Purchase do
       input :contact
       input :phone_number
       input :pickup
-      input :driver_id
-      input :vehicle_id
+      # input :driver_id
+      # input :vehicle_id
       input :reference_id
     end
 
@@ -27,9 +27,9 @@ ActiveAdmin.register Purchase do
     selectable_column
     column :price
     column :email
-    column :vehicle_id
-    column :driver_id   
-    column :purchasable_id
+    # column :vehicle_id
+    # column :driver_id
+    column :purchasable
     column :reference_id
     column :status
     column :start_date

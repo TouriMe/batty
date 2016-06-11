@@ -14,6 +14,8 @@
           <%= f.hidden_field :price, value: @price %>
           <%= f.hidden_field :reference_id, value: @reference_id %>
 
+          <%= f.hidden_field :transport_price, value: @transport_price %>
+          <%= f.hidden_field :ticket_price, value: @ticket_price %>
 
           <div class="row">
             <div class="form-group small-12 medium-6 columns">
@@ -34,7 +36,8 @@
 
             <div class="form-group small-12 medium-6 columns">
               <%= f.label :traveller_number, "No. of Travellers" %>
-              <%= f.text_field :traveller_number, id: "travellernumber", :required => '', placeholder: 'Please enter No. of Travellers' %>
+              <%= f.select :traveller_number, [['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5], ['6', 6], ['7', 7], ['8', 8]], {}, \
+               {:onChange => 'updatePrice(this);'} %>
             </div>
 
           </div>
@@ -141,50 +144,59 @@
         </div>
     <% end %>
 
-
   </div>
 
   <div class="large-4 payment_info small-12 columns">
     <div class="box_wrapper">
-
       <header id="info_top">
         <h4><%= @trip.name %></h4>
-
         <section id="bill_info">
           <table class="table">
             <tbody>
             <% if @trip.ticket_price_cents > 0 %>
-            <tr>
-              <td>Ticket Price</td>
-              <td class="charge"><%= number_to_currency((@trip.ticket_price_cents), :precision => 0) %> USD</td>
-            </tr>
+                <tr>
+                  <td>Ticket Price</td>
+                  <td class="charge"><%= number_to_currency(@ticket_price, :precision => 0) %>
+                    (USD) &nbsp; X &nbsp; <strong><span id="tourist_no">1</span></strong></td>
+                </tr>
             <% end %>
             <tr>
-              <% if @vehicle_type.downcase == 'remork/tuk tuk' %>
-                  <td>Transport(Tuk Tuk)</td>
-                  <td class="charge"><%= number_to_currency((@trip.tuktuk_price), :precision => 0) %> USD</td>
-              <% else %>
-                  <td>Transportation(Car)</td>
-                  <td class="charge"><%= number_to_currency((@trip.car_price), :precision => 0) %> USD</td>
-              <% end %>
-            </tr>
-            <tr>
-              <td>Pay Onsite</td>
-              <td class="charge"><%= @online_pay %> USD</td>
+              <td>Transport(Tuk Tuk)</td>
+              <td class="charge"><%= number_to_currency(@transport_price, :precision => 0) %>
+                (USD) &nbsp; X &nbsp;<strong><span id="vehicle_no">1</span></strong></td>
             </tr>
             </tbody>
           </table>
-          <h2><%= @online_pay %> $</h2>
+          <h2>Total <span id="total_charge"><%= @online_pay %></span> $</h2>
           <p class="meta_info">
-            The total amount of USD $<%= @online_pay %> is payable
-            when you finish your tour. </p>
+            The total amount of (USD)<strong><span id="total_charge_small">$<%= @online_pay %></span></strong> is
+            payable
+            when you arrive. </p>
         </section>
-
+      </header>
     </div>
 
   </div>
 
 </div>
+
+<script type="text/javascript">
+  function updatePrice(sel) {
+    var trav_no = sel.value;
+    document.getElementById('tourist_no').innerHTML = trav_no;
+    document.getElementById('vehicle_no').innerHTML = trav_no;
+    var tran_price = document.getElementById('purchase_transport_price').value;
+    var tick_price = document.getElementById('purchase_ticket_price').value;
+    var tota_price = tick_price * trav_no;
+    if (trav_no > 4)
+      tota_price = parseInt(tota_price) + parseInt(tran_price * 2);
+    else
+      tota_price = parseInt(tota_price) + parseInt(tran_price);
+    document.getElementById('total_charge').innerHTML = tota_price;
+    document.getElementById('total_charge_small').innerHTML = tota_price;
+
+  }
+</script>
 
 
 

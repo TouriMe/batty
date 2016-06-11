@@ -20,9 +20,9 @@
   </div>
   <div class="price">
     <% if tour.tuktuk_price.to_i == 0 %>
-        <%= number_to_currency(tour.car_price, :precision => 0) %>
+        <%= number_to_currency(tour.car_price.to_i + tour.ticket_price_cents, :precision => 0) %>
     <% else %>
-        <%= number_to_currency(tour.tuktuk_price, :precision => 0) %>
+        <%= number_to_currency(tour.tuktuk_price.to_i+ tour.ticket_price_cents, :precision => 0) %>
     <% end %>
   </div>
   <div class="divider offset"></div>

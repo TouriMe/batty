@@ -24,6 +24,12 @@
             </div>
 
             <div class="form-group small-12 medium-6 columns">
+              <%= f.label :traveller_number, "No. of Travellers" %>
+              <%= f.select :traveller_number, [['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5], ['6', 6], ['7', 7], ['8', 8]], {}, \
+               {:onChange => 'updatePrice(this);'} %>
+            </div>
+
+            <div class="form-group small-12 medium-6 columns">
               <%= f.label :address_id, "Pick Up Address" %>
               <!--<%= f.collection_select(:address_id, Address.all, :id, :name, {:prompt => 'Please select Pickup Address', :selected => @purchase.address_id}) %>-->
               <%= f.text_field :pickup, id: "address_id", :required => "", placeholder: 'Please enter Pick Up Address' %>
@@ -34,11 +40,6 @@
               <%= f.text_field :pickup_time, id: "pickuptime", :required => "", placeholder: 'Please enter Pick Up Time ( eg:8am )' %>
             </div>
 
-            <div class="form-group small-12 medium-6 columns">
-              <%= f.label :traveller_number, "No. of Travellers" %>
-              <%= f.select :traveller_number, [['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5], ['6', 6], ['7', 7], ['8', 8]], {}, \
-               {:onChange => 'updatePrice(this);'} %>
-            </div>
 
           </div>
 
@@ -169,7 +170,7 @@
           </table>
           <h2>Total <span id="total_charge"><%= @online_pay %></span> $</h2>
           <p class="meta_info">
-            The total amount of (USD)<strong><span id="total_charge_small">$<%= @online_pay %></span></strong> is
+            The total amount of $<strong><span id="total_charge_small"><%= @online_pay %></span></strong> (USD) is
             payable
             when you arrive. </p>
         </section>

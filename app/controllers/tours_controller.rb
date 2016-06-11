@@ -15,6 +15,10 @@ class ToursController < ApplicationController
 
   def show
     @tour = Tour.includes(:images).find(params[:id])
+    @vehicle_type = 'remork/tuk tuk'
+    if @tour.tuktuk_price_cents == 0
+      @vehicle_type = 'car'
+    end
     @seotags = Seo.new(@tour.seo_tags)
     @tour_drivers = @tour.drivers.page(params[:page]).per(10)
   end

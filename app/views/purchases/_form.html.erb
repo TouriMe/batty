@@ -11,9 +11,6 @@
           <%= f.hidden_field :purchasable_id, value: @trip.id %>
           <%= f.hidden_field :purchasable_type, value: "Tour" %>
 
-          <%= f.hidden_field :driver_id, value: @driver.id %>
-          <%= f.hidden_field :vehicle_id, value: @vehicle_id %>
-
           <%= f.hidden_field :price, value: @price %>
           <%= f.hidden_field :reference_id, value: @reference_id %>
 
@@ -56,8 +53,8 @@
               <%= f.text_field :last_name, :required => "", placeholder: 'Please enter Last Name' %>
             </div>
             <!--<div class="form-group small-12 medium-6 columns">-->
-              <!--<%= f.label :passport_number, "Passport Number" %>-->
-              <!--<%= f.text_field :passport_number, :required => "", placeholder: 'Please enter Passport Number' %>-->
+            <!--<%= f.label :passport_number, "Passport Number" %>-->
+            <!--<%= f.text_field :passport_number, :required => "", placeholder: 'Please enter Passport Number' %>-->
             <!--</div>-->
             <div class="form-group small-12 medium-6 columns">
               <%= f.label :nationality, "Nationality" %>
@@ -70,8 +67,8 @@
             </div>
 
             <!--<div class="form-group small-12 medium-6 columns">-->
-              <!--<%= f.label :email_confirmation, "Confirm Your Email" %>-->
-              <!--<%= f.email_field :email_confirmation, :required => "", placeholder: 'Please confirm Your Email' %>-->
+            <!--<%= f.label :email_confirmation, "Confirm Your Email" %>-->
+            <!--<%= f.email_field :email_confirmation, :required => "", placeholder: 'Please confirm Your Email' %>-->
             <!--</div>-->
 
             <div class="form-group columns">
@@ -85,8 +82,6 @@
               <%= f.text_area :comments %>
             </div>
           </div>
-
-
         </div>
     <% end %>
 
@@ -147,55 +142,43 @@
     <% end %>
 
 
-</div>
+  </div>
 
   <div class="large-4 payment_info small-12 columns">
-    <!-- sidebar information goes here -->
-
     <div class="box_wrapper">
 
       <header id="info_top">
         <h4><%= @trip.name %></h4>
 
-        <p><span class="bold">Driver: </span> <%= @driver.first_name %><br>
-          <span class="bold">Vehicle Type: </span><%= @vehicle_type %><br>
-          <span class="bold">Reference ID: </span><%= @reference_id %><br>
-        </p>
-      </header>
-
-      <section id="driver_image" style="background-image:url(<%= @driver.card_img %>">
-        <!--<div class="profile_set">-->
-        <!--<%= image_tag(@driver.avatar_url, class: "profile_image") %>-->
-        <!--</div>-->
-      </section>
-
-      <section id="bill_info">
-        <table class="table">
-          <tbody>
-          <tr>
-            <td>Tour Price</td>
-            <% if @vehicle_type.downcase == 'remork/tuk tuk' %>
-                <td class="charge"><%= number_to_currency((@trip.tuktuk_price), :precision => 0) %> USD</td>
-            <% else %>
-                <td class="charge"><%= number_to_currency((@trip.car_price), :precision => 0) %> USD</td>
+        <section id="bill_info">
+          <table class="table">
+            <tbody>
+            <% if @trip.ticket_price_cents > 0 %>
+            <tr>
+              <td>Ticket Price</td>
+              <td class="charge"><%= number_to_currency((@trip.ticket_price_cents), :precision => 0) %> USD</td>
+            </tr>
             <% end %>
-          </tr>
-          <tr>
-            <td>Pay Online</td>
-                <td class="charge"><%= @online_pay %> USD</td>
-          </tr>
-          <tr>
-            <td>Pay Onsite</td>
-            <td class="charge"><%= @later_pay %> USD</td>
-          </tr>
-          </tbody>
-        </table>
-        <h2>Total Payment Now</h2>
-        <h2><%= @online_pay %> $</h2>
-        <p class="meta_info">
-          The total amount of USD $<%= @later_pay %> is payable
-          when you finish your tour. </p>
-      </section>
+            <tr>
+              <% if @vehicle_type.downcase == 'remork/tuk tuk' %>
+                  <td>Transport(Tuk Tuk)</td>
+                  <td class="charge"><%= number_to_currency((@trip.tuktuk_price), :precision => 0) %> USD</td>
+              <% else %>
+                  <td>Transportation(Car)</td>
+                  <td class="charge"><%= number_to_currency((@trip.car_price), :precision => 0) %> USD</td>
+              <% end %>
+            </tr>
+            <tr>
+              <td>Pay Onsite</td>
+              <td class="charge"><%= @online_pay %> USD</td>
+            </tr>
+            </tbody>
+          </table>
+          <h2><%= @online_pay %> $</h2>
+          <p class="meta_info">
+            The total amount of USD $<%= @online_pay %> is payable
+            when you finish your tour. </p>
+        </section>
 
     </div>
 

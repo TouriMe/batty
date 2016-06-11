@@ -63,51 +63,10 @@ Pick Up Address: <%= @purchase.pickup %>
 </h4>
 <p>
 <span>
-  <% if @purchase.purchasable.down_payment %>
-      <% if @purchase.vehicle.name.downcase == 'remork/tuk tuk' %>
-          Paid (USD ): <%= number_to_currency(@purchase.purchasable.tuktuk_price * @purchase.purchasable.down_payment/100, :precision => 0) %>
-    <% else %>
-          Paid (USD ): <%= number_to_currency(@purchase.purchasable.car_price * @purchase.purchasable.down_payment/100, :precision => 0) %>
-    <% end %>
-
-  <% else %>
-      <% if @purchase.vehicle.name.downcase == 'remork/tuk tuk' %>
-          Paid (USD ): $<%= number_to_currency(@purchase.purchasable.tuktuk_price, :precision => 0) %>
-    <% else %>
-          Paid (USD ): $<%= number_to_currency(@purchase.purchasable.car_price, :precision => 0) %>
-    <% end %>
-  <% end %>
-
-</span>
-  <br>
-  <span>
-    <% if @purchase.purchasable.down_payment %>
-      <% if @purchase.vehicle.name.downcase == 'remork/tuk tuk' %>
-          To be paid to driver in cash (USD): <%= number_to_currency(@purchase.purchasable.tuktuk_price * (100-@purchase.purchasable.down_payment)/100, :precision => 0) %>
-      <% else %>
-          To be paid to driver in cash (USD): <%= number_to_currency(@purchase.purchasable.car_price * (100-@purchase.purchasable.down_payment)/100, :precision => 0) %>
-      <% end %>
-   <% end %>
-  </span>
-</p>
-
-<h4>
-    <span class="driver-detail">
-       Driver Details
-    </span>
-</h4>
-<p>
-<span>
-Driver Name: <%= @purchase.driver.first_name %>
-</span>
-  <br>
-<span>
-  Phone No: <%= @purchase.driver.phone %>
+      You are going to pay <%= number_to_currency(@charge, :precision => 0) %>(USD) when you arrive
 </span>
 </p>
-<p>
 
-</p>
 <p>
   Thanks for choosing <a href="http://tourime.com">TouriMe</a> to be your best travel companion.Wish you a great journey
   in amazing Cambodia!

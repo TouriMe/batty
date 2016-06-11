@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   end
 
   # @todo messy routes, needs clean up
-  get 'book/:tour_id/:driver_id', to: 'purchases#new'
+  get 'book/:tour_id', to: 'purchases#new'
   get 'checkout/:id', to: 'purchases#checkout'
   get 'payment_success', to: 'purchases#success'
   get 'booking/:reference_id', to: 'bookings#show'

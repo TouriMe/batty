@@ -26,7 +26,7 @@ class PurchasesController < ApplicationController
   def new
     @vehicle_type = params[:vehicle_type]
     @trip = Tour.friendly.find(params[:tour_id])
-    @driver = Driver.friendly.find(params[:driver_id])
+    # @driver = Driver.friendly.find(params[:driver_id])
     @purchase = Purchase.new
     @no_show_title = true
 
@@ -36,41 +36,40 @@ class PurchasesController < ApplicationController
     # [A-Z][0-9][0-9][0-9][A-Z]
     @reference_id = SecureRandom.hex(7) # we will release this logic after 9 Millions purchases
 
-    @rate = 100
-
-    if @trip.down_payment
-      @rate = @trip.down_payment
-    end
+    # @rate = 100
+    # if @trip.down_payment
+    #   @rate = @trip.down_payment
+    # end
 
     if @vehicle_type.downcase == 'remork/tuk tuk'
-      @online_pay = (@trip.tuktuk_price.to_i * @rate/100).to_i
+      @online_pay = @trip.tuktuk_price.to_i + @trip.ticket_price_cents.to_i
 
-      @change = (@trip.tuktuk_price.to_i * @rate % 100)
+      # @change = (@trip.tuktuk_price.to_i * @rate % 100)
 
-      if @change >= 50
-        @online_pay += 1
-      end
+      # if @change >= 50
+      #   @online_pay += 1
+      # end
 
-      @later_pay = @trip.tuktuk_price.to_i - @online_pay
+      # @later_pay = @trip.tuktuk_price.to_i - @online_pay
 
-      @driver.vehicles.each do |v|
-        if v.name.downcase == "remork/tuk tuk"
-          @vehicle_id = v.id
-        end
-      end
-    elsif @vehicle_type == "Car"
-      @online_pay = (@trip.car_price.to_i * @rate / 100).to_i
-      @change = (@trip.car_price.to_i * @rate % 100)
-      if @change >= 50
-        @online_pay += 1
-      end
-      @later_pay = @trip.car_price.to_i - @online_pay
-
-      @driver.vehicles.each do |v|
-        if v.name.downcase == "car"
-          @vehicle_id = v.id
-        end
-      end
+      # @driver.vehicles.each do |v|
+      #   if v.name.downcase == "remork/tuk tuk"
+      #     @vehicle_id = v.id
+      #   end
+      # end
+    elsif @vehicle_type == "car"
+      @online_pay = @trip.car_price._cents.to_i + @trip.ticket_price_cents.to_i
+    #   @change = (@trip.car_price.to_i * @rate % 100)
+    #   if @change >= 50
+    #     @online_pay += 1
+    #   end
+    #   @later_pay = @trip.car_price.to_i - @online_pay
+    #
+    #   @driver.vehicles.each do |v|
+    #     if v.name.downcase == "car"
+    #       @vehicle_id = v.id
+    #     end
+    #   end
     end
     @braintree_key = Braintree::ClientToken.generate
   end
@@ -83,26 +82,28 @@ class PurchasesController < ApplicationController
     @trip = Tour.find(@purchase.purchasable_id)
 
     @charge = 0
-    if @purchase.vehicle.name.downcase == "remork/tuk tuk"
-      if @trip.down_payment
-        @charge = (@trip.tuktuk_price.to_i * @trip.down_payment/100).to_i
-        @change = (@trip.tuktuk_price.to_i * @trip.down_payment%100)
-        if @change >= 50
-          @charge += 1
-        end
-      else
-        @charge = @trip.tuktuk_price.to_i
-      end
+    if @trip.tuktuk_price.to_i > 0
+      # if @trip.down_payment
+      #   @charge = (@trip.tuktuk_price.to_i * @trip.down_payment/100).to_i
+      #   @change = (@trip.tuktuk_price.to_i * @trip.down_payment%100)
+      #   if @change >= 50
+      #     @charge += 1
+      #   end
+      # else
+      #   @charge = @trip.tuktuk_price.to_i
+      # end
+      @charge = @trip.tuktuk_price.to_i + @trip.ticket_price_cents.to_i
     else
-      if @trip.down_payment
-        @charge = (@trip.car_price.to_i * @trip.down_payment/100).to_i
-        @change = (@trip.car_price.to_i * @trip.down_payment%100).to_i
-        if @change >= 50
-          @charge += 1
-        end
-      else
-        @charge = @trip.car_price.to_i
-      end
+      # if @trip.down_payment
+      #   @charge = (@trip.car_price.to_i * @trip.down_payment/100).to_i
+      #   @change = (@trip.car_price.to_i * @trip.down_payment%100).to_i
+      #   if @change >= 50
+      #     @charge += 1
+      #   end
+      # else
+      #   @charge = @trip.car_price.to_i
+      # end
+      @charge = @trip.car_price.to_i + @trip.ticket_price_cents.to_i
     end
 
     if @charge > 0

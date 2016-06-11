@@ -61,13 +61,12 @@
 
         <div class="large-3 small-12 trip_top_info columns">
           <% if @tour.tuktuk_price.to_i != 0 %>
-              <h1><span><%= @tour.tuktuk_price.to_i %></span><span> $</span></h1>
+              <h1><span><%= @tour.tuktuk_price.to_i + @tour.ticket_price_cents %></span><span> $</span></h1>
           <% else %>
-              <h1><span><%= @tour.car_price.to_i %></span><span> $</span></h1>
+              <h1><span><%= @tour.car_price.to_i + @tour.ticket_price_cents %></span><span> $</span></h1>
           <% end %>
           <div class="meta_func">
-            <a href="#drivers-selection" class="trip_book_now">Book Now</a>
-            <a href="#" class="hide-for-small-only share"><i class="fa fa-herat-o"></i> Share</a>
+            <%= link_to "BOOK NOW", "/book/#{@tour.id}/?vehicle_type=#{@vehicle_type}",class: "trip_book_now" %>
           </div>
         </div>
 
@@ -134,7 +133,7 @@
         <%
           if !@tour.video_url.nil?
         %>
-            <div class="tour-video-container" >
+            <div class="tour-video-container">
               <div class="flex-video widescreen">
                 <iframe src="<%= @tour.video_url %>" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
               </div>
@@ -169,7 +168,6 @@
 
       </div>
     </div>
-
 
 
   </div>

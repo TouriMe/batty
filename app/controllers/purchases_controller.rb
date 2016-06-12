@@ -44,7 +44,7 @@ class PurchasesController < ApplicationController
     if @vehicle_type.downcase == 'remork/tuk tuk'
       @online_pay = @trip.tuktuk_price.to_i + @trip.ticket_price_cents.to_i
     elsif @vehicle_type == "car"
-      @online_pay = @trip.car_price._cents.to_i + @trip.ticket_price_cents.to_i
+      @online_pay = @trip.car_price.to_i + @trip.ticket_price_cents.to_i
     end
     @braintree_key = Braintree::ClientToken.generate
   end

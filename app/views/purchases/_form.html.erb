@@ -112,7 +112,17 @@
                 </tr>
             <% end %>
             <tr>
-              <td>Transport(Tuk Tuk)</td>
+              <%
+                if @trip.tuktuk_price > 0
+              %>
+                  <td>Transport (Tuk Tuk)</td>
+              <%
+                else
+              %>
+                  <td>Transport (Car)</td>
+              <%
+                end
+              %>
               <td class="charge"><%= number_to_currency(@transport_price, :precision => 0) %>
                 (USD) &nbsp; X &nbsp;<strong><span id="vehicle_no">1</span></strong></td>
             </tr>

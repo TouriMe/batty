@@ -4,8 +4,8 @@ class DriversController < ApplicationController
   def index
     @drivers = Driver.active
     @seotags = Seo.find_by_page('driver_listing')
-    @custom_title = 'Drivers'
-    @custom_subtitle = 'Rated and certified English speaking driver at your selection.'
+    @custom_title = 'Hosts'
+    @custom_subtitle = 'Trained and certified onsite hosts to offer premium service.'
   end
 
   def show

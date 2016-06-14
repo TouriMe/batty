@@ -1,3 +1,4 @@
+require 'sendinblue'
 class OrderConfirmation < ApplicationMailer
   default from: 'support@tourime.com'
 
@@ -9,6 +10,12 @@ class OrderConfirmation < ApplicationMailer
       @charge = @purchase.purchasable.car_price.to_i + @purchase.purchasable.ticket_price_cents.to_i
     end
     puts 'purchase created.'
-    # mail(to: @purchase.email, subject: 'Your Booking with TouriMe has been confirmed')
+    m = Sendinblue::Mailin.new("https://api.sendinblue.com/v2.0","pWG0zPv9yFMSKIJC",5)
+    data = { "to" => {@purchase.email=>"to whom!"},
+             "from" => ["support@tourime.com","from email!"],
+             "subject" => "Your Booking with TouriMe has been confirmed"
+    }
+    result = m.send_email(data)
+    puts 'purchase created.'
   end
 end

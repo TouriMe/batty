@@ -144,17 +144,25 @@
 <script type="text/javascript">
   function updatePrice(sel) {
     var trav_no = sel.value;
+    if(document.getElementById('tourist_no') != undefined)
     document.getElementById('tourist_no').innerHTML = trav_no;
+    if(document.getElementById('vehicle_no') !=undefined)
     document.getElementById('vehicle_no').innerHTML = '1';
+
     var tran_price = document.getElementById('purchase_transport_price').value;
     var tick_price = document.getElementById('purchase_ticket_price').value;
-    var tota_price = tick_price * trav_no;
-    if (trav_no > 4) {
-      document.getElementById('vehicle_no').innerHTML = '2';
-      tota_price = parseInt(tota_price) + parseInt(tran_price * 2);
-    }
+
+    var tota_price;
+    if(tick_price != undefined && tick_price > 0)
+      tota_price = parseInt(tick_price * trav_no) + parseInt(tran_price);
     else
+      tota_price = parseInt(tran_price);
+
+    if (trav_no > 4 && tran_price != undefined && tran_price > 0) {
+      document.getElementById('vehicle_no').innerHTML = '2';
       tota_price = parseInt(tota_price) + parseInt(tran_price);
+    }
+
     document.getElementById('total_charge').innerHTML = tota_price;
     document.getElementById('total_charge_small').innerHTML = tota_price;
     document.getElementById('purchase_price').value = tota_price;

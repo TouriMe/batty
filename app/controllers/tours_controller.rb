@@ -9,8 +9,8 @@ class ToursController < ApplicationController
     end
 
     @seotags = Seo.find_by_page('tour_listing')
-    @custom_title = 'Tours'
-    @custom_subtitle = 'Handpicked local tours, adventures and activities guided by driver.'
+    @custom_title = 'Experiences'
+    @custom_subtitle = 'Unique, authentic, and flexible experiences to travel like a local'
   end
 
   def show

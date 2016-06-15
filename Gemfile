@@ -72,6 +72,9 @@ gem 'braintree'
 ## DOCUMENTATION ##
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+## Email
+gem 'sendinblue'
+
 ## PRODUCTION STACK ##
 group :production do
   gem 'rails_12factor'

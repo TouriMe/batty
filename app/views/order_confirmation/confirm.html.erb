@@ -17,7 +17,7 @@
 </h4>
 <p>
 <span>
-Tour Name: <%= link_to @purchase.purchasable.name, tour_path(@purchase.purchasable) %></a>
+Tour Name: <%= link_to @purchase.purchasable.name, @hostname + tour_path(@purchase.purchasable)%></a>
 </span>
   <br>
 <span>

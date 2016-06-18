@@ -99,7 +99,7 @@
               <div class="include-exclude small-12 medium-6 columns">
                 <% if @tour.include_html? %>
                     <div class="include ">
-                      <label>Include</label>
+                      <h5><span class="plus-icon">+</span>Include</h5>
                       <%= @tour.include_html.html_safe %>
                     </div>
                 <% end %>
@@ -109,7 +109,7 @@
               <div class="include-exclude small-12 medium-6 columns">
                 <% if @tour.exclude_html? %>
                     <div class="exclude">
-                      <label>Exclude</label>
+                      <h5><span class="minus-icon">-</span>Exclude</h5>
                       <%= @tour.exclude_html.html_safe %>
                     </div>
                 <% end %>
@@ -119,13 +119,13 @@
         <div class="content" id="panel3">
           <% if @tour.tour_start? || @tour.tour_end %>
               <div class="tour-start-end small-6 columns">
-                <label class="header">Start Time</label>
+                <h5 class="header">Start Time</h5>
                 <% if @tour.tour_start? %>
                     <%= @tour.tour_start %>
                 <% end %>
               </div>
               <div class="tour-start-end small-6 columns">
-                <label class="header">End Time</label>
+                <h5 class="header">End Time</h5>
                 <% if @tour.tour_end %>
                     <%= @tour.tour_end %>
                 <% end %>

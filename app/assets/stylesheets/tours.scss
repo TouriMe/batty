@@ -142,9 +142,9 @@
 
     }
 
-    .tabs dd > a, .tabs .tab-title > a{
-      outline:none;
-      margin-top: 50px;
+    .tabs dd > a, .tabs .tab-title > a {
+      outline: none;
+      margin-top: 30px;
     }
     .tab-title {
       padding: 0;
@@ -165,7 +165,6 @@
         padding-top: 12px;
         padding-bottom: 12px;
       }
-
     }
 
     .tour-video-container {
@@ -173,6 +172,36 @@
       max-height: 600px;
       margin: auto;
       padding: 0 10px;
+    }
+
+  }
+
+  .tab-content-container {
+
+    .plus-icon {
+      background-color: #FFB400;
+      text-align: center;
+      padding: 0 6px;
+      border-radius: 100%;
+      color: white;
+      font-size: 18px;
+      margin-right: 10px;
+    }
+    .minus-icon {
+      @extend .plus-icon;
+      padding: 0 9px;
+      background-color: #222;
+    }
+
+    .include {
+      > h5 {
+        color: #FFB400;
+      }
+
+    }
+
+    ul {
+      margin-left:40px;
     }
 
   }
@@ -198,25 +227,6 @@
         @media #{$media-pad-smaller}{
           margin: 10px 0;
         }
-      }
-
-      .highlight, .include-exclude, .tour-start-end {
-        text-align: left;
-        ol, ul {
-          display: list-item;
-          //list-style: decimal;
-          line-height: 1.6;
-          @media #{$media-pad-smaller}{
-            margin-bottom: 0;
-          }
-          li {
-            padding-bottom: 10px;
-            @media #{$media-pad-smaller}{
-              padding-bottom: 0;
-            }
-          }
-        }
-
       }
 
       @media #{$media-pad-smaller}{

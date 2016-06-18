@@ -139,14 +139,33 @@
           }
         }
       }
+
     }
-  }
 
-  .trip_detail_wrapper {
-
-    .tab-menu-item {
+    .tabs dd > a, .tabs .tab-title > a{
+      outline:none;
+      margin-top: 50px;
+    }
+    .tab-title {
       padding: 0;
       text-align: center;
+      margin-top: 12px;
+      a {
+        margin: 0 1px;
+        padding-top: 6px;
+        padding-bottom: 6px;
+      }
+
+    }
+
+    .active {
+      margin-top: 0;
+      a {
+        border-top: 2px solid #FFB400;
+        padding-top: 12px;
+        padding-bottom: 12px;
+      }
+
     }
 
     .tour-video-container {
@@ -155,6 +174,11 @@
       margin: auto;
       padding: 0 10px;
     }
+
+  }
+
+  .trip_detail_wrapper {
+
     #trip_sidebar {
       border-left: 1px solid #979797;
       padding-top: 35px;

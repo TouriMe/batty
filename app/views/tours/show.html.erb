@@ -66,83 +66,92 @@
               <h1><span><%= @tour.car_price.to_i + @tour.ticket_price_cents %></span><span> $</span></h1>
           <% end %>
           <div class="meta_func">
-            <%= link_to "BOOK NOW", "/book/#{@tour.id}/?vehicle_type=#{@vehicle_type}",class: "trip_book_now" %>
+            <%= link_to "BOOK NOW", "/book/#{@tour.id}/?vehicle_type=#{@vehicle_type}", class: "trip_book_now" %>
           </div>
         </div>
 
       </section>
     </div>
-  </div>
-
-  <div class="trip_detail_wrapper">
     <div class="row">
-      <div id="detail-content">
+      <ul class="tabs" data-tab>
+        <li class="tab-title tab-menu-item small-6 medium-4 columns active">
+          <a href="#panel1"><strong>Highlights</strong></a></li>
+        <li class="tab-title tab-menu-item small-6 medium-4 columns"><a href="#panel2"><strong>Includes</strong></a>
+        </li>
+        <li class="tab-title tab-menu-item small-6 medium-4 columns"><a href="#panel3"><strong>Schedule</strong></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="tab-content-container">
+    <div class="row">
+      <div class="tabs-content">
+        <div class="content active" id="panel1">
+          <% if @tour.highlight_html? %>
+              <div class="highlight small-12 columns">
+                <%= @tour.highlight_html.html_safe %>
+              </div>
+          <% end %>
+        </div>
 
-        <ul class="tabs" data-tab>
-          <li class="tab-title tab-menu-item small-6 medium-4 columns active"><a href="#panel1">Highlight</a></li>
-          <li class="tab-title tab-menu-item small-6 medium-4 columns"><a href="#panel2">Include</a></li>
-          <li class="tab-title tab-menu-item small-6 medium-4 columns"><a href="#panel3">Schedule</a></li>
-        </ul>
-
-        <div class="tabs-content">
-          <div class="content active" id="panel1">
-            <% if @tour.highlight_html? %>
-                <div class="highlight small-12 columns">
-                  <%= @tour.highlight_html.html_safe %>
-                </div>
-            <% end %>
-          </div>
-
-          <div class="content" id="panel2">
-            <% if @tour.include_html? || @tour.exclude_html? %>
-                <div class="include-exclude small-12 columns">
-                  <% if @tour.include_html? %>
-                      <div class="include ">
-                        <label>Include</label>
-                        <%= @tour.include_html.html_safe %>
-                      </div>
-                  <% end %>
-                  <% if @tour.exclude_html? %>
-                      <div class="exclude">
-                        <label>Exclude</label>
-                        <%= @tour.exclude_html.html_safe %>
-                      </div>
-                  <% end %>
-                </div>
-            <% end %>
-          </div>
-
-          <div class="content" id="panel3">
-            <% if @tour.tour_start? || @tour.tour_end %>
-                <div class="tour-start-end small-6 columns">
-                  <label class="header">Start Time</label>
-                  <% if @tour.tour_start? %>
-                      <%= @tour.tour_start %>
-                  <% end %>
-                </div>
-                <div class="tour-start-end small-6 columns">
-                  <label class="header">End Time</label>
-                  <% if @tour.tour_end %>
-                      <%= @tour.tour_end %>
-                  <% end %>
-                </div>
-            <% end %>
+        <div class="content" id="panel2">
+          <% if @tour.include_html? %>
+              <div class="include-exclude small-12 medium-6 columns">
+                <% if @tour.include_html? %>
+                    <div class="include ">
+                      <label>Include</label>
+                      <%= @tour.include_html.html_safe %>
+                    </div>
+                <% end %>
+              </div>
+          <% end %>
+          <% if @tour.exclude_html? %>
+              <div class="include-exclude small-12 medium-6 columns">
+                <% if @tour.exclude_html? %>
+                    <div class="exclude">
+                      <label>Exclude</label>
+                      <%= @tour.exclude_html.html_safe %>
+                    </div>
+                <% end %>
+              </div>
+          <% end %>
+        </div>
+        <div class="content" id="panel3">
+          <% if @tour.tour_start? || @tour.tour_end %>
+              <div class="tour-start-end small-6 columns">
+                <label class="header">Start Time</label>
+                <% if @tour.tour_start? %>
+                    <%= @tour.tour_start %>
+                <% end %>
+              </div>
+              <div class="tour-start-end small-6 columns">
+                <label class="header">End Time</label>
+                <% if @tour.tour_end %>
+                    <%= @tour.tour_end %>
+                <% end %>
+              </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <%
+      if !@tour.video_url.empty?
+    %>
+        <div class="tour-video-container">
+          <div class="flex-video widescreen">
+            <iframe src="<%= @tour.video_url %>" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
           </div>
         </div>
 
-        <%
-          if !@tour.video_url.nil?
-        %>
-            <div class="tour-video-container">
-              <div class="flex-video widescreen">
-                <iframe src="<%= @tour.video_url %>" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-              </div>
-            </div>
-
-        <%
-          end
-        %>
-
+    <%
+      end
+    %>
+  </div>
+  <div class="trip_detail_wrapper">
+    <div class="row">
+      <div id="detail-content">
         <div class="detail">
           <div class="trip-label"><h3>Tour Description</h3></div>
 

@@ -137,7 +137,7 @@
   </div>
   <div class="row">
     <%
-      if !@tour.video_url?
+      if !@tour.video_url.nil? && !@tour.video_url.empty?
     %>
         <div class="tour-video-container">
           <div class="flex-video widescreen">

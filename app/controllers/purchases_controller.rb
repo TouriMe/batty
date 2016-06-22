@@ -46,7 +46,7 @@ class PurchasesController < ApplicationController
     elsif @vehicle_type == "car"
       @online_pay = @trip.car_price.to_i + @trip.ticket_price_cents.to_i
     end
-    @braintree_key = Braintree::ClientToken.generate
+    # @braintree_key = Braintree::ClientToken.generate
   end
 
 

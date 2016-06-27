@@ -111,28 +111,34 @@
                     (USD) &nbsp; X &nbsp; <strong><span id="tourist_no">1</span></strong></td>
                 </tr>
             <% end %>
-            <tr>
-              <%
-                if @trip.tuktuk_price > 0
-              %>
+
+            <%
+              if @trip.tuktuk_price > 0
+            %>
+                <tr>
                   <td>Transport (Tuk Tuk)</td>
                   <td class="charge"><%= number_to_currency(@transport_price, :precision => 0) %>
                     (USD) &nbsp; X &nbsp;<strong><span id="vehicle_no">1</span></strong></td>
-              <%
-                elsif @trip.car_price > 0
-              %>
+                </tr>
+            <%
+              elsif @trip.car_price > 0
+            %>
+                <tr>
                   <td>Transport (Car)</td>
                   <td class="charge"><%= number_to_currency(@transport_price, :precision => 0) %>
                     (USD) &nbsp; X &nbsp;<strong><span id="vehicle_no">1</span></strong></td>
-              <%
-                else
-              %>
+                </tr>
+            <%
+              else
+            %>
+                <tr>
                   <td>Transportation included</td>
-              <%
-                end
-              %>
+                </tr>
+            <%
+              end
+            %>
 
-            </tr>
+
             </tbody>
           </table>
           <h2>Total <span id="total_charge"><%= @online_pay %></span> $</h2>

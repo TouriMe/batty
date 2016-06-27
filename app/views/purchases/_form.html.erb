@@ -125,9 +125,13 @@
                   <td class="charge"><%= number_to_currency(@transport_price, :precision => 0) %>
                     (USD) &nbsp; X &nbsp;<strong><span id="vehicle_no">1</span></strong></td>
               <%
+                else
+              %>
+                  <td>Transportation included</td>
+              <%
                 end
               %>
-              
+
             </tr>
             </tbody>
           </table>
@@ -147,16 +151,16 @@
 <script type="text/javascript">
   function updatePrice(sel) {
     var trav_no = sel.value;
-    if(document.getElementById('tourist_no') != undefined)
-    document.getElementById('tourist_no').innerHTML = trav_no;
-    if(document.getElementById('vehicle_no') !=undefined)
-    document.getElementById('vehicle_no').innerHTML = '1';
+    if (document.getElementById('tourist_no') != undefined)
+      document.getElementById('tourist_no').innerHTML = trav_no;
+    if (document.getElementById('vehicle_no') != undefined)
+      document.getElementById('vehicle_no').innerHTML = '1';
 
     var tran_price = document.getElementById('purchase_transport_price').value;
     var tick_price = document.getElementById('purchase_ticket_price').value;
 
     var tota_price;
-    if(tick_price != undefined && tick_price > 0)
+    if (tick_price != undefined && tick_price > 0)
       tota_price = parseInt(tick_price * trav_no) + parseInt(tran_price);
     else
       tota_price = parseInt(tran_price);

@@ -63,7 +63,7 @@ Pick Up Address: <%= @purchase.pickup %>
 </h4>
 <p>
 <span>
-      You are going to pay <%= number_to_currency(@charge, :precision => 0) %>(USD) when you arrive
+      You are going to pay <%= number_to_currency(@purchase.price, :precision => 0) %>(USD) when you arrive
 </span>
 </p>
 

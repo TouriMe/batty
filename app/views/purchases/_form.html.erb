@@ -111,24 +111,34 @@
                     (USD) &nbsp; X &nbsp; <strong><span id="tourist_no">1</span></strong></td>
                 </tr>
             <% end %>
-            <tr>
-              <%
-                if @trip.tuktuk_price > 0
-              %>
+
+            <%
+              if @trip.tuktuk_price > 0
+            %>
+                <tr>
                   <td>Transport (Tuk Tuk)</td>
                   <td class="charge"><%= number_to_currency(@transport_price, :precision => 0) %>
                     (USD) &nbsp; X &nbsp;<strong><span id="vehicle_no">1</span></strong></td>
-              <%
-                elsif @trip.car_price > 0
-              %>
+                </tr>
+            <%
+              elsif @trip.car_price > 0
+            %>
+                <tr>
                   <td>Transport (Car)</td>
                   <td class="charge"><%= number_to_currency(@transport_price, :precision => 0) %>
                     (USD) &nbsp; X &nbsp;<strong><span id="vehicle_no">1</span></strong></td>
-              <%
-                end
-              %>
-              
-            </tr>
+                </tr>
+            <%
+              else
+            %>
+                <tr>
+                  <td colspan="2">Transportation included</td>
+                </tr>
+            <%
+              end
+            %>
+
+
             </tbody>
           </table>
           <h2>Total <span id="total_charge"><%= @online_pay %></span> $</h2>
@@ -147,16 +157,16 @@
 <script type="text/javascript">
   function updatePrice(sel) {
     var trav_no = sel.value;
-    if(document.getElementById('tourist_no') != undefined)
-    document.getElementById('tourist_no').innerHTML = trav_no;
-    if(document.getElementById('vehicle_no') !=undefined)
-    document.getElementById('vehicle_no').innerHTML = '1';
+    if (document.getElementById('tourist_no') != undefined)
+      document.getElementById('tourist_no').innerHTML = trav_no;
+    if (document.getElementById('vehicle_no') != undefined)
+      document.getElementById('vehicle_no').innerHTML = '1';
 
     var tran_price = document.getElementById('purchase_transport_price').value;
     var tick_price = document.getElementById('purchase_ticket_price').value;
 
     var tota_price;
-    if(tick_price != undefined && tick_price > 0)
+    if (tick_price != undefined && tick_price > 0)
       tota_price = parseInt(tick_price * trav_no) + parseInt(tran_price);
     else
       tota_price = parseInt(tran_price);

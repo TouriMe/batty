@@ -6,7 +6,7 @@ $( ->
   $imgUrl = $('.trip-cover-img').attr("data-img")
   headerHeight = $('#fixed-head').height()
   tripHeaderHeight = $('.trip_head_wrapper').height()
-  heroHight = $(window).height()-tripHeaderHeight
+  heroHight = $(window).height()-tripHeaderHeight + 80
   $('.trip-cover-img').attr('style',' background-image:url('+ $imgUrl + ');height:' + heroHight + 'px;');
   $('.trip-cover-img').click( (evt)->
     $('.carousel ul li:first-child img').click();

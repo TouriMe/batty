@@ -20,8 +20,10 @@
 
         <div class="large-9 small-12 trip_top_head columns">
           <div class="trip-title">
-            <h1><%= @tour.name %></h1>
-          <span class="rating ">
+            <div class="ellipsis">
+              <h3><%= @tour.name %></h3>
+            </div>
+            <span class="rating ">
             <%= render 'partials/rating', rating: @tour.rating > 0 ? @tour.rating : 5 %>
           </span>
           </div>

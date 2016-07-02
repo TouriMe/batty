@@ -205,7 +205,7 @@ nav.top-bar {
           text-align: center;
           font-size: 0.75rem;
           line-height: 1rem;
-          color:black;
+          color: black;
         }
       }
     }
@@ -243,7 +243,7 @@ nav.top-bar {
           //text-transform: uppercase;
           vertical-align: middle;
           //font-style: italic;
-          width:160px;
+          width: 160px;
         }
         img.paymentCards {
           width: 49%;
@@ -429,6 +429,10 @@ nav.top-bar {
   img {
     margin-top: 50px;
   }
+  @media #{$media-pad-smaller}{
+    height: 50%;
+  }
+
 }
 
 .social-share-button {

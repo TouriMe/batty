@@ -150,7 +150,7 @@
       outline: none;
       margin-top: 30px;
       @media #{$media-pad-smaller}{
-        margin-top: 0;
+        margin: 1px;
       }
 
     }
@@ -158,6 +158,9 @@
       padding: 0;
       text-align: center;
       margin-top: 12px;
+      @media #{$media-pad-smaller}{
+        margin-top: 0;
+      }
       a {
         margin: 0 1px;
         padding-top: 6px;
@@ -172,6 +175,11 @@
         border-top: 2px solid #FFB400;
         padding-top: 12px;
         padding-bottom: 12px;
+        @media #{$media-pad-smaller}{
+          border-top: none;
+          padding-top: 0;
+          padding-bottom: 0;
+        }
       }
     }
 
@@ -209,7 +217,7 @@
     }
 
     ul {
-      margin-left:40px;
+      margin-left: 40px;
     }
 
   }

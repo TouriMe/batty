@@ -64,6 +64,9 @@
             .trip-logo, .distance-logo {
               margin: 10px;
               font-size: 1.2rem;
+              @media #{$media-pad-smaller}{
+                margin: 0 10px;
+              }
             }
 
             p {
@@ -145,6 +148,10 @@
     .tabs dd > a, .tabs .tab-title > a {
       outline: none;
       margin-top: 30px;
+      @media #{$media-pad-smaller}{
+        margin-top: 0;
+      }
+
     }
     .tab-title {
       padding: 0;

@@ -177,8 +177,8 @@
         padding-bottom: 12px;
         @media #{$media-pad-smaller}{
           border-top: none;
-          padding-top: 0;
-          padding-bottom: 0;
+          padding-top: 6px;
+          padding-bottom: 6px;
         }
       }
     }

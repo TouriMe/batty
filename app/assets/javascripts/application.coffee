@@ -43,10 +43,10 @@ $(()->
     height: 30
   });
 
-#  $("#title-text").dotdotdot({
-#    ellipsis: '... ',
-#    height: 40
-#  });
+  $("#title-text").dotdotdot({
+    ellipsis: '... ',
+    height: 40
+  });
 
 
 

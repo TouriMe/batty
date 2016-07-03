@@ -5,6 +5,6 @@ class OrderConfirmation < ApplicationMailer
     @purchase = purchase
     @hostname = hostname
     puts 'purchase created.'
-    mail(to: @purchase.email, Bcc:'yanghl22@gmail.com', subject: 'Your Booking with TouriMe has been confirmed')
+    mail(to: @purchase.email, Bcc:'jianyi01207@gmail.com,aislinn.chenya@gmail.com', subject: 'Your Booking with TouriMe has been confirmed')
   end
 end

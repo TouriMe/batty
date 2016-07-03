@@ -62,10 +62,12 @@
         </div>
 
         <div class="large-3 small-12 trip_top_info columns">
-          <% if @tour.tuktuk_price.to_i != 0 %>
-              <h1><span><%= @tour.tuktuk_price.to_i + @tour.ticket_price_cents %></span><span> $</span></h1>
+          <% if @tour.ticket_price_cents != 0 %>
+              <h1><span> <%= number_to_currency(@tour.ticket_price_cents, :precision => 0) %></span></h1>
+          <% elsif @tour.tuktuk_price.to_i != 0 %>
+              <h1><span><%= number_to_currency(@tour.tuktuk_price.to_i, :precision => 0) %></span></h1>
           <% else %>
-              <h1><span><%= @tour.car_price.to_i + @tour.ticket_price_cents %></span><span> $</span></h1>
+              <h1><span><%= number_to_currency(@tour.car_price.to_i, :precision => 0) %></span></h1>
           <% end %>
           <div class="meta_func">
             <%= link_to "BOOK NOW", "/book/#{@tour.id}/?vehicle_type=#{@vehicle_type}", class: "trip_book_now" %>

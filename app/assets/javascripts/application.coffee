@@ -10,8 +10,18 @@
 #= require jquery.dotdotdot
 #= require jquery.infinitescroll
 #= require jquery.infinite-pages
-#= require_tree .
+#= require underscore
+#= require gmaps/google
+#= require active_admin/base
+#= require ckeditor/init
 
+#= require namespace
+#= require util
+
+#= require drivers
+#= require tours
+
+#= require initializer
 
 $(()->
   $(document).foundation()
@@ -47,6 +57,7 @@ $(()->
     ellipsis: '... ',
     height: 40
   });
+
 
 
 

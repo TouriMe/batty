@@ -1,7 +1,7 @@
 <div class="container trip_wrapper">
 
   <% if @tour.images.where(is_hero: true).any? %>
-      <div class="trip-cover-img" data-img="<%= @tour.images.where(is_hero: true).first.url %>"></div>
+      <div class="trip-cover-img" data-img="<%= @tour.hero_unit_image.url %>" ></div>
   <% elsif @tour.images.any? %>
       <div class="trip-cover-img" data-img="<%= @tour.cover_image %>"></div>
   <% end %>

@@ -24,6 +24,9 @@ gem 'jquery-ui-rails'
 gem 'jquery-infinite-pages'
 gem 'jquery-dotdotdot-rails', '~> 1.6', '>= 1.6.5'
 gem 'social-share-button', '~> 0.1.6'
+gem 'gmaps4rails',  '~> 2.1.2'
+gem 'geocoder', '~> 1.4.3'
+gem 'google-api-client', '~> 0.9.28'
 
 ## TRANSLATION ##
 gem 'rails-i18n', '~> 4.0.0' # For 4.0.x

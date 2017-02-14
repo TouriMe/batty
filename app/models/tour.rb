@@ -37,6 +37,10 @@ class Tour < ActiveRecord::Base
     end
   end
 
+  def hero_unit_image
+    images.where(is_hero: true).first
+  end
+
   def cover_image
     hero_image = images.where(is_hero: true).first
     if hero_image.present?

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160611064847) do
+ActiveRecord::Schema.define(version: 20170210065632) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -226,6 +226,7 @@ ActiveRecord::Schema.define(version: 20160611064847) do
     t.string   "passport_number"
     t.string   "nationality"
     t.string   "vehicle_type"
+    t.string   "latlng"
   end
 
   create_table "seos", force: :cascade do |t|
@@ -249,9 +250,9 @@ ActiveRecord::Schema.define(version: 20160611064847) do
     t.string   "description"
     t.string   "slug"
     t.text     "important_info"
-    t.decimal  "rating"
     t.integer  "car_price_cents",       default: 0,     null: false
     t.string   "car_price_currency",    default: "USD", null: false
+    t.decimal  "rating"
     t.integer  "distance"
     t.integer  "checkpoint_num"
     t.string   "duration"

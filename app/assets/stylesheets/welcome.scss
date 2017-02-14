@@ -45,11 +45,12 @@
     width: 80%;
     margin-left: auto;
     margin-right: auto;
-
+    margin-top: 15px;
     .show-subject-button {
       @media #{$media-phone-smaller} {
-        width: 130px;
-        height: 130px;
+        margin: 0 auto;
+        width: 135px;
+        height: 135px;
         border: 2px solid white;
         background-color: transparent;
         .show-subject-button-content {

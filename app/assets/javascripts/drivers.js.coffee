@@ -1,37 +1,14 @@
-$ ( ->
-  tag = document.createElement('script')
-  tag.src = 'https://www.youtube.com/iframe_api'
-  firstScriptTag = document.getElementsByTagName('script')[0]
-  firstScriptTag.parentNode.insertBefore tag, firstScriptTag
+Batty.DriversShow = do -> 
+  _init = ->
+    _heroHeaderSection()
 
-  player = undefined
+  _heroHeaderSection = ->
+    $driverImgUrl      = $('.hero-background').attr("data-img")
+    driverHeaderHeight = $('.profile-head').height()
+    driverHeroHight    = $(window).height() - driverHeaderHeight
 
-  onYouTubeIframeAPIReady = ->
-    player = new (YT.Player)('player',
-      height: '315'
-      width: '560'
-      videoId: 'l-gQLqv9f4o'
-      events: 'onStateChange': onPlayerStateChange)
-    return
+    $('.hero-background').attr('style',' background-image:url('+ $driverImgUrl + ');height:' + driverHeroHight + 'px;')
+    $('.hero-content').attr('style', 'height:' + driverHeroHight + 'px;')
+    $('.profile-page-hero').attr('style', 'height:' + driverHeroHight + 'px;')
 
-  stopVideo = ->
-    player.stopVideo()
-    return
-
-  playVideo = ->
-    player.playVideo()
-    return
-
-  pauseVideo = ->
-    player.pauseVideo()
-    return
-
-
-
-  $(document).on 'opened.fndtn.reveal', '[data-reveal]', ->
-    playVideo()
-    return
-  $(document).on 'closed.fndtn.reveal', '[data-reveal]', ->
-    pauseVideo()
-    return
-)
+  { init: _init }

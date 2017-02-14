@@ -12,15 +12,21 @@ head
   meta(charset='utf-8')
   meta(http-equiv='X-UA-Compatible' content='IE=edge')
   meta(name='viewport' content='width=device-width initial-scale=1')
-  - if (@seotags)
-    meta(name="title" content=@seotags.title)
-    meta(name="DESCRIPTION" content=@seotags.description)
-    meta(name="keywords" content=@seotags.keywords)
+  
   link(href='http://fonts.googleapis.com/css?family=Lato:300,400,600,700' rel='stylesheet' type='text/css')
   link(href='http://fonts.googleapis.com/css?family=Nunito:400,300,600,700' rel='stylesheet' type='text/css')
   link(href='http://fonts.googleapis.com/css?family=Muli:400,300,600,700' rel='stylesheet' type='text/css')
   link(href='http://fonts.googleapis.com/css?family=Ubuntu:400,300,700,500,300italic,400italic,500italic,700italic' rel='stylesheet' type='text/css')
 
+  script(src="//maps.google.com/maps/api/js?key=#{ENV['GOOGLE_API_KEY']}")
+  script(src='//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js')
+  
+  - if (@seotags)
+    meta(name="title" content=@seotags.title)
+    meta(name="DESCRIPTION" content=@seotags.description)
+    meta(name="keywords" content=@seotags.keywords)
+
+  
   = render 'layouts/seo_meta'
   = stylesheet_link_tag 'application', media: 'all'
   = javascript_include_tag 'application'
@@ -28,7 +34,7 @@ head
   = render 'layouts/head'
   = csrf_meta_tags
 html
-  body
+  body id="#{controller_name}-#{params[:action]}"
     #wrapper
       #header
         = render 'partials/topbar'

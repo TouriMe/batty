@@ -189,6 +189,8 @@ ActiveAdmin.setup do |config|
   #
   # To load a javascript file:
   config.register_javascript 'froala_editor.min'
+  config.register_javascript "//maps.google.com/maps/api/js?key=#{ENV['GOOGLE_API_KEY']}"
+  config.register_javascript "//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"
 
   # == CSV options
   #

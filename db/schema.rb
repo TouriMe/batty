@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170210065632) do
+ActiveRecord::Schema.define(version: 20170220042158) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,12 @@ ActiveRecord::Schema.define(version: 20170210065632) do
   add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
+
+  create_table "activities", force: :cascade do |t|
+    t.string   "activity_name"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
 
   create_table "add_image_url_to_trips", force: :cascade do |t|
     t.string   "image_url"
@@ -239,6 +245,16 @@ ActiveRecord::Schema.define(version: 20170210065632) do
     t.string   "page"
   end
 
+  create_table "tour_activities", force: :cascade do |t|
+    t.integer  "tour_id"
+    t.integer  "activity_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "tour_activities", ["activity_id"], name: "index_tour_activities_on_activity_id", using: :btree
+  add_index "tour_activities", ["tour_id"], name: "index_tour_activities_on_tour_id", using: :btree
+
   create_table "tours", force: :cascade do |t|
     t.string   "name"
     t.text     "content"
@@ -307,4 +323,6 @@ ActiveRecord::Schema.define(version: 20170210065632) do
     t.integer  "year"
   end
 
+  add_foreign_key "tour_activities", "activities"
+  add_foreign_key "tour_activities", "tours"
 end

@@ -1,0 +1,38 @@
+<div class='cards'>
+  <div class= 'search-results row full-width' %>
+    <% @drivers.each do |driver| %>
+      <div class='small-12 medium-6 large-4 columns card-wrapper' >
+        <%= link_to driver_path(driver) do %>
+          <div class='card-item'>
+            <%= image_tag driver.card_img, class: 'item-bg' %>
+            <div class='name'>
+              <strong><%= driver.first_name %></strong>
+            </div>
+            <div class='avatar'>
+              <%= image_tag driver.avatar_url, class: 'item-avatar' %>
+            </div>
+            <div class='desc offset ellipsis'>
+              <strong><%= driver.short_desc %></strong>
+            </div>
+            <div class='divider offset'></div>
+            <div class='review offset'>
+              <!-- <div class='rating left'>
+                = render 'partials/rating', rating: driver.rating
+              </div> -->
+              <!-- <span class='right vehicle'>
+                <% driver.vehicles.each do |v| %>
+                  <strong><%= v.name + " " %></strong>
+                <% end %>
+              </span> -->
+            </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<!-- <% @drivers.each do |driver| %>
+  <div class="small-12 medium-6 large-4 columns card-wrapper">
+    <h1><%= driver.full_name %></h1>
+  </div>
+<% end %> --> 

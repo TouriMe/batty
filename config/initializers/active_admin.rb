@@ -183,6 +183,7 @@ ActiveAdmin.setup do |config|
   config.register_stylesheet 'froala_editor.min'
   config.register_stylesheet 'froala_style.min'
   config.register_stylesheet 'active_custom.css'
+  config.register_stylesheet '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css'
   #
   # You can provide an options hash for more control, which is passed along to stylesheet_link_tag():
   #   config.register_stylesheet 'my_print_stylesheet.css', media: :print
@@ -191,6 +192,7 @@ ActiveAdmin.setup do |config|
   config.register_javascript 'froala_editor.min'
   config.register_javascript "//maps.google.com/maps/api/js?key=#{ENV['GOOGLE_API_KEY']}"
   config.register_javascript "//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"
+  config.register_javascript "//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"
 
   # == CSV options
   #

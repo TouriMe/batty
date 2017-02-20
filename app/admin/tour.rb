@@ -2,9 +2,84 @@ ActiveAdmin.register Tour do
 
   controller do
     def permitted_params
-      params.permit!
+      tours = [ :name, :content, :image_url, :description, :slug, :important_info, :distance,
+                :checkpoint_num, :duration, :down_payment, :down_payment_currency, :booking_fee,
+                :booking_fee_currency, :highlight_html, :include_html, :exclude_html, :tour_start, :tour_end,
+                :card_img, :is_active, :video_url, tour_drivers_attributes: [:id, :driver_id, :_destroy], 
+                images_attributes: [:id, :url, :alt_text, :is_hero, :_destroy] ]
+      params.require(:tour).permit(tours)
+    end
+
+    def new
+      @tour = Tour.new
+      @tour.tour_drivers.build
+    end
+    
+    def create
+      p = params[:tour]
+
+      drivers_array = []
+
+      @tour = Tour.new(permitted_params)
+      if @tour.save
+        p["tour_drivers_attributes"].map { |td| drivers_array << td[1]['driver_id']}
+
+        if drivers_array.include?("")
+          Driver.all.each do |d|
+            TourDriver.create(tour_id: @tour.id,driver_id: d.id)
+          end
+        else
+          drivers_array.each do |d|
+            TourDriver.create(tour_id: @tour.id,driver_id: d)
+          end
+        end
+        redirect_to admin_tour_path(@tour)
+      else
+        render :new
+      end
+    end
+
+    def update
+      p = params[:tour] 
+
+      drivers_array = []
+      element_of_drivers = []
+
+      tour = Tour.find(params[:id])
+      @tour = tour.update_attributes(permitted_params)
+      tourdriver_ids = tour.tour_drivers.pluck(:id)
+
+      p["tour_drivers_attributes"].map { |td| drivers_array << td[1].values}
+
+      if drivers_array.flatten.include?("")
+        tour.tour_drivers.destroy_all
+        Driver.all.each do |d|
+          TourDriver.create(tour_id: tour.id,driver_id: d.id)
+        end
+      else
+        tourdriver_index = 0
+        drivers_array.each do |d|
+          # binding.pry
+          if d.length == 1
+            TourDriver.create(tour_id: tour.id,driver_id: d[0])
+          else
+            if d[1] != '1'
+              # error delete then add 
+              # error update then add
+              # delete then update is fine
+              tourdriver_id = TourDriver.find(tourdriver_ids[tourdriver_index])
+              tourdriver_id.update_attributes(tour_id: tour.id, driver_id: d[0])
+              tourdriver_index += 1
+            end
+          end
+        end
+      end
+      
+      redirect_to admin_tour_path(tour.id)
     end
   end
+
+  
 
   form do |f|
     f.inputs do
@@ -21,6 +96,12 @@ ActiveAdmin.register Tour do
       input :exclude_html, as: :ckeditor
       input :tour_start
       input :tour_end
+    end
+
+    f.inputs 'Drivers' do
+      f.has_many :tour_drivers, allow_destroy: true do |driver|
+        driver.input :driver_id, label: 'Select Drivers', as: :select, collection: (Driver.all.map{|d| [d.full_name, d.id]}), prompt: 'All Drivers' 
+      end
     end
 
     f.inputs 'Price Calculation' do

@@ -20,7 +20,11 @@ class ToursController < ApplicationController
       @vehicle_type = 'car'
     end
     @seotags = Seo.new(@tour.seo_tags)
-    @tour_drivers = @tour.drivers.page(params[:page]).per(10)
+    @tour_drivers = @tour.available_drivers.page(params[:page]).per(10)
   end
 
+  def driver_selection
+    @tour = Tour.find(params[:tour_id])
+    @drivers = @tour.drivers.all
+  end
 end

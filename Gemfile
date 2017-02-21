@@ -85,6 +85,9 @@ end
 
 ## DEVELOPMENT STACK ##
 group :development do
+  gem 'capistrano-rails',       '~> 1.1.1'
+  gem 'capistrano-passenger'
+  gem 'capistrano-rvm'
   gem 'annotate'
   gem 'rails-erd'
   gem 'quiet_assets'
@@ -92,6 +95,10 @@ group :development do
   gem 'web-console', '~> 3.0'
   gem 'rubocop', '~> 0.32.1', require: false
   gem 'rubocop-git', require: false
+end
+
+group :production, :staging do
+  gem 'asset_sync',             '~> 1.2'
 end
 
 group :development, :test do

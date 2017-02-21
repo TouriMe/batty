@@ -1,4 +1,4 @@
-lock '3.6.0'
+lock '3.7.2'
 
 set :application, 'batty'
 set :repo_url, "git@github.com:TouriMe/#{fetch(:application)}.git"

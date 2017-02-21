@@ -32,6 +32,7 @@ gem 'google-api-client', '~> 0.9.28'
 gem 'rails-i18n', '~> 4.0.0' # For 4.0.x
 gem 'i18n-js','>= 3.0.0.rc11'
 gem 'language_list'
+gem 'dotenv-rails'
 
 ## ROUTE HELPER ##
 gem 'babosa'
@@ -64,7 +65,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'active_model_serializers'
 
 ## IMAGE HANDLER ##
-gem 'fog', require: 'fog/aws'
+gem 'fog'
 gem 'rmagick'
 gem 'mini_magick'
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
@@ -103,7 +104,6 @@ end
 
 group :development, :test do
   gem 'faker'
-  gem 'dotenv-rails'
   gem 'pry-rails'
   gem 'pry-byebug'
 end

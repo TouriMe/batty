@@ -14,7 +14,7 @@
 #= require gmaps/google
 #= require active_admin/base
 #= require ckeditor/init
-
+#= require map
 #= require namespace
 #= require util
 

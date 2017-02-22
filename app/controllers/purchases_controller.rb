@@ -7,7 +7,7 @@ class PurchasesController < ApplicationController
 
   # Create a purchase record 
   # before making a transcations 
-  def create()
+  def create
     @purchase = Purchase.new(ajax_params)
     @host = request.host
     @purchase.save
@@ -24,6 +24,7 @@ class PurchasesController < ApplicationController
   # book the tour(:tour_id)
   # with driver (:driver_id) 
   def new
+    @driver = Driver.find_by_id params[:driver_id]
     @vehicle_type = params[:vehicle_type]
     @trip = Tour.friendly.find(params[:tour_id])
     # @driver = Driver.friendly.find(params[:driver_id])

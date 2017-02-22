@@ -30,6 +30,17 @@
             </div>
 
             <div class="form-group small-12 medium-6 columns">
+              <%= f.label :pickup_time, "Pick Up Time" %>
+              <%= f.text_field :pickup_time, id: "pickuptime", :required => "", placeholder: 'Please enter Pick Up Time ( eg:8am )' %>
+            </div>
+
+            <div class="form-group small-12 medium-6 columns">
+              <%= f.label :driver_id,"Selected Driver" %>
+              <%= f.text_field :driver_name,value: @driver.full_name, id: "driver_name", readonly: true%>
+              <%= f.hidden_field :driver_id, value: @driver.id, id:"driver_id" %>
+            </div>
+
+            <div class="form-group small-12 medium-6 columns">
               <%= f.label :address_id, "Pick Up Address" %>
               <!--<%= f.collection_select(:address_id, Address.all, :id, :name, {:prompt => 'Please select Pickup Address', :selected => @purchase.address_id}) %>-->
               <%= f.text_field :pickup, id: "address_id", :required => "", placeholder: 'Please enter Pick Up Address', id:'address' %> 
@@ -42,13 +53,9 @@
                 <div id="map"></div>
                 <%= link_to "<i class='fa fa-close'></i>".html_safe, '#', class:"close-reveal-modal", 'aria-label':"Close" %>
               </div>
-              <!-- <%= f.button 'Google Map', class: 'button tiny radius success '%> -->
             </div>
 
-            <div class="form-group small-12 medium-6 columns">
-              <%= f.label :pickup_time, "Pick Up Time" %>
-              <%= f.text_field :pickup_time, id: "pickuptime", :required => "", placeholder: 'Please enter Pick Up Time ( eg:8am )' %>
-            </div>
+            
 
 
           </div>

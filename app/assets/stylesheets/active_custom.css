@@ -9,7 +9,13 @@
   overflow: hidden;
 }
 
+/*map style*/
 #map{
   width: 100%;
   height: 500px;
+}
+
+/*select2 style*/
+span.select2.select2-container.select2-container--default{
+	width: 80% !important;
 }

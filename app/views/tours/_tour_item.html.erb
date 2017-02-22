@@ -1,6 +1,5 @@
 <div class="card-item">
-
-  <%= link_to(tour_path(tour)) do %>
+  <%= link_to(tour_path(tour.slug)) do %>
       <%
         if normal_user_signed_in? && !current_normal_user.nil? \
         && current_normal_user.internal_user? && !tour.is_active?

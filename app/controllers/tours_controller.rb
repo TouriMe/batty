@@ -14,13 +14,17 @@ class ToursController < ApplicationController
   end
 
   def show
-    @tour = Tour.includes(:images).find(params[:id])
+    @tour = Tour.includes(:images).friendly.find(params[:id])
     @vehicle_type = 'remork/tuk tuk'
     if @tour.tuktuk_price_cents == 0
       @vehicle_type = 'car'
     end
     @seotags = Seo.new(@tour.seo_tags)
-    @tour_drivers = @tour.drivers.page(params[:page]).per(10)
+    @tour_drivers = @tour.available_drivers.page(params[:page]).per(10)
   end
 
+  def driver_selection
+    @tour = Tour.find(params[:tour_id])
+    @drivers = @tour.drivers.all
+  end
 end

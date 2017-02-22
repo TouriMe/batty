@@ -5,4 +5,5 @@ class Vehicle < ActiveRecord::Base
   has_many :drivers, through: :driver_vehicles
 
   validates_presence_of :name
+
 end

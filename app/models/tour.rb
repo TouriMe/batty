@@ -21,9 +21,9 @@ class Tour < ActiveRecord::Base
   accepts_nested_attributes_for :tour_drivers, allow_destroy: true, reject_if: :all_blank
 
   # to support chinese (utf8) slugs
-  def normalize_friendly_id(input)
+  # def normalize_friendly_id(input)
     # input.to_s.to_slug.normalize.to_s
-  end
+  # end
 
   def available_drivers
     if tuktuk_price.to_i == 0

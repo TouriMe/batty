@@ -2,12 +2,24 @@ ActiveAdmin.register Tour do
 
   controller do
     def permitted_params
-      tours = [ :name, :content, :image_url, :description, :slug, :important_info, :distance,
+      tours = [ :name, :content, :image_url, :description, :slug, :important_info, :distance,:tuktuk_price,
                 :checkpoint_num, :duration, :down_payment, :down_payment_currency, :booking_fee,
                 :booking_fee_currency, :highlight_html, :include_html, :exclude_html, :tour_start, :tour_end,
-                :card_img, :is_active, :video_url, tour_drivers_attributes: [:id, :driver_id, :_destroy], 
+                :card_img, :ticket_price_cents, :car_price,:is_active, :video_url, tour_drivers_attributes: [:id, :driver_id, :_destroy], 
                 images_attributes: [:id, :url, :alt_text, :is_hero, :_destroy] ]
       params.require(:tour).permit(tours)
+    end
+
+    def check_params_driver_attributes
+      driver_attributes = []
+      params[:tour][:tour_drivers_attributes].map {|tda| driver_attributes << tda[1]['driver_id']}
+      # modifying nested_attributes(tour_drivers) when all_drivers scenario 
+      if driver_attributes.flatten.include?('')
+        params[:tour][:tour_drivers_attributes] = {}
+        Driver.all.each_with_index do |driver,index|
+          params[:tour][:tour_drivers_attributes][index.to_s] = {"driver_id"=> "#{driver.id}"}
+        end
+      end
     end
 
     def new
@@ -16,66 +28,27 @@ ActiveAdmin.register Tour do
     end
     
     def create
-      p = params[:tour]
-
       drivers_array = []
 
-      @tour = Tour.new(permitted_params)
-      if @tour.save
-        p["tour_drivers_attributes"].map { |td| drivers_array << td[1]['driver_id']}
+      check_params_driver_attributes
 
-        if drivers_array.include?("")
-          Driver.all.each do |d|
-            TourDriver.create(tour_id: @tour.id,driver_id: d.id)
-          end
-        else
-          drivers_array.each do |d|
-            TourDriver.create(tour_id: @tour.id,driver_id: d)
-          end
-        end
-        redirect_to admin_tour_path(@tour)
-      else
-        render :new
-      end
+      @tour = Tour.new(permitted_params)
+      @tour.save
+      redirect_to admin_tour_path(@tour)
     end
 
     def update
-      p = params[:tour] 
-
-      drivers_array = []
-      element_of_drivers = []
-
-      tour = Tour.find(params[:id])
-      @tour = tour.update_attributes(permitted_params)
-      tourdriver_ids = tour.tour_drivers.pluck(:id)
-
-      p["tour_drivers_attributes"].map { |td| drivers_array << td[1].values}
-
-      if drivers_array.flatten.include?("")
-        tour.tour_drivers.destroy_all
-        Driver.all.each do |d|
-          TourDriver.create(tour_id: tour.id,driver_id: d.id)
-        end
-      else
-        tourdriver_index = 0
-        drivers_array.each do |d|
-          # binding.pry
-          if d.length == 1
-            TourDriver.create(tour_id: tour.id,driver_id: d[0])
-          else
-            if d[1] != '1'
-              # error delete then add 
-              # error update then add
-              # delete then update is fine
-              tourdriver_id = TourDriver.find(tourdriver_ids[tourdriver_index])
-              tourdriver_id.update_attributes(tour_id: tour.id, driver_id: d[0])
-              tourdriver_index += 1
-            end
-          end
-        end
-      end
+      driver_attributes = []
+      params[:tour][:tour_drivers_attributes].map {|tda| driver_attributes << tda[1]['driver_id']}
       
-      redirect_to admin_tour_path(tour.id)
+      check_params_driver_attributes
+      @tour = Tour.find(params[:id])
+      if driver_attributes.flatten.include?('')
+        @tour.tour_drivers.destroy_all
+      end
+      if @tour.update_attributes(permitted_params)
+        redirect_to admin_tour_path(@tour.id)
+      end
     end
   end
 

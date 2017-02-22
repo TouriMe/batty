@@ -2,37 +2,30 @@
   <div class= 'search-results row full-width' %>
     <% @drivers.each do |driver| %>
       <div class='small-12 medium-6 large-4 columns card-wrapper' >
-        <%= link_to driver_path(driver) do %>
-          <div class='card-item'>
-            <%= image_tag driver.card_img, class: 'item-bg' %>
+        <%= link_to "/book/#{@tour.id}/#{driver.id}?vehicle_type=#{get_first_vehicle(driver)}" do %>
+          <div class="card-item">
+            <%= image_tag driver.card_img, class: 'item-bg',data: {tooltip: true},aria: {haspopup:"true"}, class:"has-tip",title: "Skills : #{driver_skills(driver)}" %>
             <div class='name'>
               <strong><%= driver.first_name %></strong>
             </div>
-            <div class='avatar'>
+            <div class='avatar' >
               <%= image_tag driver.avatar_url, class: 'item-avatar' %>
-            </div>
-            <div class='desc offset ellipsis'>
-              <strong><%= driver.short_desc %></strong>
+              <div><%= driver.short_desc %></div> 
             </div>
             <div class='divider offset'></div>
-            <div class='review offset'>
-              <!-- <div class='rating left'>
-                = render 'partials/rating', rating: driver.rating
-              </div> -->
-              <!-- <span class='right vehicle'>
+            <div class="review offset">
+              <div class="rating left">
+                <%= render 'partials/rating', rating: driver.rating %>
+              </div>
+              <span class="right vehicle">
                 <% driver.vehicles.each do |v| %>
                   <strong><%= v.name + " " %></strong>
                 <% end %>
-              </span> -->
+              </span>
             </div>
+          </div>
         <% end %>
       </div>
     <% end %>
   </div>
 </div>
-
-<!-- <% @drivers.each do |driver| %>
-  <div class="small-12 medium-6 large-4 columns card-wrapper">
-    <h1><%= driver.full_name %></h1>
-  </div>
-<% end %> --> 

@@ -7,7 +7,6 @@ class Driver < ActiveRecord::Base
   mount_uploader :background_url, DriverBackgroundUploader
 
   friendly_id :first_name, use: [:slugged, :finders]
-  obfuscate_id
 
   belongs_to :normal_user
 
@@ -31,9 +30,9 @@ class Driver < ActiveRecord::Base
   accepts_nested_attributes_for :languages, :driver_cities, :driver_vehicles, :images, allow_destroy: true
 
   # to support chinese (utf8) slugs
-  def normalize_friendly_id(input)
-    input.to_s.to_slug.normalize.to_s
-  end
+  # def normalize_friendly_id(input)
+  #   input.to_s.to_slug.normalize.to_s
+  # end
 
   def available_tours
     if vehicles.count > 1

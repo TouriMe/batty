@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   # @todo weird route, change to search or else
   post 'drivers', to: 'drivers#find_drivers'
 
+  resources :length
   resources :tours, only: [:index, :show ]
   resources :guides, only: [:index, :show]
   resources :drivers, only: [:index, :show]

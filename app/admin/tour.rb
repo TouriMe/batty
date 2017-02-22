@@ -1,6 +1,6 @@
 ActiveAdmin.register Tour do
 
-  controller do
+   controller do
     def permitted_params
       params.permit!
     end
@@ -21,6 +21,16 @@ ActiveAdmin.register Tour do
       input :exclude_html, as: :ckeditor
       input :tour_start
       input :tour_end
+    end
+
+    f.inputs 'length' do
+      f.input :length_id, as: :select, collection: (Length.all.map{|l| [l.length_title, l.id]}), prompt: 'Choose length'
+    end
+
+    f.inputs 'Activities' do
+      f.has_many :tour_activity, allow_destroy: true do |activity|
+        activity.input :activity_id, label: 'Select Activities', as: :select, collection: (Activity.all.map{|a| [a.activity_name, a.id]}), prompt: 'Choose activities'
+      end
     end
 
     f.inputs 'Price Calculation' do

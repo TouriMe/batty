@@ -9,6 +9,8 @@ class Tour < ActiveRecord::Base
   has_many :tour_activity, :dependent => :destroy
   has_many :activity, through: :tour_activity
 
+  belongs_to :length
+
   friendly_id :name, use: [:slugged, :finders]
 
   monetize :tuktuk_price_cents
@@ -17,6 +19,7 @@ class Tour < ActiveRecord::Base
   validates_presence_of :name
 
   accepts_nested_attributes_for :images, allow_destroy: true
+  accepts_nested_attributes_for :tour_activity, allow_destroy: true
 
   # to support chinese (utf8) slugs
   def normalize_friendly_id(input)

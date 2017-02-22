@@ -22,7 +22,7 @@
                 | Unique, authentic, and flexible experiences to travel like a local
                 br
                 = fa_icon 'chevron-down'
-          #tour-query-form.reveal-modal.medium[data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog"]
+          #tour-query-form.reveal-modal.medium[data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog" data-animation-in="slide-in-up"]
             .row
               .small-12
                 .modal-title.text-center
@@ -32,7 +32,7 @@
                 .small-6.large-3.columns
                   = link_to '#', class: 'activity-link', data:{"reveal-id": "tour-length-form", "activity_id": activity[:id]} do
                     .activity-item
-                      = image_tag 'hp_drivers.png', class: 'logo hidden-for-small-only'
+                      = image_tag 'activity.svg', class: 'logo hidden-for-small-only'
                       = activity[:activity_name]
             a.close-reveal-modal[aria-label="Close"]
               | ×

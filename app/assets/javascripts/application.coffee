@@ -14,6 +14,7 @@
 #= require gmaps/google
 #= require active_admin/base
 #= require ckeditor/init
+#= require motion-ui.min.js
 #= require map
 #= require namespace
 #= require util

@@ -1,2 +1,2 @@
 set :stage, :staging
-server 'tourime.rotato.com', user: 'deployer', roles: %w{app web db}
+server '52.221.23.40', user: 'deployer', roles: %w{app web db}

@@ -20,6 +20,7 @@
 
 #= require drivers
 #= require tours
+#= require welcome
 
 #= require initializer
 

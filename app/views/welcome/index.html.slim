@@ -11,7 +11,7 @@
     .row.home-page-content
       .small-6.columns
         .show-subject-button
-          = link_to tours_path do
+          = link_to '#', data:{ "reveal-id": "tour-query-form"} do
             .show-subject-button-content
               .logo-img
                 = image_tag 'hp_tours.png', class: 'logo hidden-for-small-only'
@@ -22,6 +22,34 @@
                 | Unique, authentic, and flexible experiences to travel like a local
                 br
                 = fa_icon 'chevron-down'
+          #tour-query-form.reveal-modal.medium[data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog"]
+            .row
+              .small-12
+                .modal-title.text-center
+                  | Awesome. I have it
+            .row
+              - @activities.each do |activity|
+                .small-6.large-3.columns
+                  = link_to '#', class: 'activity-link', data:{"reveal-id": "tour-length-form", "activity_id": activity[:id]} do
+                    .activity-item
+                      = image_tag 'hp_drivers.png', class: 'logo hidden-for-small-only'
+                      = activity[:activity_name]
+            a.close-reveal-modal[aria-label="Close"]
+              | ×
+          #tour-length-form.reveal-modal.medium[data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog"]
+            .row
+              .small-12
+                .modal-title.text-center
+                  | Awesome. I have it
+            .row
+              - @lengths.each do |length|
+                .small-6.large-3.columns
+                  = link_to '#', class: 'length-link', data:{"length_id": length[:id]} do
+                    .activity-item
+                      = image_tag 'hp_drivers.png', class: 'logo hidden-for-small-only'
+                      = length[:length_title]
+            a.close-reveal-modal[aria-label="Close"]
+              | ×
 
       .small-6.columns
         .show-subject-button

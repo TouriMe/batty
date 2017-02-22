@@ -1,5 +1,34 @@
 @import 'settings';
 
+#tour-query-form {
+  .modal-title {
+    background-color: #FFF;
+    font-size: xx-large;
+    box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.35);
+  }
+  background-color: transparent;
+  background-color: #FFF;
+  .activity-item {
+    padding: 30px;
+    border-radius: 10px;
+    background-color: orange;
+    margin: 5px;
+    box-shadow: 0 0px 20px 2px rgba(0, 0, 0, 0.35);
+    font-size: larger;
+    color: #000;
+    font-weight: bolder;
+    @media #{$media-phone-larger} {
+      height: 150px;
+      width: 150px;
+    }
+    -webkit-transition: box-shadow 0.5s; /* Safari */
+    transition: box-shadow 0.5s;
+    &:hover {
+      box-shadow: 0 0px 20px 2px rgba(0, 0, 0, 0.5);
+    }
+  }
+}
+
 #content {
 
   .tag-line {
@@ -46,7 +75,9 @@
     margin-left: auto;
     margin-right: auto;
     margin-top: 15px;
+
     .show-subject-button {
+
       @media #{$media-phone-smaller} {
         margin: 0 auto;
         width: 135px;

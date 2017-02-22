@@ -6,6 +6,8 @@ class Tour < ActiveRecord::Base
 
   has_many :purchases, as: :purchasable
   has_many :images, as: :imagable
+  has_many :tour_activity, :dependent => :destroy
+  has_many :activity, through: :tour_activity
 
   friendly_id :name, use: [:slugged, :finders]
 

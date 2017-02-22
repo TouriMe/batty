@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170220042158) do
+ActiveRecord::Schema.define(version: 20170222030002) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -153,21 +153,8 @@ ActiveRecord::Schema.define(version: 20170220042158) do
     t.string   "facebook_url"
     t.string   "wechat_id"
     t.string   "whatsapp_id"
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
-    t.integer  "driving_years"
-    t.boolean  "childsafe"
-    t.boolean  "is_active",              default: true
-    t.integer  "user_id"
-    t.string   "slug"
-    t.decimal  "rating"
-    t.boolean  "english_communication"
-    t.string   "driving_experience"
-    t.boolean  "basic_history"
-    t.boolean  "smartphone_photography"
-    t.boolean  "basic_dslr"
-    t.string   "youtube_url"
-    t.string   "card_img"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -201,6 +188,12 @@ ActiveRecord::Schema.define(version: 20170220042158) do
     t.datetime "updated_at",                    null: false
     t.string   "url_small"
     t.boolean  "is_hero",       default: false
+  end
+
+  create_table "lengths", force: :cascade do |t|
+    t.string   "length_title"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "purchases", force: :cascade do |t|
@@ -286,7 +279,10 @@ ActiveRecord::Schema.define(version: 20170220042158) do
     t.string   "video_url"
     t.integer  "ticket_price_cents",    default: 0,     null: false
     t.string   "ticket_price_currency", default: "USD", null: false
+    t.integer  "length_id"
   end
+
+  add_index "tours", ["length_id"], name: "index_tours_on_length_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
@@ -325,4 +321,5 @@ ActiveRecord::Schema.define(version: 20170220042158) do
 
   add_foreign_key "tour_activities", "activities"
   add_foreign_key "tour_activities", "tours"
+  add_foreign_key "tours", "lengths"
 end

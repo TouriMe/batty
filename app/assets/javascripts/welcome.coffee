@@ -13,11 +13,13 @@ $(document).ready ->
     lengthId = $(this).data('length-id')
     redirectToTourPage activityId, lengthId
     return
-  $('#activity-modal').click (e) ->
-    options = {
-      animation: 'slide-in-up'
-    }
-    $('#tour-query-form').foundation('reveal', 'open', options)
+  $('#activity-modal').on 'click', ->
+    $('html, body').css
+      overflow: 'hidden'
+      height: '100%'
+    $('#tour-query-form').foundation 'reveal', 'open',
+     animation: 'none'
+
     return
   return
 

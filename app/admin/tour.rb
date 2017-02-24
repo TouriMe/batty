@@ -5,8 +5,8 @@ ActiveAdmin.register Tour do
       tours = [ :name, :content, :image_url, :description, :slug, :important_info, :distance,:tuktuk_price,
                 :checkpoint_num, :duration, :down_payment, :down_payment_currency, :booking_fee,
                 :booking_fee_currency, :highlight_html, :include_html, :exclude_html, :tour_start, :tour_end,
-                :card_img, :ticket_price_cents, :car_price,:is_active, :video_url, tour_drivers_attributes: [:id, :driver_id, :_destroy], 
-                images_attributes: [:id, :url, :alt_text, :is_hero, :_destroy] ]
+                :card_img, :ticket_price_cents, :car_price,:is_active, :video_url, :length_id, tour_drivers_attributes: [:id, :driver_id, :_destroy], 
+                images_attributes: [:id, :url, :alt_text, :is_hero, :_destroy], tour_activity_attributes: [:id, :activity_id, :_destroy] ]
       params.require(:tour).permit(tours)
     end
 
@@ -52,8 +52,6 @@ ActiveAdmin.register Tour do
     end
   end
 
-  
-
   form do |f|
     f.inputs do
       input :name
@@ -74,6 +72,16 @@ ActiveAdmin.register Tour do
     f.inputs 'Drivers' do
       f.has_many :tour_drivers, allow_destroy: true do |driver|
         driver.input :driver_id, label: 'Select Drivers', as: :select, collection: (Driver.all.map{|d| [d.full_name, d.id]}), prompt: 'All Drivers' 
+      end
+    end
+
+    f.inputs 'length' do
+      f.input :length_id, as: :select, collection: (Length.all.map{|l| [l.length_title, l.id]}), prompt: 'Choose length'
+    end
+
+    f.inputs 'Activities' do
+      f.has_many :tour_activity, allow_destroy: true do |activity|
+        activity.input :activity_id, label: 'Select Activities', as: :select, collection: (Activity.all.map{|a| [a.activity_name, a.id]}), prompt: 'Choose activities'
       end
     end
 

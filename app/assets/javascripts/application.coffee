@@ -14,17 +14,22 @@
 #= require gmaps/google
 #= require active_admin/base
 #= require ckeditor/init
+#= require motion-ui.min.js
 #= require map
 #= require namespace
 #= require util
 
 #= require drivers
 #= require tours
+#= require welcome
 
 #= require initializer
-
+#= require wow.min.js
+#= require scrollreveal.min.js
 $(()->
   $(document).foundation()
+  wow = new WOW
+  wow.init()
 
   $('#sign_banner > .close').click((evt)->
     $(evt.target).parent().hide()

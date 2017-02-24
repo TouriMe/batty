@@ -69,7 +69,6 @@ ActiveAdmin.register Purchase do
       row :vehicle_type
       row 'Location', :latlng do |obj|
         div id:'map', "data-latlng": obj.latlng do
-
         end
       end
     end

@@ -7,7 +7,6 @@ class Driver < ActiveRecord::Base
   mount_uploader :background_url, DriverBackgroundUploader
 
   friendly_id :first_name, use: [:slugged, :finders]
-  # obfuscate_id
 
   belongs_to :normal_user
 
@@ -16,8 +15,12 @@ class Driver < ActiveRecord::Base
   has_many :driver_cities
   has_many :driver_vehicles
 
+  has_many :tour_drivers, :dependent => :destroy
+  has_many :tours
+
   has_many :cities, through: :driver_cities
   has_many :vehicles, through: :driver_vehicles
+  has_many :tours, through: :tour_drivers
 
   has_many :purchases, as: :purchasable  
   validates_presence_of :first_name, :phone
@@ -26,16 +29,12 @@ class Driver < ActiveRecord::Base
 
   accepts_nested_attributes_for :languages, :driver_cities, :driver_vehicles, :images, allow_destroy: true
 
-  # def full_name
-  #   self.first_name + ' ' + self.last_name
+  # to support chinese (utf8) slugs
+  # def normalize_friendly_id(input)
+  #   input.to_s.to_slug.normalize.to_s
   # end
 
-  # to support chinese (utf8) slugs
-  def normalize_friendly_id(input)
-    input.to_s.to_slug.normalize.to_s
-  end
-
-  def tours
+  def available_tours
     if vehicles.count > 1
       Tour.where(is_active: true)
     else
@@ -66,5 +65,9 @@ class Driver < ActiveRecord::Base
       "#{driving_experience} years of driving experience",
       description: "#{full_description}"
     }
+  end
+
+  def full_name
+    first_name + " " +last_name
   end
 end

@@ -24,9 +24,12 @@
 #= require welcome
 
 #= require initializer
-
+#= require wow.min.js
+#= require scrollreveal.min.js
 $(()->
   $(document).foundation()
+  wow = new WOW
+  wow.init()
 
   $('#sign_banner > .close').click((evt)->
     $(evt.target).parent().hide()

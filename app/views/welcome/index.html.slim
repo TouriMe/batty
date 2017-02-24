@@ -3,7 +3,7 @@
   .row.home
     .header-content
       .tag-line
-        h1.animated.slideInUp
+        h1
           | WELCOME TO CAMBODIA
         h3.hide-for-small-only
           | Best travel experiences for independent travelers at the lowest price.
@@ -11,7 +11,7 @@
     .row.home-page-content
       .small-6.columns
         .show-subject-button
-          = link_to '#', id: 'activity-modal' do
+          = link_to '#activity', id: 'activity-button', class: 'scroll scroll-down' do
             .show-subject-button-content
               .logo-img
                 = image_tag 'hp_tours.png', class: 'logo hidden-for-small-only'
@@ -22,32 +22,36 @@
                 | Unique, authentic, and flexible experiences to travel like a local
                 br
                 = fa_icon 'chevron-down'
-          #tour-query-form.reveal-modal.animated.slideInUp.large[data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog"]
+          #activity-modal.tour-query-form.reveal-modal.animated.slideInUp.large[data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog"]
             .row
               .small-12
                 .modal-title.text-center
-                  | Awesome. I have it
-            .row
+                  | Activities
+            .row.modal-content
               - @activities.each do |activity|
                 .small-6.large-3.columns
-                  = link_to '#', class: 'activity-link', data:{"reveal-id": "tour-length-form", "activity_id": activity[:id]} do
-                    .activity-item
-                      = image_tag 'activity.svg', class: 'logo hidden-for-small-only'
-                      = activity[:activity_name]
+                  = link_to '#', class: 'activity-link', data:{"reveal-id": "length-modal", "activity_id": activity[:id]} do
+                    .form-item.animated.slideInUp.has-tip[data-tooltip aria-haspopup="true" title="#{activity[:activity_name]}: #{activity[:description]}"]
+                      div
+                        = image_tag 'activity.svg', class: 'item-image'
+                      .item-title
+                        = activity[:activity_name]
             a.close-reveal-modal[aria-label="Close"]
               | ×
-          #tour-length-form.reveal-modal.medium[data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog"]
+          #length-modal.tour-query-form.reveal-modal.animated.slideInUp.medium[data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog"]
             .row
               .small-12
                 .modal-title.text-center
-                  | Awesome. I have it
-            .row
+                  | Tour Lengths
+            .row.modal-content
               - @lengths.each do |length|
                 .small-6.large-3.columns
                   = link_to '#', class: 'length-link', data:{"length_id": length[:id]} do
-                    .activity-item
-                      = image_tag 'hp_drivers.png', class: 'logo hidden-for-small-only'
-                      = length[:length_title]
+                    .form-item
+                      div
+                        = image_tag 'stopwatch.svg', class: 'length-image'
+                      div
+                        = length[:length_title]
             a.close-reveal-modal[aria-label="Close"]
               | ×
 
@@ -63,5 +67,18 @@
               p.hide-for-small-only
                 | Trained and certified onsite hosts to offer premium service
                 br
-                = fa_icon 'chevron-down'
+                = fa_icon ' chevron-down'
+  #activity-content.wow.pulse
+    br
+    h1#activity.text-center.animated.slideInUp
+      | Activities
+    .row
+      - @activities.each do |activity|
+        .small-6.large-3.columns
+          = link_to '#', class: 'activity-link', data:{"reveal-id": "length-modal", "activity_id": activity[:id]} do
+            .form-item.wow.fadeInUp.has-tip[data-tooltip aria-haspopup="true" title="#{activity[:activity_name]}: #{activity[:description]}"]
+              div
+                = image_tag 'activity.svg', class: 'item-image'
+              .item-title
+                = activity[:activity_name]
 

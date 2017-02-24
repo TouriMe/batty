@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170215022558) do
+ActiveRecord::Schema.define(version: 20170223073957) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,13 @@ ActiveRecord::Schema.define(version: 20170215022558) do
   add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
+
+  create_table "activities", force: :cascade do |t|
+    t.string   "activity_name"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "description"
+  end
 
   create_table "add_image_url_to_trips", force: :cascade do |t|
     t.string   "image_url"
@@ -197,6 +204,12 @@ ActiveRecord::Schema.define(version: 20170215022558) do
     t.boolean  "is_hero",       default: false
   end
 
+  create_table "lengths", force: :cascade do |t|
+    t.string   "length_title"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
   create_table "purchases", force: :cascade do |t|
     t.integer  "purchasable_id"
     t.string   "purchasable_type"
@@ -239,6 +252,16 @@ ActiveRecord::Schema.define(version: 20170215022558) do
     t.string   "page"
   end
 
+  create_table "tour_activities", force: :cascade do |t|
+    t.integer  "tour_id"
+    t.integer  "activity_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "tour_activities", ["activity_id"], name: "index_tour_activities_on_activity_id", using: :btree
+  add_index "tour_activities", ["tour_id"], name: "index_tour_activities_on_tour_id", using: :btree
+
   create_table "tour_drivers", force: :cascade do |t|
     t.integer  "tour_id"
     t.integer  "driver_id"
@@ -280,7 +303,10 @@ ActiveRecord::Schema.define(version: 20170215022558) do
     t.string   "video_url"
     t.integer  "ticket_price_cents",    default: 0,     null: false
     t.string   "ticket_price_currency", default: "USD", null: false
+    t.integer  "length_id"
   end
+
+  add_index "tours", ["length_id"], name: "index_tours_on_length_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
@@ -317,6 +343,9 @@ ActiveRecord::Schema.define(version: 20170215022558) do
     t.integer  "year"
   end
 
+  add_foreign_key "tour_activities", "activities"
+  add_foreign_key "tour_activities", "tours"
   add_foreign_key "tour_drivers", "drivers"
   add_foreign_key "tour_drivers", "tours"
+  add_foreign_key "tours", "lengths"
 end

@@ -34,8 +34,11 @@
           margin-bottom: -80px;
           min-height: 180px;
         }
-        img:hover + .tooltip{
-          display: block;
+        .item-bg {
+          min-height: 361.23px;
+          &:hover + .tooltip{
+            display: block;
+          }
         }
         .tooltip{
           color: white;

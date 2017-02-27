@@ -4,7 +4,10 @@
       <div class='small-12 medium-6 large-4 columns card-wrapper' >
         <%= link_to "/book/#{@tour.id}/#{driver.id}?vehicle_type=#{get_first_vehicle(driver)}" do %>
           <div class="card-item">
-            <%= image_tag driver.card_img, class: 'item-bg has-tip[tip-top]',data: {tooltip: true},aria: {haspopup:"true"},title: "Skills : #{driver_skills(driver)}" %>
+            <%= image_tag driver.card_img, class: 'item-bg' %>
+            <div class="tooltip">
+              <strong><%= 'Skills: ' + driver_skills(driver) %></strong>
+            </div>
             <div class='name'>
               <strong><%= driver.first_name %></strong>
             </div>

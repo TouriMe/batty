@@ -12,19 +12,22 @@ module DriversHelper
   #------------
 
   def driver_skills(driver)
-    skills = 'Years Driving Experience'
+    skills = []
+    if driver.driving_experience
+      skills << driver.driving_experience + ' Year of Driving Experience'
+    end
     if driver.english_communication
-      skills += ', English Communication'
+      skills << 'English Communication'
     end
     if driver.basic_history
-      skills += ', Basic History'
+      skills << 'Basic History'
     end
     if driver.smartphone_photography
-      skills += ', Smartphone Photography'
+      skills << 'Smartphone Photography'
     end
     if driver.basic_dslr
-      skills += ', Basic DSLR'
+      skills << 'Basic DSLR'
     end
-    skills
+    skills.to_sentence
   end
 end

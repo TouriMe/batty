@@ -40,7 +40,7 @@ gem 'babosa'
 gem 'friendly_id', '~> 5.1.0'
 
 ## VIEW HELPER ##
-gem 'ckeditor'
+gem 'ckeditor', git: "https://github.com/galetahub/ckeditor.git"
 gem 'kaminari'
 gem 'dynamic_sitemaps'
 

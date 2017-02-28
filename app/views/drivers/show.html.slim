@@ -10,6 +10,8 @@
     #videoModal.reveal-modal.large [ data-reveal aria-labelledby="videoModalTitle" aria-hidden="true" role="dialog"]
       .flex-video.widescreen
         iframe[class="embed-video" width="560" height="315" src=@driver.video_url.gsub('/watch?v=','/embed/') frameborder="0" allowfullscreen]
+        a[class = "close-reveal-modal" aria-label = "Close"] 
+          | &#215;
 
   .profile-page-body[data-equalizer]
     .profile-basic-info[data-equalizer-watch]

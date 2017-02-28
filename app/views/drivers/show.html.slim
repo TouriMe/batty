@@ -1,6 +1,6 @@
 .page.driver-profile
-  .profile-page-hero
-    .hero-background[data-img = @driver.background_url]
+  .profile-page-hero[style = "background-image:url('#{@driver.background_url}')"]
+    / .hero-background[data-img = @driver.background_url]
     .hero-content
       h1
         | Travel with the best driver is just AMAZING!
@@ -19,8 +19,6 @@
             img.avatar-image[src=@driver.avatar_url]
           .profile-name
             span = @driver.first_name
-          /.divider
-          /span = @driver.nickname
           .profile-rating
             .section.rating
               = render 'partials/rating', rating: @driver.rating

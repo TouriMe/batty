@@ -1,27 +1,45 @@
 @import "../settings";
-
+$small-breakpoint:  em-calc(740)  !default;
 #content .driver-profile {
   background-color: white;
   .profile-page-hero {
     //height: 480px;
+    // margin-top: -70px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-color: #f5f5f5;
+    position: relative;
     overflow: hidden;
-    margin-top: -70px;
+    height: 80vh;
 
-    .hero-background {
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: 50% 50%;
-      background-color: #f5f5f5;
+    @media #{$large-up} {
+      background-position: 0% 0%;
     }
 
+    // .hero-background {
+    //   background-repeat: no-repeat;
+    //   background-size: cover;
+    //   background-position: 50% 50%;
+    //   background-color: #f5f5f5;
+    // }
+
     .hero-content {
+      position: absolute;
       text-align: center;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 35%;
+      padding-left: 5px;
+      padding-right: 5px;
+
       //height: 565px;
-      margin-top: 100px;
-      padding-bottom: 104px;
-      position: relative;
-      z-index: 2;
-      top: -500px;
+      // margin-top: 100px;
+      // padding-bottom: 104px;
+      // position: relative;
+      // z-index: 2;
+      // top: -500px;
 
       h1 {
         color: white;
@@ -31,6 +49,16 @@
         width: 100px;
         height: 100px;
       }
+      @media screen and (max-width: 740px) {
+        h1 {
+          font-size: 20px;
+        }
+        .video-play {
+          width: 50px;
+          height: 50px;
+        }
+      }
+
     }
   }
 

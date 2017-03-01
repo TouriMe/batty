@@ -19,7 +19,6 @@
 #= require namespace
 #= require util
 
-#= require drivers
 #= require tours
 #= require welcome
 

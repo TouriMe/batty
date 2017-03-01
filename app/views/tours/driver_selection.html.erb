@@ -1,34 +1,35 @@
-<div class='cards'>
-  <div class= 'search-results row full-width' %>
-    <% @drivers.each do |driver| %>
-      <div class='small-12 medium-6 large-4 columns card-wrapper' >
+<div class="row full-width">
+  <% @drivers.each do |driver| %>
+    <div class="small-12 medium-6 large-4 columns">
+      <div class="card">
         <%= link_to "/book/#{@tour.id}/#{driver.id}?vehicle_type=#{get_first_vehicle(driver)}" do %>
-          <div class="card-item">
-            <%= image_tag driver.card_img, class: 'item-bg' %>
-            <div class="tooltip">
-              <strong><%= 'Skills: ' + driver_skills(driver) %></strong>
-            </div>
-            <div class='name'>
-              <strong><%= driver.first_name %></strong>
-            </div>
-            <div class='avatar'>
-              <%= image_tag driver.avatar_url, class: 'item-avatar' %>
-            </div>
-            <div class='divider offset'></div>
-            <div class="review offset">
-              <div class="rating left">
-                <%= render 'partials/rating', rating: driver.rating %>
-              </div>
-              <span class="right vehicle">
-                <% driver.vehicles.each do |v| %>
-                  <strong><%= v.name + " " %></strong>
-                <% end %>
+          <div class="card-image">
+            <div class="card-driver-image">
+              <% if driver.card_img.present? %>
+                <%= image_tag driver.card_img %>
+              <% else %>
+                <%= image_tag 'noimagefound.jpg' %>
+              <% end %>
+              <span class="card-title">
+                <%= driver.first_name%>
+              </span>
+              <span class="card-driver-avatar">
+                <%= image_tag driver.avatar_url %>
               </span>
             </div>
           </div>
         <% end %>
+        <div class="card-action">
+          <div class="rating">
+            <%= render 'partials/rating', rating: driver.rating %>
+          </div>
+          <div class="vehicle">
+            <% driver.vehicles.each do |v| %>
+              <strong><%= v.name + " " %></strong>
+            <% end %>
+          </div>
+        </div>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>
-

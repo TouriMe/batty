@@ -1,0 +1,70 @@
+@import 'settings';
+
+body[id='drivers-index'] {
+	.card {
+		.card-driver-image {
+			max-height: 350px;
+			min-height: 300px;
+			width: 100%;
+			img {
+				width: 100%;
+				position: relative;
+				margin: 0 auto;
+				max-height: inherit;
+				min-height: inherit;
+			}
+			span.card-title {
+				font-size: 18px;
+				font-weight: 700;
+				background-color: rgba(0,0,0,0.5);
+			  width: 100%;
+			  padding-top: 10px;
+			  padding-bottom: 10px;
+			}
+			span.card-driver-avatar {
+				position: absolute;
+				top: 40%;
+				right: 15%;
+				width: 60px;
+				height: 60px;
+				border-radius: 50%;
+				border: 3px solid white;
+				overflow: hidden;
+			}
+			@media screen and (max-width: 768px) {
+        max-height: 250px;
+				min-height: 200px;
+      }
+			@media #{$media-phone-smaller} {
+		    max-height: auto;
+				min-height: auto;
+				span.card-driver-avatar {
+					width: 45px;
+			    height: 45px;
+				}
+		  }
+		}
+		.card-action {
+			width: 100%;
+			display: inline-flex;
+	  	@media screen and (max-width: 768px) {
+		  	padding: 10px;
+		  	font-size: 14px; 
+	  	}
+			@media #{$media-phone-smaller} {
+		  	padding: 8px;
+		  	font-size: 13px; 
+	  	}
+			.rating {
+				color: #FFB400;
+			}
+			.vehicle {
+				text-align: right;
+			}
+			.rating,
+			.vehicle {
+				width: 50%;
+			}
+		}
+	}
+}

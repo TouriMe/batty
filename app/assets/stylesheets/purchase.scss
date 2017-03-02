@@ -1,91 +1,91 @@
-// Place all the styles related to the purchase controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-@import 'settings';
+// // Place all the styles related to the purchase controller here.
+// // They will automatically be included in application.css.
+// // You can use Sass (SCSS) here: http://sass-lang.com/
+// @import 'settings';
 
-#paypal-container {
-  display: inline-block;
-  margin: auto;
-}
+// #paypal-container {
+//   display: inline-block;
+//   margin: auto;
+// }
 
-.payment_box_wrapper {
+// .payment_box_wrapper {
 
-  p {
-    font-weight: 500;
-  }
-}
+//   p {
+//     font-weight: 500;
+//   }
+// }
 
-#card_details {
-  display: none;
-}
+// #card_details {
+//   display: none;
+// }
 
-#bt_charge {
-  cursor: pointer;
-  background: #FEBD5A;
-  color: #ffffff;
-  font-size: 20px;
-  text-transform: uppercase;
-  border-radius: 0px;
-  border: 0px;
-  padding: 10px 20px;
-  @media #{$media-phone-smaller}{
-    width: 100%;
-  }
-}
+// #bt_charge {
+//   cursor: pointer;
+//   background: #FEBD5A;
+//   color: #ffffff;
+//   font-size: 20px;
+//   text-transform: uppercase;
+//   border-radius: 0px;
+//   border: 0px;
+//   padding: 10px 20px;
+//   @media #{$media-phone-smaller}{
+//     width: 100%;
+//   }
+// }
 
-.success_wrapper {
-  background: transparent;
-  padding-bottom: 100px;
-  img.success_check {
-    margin: auto;
-    text-align: center;
-    max-width: 100px;
-    margin-top: -30px;
-  }
-  .success_body {
-    padding: 30px 0px 20px 0px;
-    text-align: center;
-    max-width: 650px;
-    margin: auto;
-    width: 100%;
-    p {
-      font-size: 1.12rem;
-      margin: 20px 0px 30px 0px;
-    }
-    h4 {
-      margin: 10px 0px 20px 0px;
-      font-weight: 500;
-    }
-    img.line_break {
-      margin: 20px 0px;
-      max-width: 400px;
-      width: 100%;
-    }
-    h3 {
-      font-weight: 500;
-    }
-  }
-}
+// .success_wrapper {
+//   background: transparent;
+//   padding-bottom: 100px;
+//   img.success_check {
+//     margin: auto;
+//     text-align: center;
+//     max-width: 100px;
+//     margin-top: -30px;
+//   }
+//   .success_body {
+//     padding: 30px 0px 20px 0px;
+//     text-align: center;
+//     max-width: 650px;
+//     margin: auto;
+//     width: 100%;
+//     p {
+//       font-size: 1.12rem;
+//       margin: 20px 0px 30px 0px;
+//     }
+//     h4 {
+//       margin: 10px 0px 20px 0px;
+//       font-weight: 500;
+//     }
+//     img.line_break {
+//       margin: 20px 0px;
+//       max-width: 400px;
+//       width: 100%;
+//     }
+//     h3 {
+//       font-weight: 500;
+//     }
+//   }
+// }
 
-#gMap{
-  min-height: 100px;
+// #gMap{
+//   min-height: 100px;
   
-  a.close-reveal-modal{
-    color: white;
-  }
+//   a.close-reveal-modal{
+//     color: white;
+//   }
   
-  .modal_header{
-    background-color: #FFBE5B;
-    min-height: 50px;
-    h3{
-      color: white;
-      margin-top: 0;
-    }
-  }
+//   .modal_header{
+//     background-color: #FFBE5B;
+//     min-height: 50px;
+//     h3{
+//       color: white;
+//       margin-top: 0;
+//     }
+//   }
   
-  #map{
-    width: 100%;
-    height: 500px;
-    margin: 0 auto;
-  }
-}
+//   #map{
+//     width: 100%;
+//     height: 500px;
+//     margin: 0 auto;
+//   }
+// }

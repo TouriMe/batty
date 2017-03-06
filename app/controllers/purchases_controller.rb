@@ -49,8 +49,7 @@ class PurchasesController < ApplicationController
     end
     # @braintree_key = Braintree::ClientToken.generate
   end
-
-
+  
   # checkout that previous purchase
   def checkout
     @nonce = params[:payment_method_nonce]

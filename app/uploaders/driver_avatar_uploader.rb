@@ -3,7 +3,7 @@
 class DriverAvatarUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
   # storage :file
-  storage :fog
+  # storage :fog
 
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"

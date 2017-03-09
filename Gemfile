@@ -79,10 +79,11 @@ gem 'sendinblue'
 group :production do
   gem 'rails_12factor'
 end
-
+gem 'asset_sync', '~> 2.0'
+gem 's3', '~> 0.3.25'
 ## DEVELOPMENT STACK ##
 group :development do
-  gem 'asset_sync', '~> 2.0'
+
   gem 'annotate'
   gem 'rails-erd'
   gem 'quiet_assets'

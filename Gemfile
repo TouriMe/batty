@@ -82,6 +82,7 @@ end
 
 ## DEVELOPMENT STACK ##
 group :development do
+  gem 'asset_sync', '~> 2.0'
   gem 'annotate'
   gem 'rails-erd'
   gem 'quiet_assets'

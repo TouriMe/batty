@@ -19,6 +19,7 @@ Rails.application.configure do
   # For large-scale production use, consider using a caching reverse proxy like
   # NGINX, varnish or squid.
   # config.action_dispatch.rack_cache = true
+  config.action_controller.asset_host = "//#{ENV['FOG_DIRECTORY']}.s3.amazonaws.com"
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
@@ -34,7 +35,7 @@ Rails.application.configure do
   # Asset digests allow you to set far-future HTTP expiration dates on all assets,
   # yet still be able to expire them through the digest params.
   config.assets.digest = true
-
+  config.assets.enabled = true
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
   # Specifies the header that your server uses for sending files.
@@ -79,4 +80,5 @@ Rails.application.configure do
 
   config.logger = Logger.new(STDOUT)
   config.logger.level = Logger::INFO
+
 end

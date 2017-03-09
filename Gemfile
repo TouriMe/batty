@@ -61,7 +61,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'active_model_serializers'
 
 ## IMAGE HANDLER ##
-gem 'fog', require: 'fog/aws'
+gem 'fog'
 gem 'rmagick'
 gem 'mini_magick'
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
@@ -96,6 +96,9 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'pry-rails'
   gem 'pry-byebug'
+  gem 'capistrano-rails', '~> 1.2', '>= 1.2.3'
+  gem 'capistrano-passenger', '~> 0.2.0'
+  gem 'capistrano-rvm', '~> 0.1.2'
 end
 
 ## TEST STACK ##

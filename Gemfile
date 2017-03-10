@@ -79,11 +79,14 @@ gem 'sendinblue'
 group :production do
   gem 'rails_12factor'
 end
+gem 'dotenv-rails'
 gem 'asset_sync', '~> 2.0'
 gem 's3', '~> 0.3.25'
 ## DEVELOPMENT STACK ##
 group :development do
-
+  gem 'capistrano-rails',       '~> 1.1.1'
+  gem 'capistrano-passenger'
+  gem 'capistrano-rvm'
   gem 'annotate'
   gem 'rails-erd'
   gem 'quiet_assets'
@@ -95,12 +98,8 @@ end
 
 group :development, :test do
   gem 'faker'
-  gem 'dotenv-rails'
   gem 'pry-rails'
   gem 'pry-byebug'
-  gem 'capistrano-rails', '~> 1.2', '>= 1.2.3'
-  gem 'capistrano-passenger', '~> 0.2.0'
-  gem 'capistrano-rvm', '~> 0.1.2'
 end
 
 ## TEST STACK ##

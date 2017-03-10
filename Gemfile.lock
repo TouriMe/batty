@@ -122,7 +122,7 @@ GEM
     capistrano-harrow (0.5.3)
     capistrano-passenger (0.2.0)
       capistrano (~> 3.0)
-    capistrano-rails (1.2.3)
+    capistrano-rails (1.1.8)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
     capistrano-rvm (0.1.2)
@@ -600,9 +600,9 @@ DEPENDENCIES
   babosa
   bcrypt (~> 3.1.7)
   braintree
-  capistrano-passenger (~> 0.2.0)
-  capistrano-rails (~> 1.2, >= 1.2.3)
-  capistrano-rvm (~> 0.1.2)
+  capistrano-passenger
+  capistrano-rails (~> 1.1.1)
+  capistrano-rvm
   carrierwave!
   ckeditor
   coffee-rails (~> 4.1.0)

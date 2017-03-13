@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'terms', to: 'welcome#terms'
   get 'privacy', to: 'welcome#privacy'
   get 'feedback', to: 'welcome#feedback'
+  get 'maintenance', to: 'welcome#maintenance'
 
   # @todo weird route, change to search or else
   post 'drivers', to: 'drivers#find_drivers'

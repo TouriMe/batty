@@ -1,5 +1,6 @@
 class WelcomeController < ApplicationController
   def index
+    redirect_to maintenance_path if ENV['MAINTENANCE_MODE'] == 'true'
     @cities = City.all.map{|c| [c.name, c.to_param]}
     @cities.unshift(['All',''])
   
@@ -21,10 +22,16 @@ class WelcomeController < ApplicationController
   def feedback
 
   end
+
   def privacy
 
   end
+
   def about
 
+  end
+
+  def maintenance
+    render(:layout => "layouts/maintenance")
   end
 end

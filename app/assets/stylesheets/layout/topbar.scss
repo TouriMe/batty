@@ -11,67 +11,92 @@
 
 }
 
-.top-bar {
+// .top-bar {
 
-  .title-area {
-    width: 150px;
-    float: left;
-    .logo-wrap {
-      @media #{$media-pad-smaller}{
-        width: 80%;
+//   .title-area {
+//     width: 150px;
+//     float: left;
+//     .logo-wrap {
+//       @media #{$media-pad-smaller}{
+//         width: 80%;
+//       }
+//       width: 100%;
+//     }
+//   }
+//   .top-bar-section {
+//     float: right;
+//     .login-logout-btn {
+//       color: white;
+//       font-weight: 400;
+//       font-size: 1.25rem;
+//       @media #{$media-pad-smaller}{
+//         text-align: right;
+//         margin-right: 20px;
+//         font-size: 0.93rem;
+//       }
+//       .login-icon {
+//         margin-right: 10px;
+//       }
+
+//       .user-profile-img {
+//         width: 40px;
+//         border-radius: 100%;
+//         margin-right: 10px;
+//       }
+
+//     }
+//   }
+//   .home-top-bar-section {
+//     float: right;
+//     .login-logout-btn {
+//       color: #FFB94E;
+//       font-weight: 400;
+//       font-size: 1.25rem;
+
+//       @media #{$media-pad-smaller}{
+//         text-align: right;
+//         margin-right: 20px;
+//         font-size: 0.93rem;
+//         color: white;
+//       }
+
+//       .login-icon {
+//         margin-right: 10px;
+//       }
+
+//       .user-profile-img {
+//         width: 40px;
+//         border-radius: 100%;
+//         margin-right: 10px;
+//       }
+
+//     }
+//   }
+// }
+#homepage-navbar {
+  padding: 10px 0;
+  nav.top-bar {
+    section.top-bar-section {
+      ul {
+        li.login {
+          border: 2px solid white;
+          border-radius: 5px;
+        }
+        li {
+          background-color: transparent;
+          margin: 0 3px;
+          &:hover {
+            a {
+              background-color: transparent !important;
+            }
+          }
+          a {
+            font-size: 16px;
+            font-weight: 600;
+          }
+        }
       }
-      width: 100%;
     }
   }
-  .top-bar-section {
-    float: right;
-    .login-logout-btn {
-      color: white;
-      font-weight: 400;
-      font-size: 1.25rem;
-      @media #{$media-pad-smaller}{
-        text-align: right;
-        margin-right: 20px;
-        font-size: 0.93rem;
-      }
-      .login-icon {
-        margin-right: 10px;
-      }
-
-      .user-profile-img {
-        width: 40px;
-        border-radius: 100%;
-        margin-right: 10px;
-      }
-
-    }
-  }
-  .home-top-bar-section {
-    float: right;
-    .login-logout-btn {
-      color: #FFB94E;
-      font-weight: 400;
-      font-size: 1.25rem;
-
-      @media #{$media-pad-smaller}{
-        text-align: right;
-        margin-right: 20px;
-        font-size: 0.93rem;
-        color: white;
-      }
-
-      .login-icon {
-        margin-right: 10px;
-      }
-
-      .user-profile-img {
-        width: 40px;
-        border-radius: 100%;
-        margin-right: 10px;
-      }
-
-    }
-  }
+  
 }
-
-

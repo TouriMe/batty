@@ -1,25 +1,53 @@
-- if @transparent_header
-  #home-head.contain-to-grid.sticky
-    nav.top-bar[data-topbar role="navigation"]
-      ul.title-area
-        li.name
-          h1.site-title.left
-                a.logo-wrap.hidden-for-small-only [href="/"]
-                  = image_tag 'tourime_logo_yellow.png'
-                a.logo-wrap.show-for-small-only [href="/"]
-                  = image_tag 'tourime_logo.png'
-      .home-top-bar-section
-        = render 'partials/login'
-- else
-    #fixed-head.contain-to-grid.sticky
-      nav.top-bar[data-topbar role="navigation"]
-        ul.title-area
-          li.name
-            h1.site-title.left
-                  a.logo-wrap[href="/"]
-                    = image_tag 'tourime_logo.png'
-          /li.toggle-topbar.menu-icon
-            a[href='#']
-              span
-        .top-bar-section
-          = render 'partials/login'
+/ - if @transparent_header
+/   #home-head.contain-to-grid.sticky
+/     nav.top-bar[data-topbar role="navigation"]
+/       ul.title-area
+/         li.name
+/           h1.site-title.left
+/                 a.logo-wrap.hidden-for-small-only [href="/"]
+/                   = image_tag 'tourime_logo_yellow.png'
+/                 a.logo-wrap.show-for-small-only [href="/"]
+/                   = image_tag 'tourime_logo.png'
+/       .home-top-bar-section
+/         = render 'partials/login'
+/ - else
+/     #fixed-head.contain-to-grid.sticky
+/       nav.top-bar[data-topbar role="navigation"]
+/         ul.title-area
+/           li.name
+/             h1.site-title.left
+/                   a.logo-wrap[href="/"]
+/                     = image_tag 'tourime_logo.png'
+/           /li.toggle-topbar.menu-icon
+/             a[href='#']
+/               span
+/         .top-bar-section
+/           = render 'partials/login'
+#homepage-navbar
+  nav.top-bar[data-topbar role="navigation"]
+    ul.title-area
+      li.name
+        h1.site-title.left
+          a.logo-wrap[href="/"]
+            = image_tag 'tourime_logo.png'
+      li.toggle-topbar.menu-icon
+        a[href='#']
+          span
+            | Menu
+    section.top-bar-section
+      ul.right
+        li
+          a[href='#']
+            | About
+        li
+          a[href='#']
+            | Experiences
+        li
+          a[href='#']
+            | Host Drivers
+        li
+          a[href='#']
+            | Durations
+        li.login
+          a[href='#']
+            = render 'partials/login'

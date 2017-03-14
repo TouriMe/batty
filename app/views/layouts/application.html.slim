@@ -38,9 +38,9 @@ head
 html
   body id="#{controller_name}-#{params[:action]}"
     #wrapper
-      #header
-        = render 'partials/topbar'
-        .full-bg.bg-img
+      / #header
+      /   = render 'partials/topbar'
+        / .full-bg.bg-img
       #content.main-container
         - unless @no_show_title
           .page-header.bg-img

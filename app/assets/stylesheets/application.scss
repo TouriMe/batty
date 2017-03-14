@@ -46,7 +46,19 @@ html, body {
   @media #{$media-pad-larger}{
     padding-bottom: $footer-height-large-screen;
   }
-
+  a.custome-button {
+    display: inline-block;
+    color: grey;
+    border: 1px solid grey;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    width: 120px;
+    &:hover {
+      color: #FFB94E;
+      border: 1px solid #FFB94E;
+    }
+  }
 }
 
 #footer {

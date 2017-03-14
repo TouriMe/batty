@@ -85,18 +85,6 @@
     i {
       color: #FFB94E;
     }
-    a.custome-button {
-      display: inline-block;
-      color: grey;
-      border: 1px solid grey;
-      padding: 10px;
-      border-radius: 5px;
-      margin-bottom: 10px;
-      &:hover {
-        color: #FFB94E;
-        border: 1px solid #FFB94E;
-      }
-    }
     @media #{$phone} {
       i {
         font-size: 70px;

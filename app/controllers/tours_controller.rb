@@ -2,10 +2,15 @@ class ToursController < ApplicationController
   before_filter(only: :show) { @no_show_title = true }
 
   def index
+    # if normal_user_signed_in? && !current_normal_user.nil?  && current_normal_user.internal_user?
+    #   @tours = Activity.find(params[:activity_id]).tours.where(length_id: params[:length_id]).order(:is_active).reverse_order
+    # else
+    #   @tours = Activity.find(params[:activity_id]).tours.where(length_id: params[:length_id]).where(is_active: true).order(:is_active).reverse_order
+    # end
     if normal_user_signed_in? && !current_normal_user.nil?  && current_normal_user.internal_user?
-      @tours = Activity.find(params[:activity_id]).tours.where(length_id: params[:length_id]).order(:is_active).reverse_order
+      @tours = Tour.all.order(:is_active).reverse_order
     else
-      @tours = Activity.find(params[:activity_id]).tours.where(length_id: params[:length_id]).where(is_active: true).order(:is_active).reverse_order
+      @tours = Tour.where(is_active: true).all
     end
 
     @seotags = Seo.find_by_page('tour_listing')

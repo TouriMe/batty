@@ -42,22 +42,22 @@ html
       /   = render 'partials/topbar'
         / .full-bg.bg-img
       #content.main-container
-        - unless @no_show_title
-          .page-header.bg-img
-            .tag-line
-              - if @custom_title
-                h1 #{@custom_title}
-              - else
-                h1 Welcome To Cambodia
-              h3.hide-for-small-only #{@custom_subtitle}
-              .line.hide-for-small-only
-        - if(@no_white_background)
-          = render 'partials/flash'
-          = yield
-        - else
-          .page
-            = render 'partials/flash'
-            = yield
+        / - unless @no_show_title
+        /   .page-header.bg-img
+        /     .tag-line
+              / - if @custom_title
+              /   h1 #{@custom_title}
+              / - else
+              /   h1 Welcome To Cambodia
+              / h3.hide-for-small-only #{@custom_subtitle}
+              / .line.hide-for-small-only
+        / - if(@no_white_background)
+        /   = render 'partials/flash'
+        /   = yield
+        / - else
+        /   .page
+        = render 'partials/flash'
+        = yield
 
       #footer
         = render 'partials/footer'

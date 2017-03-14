@@ -1,6 +1,70 @@
 @import 'settings';
 
 body[id='tours-index'] {
+  .tourpage-header {
+    background-image: image-url('fullbg1.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-bottom: 5%;
+    .header-content {
+      height: 100%;
+      .title {
+        padding-top: 8%;
+        text-align: center;
+        @media #{$media-phone-smaller} {
+          margin: 0 auto;
+          padding-bottom: 0;
+        }
+        h1 {
+          color: white;
+          font-size: 3rem;
+          font-weight: 600;
+          @media #{$media-phone-smaller} {
+            font-size: 1.5rem;
+            font-weight: 300;
+          }
+        }
+        h4 {
+          color: white;
+        }
+      }
+      .activites {
+        margin: 0 auto;
+        margin-top: 5%;
+        text-align: center;
+        h3 {
+          color: #FFB94E;
+          font-weight: 600;
+          margin-bottom: 5%;
+        }
+        h5 {
+          color: white;
+          font-weight: 600;
+        }
+        a {
+          color: white;
+          .activity-box {
+            margin: 0 auto;
+            position: relative;
+            width: 150px;
+            height: 150px;
+            background-color: #FFB94E;
+            border-radius: 50%;
+          }
+        }
+        @media #{$phone} {
+          width: 300px;
+          a {
+            .activity-box {
+              width: 100px;
+              height: 100px;
+            }
+          } 
+        }
+      }
+    }
+  }
   .card {
     .card-tour-image {
       width: 100%;

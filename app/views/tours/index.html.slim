@@ -21,12 +21,12 @@
           | Filter by activity:
         .row
           .small-6.medium-3.columns
-            = link_to tours_path do
+            = link_to '#Camping' do
               .activity-box
             h5
               | Camping
           .small-6.medium-3.columns
-            = link_to drivers_path do
+            = link_to '#Dining' do
               .activity-box
             h5
               | Dinning
@@ -42,23 +42,46 @@
               | Sightseeing
   .tourpage-content
     // query activities
-    .row
-      h3
-        | Camping
-      // query type of activity
-      .activity-type
-        .activity-type-filter.text-center
-          a.custome-button[href='#']
-            | ALL
-        .activity-type-filter.text-center
-          a.custome-button[href='#']
-            | HALF DAYS
-        .activity-type-filter.text-center
-          a.custome-button[href='#']
-            | TWO DAYS
-        .activity-type-filter.text-center
-          a.custome-button[href='#']
-            | THREE DAYS DAYS
-        .activity-type-filter.text-center
-          a.custome-button[href='#']
-            | A WEEK
+    - @activities.each do |activity|
+      .row[id='#{activity.activity_name}']
+        h3
+          = activity.activity_name
+        // query type of activity
+        .activity-type
+          .activity-type-filter.text-center#All.is_active
+            a.custome-button[data-tour-type='']
+              | All
+          - activity.tours.each do |tour|
+            - if tour.tour_type.present?
+              .activity-type-filter.text-center[id='#{tour.tour_type.name.parameterize('')}']
+                a.custome-button[data-tour-type="#{tour.tour_type.id}"]
+                  = tour.tour_type.name
+
+        .activity-tour
+          .row
+            - activity.tours.each do |tour|
+              .small-12.medium-6.large-4.columns
+                .card
+                  = link_to tour_path(tour.slug) do
+                    .card-image
+                      .card-tour-image
+                        - if tour.card_img.present?
+                          = image_tag tour.card_img
+                        - else
+                          = image_tag 'noimagefound.jpg'
+                        span.card-title.ellipsis
+                          = tour.name
+                        span.card-tour-price
+                          - if tour.ticket_price_cents != 0
+                            = number_to_currency(tour.ticket_price_cents, :precision => 0)
+                          - elsif tour.tuktuk_price.to_i != 0
+                            = number_to_currency(tour.tuktuk_price.to_i, :precision => 0)
+                          - else
+                            = number_to_currency(tour.car_price.to_i, :precision => 0)
+                  .card-action
+                    .rating
+                      = render 'partials/rating', rating: tour.rating > 0 ? tour.rating : 5 
+                    .review-num
+                      strong
+                        = pluralize(tour.comments.size, 'review')
+

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170223073957) do
+ActiveRecord::Schema.define(version: 20170316083105) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -204,12 +204,6 @@ ActiveRecord::Schema.define(version: 20170223073957) do
     t.boolean  "is_hero",       default: false
   end
 
-  create_table "lengths", force: :cascade do |t|
-    t.string   "length_title"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
-
   create_table "purchases", force: :cascade do |t|
     t.integer  "purchasable_id"
     t.string   "purchasable_type"
@@ -272,6 +266,12 @@ ActiveRecord::Schema.define(version: 20170223073957) do
   add_index "tour_drivers", ["driver_id"], name: "index_tour_drivers_on_driver_id", using: :btree
   add_index "tour_drivers", ["tour_id"], name: "index_tour_drivers_on_tour_id", using: :btree
 
+  create_table "tour_types", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "tours", force: :cascade do |t|
     t.string   "name"
     t.text     "content"
@@ -303,10 +303,10 @@ ActiveRecord::Schema.define(version: 20170223073957) do
     t.string   "video_url"
     t.integer  "ticket_price_cents",    default: 0,     null: false
     t.string   "ticket_price_currency", default: "USD", null: false
-    t.integer  "length_id"
+    t.integer  "tour_type_id"
   end
 
-  add_index "tours", ["length_id"], name: "index_tours_on_length_id", using: :btree
+  add_index "tours", ["tour_type_id"], name: "index_tours_on_tour_type_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
@@ -347,5 +347,5 @@ ActiveRecord::Schema.define(version: 20170223073957) do
   add_foreign_key "tour_activities", "tours"
   add_foreign_key "tour_drivers", "drivers"
   add_foreign_key "tour_drivers", "tours"
-  add_foreign_key "tours", "lengths"
+  add_foreign_key "tours", "tour_types"
 end

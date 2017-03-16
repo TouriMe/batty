@@ -46,6 +46,12 @@ html, body {
   @media #{$media-pad-larger}{
     padding-bottom: $footer-height-large-screen;
   }
+  .is_active {
+    a.custome-button {
+      color: #FFB94E;
+      border: 1px solid #FFB94E;
+    }
+  }
   a.custome-button {
     display: inline-block;
     color: grey;

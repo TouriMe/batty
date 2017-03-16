@@ -72,12 +72,14 @@ body[id='tours-index'] {
       text-align: center;
       font-weight: 600;
       color: #FFB94E;
+      margin: 15px 0;
     }
     .activity-type {
       width: 100%;
       .activity-type-filter {
         display: inline-block;
         width: 20%;
+        margin-bottom: 15px;
         a.custome-button {
           white-space: nowrap; 
           overflow: hidden;

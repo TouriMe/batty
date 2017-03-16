@@ -20,7 +20,9 @@
 #= require util
 
 #= require tours
+#= require tour_index
 #= require welcome
+
 
 #= require initializer
 #= require wow.min.js

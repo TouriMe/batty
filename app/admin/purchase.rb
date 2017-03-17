@@ -35,4 +35,42 @@ ActiveAdmin.register Purchase do
     column :start_date
     actions
   end
+
+  show do
+    attributes_table do
+      row :id
+      row :purchasable_id
+      row :purchasable_type
+      row :price
+      row :buyer_id
+      row :created_at
+      row :updated_at
+      row :status
+      row :email
+      row :start_date
+      row :country
+      row :contact
+      row :driver_id
+      row :vehicle_id
+      row :comments
+      row :email_confirmation
+      row :country_code
+      row :phone_number
+      row :pickup
+      row :reference_id
+      row :address_id
+      row :tour_id
+      row :pickup_time
+      row :traveller_number
+      row :first_name
+      row :last_name
+      row :passport_number
+      row :nationality
+      row :vehicle_type
+      row 'Location', :latlng do |obj|
+        div id:'map', "data-latlng": obj.latlng do
+        end
+      end
+    end
+  end
 end

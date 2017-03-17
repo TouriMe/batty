@@ -1,7 +1,7 @@
 <div class="container trip_wrapper">
 
   <% if @tour.images.where(is_hero: true).any? %>
-      <div class="trip-cover-img" data-img="<%= @tour.images.where(is_hero: true).first.url %>"></div>
+      <div class="trip-cover-img" data-img="<%= @tour.hero_unit_image.url %>" ></div>
   <% elsif @tour.images.any? %>
       <div class="trip-cover-img" data-img="<%= @tour.cover_image %>"></div>
   <% end %>
@@ -70,7 +70,8 @@
               <h1><span><%= number_to_currency(@tour.car_price.to_i, :precision => 0) %></span></h1>
           <% end %>
           <div class="meta_func">
-            <%= link_to "BOOK NOW", "/book/#{@tour.id}/?vehicle_type=#{@vehicle_type}", class: "trip_book_now" %>
+            <!-- <%= link_to "BOOK NOW", "/book/#{@tour.id}/?vehicle_type=#{@vehicle_type}", class: "trip_book_now" %> -->
+            <%= link_to "Select Driver", tour_driver_path(@tour), class: "trip_book_now" %>
           </div>
         </div>
 

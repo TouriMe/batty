@@ -7,7 +7,7 @@ class PurchasesController < ApplicationController
 
   # Create a purchase record 
   # before making a transcations 
-  def create()
+  def create
     @purchase = Purchase.new(ajax_params)
     @host = request.host
     @purchase.save
@@ -24,6 +24,7 @@ class PurchasesController < ApplicationController
   # book the tour(:tour_id)
   # with driver (:driver_id) 
   def new
+    @driver = Driver.find_by_id params[:driver_id]
     @vehicle_type = params[:vehicle_type]
     @trip = Tour.friendly.find(params[:tour_id])
     # @driver = Driver.friendly.find(params[:driver_id])
@@ -48,8 +49,7 @@ class PurchasesController < ApplicationController
     end
     # @braintree_key = Braintree::ClientToken.generate
   end
-
-
+  
   # checkout that previous purchase
   def checkout
     @nonce = params[:payment_method_nonce]
@@ -125,14 +125,14 @@ class PurchasesController < ApplicationController
     params.require(:purchase).permit(:purchasable_id, :purchasable_type, :start_date, :email, :reference_id,
                                      :price, :address_id, :email_confirmation, :country_code, :phone_number,
                                      :comments, :driver_id, :vehicle_id, :pickup, :pickup_time, :traveller_number,
-                                     :passport_number, :nationality, :first_name, :last_name)
+                                     :passport_number, :nationality, :first_name, :last_name, :latlng)
   end
 
   def purchase_params
     params.require(:purchase).permit(:purchasable_id, :purchasable_type, :start_date, :email, :driver_id, :reference_id,
                                      :address_id, :vehicle_id, :country, :email_confirmation, :country_code, :phone_number,
                                      :contact, :comments, :pickup, :pickup_time, :traveller_number, :passport_number,
-                                     :nationality, :first_name, :last_name)
+                                     :nationality, :first_name, :last_name, :latlng)
   end
 
 end

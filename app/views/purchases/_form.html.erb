@@ -30,15 +30,32 @@
             </div>
 
             <div class="form-group small-12 medium-6 columns">
-              <%= f.label :address_id, "Pick Up Address" %>
-              <!--<%= f.collection_select(:address_id, Address.all, :id, :name, {:prompt => 'Please select Pickup Address', :selected => @purchase.address_id}) %>-->
-              <%= f.text_field :pickup, id: "address_id", :required => "", placeholder: 'Please enter Pick Up Address' %>
-            </div>
-
-            <div class="form-group small-12 medium-6 columns">
               <%= f.label :pickup_time, "Pick Up Time" %>
               <%= f.text_field :pickup_time, id: "pickuptime", :required => "", placeholder: 'Please enter Pick Up Time ( eg:8am )' %>
             </div>
+
+            <div class="form-group small-12 medium-6 columns">
+              <%= f.label :driver_id,"Selected Driver" %>
+              <%= f.text_field :driver_name,value: @driver.full_name, id: "driver_name", readonly: true%>
+              <%= f.hidden_field :driver_id, value: @driver.id, id:"driver_id" %>
+            </div>
+
+            <div class="form-group small-12 medium-6 columns">
+              <%= f.label :address_id, "Pick Up Address" %>
+              <!--<%= f.collection_select(:address_id, Address.all, :id, :name, {:prompt => 'Please select Pickup Address', :selected => @purchase.address_id}) %>-->
+              <%= f.text_field :pickup, id: "address_id", :required => "", placeholder: 'Please enter Pick Up Address', id:'address' %> 
+              <%= f.hidden_field :latlng, value: @latlng, id:"latlng" %>
+              <%= link_to 'Google Map', '#', data: {"reveal-id": 'gMap'}, class: 'button tiny radius success', onclick: 'initMap()' %>
+              <div id="gMap", class="reveal-modal", data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+                <div class="modal_header">
+                  <h3 class="text-center">Google Map</h3>
+                </div>
+                <div id="map"></div>
+                <%= link_to "<i class='fa fa-close'></i>".html_safe, '#', class:"close-reveal-modal", 'aria-label':"Close" %>
+              </div>
+            </div>
+
+            
 
 
           </div>
@@ -155,6 +172,16 @@
 </div>
 
 <script type="text/javascript">
+  var firstInit = false;
+  function initMap(){
+    if(!firstInit){
+      setTimeout(function(){
+        MapUI._init("map", "13.3671", "103.8448");
+      }, 1000);
+      firstInit = true
+    }
+  }
+
   function updatePrice(sel) {
     var trav_no = sel.value;
     if (document.getElementById('tourist_no') != undefined)

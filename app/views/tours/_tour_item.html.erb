@@ -1,39 +1,41 @@
-<div class="card-item">
-
-  <%= link_to(tour_path(tour)) do %>
-      <%
-        if normal_user_signed_in? && !current_normal_user.nil? \
-        && current_normal_user.internal_user? && !tour.is_active?
-      %>
-          <div class="inactive-item">
-            Inactive Tour
-          </div>
-      <%
-        end
-      %>
-      <%= image_tag(tour.card_img, class: 'item-bg') %>
-  <%
-    end
-  %>
-  <div class="name ellipsis">
-    <%= tour.name %>
-  </div>
-  <div class="price">
-    <% if tour.ticket_price_cents != 0 %>
-        <%= number_to_currency(tour.ticket_price_cents, :precision => 0) %>
-    <% elsif tour.tuktuk_price.to_i != 0 %>
-        <%= number_to_currency(tour.tuktuk_price.to_i, :precision => 0) %>
-    <% else %>
-        <%= number_to_currency(tour.car_price.to_i, :precision => 0) %>
+<div class="card">
+  <%= link_to(tour_path(tour.slug)) do %>
+    <%
+      if normal_user_signed_in? && !current_normal_user.nil? \
+      && current_normal_user.internal_user? && !tour.is_active?
+    %>
+      <div class="inactive-item">
+        Inactive Tour
+      </div>
     <% end %>
-  </div>
-  <div class="divider offset"></div>
-  <div class="review offset">
-    <div class="rating left">
+    <div class="card-image">
+      <div class="card-tour-image">
+        <% if tour.card_img.present? %>
+          <%= image_tag tour.card_img %>
+        <% else %>
+          <%= image_tag 'noimagefound.jpg' %>
+        <% end %>
+        <span class="card-title ellipsis">
+          <%= tour.name %>
+        </span>
+        <span class="card-tour-price">
+          <% if tour.ticket_price_cents != 0 %>
+            <%= number_to_currency(tour.ticket_price_cents, :precision => 0) %>
+          <% elsif tour.tuktuk_price.to_i != 0 %>
+            <%= number_to_currency(tour.tuktuk_price.to_i, :precision => 0) %>
+          <% else %>
+            <%= number_to_currency(tour.car_price.to_i, :precision => 0) %>
+          <% end %>
+        </span>
+      </div>
+    </div>
+  <% end %>
+  <div class="card-action">
+    <div class="rating">
       <%= render 'partials/rating', rating: tour.rating > 0 ? tour.rating : 5 %>
     </div>
-    <span class="review-num right">
-        <strong><%= pluralize(tour.comments.size, 'review') %></strong>
-      </span>
+    <div class="review-num">
+      <strong><%= pluralize(tour.comments.size, 'review') %></strong>
+    </div>
   </div>
 </div>

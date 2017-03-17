@@ -1,5 +1,147 @@
 @import 'settings';
 
+.home {
+  height: 100vh;
+}
+
+#activity-content {
+  background-color: rgba(0,0,0,0.5);
+  width: 100%;
+  min-height: 100vh;
+
+  @media #{$media-phone-smaller} {
+    div.form-item {
+      width: 130px;
+      height: 130px;
+    }
+
+    .item-title{
+      margin-top: -20px;
+    }
+  }
+
+  .header-content{
+    padding-top: 40px;
+    .tag-line{
+      h1, h3{
+        color: #FFBE5B;
+      }
+      .line {
+        width: 72%;
+        border-bottom: 1px solid #FFBE5B;
+        margin: 0 auto;
+      }
+    }
+  }
+
+  .modal-title {
+    background-color: #FFBE5B;
+    color: #FFF;
+    font-size: xx-large;
+    box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.35);
+  }
+  
+  .modal-content{
+    padding: 50px;
+    height: 400px;
+    overflow: auto;
+    background-color: rgba(0,0,0,.5);
+  }
+  
+  a.close-reveal-modal{
+    color: #FFF;
+  }
+  
+  .form-item {
+    padding:10px;
+    width: 180px;
+    height: 180px;
+    margin: 20px auto;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    text-align: center;
+    font-size: larger;
+    color: #000;
+    font-weight: bolder;
+    -webkit-transition: border-color 0.5s, background-color 0.5s, color 0.5s; /* Safari */
+    transition: border-color 0.5s, background-color 0.5s, color 0.5s;
+    
+    &:hover {
+      color: #FFF;
+      cursor: pointer;
+      box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.35);
+      background-color: #FFBE5B;
+    }
+
+    div.item-title {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      font-size: 20px;
+      font-weight: 500;
+    }
+  }
+}
+
+#length-modal {
+  background-image: image-url('activity_modal_background.jpg');
+  background-size:cover;
+  background-position: center;
+  .modal-title {
+    background-color: rgba(255,190,91,0.9);
+    h1{
+      color: white;
+    }
+  }
+
+  .modal-content {
+    padding: 10px;
+    min-height: 400px;
+    background-color: rgba(0,0,0,0.5);
+    .form-item {
+      background-image: image-url('icon-clock.png');
+      background-size: cover;
+      background-position: center;
+      width: 150px;
+      height: 150px;
+      margin: 0 auto;
+      &:hover{
+        background-image: image-url('icon-clock-hover.png');
+        h5 {
+          color: #FFBE5B;
+        }
+      }
+      h5{
+        color: white;
+        padding-top: 85px;
+      }
+    }
+  }
+
+  a.close-reveal-modal {
+    color: #FFF;
+  }
+
+  .length-icon {
+    width: 150px;
+    height: 150px;
+  }
+  
+  @media #{$media-phone-smaller}, #{$media-pad-smaller} {
+    min-height: 400px;
+    .modal-content {
+      div.form-item {
+        width: 100px;
+        height: 100px;
+        h5{
+          font-size: 15px;
+          padding-top: 55px;
+        }
+      }
+    }
+  }
+}
+
 #content {
 
   .tag-line {
@@ -45,11 +187,14 @@
     width: 80%;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 15px;
 
     .show-subject-button {
+
       @media #{$media-phone-smaller} {
-        width: 130px;
-        height: 130px;
+        margin: 0 auto;
+        width: 135px;
+        height: 135px;
         border: 2px solid white;
         background-color: transparent;
         .show-subject-button-content {
@@ -100,14 +245,11 @@
           }
         }
       }
-
       border-radius: 100%;
       background-color: rgba(255, 255, 255, 0.7);
       box-shadow: 0 0px 20px 2px rgba(0, 0, 0, 0.35);
       text-align: center;
-
       //overflow: hidden;
-
       .show-subject-button-content {
         padding-left: 15px;
         padding-right: 15px;
@@ -131,15 +273,11 @@
         margin-bottom: 8%;
         text-weight: 900;
       }
-
     }
-
   }
-
   .profile-page-details .line {
     width: 100%;
     border-bottom: 1px solid silver;
     margin: 0 auto;
   }
 }
-

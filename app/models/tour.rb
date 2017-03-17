@@ -7,6 +7,14 @@ class Tour < ActiveRecord::Base
   has_many :purchases, as: :purchasable
   has_many :images, as: :imagable
 
+  has_many :tour_drivers, :dependent => :destroy
+  has_many :drivers, through: :tour_drivers
+
+  has_many :tour_activity, :dependent => :destroy
+  has_many :activity, through: :tour_activity
+
+  belongs_to :length
+
   friendly_id :name, use: [:slugged, :finders]
 
   monetize :tuktuk_price_cents
@@ -15,13 +23,15 @@ class Tour < ActiveRecord::Base
   validates_presence_of :name
 
   accepts_nested_attributes_for :images, allow_destroy: true
+  accepts_nested_attributes_for :tour_activity, allow_destroy: true
+  accepts_nested_attributes_for :tour_drivers, allow_destroy: true, reject_if: :all_blank
 
   # to support chinese (utf8) slugs
-  def normalize_friendly_id(input)
-    input.to_s.to_slug.normalize.to_s
-  end
+  # def normalize_friendly_id(input)
+    # input.to_s.to_slug.normalize.to_s
+  # end
 
-  def drivers
+  def available_drivers
     if tuktuk_price.to_i == 0
       Driver.joins(:vehicles).where("vehicles.name = 'Car' AND drivers.is_active = true")
     else
@@ -35,6 +45,10 @@ class Tour < ActiveRecord::Base
     else
       tuktuk_price
     end
+  end
+
+  def hero_unit_image
+    images.where(is_hero: true).first
   end
 
   def cover_image
@@ -54,5 +68,9 @@ class Tour < ActiveRecord::Base
       "#{checkpoint_num} Checkpoints potential visit, Start at #{tour_start}, End at #{tour_end}, "\
       "Price by Remork (tuk tuk) #{tuktuk_price.to_i} USD, by Car #{car_price.to_i} USD'"
     }
+  end
+
+  def all_driver
+    Driver.all.pluck(:first_name)
   end
 end

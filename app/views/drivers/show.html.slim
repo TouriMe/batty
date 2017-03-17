@@ -1,15 +1,18 @@
 .page.driver-profile
-  .profile-page-hero
-    .hero-background[data-img = @driver.background_url]
+  .profile-page-hero[style = "background-image:url('#{@driver.background_url}')"]
+    / .hero-background[data-img = @driver.background_url]
     .hero-content
       h1
         | Travel with the best driver is just AMAZING!
       a [data-reveal-id="videoModal"]
-        = image_tag 'video_play.png', class: 'video-play hide-for-small-only'
+        = image_tag 'video_play.png', class: 'video-play'
 
     #videoModal.reveal-modal.large [ data-reveal aria-labelledby="videoModalTitle" aria-hidden="true" role="dialog"]
       .flex-video.widescreen
         iframe[class="embed-video" width="560" height="315" src=@driver.video_url.gsub('/watch?v=','/embed/') frameborder="0" allowfullscreen]
+        a[style='width:50px;height:50px;' class = "close-reveal-modal" aria-label = "Close"]
+          li[style='list-style-type:none;'] 
+            | &#215;
 
   .profile-page-body[data-equalizer]
     .profile-basic-info[data-equalizer-watch]
@@ -19,8 +22,6 @@
             img.avatar-image[src=@driver.avatar_url]
           .profile-name
             span = @driver.first_name
-          /.divider
-          /span = @driver.nickname
           .profile-rating
             .section.rating
               = render 'partials/rating', rating: @driver.rating
@@ -159,6 +160,6 @@
         .small-12.columns.profile-page-details
           .section
             h4 Tours from this driver
-            - @driver.tours.each do |d|
+            - @driver.available_tours.each do |d|
               .small-12.medium-6.large-4.columns.card-wrapper = render 'tours/tour_item', tour: d
 

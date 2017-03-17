@@ -1,0 +1,70 @@
+@import 'settings';
+
+body[id='drivers-index'] {
+  .card {
+    .card-driver-image {
+      width: 100%;
+      height: 320px;
+      img {
+        width: 100%;
+        position: relative;
+        margin: 0 auto;
+        height: inherit;
+      }
+      span.card-title {
+        font-size: 18px;
+        font-weight: 700;
+        background-color: rgba(0,0,0,0.5);
+        width: 100%;
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+      span.card-driver-avatar {
+        position: absolute;
+        top: 40%;
+        right: 15%;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: 3px solid white;
+        overflow: hidden;
+      }
+      @media #{$laptop} {
+        height: 300px;
+      }
+      @media #{$tablet} {
+        height: 220px;
+      }
+      @media #{$phone} {
+        height: auto;
+        span.card-tour-price {
+          width: 45px;
+          height: 45px;
+          font-size: 12px;
+        }
+      }
+    }
+    .card-action {
+      width: 100%;
+      display: inline-flex;
+      @media #{$tablet} {
+        padding: 10px;
+        font-size: 14px; 
+      }
+      @media #{$phone} {
+        padding: 8px;
+        font-size: 13px; 
+      }
+      .rating {
+        color: #FFB400;
+      }
+      .vehicle {
+        text-align: right;
+      }
+      .rating,
+      .vehicle {
+        width: 50%;
+      }
+    }
+  }
+}

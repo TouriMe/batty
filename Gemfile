@@ -24,18 +24,23 @@ gem 'jquery-ui-rails'
 gem 'jquery-infinite-pages'
 gem 'jquery-dotdotdot-rails', '~> 1.6', '>= 1.6.5'
 gem 'social-share-button', '~> 0.1.6'
+gem 'gmaps4rails',  '~> 2.1.2'
+gem 'geocoder', '~> 1.4.3'
+gem 'google-api-client', '~> 0.9.28'
+gem 'select2-rails', '~> 4.0', '>= 4.0.3'
 
 ## TRANSLATION ##
 gem 'rails-i18n', '~> 4.0.0' # For 4.0.x
 gem 'i18n-js','>= 3.0.0.rc11'
 gem 'language_list'
+gem 'dotenv-rails'
 
 ## ROUTE HELPER ##
 gem 'babosa'
 gem 'friendly_id', '~> 5.1.0'
 
 ## VIEW HELPER ##
-gem 'ckeditor'
+gem 'ckeditor', git: "https://github.com/galetahub/ckeditor.git"
 gem 'kaminari'
 gem 'dynamic_sitemaps'
 
@@ -94,6 +99,10 @@ group :development do
   gem 'web-console', '~> 3.0'
   gem 'rubocop', '~> 0.32.1', require: false
   gem 'rubocop-git', require: false
+end
+
+group :production, :staging do
+  
 end
 
 group :development, :test do

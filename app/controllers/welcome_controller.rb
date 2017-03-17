@@ -3,12 +3,13 @@ class WelcomeController < ApplicationController
     redirect_to maintenance_path if ENV['MAINTENANCE_MODE'] == 'true'
     @cities = City.all.map{|c| [c.name, c.to_param]}
     @cities.unshift(['All',''])
-  
+
     @no_white_background = true
     @no_show_title = true
     @transparent_header = true
     @seotags = Seo.find_by_page('home')
-  
+    @activities = Activity.all
+    @lengths = Length.all
   end
 
   def terms

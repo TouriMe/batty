@@ -1,5 +1,4 @@
-# config valid only for current version of Capistrano
-lock "3.7.2"
+lock '3.7.2'
 
 set :application, 'batty'
 set :repo_url, "git@github.com:TouriMe/#{fetch(:application)}.git"

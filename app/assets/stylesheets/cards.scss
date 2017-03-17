@@ -1,143 +1,214 @@
 // Place all the styles related to the trips controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-@import 'settings';
+// @import 'settings';
 
-.cards {
-  background-color: white;
-  .search-results {
-    padding: 30px 15px 10px;
-    @media #{$media-pad-larger}{
-      max-width: 1240px;
-      margin: 0 auto;
-    }
+// .cards {
+//   background-color: white;
+//   .search-results {
+//     padding: 30px 15px 10px;
+//     @media #{$media-pad-larger}{
+//       max-width: 1240px;
+//       margin: 0 auto;
+//     }
 
-    @media #{$media-pad-smaller}{
-      padding: 2px 0;
-    }
-    .card-wrapper {
-      margin-bottom: -50px;
-      @media #{$media-pad-smaller}{
-        padding: 0;
-        margin-bottom: -80px;
-      }
-      .card-item {
-        text-align: left;
-        background-color: transparent;
-        position: relative;
-        cursor: pointer;
-        margin-lfet: auto;
-        margin-right: auto;
-        margin-bottom: -50px;
-        min-height: 300px;
-        @media #{$media-pad-smaller}{
-          margin-bottom: -80px;
-          min-height: 180px;
-        }
-        .item-bg {
-          width: 100%;
-        }
-        .name {
-          position: relative;
-          top: -40px;
-          padding-left: 15px;
-          color: white;
-          font-size: 1.12rem;
-          font-weight: 700;
-          background-color: rgba(0, 0, 0, 0.5);
-          padding-top: 5px;
-          padding-bottom: 10px;
-        }
-        .inactive-item {
-          position: relative;
-          top: 40px;
-          padding-left: 15px;
-          color: white;
-          font-size: 1.12rem;
-          font-weight: 700;
-          background-color: rgba(0, 0, 0, 0.5);
-          padding-top: 5px;
-          padding-bottom: 10px;
-        }
+//     @media #{$media-pad-smaller}{
+//       padding: 2px 0;
+//     }
+//     .card-wrapper {
+//       margin-bottom: -50px;
+//       @media #{$media-pad-smaller}{
+//         padding: 0;
+//         margin-bottom: -80px;
+//       }
+//       .card-item {
+//         text-align: left;
+//         background-color: transparent;
+//         position: relative;
+//         cursor: pointer;
+//         // margin-left: auto;
+//         // margin-right: auto;
+//         // margin-bottom: -50px;
+//         // min-height: 300px;
+//         @media #{$media-pad-smaller}{
+//           // margin-bottom: -80px;
+//           // min-height: 180px;
+//         }
+//         .item-bg {
+//           // width: 100%;
+//           max-height: 361.22px;
+//           &:hover + .tooltip{
+//             display: block;
+//           }
+//         }
+//         .tooltip{
+//           color: white;
+//           top: 0;
+//           left: 0;
+//         }
 
-        .price {
-          width: 60px;
-          height: 60px;
-          border-radius: 100%;
-          background-color: #474747;
-          font-size: 1.37rem;
-          font-weight: 700;
-          color: white;
-          text-align: center;
-          line-height: 60px;
-          position: relative;
-          top: -270px;
-          left: 78%;
+//         .name {
+//           position: relative;
+//           top: -40px;
+//           padding-left: 15px;
+//           color: white;
+//           font-size: 1.12rem;
+//           font-weight: 700;
+//           background-color: rgba(0, 0, 0, 0.5);
+//           padding-top: 5px;
+//           padding-bottom: 10px;
+//         }
+//         .inactive-item {
+//           position: relative;
+//           top: 40px;
+//           padding-left: 15px;
+//           color: white;
+//           font-size: 1.12rem;
+//           font-weight: 700;
+//           background-color: rgba(0, 0, 0, 0.5);
+//           padding-top: 5px;
+//           padding-bottom: 10px;
+//         }
 
-          @media #{$media-pad-smaller}{
-            width: 50px;
-            height: 50px;
-            top: -220px;
-            left: 78%;
-          }
-        }
+//         .price {
+//           width: 60px;
+//           height: 60px;
+//           border-radius: 100%;
+//           background-color: #474747;
+//           font-size: 1.37rem;
+//           font-weight: 700;
+//           color: white;
+//           text-align: center;
+//           line-height: 60px;
+//           position: relative;
+//           top: -270px;
+//           left: 78%;
 
-        .desc {
-          padding-left: 15px;
-          color: black;
-        }
+//           @media #{$media-pad-smaller}{
+//             width: 50px;
+//             height: 50px;
+//             top: -220px;
+//             left: 78%;
+//           }
+//         }
 
-        .offset {
-          position: relative;
-          top: -90px;
-        }
-        .review {
-          color: black;
-          margin-top: 5px;
-          .rating {
-            margin-left: 15px;
-            color: #FFB400;
-          }
-          .review-num {
-            margin-right: 15px;
-          }
+//         .desc {
+//           padding-left: 15px;
+//           color: black;
+//         }
 
-          .vehicle {
-            @extend .review-num
-          }
-        }
-        .avatar {
-          width: 60px;
-          height: 60px;
-          position: relative;
-          top: -270px;
-          left: 78%;
-          @media #{$media-pad-smaller}{
-            top: -220px;
-            left: 75%;
-          }
+//         .offset {
+//           position: relative;
+//           top: -90px;
+//         }
+//         .review {
+//           color: black;
+//           margin-top: 5px;
+//           .rating {
+//             margin-left: 15px;
+//             color: #FFB400;
+//           }
+//           .review-num {
+//             margin-right: 15px;
+//           }
 
-          .item-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 100%;
-            border: 3px solid white;
-          }
-        }
-      }
-    }
-  }
+//           .vehicle {
+//             @extend .review-num
+//           }
+//         }
+//         .avatar {
+//           width: 60px;
+//           height: 60px;
+//           position: relative;
+//           top: -270px;
+//           left: 78%;
+//           @media #{$media-pad-smaller}{
+//             top: -220px;
+//             left: 75%;
+//           }
 
-  .hvr-float {
-    display: inline-block;
-    vertical-align: middle;
-    transform: translateZ(0);
-    box-shadow: 0 0 1px transparent;
-    backface-visibility: hidden;
-    -moz-osx-font-smoothing: grayscale;
-    transition-duration: 0.3s;
-    transition-property: transform;
-    transition-timing-function: ease-out;
-  }
+//           .item-avatar {
+//             width: 60px;
+//             height: 60px;
+//             border-radius: 100%;
+//             border: 3px solid white;
+//           }
+//         }
+        
+//       }
+//     }
+//   }
 
+//   .hvr-float {
+//     display: inline-block;
+//     vertical-align: middle;
+//     transform: translateZ(0);
+//     box-shadow: 0 0 1px transparent;
+//     backface-visibility: hidden;
+//     -moz-osx-font-smoothing: grayscale;
+//     transition-duration: 0.3s;
+//     transition-property: transform;
+//     transition-timing-function: ease-out;
+//   }
+
+// }
+
+.card {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.card {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  border-radius: 2px;
+  background-clip: padding-box;
+}
+.card span.card-title {
+  color: #fff;
+  font-size: 17px;
+  font-weight: 300;
+}
+
+.card .card-image {
+  position: relative;
+  overflow: hidden;
+}
+.card .card-image img {
+  border-radius: 2px 2px 0 0;
+  background-clip: padding-box;
+  position: relative;
+}
+.card .card-image span.card-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 16px;
+}
+.card .card-content {
+  padding: 16px;
+  border-radius: 0 0 2px 2px;
+  background-clip: padding-box;
+  box-sizing: border-box;
+}
+.card .card-content p {
+  margin: 0;
+  color: inherit;
+}
+.card .card-content span.card-title {
+  line-height: 48px;
+}
+.card .card-action {
+  border-top: 1px solid rgba(160, 160, 160, 0.2);
+  padding: 15px;
+}
+.card .card-action a {
+  color: #ffab40 ;
+  margin-right: 16px;
+  transition: color 0.3s ease;
+  text-transform: uppercase;
+}
+.card .card-action a:hover {
+  color: #ffd8a6 ;
+  text-decoration: none;
 }

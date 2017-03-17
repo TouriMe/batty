@@ -13,3 +13,12 @@ $media-phone-larger: "only screen and (min-width: #{$small-breakpoint})";
 
 $media-pad-smaller: "only screen and (max-width: #{$medium-breakpoint})";
 $media-pad-larger: "only screen and (min-width: #{$medium-breakpoint})";
+
+// custome size
+$laptop: "screen and (max-width: 1025px)";
+
+$tablet: "screen and (max-width: 769px)";
+
+$phone: "screen and (max-width: 641px)";
+
+

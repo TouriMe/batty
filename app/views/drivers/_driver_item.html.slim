@@ -1,17 +1,36 @@
-= link_to driver_path(driver) do
-  .card-item
-    = image_tag driver.card_img, class: 'item-bg'
-    .name
-      = driver.first_name
-    .avatar
-      = image_tag driver.avatar_url, class: 'item-avatar'
-    /.desc.offset.ellipsis
-      = driver.short_desc
-    .divider.offset
-    .review.offset
-      .rating.left
-        = render 'partials/rating', rating: driver.rating
-      span.right.vehicle
-        - driver.vehicles.each do |v|
-          strong = v.name + " "
+/ = link_to driver_path(driver.slug) do
+/   .card-item
+/     - if driver.card_img.present?
+/       = image_tag driver.card_img, class: 'item-bg'
+/     - else
+/       = image_tag 'noimagefound.jpg', class: 'item-bg'
+/     .name
+/       = driver.first_name
+/     .avatar
+/       = image_tag driver.avatar_url, class: 'item-avatar'
+/     .divider.offset
+/     .review.offset
+      / .rating.left
+      /   = render 'partials/rating', rating: driver.rating
+      / span.right.vehicle
+      /   - driver.vehicles.each do |v|
+      /     strong = v.name + " "
 
+.card
+  = link_to driver_path(driver.slug) do
+    .card-image
+      .card-driver-image
+        - if driver.card_img.present?
+          = image_tag driver.card_img
+        - else
+          = image_tag 'noimagefound.jpg'
+        span.card-title
+          = driver.first_name
+        span.card-driver-avatar
+          = image_tag driver.avatar_url
+  .card-action
+    .rating
+      = render 'partials/rating', rating: driver.rating
+    .vehicle
+      - driver.vehicles.each do |v|
+        strong = v.name + " "

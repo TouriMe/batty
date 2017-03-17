@@ -69,11 +69,11 @@ ActiveAdmin.register Tour do
       input :tour_end
     end
 
-    # f.inputs 'Drivers' do
-    #   f.has_many :tour_drivers, allow_destroy: true do |driver|
-    #     driver.input :driver_id, label: 'Select Drivers', as: :select, collection: (Driver.all.map{|d| [d.full_name, d.id]}), prompt: 'All Drivers' 
-    #   end
-    # end
+    f.inputs 'Drivers' do
+      f.has_many :tour_drivers, allow_destroy: true do |driver|
+        driver.input :driver_id, label: 'Select Drivers', as: :select, collection: (Driver.all.map{|d| [d.full_name, d.id]}), prompt: 'All Drivers' 
+      end
+    end
 
     # f.inputs 'length' do
     #   f.input :length_id, as: :select, collection: (Length.all.map{|l| [l.length_title, l.id]}), prompt: 'Choose length'

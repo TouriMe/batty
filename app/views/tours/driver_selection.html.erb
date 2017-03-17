@@ -34,5 +34,7 @@
   <% end %>
 </div>
 <div class="row text-center">
-  
+  <div class="no_host_driver_button">
+    <%= link_to "I don't want a host driver.","/book/#{@tour.id}/0?vehicle_type=none" %>
+  </div>
 </div>

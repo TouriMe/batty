@@ -43,18 +43,18 @@
   .tourpage-content
     // query activities
     - @activities.each do |activity|
-      .row[id='#{activity.activity_name}']
+      .row[id='#{activity.activity_name.parameterize('')}']
         h3
           = activity.activity_name
         // query type of activity
         .activity-type
-          .activity-type-filter.text-center#All.is_active
-            a.custome-button[data-tour-type='']
+          .activity-type-filter.text-center#All
+            a.custom-button.is_active[data-tour-type='0' data-activity-type="#{activity.id}"]
               | All
           - activity.tours.each do |tour|
             - if tour.tour_type.present?
               .activity-type-filter.text-center[id='#{tour.tour_type.name.parameterize('')}']
-                a.custome-button[data-tour-type="#{tour.tour_type.id}"]
+                a.custom-button[data-tour-type="#{tour.tour_type.id}" data-activity-type="#{activity.id}"]
                   = tour.tour_type.name
 
         .activity-tour
@@ -65,10 +65,7 @@
                   = link_to tour_path(tour.slug) do
                     .card-image
                       .card-tour-image
-                        - if tour.card_img.present?
-                          = image_tag tour.card_img
-                        - else
-                          = image_tag 'noimagefound.jpg'
+                        = image_tag tour.card_img
                         span.card-title.ellipsis
                           = tour.name
                         span.card-tour-price

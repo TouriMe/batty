@@ -4,9 +4,13 @@ class TourCardUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   include CarrierWave::RMagick
+  include ActionView::Helpers::AssetUrlHelper
   # include CarrierWave::MiniMagick
 
   # storage :fog
+  def default_url
+    'noimagefound.jpg'
+  end
 
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"

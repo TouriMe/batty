@@ -7,6 +7,7 @@ class ToursController < ApplicationController
     # else
     #   @tours = Activity.find(params[:activity_id]).tours.where(length_id: params[:length_id]).where(is_active: true).order(:is_active).reverse_order
     # end
+    
     # if normal_user_signed_in? && !current_normal_user.nil?  && current_normal_user.internal_user?
     #   @tours = Tour.all.order(:is_active).reverse_order
     # else

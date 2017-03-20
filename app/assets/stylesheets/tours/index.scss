@@ -80,7 +80,7 @@ body[id='tours-index'] {
         display: inline-block;
         width: 20%;
         margin-bottom: 15px;
-        a.custome-button {
+        a.custom-button {
           white-space: nowrap; 
           overflow: hidden;
           text-overflow: ellipsis; 
@@ -100,7 +100,7 @@ body[id='tours-index'] {
   .card {
     .card-tour-image {
       width: 100%;
-      height: 320px;
+      height: 200px;
       img {
         width: 100%;
         position: relative;
@@ -112,18 +112,18 @@ body[id='tours-index'] {
         font-weight: 700;
         background-color: rgba(0,0,0,0.5);
         width: 100%;
-        padding-top: 10px;
-        padding-bottom: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
       }
       span.card-tour-price {
         position: absolute;
-        top: 40%;
-        right: 15%;
-        width: 60px;
-        height: 60px;
+        top: -1%;
+        right: 5%;
+        width: 50px;
+        height: 50px;
         border-radius: 50%;
         background-color: #474747;
-        font-size: 22px;
+        font-size: 18px;
         font-weight: 600;
         color: white;
         text-align: center;
@@ -147,12 +147,12 @@ body[id='tours-index'] {
     .card-action {
       width: 100%;
       display: inline-flex;
+      background-color: white;
+      padding: 8px;
       @media #{$tablet} {
-        padding: 10px;
         font-size: 14px; 
       }
       @media #{$phone} {
-        padding: 8px;
         font-size: 13px; 
       }
       .rating {

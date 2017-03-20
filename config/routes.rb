@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :drivers, defaults: {format: :json}
-    resources :tours, only: [:index]
+    resources :tours, defaults: {format: :json}, only: [:index]
   end
 
   # @todo messy routes, needs clean up

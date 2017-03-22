@@ -117,3 +117,5 @@ group :test do
   gem 'factory_girl_rails'
   gem 'test_after_commit', require: false
 end
+
+gem 'whenever', '~> 0.9.7', :require => false

@@ -56,20 +56,26 @@
       h3
         | Featured Experiences
       .row
-        .small-12.medium-6.large-4.columns
-          .card
-            = link_to '#' do
-              .card-image
-                .card-tour-image
-                  = image_tag 'noimagefound.jpg'
-                  span.card-title.ellipsis
-                    | dummy
-                  span.card-tour-price
-                    | 10$
-            .card-action
-              .rating
-                = render 'partials/rating', rating: 5
-              .review-num
-                strong
-                  = pluralize(10, 'review')
+        - @feature_experiences.each do |experience|
+          .small-12.medium-6.large-4.columns
+            .card
+              = link_to tour_path(experience.slug) do
+                .card-image
+                  .card-tour-image
+                    = image_tag experience.card_img
+                    span.card-title.ellipsis
+                      = experience.name
+                    span.card-tour-price
+                      - if experience.ticket_price_cents != 0
+                        = number_to_currency(experience.ticket_price_cents, :precision => 0)
+                      - elsif experience.tuktuk_price.to_i != 0
+                        = number_to_currency(experience.tuktuk_price.to_i, :precision => 0)
+                      - else
+                        = number_to_currency(experience.car_price.to_i, :precision => 0)
+              .card-action
+                .rating
+                  = render 'partials/rating', rating: experience.rating > 0 ? experience.rating : 5 
+                .review-num
+                  strong
+                    = pluralize(experience.comments.size, 'review')
 

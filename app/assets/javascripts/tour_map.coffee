@@ -1,6 +1,9 @@
-$(document).on 'ready page:load', ->
-  
-  mapUI = (id,latlng)-> 
+Batty.ToursShow = do ->
+  _init = ->
+    _tourLocation()
+
+  _tourLocation = () ->
+    latlng = $('#map').data('latlng')
     if latlng?
       poslat = latlng.split(',')[0]
       poslng = latlng.split(',')[1]
@@ -16,12 +19,11 @@ $(document).on 'ready page:load', ->
         mapTypeId:google.maps.MapTypeId.ROADMAP
       }
 
-      map = new google.maps.Map(document.getElementById(id), mapProp)
+      map = new google.maps.Map(document.getElementById("map"), mapProp)
 
       marker = new google.maps.Marker({
         position: latlng,
         map: map
       });
 
-  latlng = $('#map').data('latlng') 
-  mapUI('map',latlng)
+  { init : _init}

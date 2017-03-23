@@ -1,0 +1,355 @@
+.container
+  .showpage-header
+    .navbar.contain-to-grid.sticky
+      = render 'partials/topbar'
+    .tour-images
+      - if @tour.images.where(is_hero: true).any?
+        .trip-cover-img[data-img="#{@tour.hero_unit_image.url}"]
+      - elsif @tour.images.any?
+        .trip-cover-img[data-img="#{@tour.cover_image}"]
+      ul.clearing-thumbs.hide[data-clearing]
+        - @tour.images.each do |image|
+          li
+            = image_tag image.url
+      .tour-description.text-center
+        h1
+          = @tour.name
+        span.rating
+          = render 'partials/rating', rating: @tour.rating > 0 ? @tour.rating : 5
+        .tour-detail
+          .row
+            .small-4.columns
+              .detail
+                .detail-box
+                  = image_tag "tour_duration.png"
+                .detail-text
+                  h5
+                    = @tour.duration.blank? ? "0" : @tour.duration
+                    |  hrs
+            .small-4.columns
+              .detail
+                .detail-box
+                  = image_tag "tour_checkpoint.png"
+                .detail-text
+                  h5
+                    = @tour.checkpoint_num.blank? ? "0" : @tour.checkpoint_num
+                    |  stop
+            .small-4.columns
+              .detail
+                .detail-box
+                  = image_tag "tour_distance.png"
+                .detail-text
+                  h5
+                    = @tour.distance.blank? ? "0" : @tour.distance
+                    | km
+  .showpage-navbar
+    .tour-detail-navbar.text-center
+      a[href='#highlights']
+        | Highlights
+      a[href='#description']
+        | Description           
+      a[href='#inclusions']
+        | Inclusions
+      a[href='#schedule_gallery']
+        | Schedule
+      a[href='#schedule_gallery']
+        | Gallery
+      a[href='#important']
+        | Important Information
+      a[href='#host']
+        | Your Host Drivers
+      a[href='#location']
+        | Location
+      a[href='#reviews']
+        | Reviews
+  .showpage-content
+    #highlights
+      .row
+        .small-12.medium-8.columns
+          h3
+            | Highlights
+          p
+            - if @tour.highlight_html?
+              = @tour.highlight_html.html_safe
+        .small-12.medium-4.columns.text-center
+          - if @tour.ticket_price_cents != 0
+            strong
+              h4
+                = number_to_currency(@tour.ticket_price_cents, :precision => 0)
+          - elsif @tour.tuktuk_price.to_i != 0
+            strong
+              h4
+                = number_to_currency(@tour.tuktuk_price.to_i, :precision => 0)
+          - else
+            strong
+              h4
+                = number_to_currency(@tour.car_price.to_i, :precision => 0)
+          = link_to "BOOK NOW", "/book/#{@tour.id}/?vehicle_type=#{@vehicle_type}", class: "btn-book"
+    #description
+      .row
+        .small-12.columns
+          h3.text-center
+            | Description
+          p
+            = @tour.content.html_safe
+    #inclusions
+      .row
+        .small-12.medium-6.columns
+          .include
+            .include-title
+              = fa_icon 'plus-circle 3x'
+              span
+                | Inclusions
+            - if @tour.include_html?
+              p
+                = @tour.include_html.html_safe
+        .small-12.medium-6.columns
+          .exclude
+            .exclude-title
+              = fa_icon 'minus-circle 3x'
+              span
+                | Exclusions
+            - if @tour.exclude_html?
+              p
+                = @tour.exclude_html.html_safe
+    #schedule_gallery
+      .row.full-width
+        .small-12.medium-5.columns
+          .schedule.text-center
+            h3
+              | Schedule
+            p
+              | 8:30 am
+            span
+              | Meet your driver, head to location
+            p 
+              | 12:00 pm
+            span
+              | Lunch
+            p
+              | 12:30 pm
+            span
+              | Resume tour
+            p 
+              | 6:30 pm
+            span
+              | Driver returns you to your pickup location
+        .small-12.medium-7.columns.no-padding
+          .gallery
+            ul.tour_gallery-orbit[data-orbit]
+              - if @tour.images.any?
+                - @tour.images.each do |image|
+                  li
+                    .tour-image[style="background-image:url(#{image.url});"]
+      .schedule_gallery_footer
+        .row.full-width
+          .small-12.medium-6.columns
+            - if @tour.ticket_price_cents != 0
+              .price.right
+                strong
+                  | Price:
+                span 
+                  |  
+                  = number_to_currency(@tour.ticket_price_cents, :precision => 0)
+            - elsif @tour.tuktuk_price.to_i != 0
+              .price.right
+                strong
+                  | Price:
+                span 
+                  |  
+                  = number_to_currency(@tour.tuktuk_price.to_i, :precision => 0)
+            - else
+              .price.right
+                strong
+                  | Price: 
+                span
+                  |  
+                  = number_to_currency(@tour.car_price.to_i, :precision => 0)
+          .small-12.medium-6.columns
+            .book.left
+              = link_to "BOOK NOW", "/book/#{@tour.id}/?vehicle_type=#{@vehicle_type}", class: "btn-book"
+    #important
+      .row
+        .small-12.columns
+          h3.text-center
+            | Important Information
+          p
+            = @tour.important_info.html_safe
+    #host
+      .row
+        .small-12.medium-5.columns
+          .driver-image
+            = image_tag @tour.drivers.second.card_img
+        .small-12.medium-7.columns
+          .driver-detail
+            h3
+              | Your Host Driver
+            p
+              - if @tour.drivers.second.description?
+                = @tour.drivers.second.description.html_safe
+            strong
+              | Driver Name- 
+              = @tour.drivers.second.first_name
+    #location
+      .row.full-width
+        .small-12.columns
+          h3
+            | Location
+          #map[data-latlng="13.3671,103.8448"]
+      .location_footer
+        .row.full-width
+          .small-12.medium-6.columns
+            - if @tour.ticket_price_cents != 0
+              .price.right
+                strong
+                  | Price:
+                span 
+                  |  
+                  = number_to_currency(@tour.ticket_price_cents, :precision => 0)
+            - elsif @tour.tuktuk_price.to_i != 0
+              .price.right
+                strong
+                  | Price:
+                span 
+                  |  
+                  = number_to_currency(@tour.tuktuk_price.to_i, :precision => 0)
+            - else
+              .price.right
+                strong
+                  | Price: 
+                span
+                  |  
+                  = number_to_currency(@tour.car_price.to_i, :precision => 0)
+          .small-12.medium-6.columns
+            .book.left
+              = link_to "BOOK NOW", "/book/#{@tour.id}/?vehicle_type=#{@vehicle_type}", class: "btn-book"
+    #reviews
+
+/ .container.trip_wrapper
+/   - if @tour.images.where(is_hero: true).any?
+/     .trip-cover-img[data-img="#{@tour.hero_unit_image.url}"]
+/   - elsif @tour.images.any?
+/     .trip-cover-img[data-img="#{@tour.cover_image}"]
+/   ul.clearing-thumbs.hide[data-clearing]
+/     - @tour.images.each do |image|
+/       li
+/         = image_tag image.url
+/   .trip_head_wrapper
+/     .row
+/       section#trip_header
+/         .large-9.small-12.trip_top_head.columns
+/           .trip-title
+/             #title-text
+/               h3
+/                 = @tour.name
+/             span.rating
+/               = render 'partials/rating', rating: @tour.rating > 0 ? @tour.rating : 5
+/           .meta_head
+/             section.meta_block
+/               = image_tag("tour_distance.png", class: "distance-logo")
+/               p
+/                 span.main-value.block.center
+/                   = @tour.distance.blank? ? "0" : @tour.distance
+/                 span.meta
+/                   | Distance
+/             section.meta_block
+/               = image_tag("tour_checkpoint.png", class: "trip-logo")
+/               p
+/                 span.main-value.block.center
+/                   = @tour.checkpoint_num.blank? ? "0" : @tour.checkpoint_num
+/                 span.meta
+/                   | Checkpoints
+/             section.meta_block
+/               = image_tag("tour_duration.png", class: "trip-logo")
+/               p
+/                 span.main-value.block.center
+/                   = @tour.duration.blank? ? "0" : @tour.duration
+/                   | hrs
+/                 span.meta
+/                   | Duration
+/         .large-3.small-12.trip_top_info.columns
+/           - if @tour.ticket_price_cents != 0
+/             h1
+/               span
+/                 = number_to_currency(@tour.ticket_price_cents, :precision => 0)
+/           - elsif @tour.tuktuk_price.to_i != 0
+/             h1
+/               span
+/                 = number_to_currency(@tour.tuktuk_price.to_i, :precision => 0)
+/           - else
+/             h1
+/               span
+/                 = number_to_currency(@tour.car_price.to_i, :precision => 0)
+/           .meta_func
+/             = link_to "BOOK NOW", "/book/#{@tour.id}/?vehicle_type=#{@vehicle_type}", class: "trip_book_now"
+/     .row
+/       ul.tabs[data-tab]
+/         li.tab-title.tab-menu-item.small-6.medium-4.columns.active
+/           a[href='#panel1']
+/             strong
+/               | Highlights
+/         li.tab-title.tab-menu-item.small-6.medium-4.columns
+/           a[href='#panel2']
+/             strong
+/               | Includes
+/         li.tab-title.tab-menu-item.small-6.medium-4.columns
+/           a[href='#panel3']
+/             strong
+/               | Schedule
+/   .tab-content-container
+/     .row
+/       .tabs-content
+/         .content.active#panel1
+/           - if @tour.highlight_html?
+/             .highlight.small-12.columns
+/               = @tour.highlight_html.html_safe
+/         .content#panel2
+/           - if @tour.include_html?
+/             .include-exclude.small-12.medium-6.columns
+/               - if @tour.include_html?
+/                 .include
+/                   h5
+/                     span.plus-icon
+/                       | +
+/                     | Include
+/                   = @tour.include_html.html_safe
+/           - if @tour.exclude_html?
+/             .include-exclude.small-12.medium-6.columns
+/               - if @tour.exclude_html?
+/                 .exclude
+/                   h5
+/                     span.minus-icon
+/                       | -
+/                     | Exclude
+/                   = @tour.exclude_html.html_safe
+/         .content#panel3
+/           - if @tour.tour_start? || @tour.tour_end
+/             .tour-start-end.small-6.columns
+/               h5.header
+/                 | Start Time
+/               - if @tour.tour_start?
+/                 = @tour.tour_start
+/             .tour-start-end.small-6.columns
+/               h5.header
+/                 | End Time
+/               - if @tour.tour_end?
+/                 = @tour.tour_end
+/   .row
+/     - if !@tour.video_url.nil? && !@tour.video_url.empty?
+/       .tour-video-container
+/         .flex-video.widescreen
+/           iframe[src="#{@tour.video_url}" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen]
+/   .trip_detail_wrapper
+/     .row
+/       .detail_content
+/         .detail
+/           .trip-label
+/             h3
+/               | Tour Description
+/           .trip_content
+/             = @tour.content.html_safe
+/         .driver-container#drivers-selection
+/           = render 'comments/comments', target: @tour
+
+/ script[type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-569e699d3dd269af"]
+

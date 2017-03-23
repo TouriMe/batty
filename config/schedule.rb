@@ -5,7 +5,7 @@
 
 # Example:
 #
-# set :output, "/path/to/my/cron_log.log"
+# set :output, "/log/whenever.log"
 #
 # every 2.hours do
 #   command "/usr/bin/some_great_command"
@@ -19,6 +19,10 @@
 
 # Learn more: http://github.com/javan/whenever
 
-every :sunday, :at => '12pm' do # Use any day of the week or :weekend, :weekday
+every :monday, :at => '7am' do # Use any day of the week or :weekend, :weekday
   runner 'Tour.feature_tours'
 end
+
+# every 1.minute do
+#   runner 'Tour.feature_tours', output: "/log/whenever.log"
+# end

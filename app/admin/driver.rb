@@ -18,7 +18,7 @@ ActiveAdmin.register Driver do
     actions
   end
 
-  permit_params *all_fields,
+  permit_params *all_fields,:description,
                 languages_attributes: [:id, :_destroy, :language_code, :proficiency],
                 driver_cities_attributes: [:id, :city_id, :_destroy],
                 images_attributes: [:id, :url, :url_small, :alt_text, :_destroy],

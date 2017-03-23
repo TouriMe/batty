@@ -22,6 +22,7 @@
 #= require tours
 #= require tour_index
 #= require welcome
+#= require tour_map
 
 
 #= require initializer

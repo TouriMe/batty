@@ -5,6 +5,7 @@ Batty.ToursShow = do ->
   _init = ->
     _tourHeaderSection()
     _heroUnitSlider()
+    _tourContentSection()
     $modal = $('#fill-purchase-info-modal')
     $eles = $('.book-tour-via-driver')
     $eles.click( (evt)->
@@ -25,10 +26,10 @@ Batty.ToursShow = do ->
 
   _tourHeaderSection = ->  
     $imgUrl = $('.trip-cover-img').attr("data-img")
-    headerHeight = $('#fixed-head').height()
-    tripHeaderHeight = $('.trip_head_wrapper').height()
-    heroHight = $(window).height()-tripHeaderHeight + 80
-    $('.trip-cover-img').attr('style',' background-image:url('+ $imgUrl + ');height:' + heroHight + 'px;');
+    # headerHeight = $('#fixed-head').height()
+    # tripHeaderHeight = $('.trip_head_wrapper').height()
+    # heroHight = $(window).height()-tripHeaderHeight + 80
+    $('.trip-cover-img').attr('style',' background-image:url('+ $imgUrl + ');');
     $('.trip-cover-img').click( (evt)->
       $('.carousel ul li:first-child img').click();
     );
@@ -61,6 +62,14 @@ Batty.ToursShow = do ->
       $ele.click( (evt) ->
         driver_id = $ele.data('driver_id')
       )
+
+  _tourContentSection = ->
+    padding = 21
+    scheduleHeight = $('.schedule').height()
+    imageHeight = scheduleHeight + padding
+    image = '.gallery .tour_gallery-orbit .tour-image'
+    $(".gallery").css('height', scheduleHeight)
+    $("#{image}").css('height', imageHeight)
 
   _heroUnitSlider = ->
     $(document).foundation({

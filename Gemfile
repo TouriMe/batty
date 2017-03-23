@@ -107,6 +107,9 @@ group :development, :test do
   gem 'faker'
   gem 'pry-rails'
   gem 'pry-byebug'
+  gem 'whenever-test'
+  gem 'shoulda-whenever',     '~> 0.0.2'
+  gem 'shoulda-matchers', '~> 3.1'
 end
 
 ## TEST STACK ##

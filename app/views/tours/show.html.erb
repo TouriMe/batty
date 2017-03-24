@@ -70,8 +70,8 @@
               <h1><span><%= number_to_currency(@tour.car_price.to_i, :precision => 0) %></span></h1>
           <% end %>
           <div class="meta_func">
-            <!-- <%= link_to "BOOK NOW", "/book/#{@tour.id}/?vehicle_type=#{@vehicle_type}", class: "trip_book_now" %> -->
-            <%= link_to "Select Driver", tour_driver_path(@tour), class: "trip_book_now" %>
+            <%= link_to "BOOK NOW", "/book/#{@tour.id}/?vehicle_type=#{@vehicle_type}", class: "trip_book_now" %>
+            <!-- <%= link_to "Select Driver", tour_driver_path(@tour), class: "trip_book_now" %> -->
           </div>
         </div>
 
@@ -166,15 +166,15 @@
         </div>
 
         <div id="drivers-selection" class="driver-container">
-          <!--<header class="content_head">-->
-          <!--Drivers available for this tour-->
-          <!--</header>-->
+          <header class="content_head">
+          Drivers available for this tour
+          </header>
           <%=
-            # render :partial => 'tours/drivers', :object => @tour_drivers
+            render :partial => 'tours/drivers', :object => @tour_drivers
           %>
           <p class="pagination">
             <%=
-              # link_to_next_page(@tour_drivers, 'More Drivers', :remote => true, class: "hidden")
+              link_to_next_page(@tour_drivers, 'More Drivers', :remote => true, class: "hidden")
             %>
           </p>
           <%= render 'comments/comments', target: @tour %>

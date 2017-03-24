@@ -34,7 +34,7 @@
               <%= f.text_field :pickup_time, id: "pickuptime", :required => "", placeholder: 'Please enter Pick Up Time ( eg:8am )' %>
             </div>
 
-            <div class="form-group small-12 medium-6 columns">
+            <!-- <div class="form-group small-12 medium-6 columns">
               <%= f.label :driver_id,"Selected Driver" %>
               <% if @driver.present? %>
                 <%= f.text_field :driver_name,value: @driver.full_name, id: "driver_name", readonly: true%>
@@ -42,7 +42,7 @@
               <% else %>
                 <%= f.text_field :driver_name,value: 'No driver selected', id: "driver_name", readonly: true%>
               <% end %>
-            </div>
+            </div> -->
 
             <div class="form-group small-12 medium-6 columns">
               <%= f.label :address_id, "Pick Up Address" %>
@@ -163,15 +163,15 @@
 </div>
 
 <script type="text/javascript">
-  var firstInit = false;
-  function initMap(){
-    if(!firstInit){
-      setTimeout(function(){
-        MapUI._init("map", "13.3671", "103.8448");
-      }, 1000);
-      firstInit = true
-    }
-  }
+  // var firstInit = false;
+  // function initMap(){
+  //   if(!firstInit){
+  //     setTimeout(function(){
+  //       MapUI._init("map", "13.3671", "103.8448");
+  //     }, 1000);
+  //     firstInit = true
+  //   }
+  // }
 
   function updatePrice(sel) {
     var trav_no = sel.value;

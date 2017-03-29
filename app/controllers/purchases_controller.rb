@@ -24,9 +24,9 @@ class PurchasesController < ApplicationController
   # book the tour(:tour_id)
   # with driver (:driver_id) 
   def new
-    @driver = Driver.find_by_id params[:driver_id]
     @vehicle_type = params[:vehicle_type]
     @trip = Tour.friendly.find(params[:tour_id])
+    @drivers = @trip.available_drivers
     # @driver = Driver.friendly.find(params[:driver_id])
     @transport_price = @trip.tuktuk_price.to_i
     if @transport_price == 0
@@ -35,7 +35,7 @@ class PurchasesController < ApplicationController
     @ticket_price = @trip.ticket_price_cents
     @purchase = Purchase.new
     @no_show_title = true
-
+    
     ## Reference ID
     # todo \
     # format this to 5 chars

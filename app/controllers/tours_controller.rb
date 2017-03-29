@@ -3,12 +3,6 @@ class ToursController < ApplicationController
 
   def index
     # if normal_user_signed_in? && !current_normal_user.nil?  && current_normal_user.internal_user?
-    #   @tours = Activity.find(params[:activity_id]).tours.where(length_id: params[:length_id]).order(:is_active).reverse_order
-    # else
-    #   @tours = Activity.find(params[:activity_id]).tours.where(length_id: params[:length_id]).where(is_active: true).order(:is_active).reverse_order
-    # end
-    
-    # if normal_user_signed_in? && !current_normal_user.nil?  && current_normal_user.internal_user?
     #   @tours = Tour.all.order(:is_active).reverse_order
     # else
     #   @tours = Tour.where(is_active: true).all
@@ -17,8 +11,8 @@ class ToursController < ApplicationController
       @activities = Activity.all
       @tours = @activities.tours.order(:is_active).reverse_order
     else
-
       @activities = Activity.all
+      @tours = @activities.tours.where(is_active: true).all
       # @tours = @activities.tours.where(is_active: true)
     end
     @seotags = Seo.find_by_page('tour_listing')

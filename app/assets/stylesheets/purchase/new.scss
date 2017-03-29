@@ -64,6 +64,189 @@ body[id='purchases-new'] {
     }
   }
 
+  .purchasepage-header {
+    .navbar {
+      position: absolute;
+      z-index: 1;
+    }
+
+    .purchase-tour-image {
+      height: 40vh;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+      .tour-title {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 30%;
+        h2 {
+          color: white;
+          font-weight: 600;
+          text-align: center;
+        }
+        .rating {
+          color: #FFBE5B;
+          text-align: center;
+          font-size: 25px;
+        }
+      }
+    }   
+  }
+
+  .purchasepage-content {
+    .breadcrumbs-navigation {
+      padding: 10px 0;
+      background-color: #1ab399;
+      ul#breadcrumbs {
+        display: inline-block;
+        li {
+          padding-left: 2px;
+          strong.current {
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+          }
+        }
+        li.is_active {
+          strong {
+            color: #1ab399;
+            background-color: white;
+            &:after {
+              border-left-color: white;
+            }
+          }
+        }
+        li.visited {
+          strong {
+            background-color: #52c9b4;
+            &:after {
+              border-left-color: #52c9b4;
+            }
+          }
+        }
+      }
+    }
+
+    .tabs-content {
+      background-color: white;
+      margin-bottom: 0;
+      h3, h5 {
+        color: #FFBE5B;
+        font-weight: 600;
+      }
+      input {
+        border-radius: 10px;
+        height: 50px;
+        color: grey;
+        &:focus {
+          border: 1px solid #FFBE5B;
+        }
+      }
+      label {
+        font-weight: 600;
+        font-size: 16px;
+        color: #FFBE5B;
+      }
+      #detail {
+        h5 {
+          margin-bottom: 20px;
+        }
+        .travellers_number {
+          width: 100%;
+          display: flex;
+          .no-spin::-webkit-inner-spin-button, 
+          .no-spin::-webkit-outer-spin-button {
+            -webkit-appearance: none !important;
+            margin: 0 !important;
+            -moz-appearance:textfield !important;
+          }
+          input[type='number'] {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            text-align: center;
+            font-weight: 600;
+            font-size: 20px;
+            width: 60%;
+          }
+          a.increase, 
+          a.decrease {
+            position: relative;
+            display: block;
+            width: 20%;
+            height: 50px;
+            color: #FFBE5B;
+            border: 1px solid #cccccc;
+            i {
+              position: absolute;
+              top: 35%;
+              left: 0;
+              right: 0;
+            }
+          }
+          a.increase {
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+          }
+        }
+        p {
+          color: grey;
+          margin-top: 30%;
+        }
+        a.omniauth_fb {
+          margin: 0 auto;
+          background-color: #5464a1;
+          width: 80%;
+          border-radius: 5px;
+          padding: 10px 15px;
+          .circle_icon {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: white;
+            i {
+              color: #5464a1;
+            }
+          }
+          strong {
+            color: white;
+            margin-left: 10px;
+          }
+        }
+      }
+
+      #driver {
+        ul {
+          li {
+            a {
+              img {
+                width: 200px;
+                height: 200px;
+              }
+            }
+          }
+        }
+      }
+      .section-footer {
+        padding: 10px;
+        a {
+          display: block;
+          border: 2px solid #1ab399;
+          border-radius: 10px;
+          padding: 10px;
+          color: grey;
+          font-weight: 600;
+        }
+        ul {
+          li {
+            display: inline-block;
+          }
+        }
+      }
+    }
+  }
+
   #gMap{
     min-height: 100px;
     
@@ -86,4 +269,8 @@ body[id='purchases-new'] {
       margin: 0 auto;
     }
   }
+
+  
+
+
 }

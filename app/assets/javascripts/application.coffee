@@ -16,6 +16,9 @@
 #= require ckeditor/init
 #= require motion-ui.min.js
 #= require map
+#= require og-grid/og-grid.js
+#= require og-grid/modernizr.custom.js
+
 #= require namespace
 #= require util
 
@@ -23,6 +26,7 @@
 #= require tour_index
 #= require welcome
 #= require tour_map
+#= require purchase/purchase_new
 
 
 #= require initializer

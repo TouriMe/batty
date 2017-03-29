@@ -36,16 +36,16 @@ html, body {
 }
 
 #content {
-  @media #{$media-phone-smaller}{
-    padding-bottom: $footer-height;
-  }
-  @media #{$media-phone-larger}{
-    padding-bottom: $footer-height-medium-screen;
-  }
+  // @media #{$media-phone-smaller}{
+  //   padding-bottom: $footer-height;
+  // }
+  // @media #{$media-phone-larger}{
+  //   padding-bottom: $footer-height-medium-screen;
+  // }
 
-  @media #{$media-pad-larger}{
-    padding-bottom: $footer-height-large-screen;
-  }
+  // @media #{$media-pad-larger}{
+  //   padding-bottom: $footer-height-large-screen;
+  // }
   a.custom-button.is_active {
     color: #FFB94E;
     border: 1px solid #FFB94E;
@@ -69,22 +69,20 @@ html, body {
 }
 
 #footer {
-  @media #{$media-phone-smaller}{
-    height: $footer-height;
-  }
+  // @media #{$media-phone-smaller}{
+  //   height: $footer-height;
+  // }
 
-  @media #{$media-phone-larger}{
-    height: $footer-height-medium-screen;
-  }
+  // @media #{$media-phone-larger}{
+  //   height: $footer-height-medium-screen;
+  // }
 
-  @media #{$media-pad-larger}{
-    height: $footer-height-large-screen;
-  }
+  // @media #{$media-pad-larger}{
+  //   height: $footer-height-large-screen;
+  // }
 
   width: 100%;
   height: $footer-height;
-
-  position: absolute;
   bottom: 0;
   left: 0;
 }

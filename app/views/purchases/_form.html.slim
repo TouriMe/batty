@@ -112,13 +112,13 @@
           / <a href="http://cargocollective.com/jaimemartinez/" data-largesrc="images/2.jpg" data-title="Veggies sunt bona vobis" data-description="Komatsuna prairie turnip wattle seed artichoke mustard horseradish taro rutabaga ricebean carrot black-eyed pea turnip greens beetroot yarrow watercress kombu.">
           /   <img src="images/thumbs/2.jpg" alt="img02"/>
           / </a>
-          .row.full-width
-            ul#og-grid.og-grid
-              - @drivers.each do |driver|
-                li.small-12.medium-4.columns
-                  h5 Hi
-                  a[href='javascript:void(0)' data-largesrc="#{driver.card_img}"]
-                    = image_tag "#{driver.card_img.url}"
+          .row
+            .small-12.columns
+              ul#og-grid.og-grid
+                - @drivers.each do |driver|
+                  li
+                    a[href='javascript:void(0)' data-largesrc="#{driver.card_img}"]
+                      = image_tag "#{driver.card_img.url}"
           
 
           .row.section-footer

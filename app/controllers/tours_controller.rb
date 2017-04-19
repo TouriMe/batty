@@ -7,14 +7,7 @@ class ToursController < ApplicationController
     # else
     #   @tours = Tour.where(is_active: true).all
     # end
-    if normal_user_signed_in? && !current_normal_user.nil?  && current_normal_user.internal_user?
-      @activities = Activity.all
-      @tours = @activities.tours.order(:is_active).reverse_order
-    else
-      @activities = Activity.all
-      @tours = @activities.tours.where(is_active: true).all
-      # @tours = @activities.tours.where(is_active: true)
-    end
+    @activities = Activity.all
     @seotags = Seo.find_by_page('tour_listing')
     # @custom_title = 'Experiences'
     # @custom_subtitle = 'Unique, authentic, and flexible experiences to travel like a local'
@@ -27,7 +20,8 @@ class ToursController < ApplicationController
       @vehicle_type = 'car'
     end
     @seotags = Seo.new(@tour.seo_tags)
-    @tour_drivers = @tour.available_drivers.page(params[:page]).per(10)
+    @drivers = @tour.available_drivers
+    # @tour_drivers = @tour.available_drivers.page(params[:page]).per(10)
   end
 
   def driver_selection

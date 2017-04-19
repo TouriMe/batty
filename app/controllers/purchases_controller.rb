@@ -27,7 +27,7 @@ class PurchasesController < ApplicationController
     @vehicle_type = params[:vehicle_type]
     @trip = Tour.friendly.find(params[:tour_id])
     @drivers = @trip.available_drivers
-    # @driver = Driver.friendly.find(params[:driver_id])
+
     @transport_price = @trip.tuktuk_price.to_i
     if @transport_price == 0
       @transport_price = @trip.car_price.to_i

@@ -16,8 +16,6 @@
 #= require ckeditor/init
 #= require motion-ui.min.js
 #= require map
-#= require og-grid/og-grid.js
-#= require og-grid/modernizr.custom.js
 
 #= require namespace
 #= require util
@@ -32,6 +30,9 @@
 #= require initializer
 #= require wow.min.js
 #= require scrollreveal.min.js
+#= require plugin/jquery.gridder.min
+#= require jquery.datetimepicker.full.min
+
 $(()->
   $(document).foundation()
   wow = new WOW

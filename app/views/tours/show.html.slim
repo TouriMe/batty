@@ -179,7 +179,7 @@
       .row
         .small-12.medium-5.columns
           .driver-image
-            = image_tag @tour.drivers.second.card_img
+            = image_tag @drivers.first.card_img
         .small-12.medium-7.columns
           .driver-detail
             h3
@@ -188,7 +188,7 @@
               | During this experience, your host driver will pick you up and drop you off at the location of your choice. Along the way, he'll be able to tell you about the local culture, custom and some history etc etc 
             strong
               | Driver Name- 
-              = @tour.drivers.second.first_name
+              =  @drivers.first.first_name
     #location
       .row.full-width
         .small-12.columns

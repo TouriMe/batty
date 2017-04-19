@@ -1,0 +1,17 @@
+- if @trip.tuktuk_price.to_i > 0 || (@trip.tuktuk_price.to_i == 0 && (driver.vehicles.count > 1 || (driver.vehicles.count == 1 && driver.vehicles.first.name.downcase == 'car')))
+    .card
+      .card-image
+        .card-driver-image
+          = image_tag driver.card_img
+          span.card-driver-price
+            = number_to_currency(@trip.tuktuk_price, :precision => 0)
+          span.card-driver-avatar
+            - if driver.avatar_url.present?
+              = image_tag driver.avatar_url, class: 'avatar-image'
+            - else
+              = image_tag 'avatar.jpg', class: 'avatar-image'
+      .card-action
+        strong.text-left
+          = "#{driver.first_name}'s story: "
+        p.text-left
+          = "#{driver.short_desc.truncate(100)}"

@@ -204,12 +204,6 @@ ActiveRecord::Schema.define(version: 20170321075440) do
     t.boolean  "is_hero",       default: false
   end
 
-  create_table "lengths", force: :cascade do |t|
-    t.string   "length_title"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
-
   create_table "purchases", force: :cascade do |t|
     t.integer  "purchasable_id"
     t.string   "purchasable_type"
@@ -289,9 +283,9 @@ ActiveRecord::Schema.define(version: 20170321075440) do
     t.string   "description"
     t.string   "slug"
     t.text     "important_info"
+    t.decimal  "rating"
     t.integer  "car_price_cents",       default: 0,     null: false
     t.string   "car_price_currency",    default: "USD", null: false
-    t.decimal  "rating"
     t.integer  "distance"
     t.integer  "checkpoint_num"
     t.string   "duration"
@@ -310,11 +304,9 @@ ActiveRecord::Schema.define(version: 20170321075440) do
     t.integer  "ticket_price_cents",    default: 0,     null: false
     t.string   "ticket_price_currency", default: "USD", null: false
     t.integer  "tour_type_id"
-    t.integer  "length_id"
     t.string   "feature_tour",          default: "no"
   end
 
-  add_index "tours", ["length_id"], name: "index_tours_on_length_id", using: :btree
   add_index "tours", ["tour_type_id"], name: "index_tours_on_tour_type_id", using: :btree
 
   create_table "users", force: :cascade do |t|
@@ -356,6 +348,5 @@ ActiveRecord::Schema.define(version: 20170321075440) do
   add_foreign_key "tour_activities", "tours"
   add_foreign_key "tour_drivers", "drivers"
   add_foreign_key "tour_drivers", "tours"
-  add_foreign_key "tours", "lengths"
   add_foreign_key "tours", "tour_types"
 end

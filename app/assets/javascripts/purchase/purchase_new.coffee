@@ -1,7 +1,40 @@
 Batty.PurchasesNew = do ->
   _init = ->
     _activeVisitedBreadcrumb()
+    #Detail tab
     _numberOfTravellers()
+    _dateTimePicker()
+    _mapTimeOut()
+    #Driver tab
+    _displayDriverDetail()
+
+  _displayDriverDetail = ->
+    $('.btn_driver_details').click ->
+     
+
+
+  _mapTimeOut = ->
+    firstInit = false;
+    $('.btn_map').click ->
+      if(!firstInit)
+        setTimeout (->
+          MapUI._init 'map', '13.3671', '103.8448'
+        ), 1000
+        firstInit = true
+  
+  _dateTimePicker = ->
+    $('#datepicker').datetimepicker
+      format: 'd.m.Y H:i'
+      inline: true
+      lang: 'en'
+      timepicker: false
+
+    $('#timepicker').datetimepicker
+      inline: true
+      lang: 'en'
+      datepicker: false
+
+    $('.xdsoft_today_button').mousedown()
 
   _activeVisitedBreadcrumb = ->
     $('.section-footer ul li a').click ->

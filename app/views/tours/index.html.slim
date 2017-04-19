@@ -12,26 +12,13 @@
         h3
           | Filter by activity:
         .row
-          .small-6.medium-3.columns
-            = link_to '#Camping' do
-              .activity-box
-            h5
-              | Camping
-          .small-6.medium-3.columns
-            = link_to '#Dining' do
-              .activity-box
-            h5
-              | Dinning
-          .small-6.medium-3.columns
-            = link_to '#' do
-              .activity-box
-            h5
-              | Drinking
-          .small-6.medium-3.columns
-            = link_to '#' do
-              .activity-box
-            h5
-              | Sightseeing
+          - @activities.each do |activity|
+            .small-6.medium-3.columns
+              = link_to "##{activity.activity_name.parameterize('')}" do
+                .activity-box
+              h5
+                = activity.activity_name
+          
   .tourpage-content
     // query activities
     - @activities.each do |activity|

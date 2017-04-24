@@ -68,7 +68,7 @@ html, body {
   }
 }
 
-#footer {
+// #footer {
   // @media #{$media-phone-smaller}{
   //   height: $footer-height;
   // }
@@ -80,12 +80,7 @@ html, body {
   // @media #{$media-pad-larger}{
   //   height: $footer-height-large-screen;
   // }
-
-  width: 100%;
-  height: $footer-height;
-  bottom: 0;
-  left: 0;
-}
+// }
 
 html, body, p, a, label, select {
   font-family: 'Ubuntu', sans-serif;

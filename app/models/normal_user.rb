@@ -15,7 +15,6 @@ class NormalUser < User
       user.image = auth.info.image # assuming the user model has an image
       user.first_name = auth.info.first_name
       user.last_name = auth.info.last_name
-      user.phone = auth.info.phone
     end
   end
 end

@@ -42,7 +42,7 @@
                   h5
                     = @tour.distance.blank? ? "0" : @tour.distance
                     | km
-  .showpage-navbar
+  .showpage-navbar.hide-for-small-only
     .tour-detail-navbar.text-center
       a[href='#highlights']
         | Highlights
@@ -130,29 +130,23 @@
                     .tour-image[style="background-image:url(#{image.url});"]
       .schedule_gallery_footer
         .row.full-width
-          .small-12.medium-6.columns
+          .small-6.columns
             - if @tour.ticket_price_cents != 0
               .price.right
-                strong
-                  | Price:
-                span 
-                  |  
+                strongc Price: 
+                span  
                   = number_to_currency(@tour.ticket_price_cents, :precision => 0)
             - elsif @tour.tuktuk_price.to_i != 0
               .price.right
-                strong
-                  | Price:
-                span 
-                  |  
+                strong Price: 
+                span  
                   = number_to_currency(@tour.tuktuk_price.to_i, :precision => 0)
             - else
               .price.right
-                strong
-                  | Price: 
+                strong Price: 
                 span
-                  |  
                   = number_to_currency(@tour.car_price.to_i, :precision => 0)
-          .small-12.medium-6.columns
+          .small-6columns
             .book.left
               = link_to "BOOK NOW", "/book/#{@tour.id}/?vehicle_type=#{@vehicle_type}", class: "btn-book"
     #important
@@ -172,15 +166,12 @@
                   = image_tag driver.card_img
               .small-12.medium-7.columns
                 .driver-detail
-                  h3
-                    | Your Host Driver
-                  p
-                    | During this experience, your host driver will pick you up and drop you off at the location of your choice. Along the way, he'll be able to tell you about the local culture, custom and some history etc etc
+                  h3 Your Host Driver
+                  p During this experience, your host driver will pick you up and drop you off at the location of your choice. Along the way, he'll be able to tell you about the local culture, custom and some history etc etc
                   br
                   br
-                  p
-                    | Testmonail scroll with testmonail appearing to match scrolling drivers. Drivers should be the ones who can provide the tour however cannot be selected at this point as they may not be available. 
-                  strong
+                  p Testmonail scroll with testmonail appearing to match scrolling drivers. Drivers should be the ones who can provide the tour however cannot be selected at this point as they may not be available. 
+                  strong 
                     | Driver Name- 
                     =  driver.first_name
     #location
@@ -191,29 +182,23 @@
           #map[data-latlng="#{latlng?(@tour.tour_location)}"]
       .location_footer
         .row.full-width
-          .small-12.medium-6.columns
+          .small-6.columns
             - if @tour.ticket_price_cents != 0
               .price.right
-                strong
-                  | Price:
+                strong Price: 
                 span 
-                  |  
                   = number_to_currency(@tour.ticket_price_cents, :precision => 0)
             - elsif @tour.tuktuk_price.to_i != 0
               .price.right
-                strong
-                  | Price:
+                strong Price: 
                 span 
-                  |  
                   = number_to_currency(@tour.tuktuk_price.to_i, :precision => 0)
             - else
               .price.right
-                strong
-                  | Price: 
+                strong Price:  
                 span
-                  |  
                   = number_to_currency(@tour.car_price.to_i, :precision => 0)
-          .small-12.medium-6.columns
+          .small-6.columns
             .book.left
               = link_to "BOOK NOW", "/book/#{@tour.id}/?vehicle_type=#{@vehicle_type}", class: "btn-book"
     #reviews

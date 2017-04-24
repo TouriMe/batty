@@ -17,21 +17,21 @@
 #= require motion-ui.min.js
 #= require map
 
-#= require namespace
-#= require util
-
-#= require tours
-#= require tour_index
-#= require welcome
-#= require tour_map
-#= require purchase/purchase_new
-
-
-#= require initializer
 #= require wow.min.js
 #= require scrollreveal.min.js
 #= require plugin/jquery.gridder.min
 #= require jquery.datetimepicker.full.min
+
+#= require namespace
+#= require util
+
+#= require tour_index
+#= require tour_show
+#= require purchase/purchase_new
+
+#= require initializer
+
+
 
 $(()->
   $(document).foundation()

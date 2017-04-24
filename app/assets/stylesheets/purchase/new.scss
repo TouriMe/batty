@@ -71,7 +71,7 @@ body[id='purchases-new'] {
     }
 
     .purchase-tour-image {
-      height: 40vh;
+      height: 70vh;
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -80,7 +80,7 @@ body[id='purchases-new'] {
         position: absolute;
         left: 0;
         right: 0;
-        bottom: 30%;
+        top: 30%;
         h2 {
           color: white;
           font-weight: 600;
@@ -91,6 +91,7 @@ body[id='purchases-new'] {
           text-align: center;
           font-size: 25px;
         }
+
       }
     }   
   }
@@ -212,6 +213,11 @@ body[id='purchases-new'] {
           strong {
             color: white;
             margin-left: 10px;
+          }
+          @media #{$tablet} {
+            strong {
+              font-size: 12px;
+            }
           }
         }
       }
@@ -492,8 +498,14 @@ body[id='purchases-new'] {
   #pickup_datetime {
     .xdsoft_datetimepicker {
       width: 70%;
+      @media #{$phone} {
+        width: 100%;
+      }
       .xdsoft_label {
         z-index: 1;
+        @media #{$phone} {
+          width: 60px;
+        }
       }
       .xdsoft_datepicker {
         width: 70%;
@@ -503,6 +515,9 @@ body[id='purchases-new'] {
         width: 20%;
         .xdsoft_time_box {
           width: 70%;
+          @media #{$phone} {
+            width: 100%;
+          }
         }
       }
     }

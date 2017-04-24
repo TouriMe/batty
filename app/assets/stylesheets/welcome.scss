@@ -59,6 +59,9 @@
           }
         }
       }
+      @media #{$tablet} {
+        width: 600px;
+      }
       @media #{$phone} {
         width: 300px;
         a {

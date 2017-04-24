@@ -10,7 +10,7 @@
           = render 'partials/rating', rating: @trip.rating > 0 ? @trip.rating : 5
   .purchasepage-content
     = form_for( @purchase ,method: 'post') do |f|
-      .breadcrumbs-navigation.text-center
+      .breadcrumbs-navigation.text-center.hide-for-small-only
         ul#breadcrumbs.tabs[data-tab role='tablist']
           li.is_active[role='presentation']
             strong

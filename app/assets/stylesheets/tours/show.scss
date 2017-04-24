@@ -23,7 +23,7 @@ body[id='tours-show'] {
         position: absolute;
         left: 0;
         right: 0;
-        bottom: 10%;
+        top: 30%;
         h1 {
           color: white;
           font-weight: 600;
@@ -58,6 +58,17 @@ body[id='tours-show'] {
               }
             }
           }
+          @media #{$tablet} {
+            width: 600px;
+          }
+          @media #{$phone} {
+            width: 300px;
+          }
+        }
+        @media #{$phone} {
+          h1 {
+            font-size:  25px;
+          }
         }
       }
     }
@@ -66,7 +77,6 @@ body[id='tours-show'] {
   .showpage-navbar {
     background-color: #f0f1f1;
     padding-top: 7px;
-    height: 60px;
 
     .tour-detail-navbar {
       a {
@@ -92,7 +102,13 @@ body[id='tours-show'] {
         width: 180px;
         font-size: 23px;
         font-weight: 600;
+        text-align: center;
+        @media #{$phone} {
+          font-size: 16px;
+          width: 130px;
+        }
       }
+
     #highlights {
       background-color: white;
       padding: 15px 0;

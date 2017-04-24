@@ -6,25 +6,51 @@ Batty.ToursShow = do ->
     _tourHeaderSection()
     _heroUnitSlider()
     _tourContentSection()
-    $modal = $('#fill-purchase-info-modal')
-    $eles = $('.book-tour-via-driver')
-    $eles.click( (evt)->
-      evt.preventDefault()
-      $target = $(evt.target)
-      $modal.find('#purchase_driver_id').val($target.data('driver-id'))
-      window.ttt = $target
-      vehicle = $target.data('vehicle')
-      $modal.find('#purchase_vehicle_id').val(vehicle['id'])
-      $modal.find('.booking_info .driver-name').html($target.data('driver-name'))
-      $modal.find('.booking_info .vehicle-type').html(vehicle.name)
-      $modal.find('.pic-section').attr('style','background-image:url('+ $target.data('driver-img-url') + ')')
-      #$modal.find('.pic-section img.avatar').attr('src', $target.data('driver-img-url'))
-      $modal.find('.price').html($target.data('price').to_s)
+    _tourLocation()
+    # $modal = $('#fill-purchase-info-modal')
+    # $eles = $('.book-tour-via-driver')
+    # $eles.click( (evt)->
+    #   evt.preventDefault()
+    #   $target = $(evt.target)
+    #   $modal.find('#purchase_driver_id').val($target.data('driver-id'))
+    #   window.ttt = $target
+    #   vehicle = $target.data('vehicle')
+    #   $modal.find('#purchase_vehicle_id').val(vehicle['id'])
+    #   $modal.find('.booking_info .driver-name').html($target.data('driver-name'))
+    #   $modal.find('.booking_info .vehicle-type').html(vehicle.name)
+    #   $modal.find('.pic-section').attr('style','background-image:url('+ $target.data('driver-img-url') + ')')
+    #   #$modal.find('.pic-section img.avatar').attr('src', $target.data('driver-img-url'))
+    #   $modal.find('.price').html($target.data('price').to_s)
 
-      $modal.foundation('reveal', 'open')
-    )
+    #   $modal.foundation('reveal', 'open')
+    # )
+
+  _tourLocation = () ->
+    latlng = $('#map').data('latlng')
+    if latlng?
+      poslat = latlng.split(',')[0]
+      poslng = latlng.split(',')[1]
+      pos = { lat: poslat, lng: poslng }
+      
+      latlng = new google.maps.LatLng(pos.lat, pos.lng)
+       
+      zoom = 17
+
+      mapProp = {
+        center: latlng,
+        zoom: zoom,
+        mapTypeId:google.maps.MapTypeId.ROADMAP
+      }
+
+      map = new google.maps.Map(document.getElementById("map"), mapProp)
+
+      marker = new google.maps.Marker({
+        position: latlng,
+        map: map
+      });
 
   _tourHeaderSection = ->  
+    console.log "cover"
     $imgUrl = $('.trip-cover-img').attr("data-img")
     # headerHeight = $('#fixed-head').height()
     # tripHeaderHeight = $('.trip_head_wrapper').height()
@@ -68,7 +94,7 @@ Batty.ToursShow = do ->
     scheduleHeight = $('.schedule').height()
     imageHeight = scheduleHeight + padding
     image = '.gallery .tour_gallery-orbit .tour-image'
-    $(".gallery").css('height', scheduleHeight)
+    # $(".gallery").css('height', scheduleHeight)
     $("#{image}").css('height', imageHeight)
 
   _heroUnitSlider = ->

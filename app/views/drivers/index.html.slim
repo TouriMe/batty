@@ -1,9 +1,35 @@
-/.cards
-/  .search-results.row.full-width
-/    - @drivers.each do |d|
-/      .small-12.medium-4.columns.card-wrapper = render 'drivers/driver_item', driver: d
-
-.row.full-width
+.homepage-header.full-width
+    .navbar.contain-to-grid.sticky
+      = render 'partials/topbar'
+    .header-content
+      .title
+        h1
+          | WELCOME TO CAMBODIA
+        h4.hide-for-small-only
+          | Experience the best of Cambodia while helping and connecting with the locals
+      .exploration
+        h3
+          | Explore by:
+        .row
+          .small-6.medium-4.columns
+            = link_to tours_path do
+              .exploration-box
+                = fa_icon 'binoculars 4x'
+            h5
+              | Experience
+          .small-6.medium-4.columns
+            = link_to drivers_path do
+              .exploration-box
+                = fa_icon 'motorcycle 5x'
+            h5
+              | Host Driver
+          .small-6.medium-4.columns
+            = link_to '#' do
+              .exploration-box
+                = fa_icon 'clock-o 5x'
+            h5
+              | Duration
+.row.full-width[style="background-color:white;"]
   - @drivers.each do |driver|
     .small-12.medium-6.large-4.columns
       = render 'drivers/driver_item', driver: driver

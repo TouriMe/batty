@@ -225,6 +225,8 @@ body[id='tours-show'] {
           color: grey;
         }
       }
+      .orbit-prev span { border-right-color:black; }
+      .orbit-next span { border-left-color:black; }
     }
     #location {
       background-color: #f8f8f8;

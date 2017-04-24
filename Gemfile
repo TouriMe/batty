@@ -57,9 +57,9 @@ gem 'active_admin_editor', github: 'boontdustie/active_admin_editor'
 ## AUTHORIZATION ##
 gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
-gem 'omniauth'
-gem 'omniauth-facebook'
-gem 'omniauth-google-oauth2'
+gem 'omniauth', '~> 1.6', '~> 1.6.1'
+gem 'omniauth-facebook', '~> 4.0'
+gem 'omniauth-google-oauth2', '~> 0.4.1'
 
 ## SERIALIZER ##
 gem 'jbuilder', '~> 2.0'

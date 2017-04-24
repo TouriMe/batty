@@ -118,22 +118,9 @@
           .schedule.text-center
             h3
               | Schedule
-            p
-              | 8:30 am
-            span
-              | Meet your driver, head to location
-            p 
-              | 12:00 pm
-            span
-              | Lunch
-            p
-              | 12:30 pm
-            span
-              | Resume tour
-            p 
-              | 6:30 pm
-            span
-              | Driver returns you to your pickup location
+            - if @tour.schedule?
+              p = @tour.schedule.html_safe  
+            
         .small-12.medium-7.columns.no-padding
           .gallery
             ul.tour_gallery-orbit[data-orbit]
@@ -177,24 +164,31 @@
             = @tour.important_info.html_safe
     #host
       .row
-        .small-12.medium-5.columns
-          .driver-image
-            = image_tag @drivers.first.card_img
-        .small-12.medium-7.columns
-          .driver-detail
-            h3
-              | Your Host Driver
-            p
-              | During this experience, your host driver will pick you up and drop you off at the location of your choice. Along the way, he'll be able to tell you about the local culture, custom and some history etc etc 
-            strong
-              | Driver Name- 
-              =  @drivers.first.first_name
+        ul.driver-orbit[data-orbit]
+          - @drivers.each do |driver|
+            li
+              .small-12.medium-5.columns
+                .driver-image
+                  = image_tag driver.card_img
+              .small-12.medium-7.columns
+                .driver-detail
+                  h3
+                    | Your Host Driver
+                  p
+                    | During this experience, your host driver will pick you up and drop you off at the location of your choice. Along the way, he'll be able to tell you about the local culture, custom and some history etc etc
+                  br
+                  br
+                  p
+                    | Testmonail scroll with testmonail appearing to match scrolling drivers. Drivers should be the ones who can provide the tour however cannot be selected at this point as they may not be available. 
+                  strong
+                    | Driver Name- 
+                    =  driver.first_name
     #location
       .row.full-width
         .small-12.columns
           h3
             | Location
-          #map[data-latlng="13.3671,103.8448"]
+          #map[data-latlng="#{latlng?(@tour.tour_location)}"]
       .location_footer
         .row.full-width
           .small-12.medium-6.columns

@@ -20,12 +20,10 @@
                 = activity.activity_name
           
   .tourpage-content
-    // query activities
     - @activities.each do |activity|
       .row[id='#{activity.activity_name.parameterize('')}']
         h3
           = activity.activity_name
-        // query type of activity
         .activity-type
           .activity-type-filter.text-center#All
             a.custom-button.is_active[data-tour-type='0' data-activity-type="#{activity.id}"]

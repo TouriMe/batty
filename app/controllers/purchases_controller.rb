@@ -12,7 +12,7 @@ class PurchasesController < ApplicationController
     @host = request.host
     @purchase.save
     if @purchase.save
-      # render json: @purchase
+      # render json: @
       OrderConfirmation.confirm(@purchase,@host).deliver_now
       redirect_to payment_success_path(purchaseid: @purchase)
     else

@@ -217,7 +217,6 @@ body[id='purchases-new'] {
       }
 
       #driver {
-
         .driver_details {
           width: 50%;
           display: inline-block;
@@ -250,6 +249,10 @@ body[id='purchases-new'] {
         .driver_info{
           background-color: #f8f8f8;
           padding: 20px 0;
+          border: 1px solid grey;
+          margin-top: 20px;
+          margin-bottom: 20px;
+          display: none;
           strong {
             color: #FFBE5B;
           }
@@ -291,8 +294,109 @@ body[id='purchases-new'] {
               }
             }
           }
+          .driver_skill {
+            p {
+              margin-bottom: 3px;
+            }
+            i.check {
+              color: #FFBE5B;
+            }
+            i.uncheck {
+              color: red;
+            }
+          }
+          .driver_gallery {
+            .driver_image {
+              margin-top: 8px;
+              margin-bottom: 8px;
+              border: 1px solid grey;
+              background-color: white;
+              background-repeat: no-repeat;
+              background-position: center;
+              background-size: cover;
+            }
+          }
+          .tuktuk_price,
+          .car_price {
+            margin-top: 10px;
+            vertical-align: center;
+            .price {
+              background-color: #FFBE5B;
+              width: 50px;
+              height: 50px;
+              border-radius: 50%;
+              position: relative;
+              strong {
+                color: white;
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 27%;
+                text-align: center;
+              }
+            }
+            .driver_selected {
+              margin-top: 6px;
+            }
+          }
+        }
+        .no_selected_driver {
+          padding: 10px 15px;
+          border: 2px solid grey;
+          border-radius: 10px;
+          color: grey;
+          text-align: center;
+          width: 30%;
+          margin: 20px auto;
+          font-size: 20px;
+          font-weight: 400;
+          &:hover {
+            cursor: pointer;
+          }
         }
       }
+
+      #review {
+        .tour_detail {
+          h3 {
+            color: #FFBE5B;
+          }
+        }
+        .customer_detail {
+          h4 {
+            color: grey;
+          }
+          h4.total {
+            font-weight: 600;
+          }
+        }
+        .customer_expense {
+          h4 {
+            color: grey;
+          }
+          h4.total_price {
+            font-weight: 600;
+          }
+        }
+        .terms {
+          color: grey;
+          text-decoration: underline;
+        }
+        ul.tabs{
+          display: inline-block;
+        }
+        #btn_book {
+          border: 2px solid #1ab399;
+          border-radius: 10px;
+          color: grey;
+          font-weight: 600;
+          font-size: 16px;
+          background-color: white;
+          margin-bottom: 0;
+          padding: 15px;
+        }
+      }
+
       .section-footer {
         padding: 10px;
         a {
@@ -386,56 +490,73 @@ body[id='purchases-new'] {
   }
 
   #pickup_datetime {
-    #pickup_date {
-      padding-right: 0;
-      .xdsoft_datetimepicker {
-        width: 100%;
-        border: none;
-        outline: 1px solid grey;
-        .xdsoft_datepicker.active {
-          width: 97%;
-          .xdsoft_label {
-            z-index: 1;
-          }
-          .xdsoft_calendar {
-            table {
-              tbody {
-                tr {
-                  td.xdsoft_date {
-                    height: 35px;
-                  }
-                }
-              }
-            }
-          }
-        }
+    .xdsoft_datetimepicker {
+      width: 70%;
+      .xdsoft_label {
+        z-index: 1;
+      }
+      .xdsoft_datepicker {
+        width: 70%;
       } 
-    }
-    #pickup_time {
-      padding-left: 0;
-      .xdsoft_datetimepicker {
-        width: 100%;
-        border: none;
-        outline: 1px solid grey;
-        .xdsoft_timepicker.active {
+      .xdsoft_timepicker {
+        float: right;
+        width: 20%;
+        .xdsoft_time_box {
           width: 70%;
-          margin-left: 17%;
-          button.xdsoft_prev,
-          button.xdsoft_next {
-            margin: 7px auto;
-          }
-          .xdsoft_time_box {
-            height: 209px;
-            .xdsoft_time_variant {
-              .xdsoft_time {
-                height: 30px;
-                padding-top: 3px;
-              }
-            }
-          }
         }
       }
     }
+ 
+    // #pickup_date {
+    //   padding-right: 0;
+    //   .xdsoft_datetimepicker {
+    //     width: 100%;
+    //     border: none;
+    //     outline: 1px solid grey;
+    //     .xdsoft_datepicker.active {
+    //       width: 97%;
+    //       .xdsoft_label {
+    //         z-index: 1;
+    //       }
+    //       .xdsoft_calendar {
+    //         table {
+    //           tbody {
+    //             tr {
+    //               td.xdsoft_date {
+    //                 height: 35px;
+    //               }
+    //             }
+    //           }
+    //         }
+    //       }
+    //     }
+    //   } 
+    // }
+    // #pickup_time {
+    //   padding-left: 0;
+    //   .xdsoft_datetimepicker {
+    //     width: 100%;
+    //     border: none;
+    //     outline: 1px solid grey;
+    //     .xdsoft_timepicker.active {
+    //       width: 70%;
+    //       margin-left: 17%;
+    //       button.xdsoft_prev,
+    //       button.xdsoft_next {
+    //         margin: 7px auto;
+    //       }
+    //       .xdsoft_time_box {
+    //         height: 209px;
+    //         .xdsoft_time_variant {
+    //           .xdsoft_time {
+    //             height: 30px;
+    //             padding-top: 3px;
+    //           }
+    //         }
+    //       }
+    //     }
+    //   }
+    // }
 
   }
 

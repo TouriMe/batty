@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170321075440) do
+ActiveRecord::Schema.define(version: 20170421031317) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -305,6 +305,8 @@ ActiveRecord::Schema.define(version: 20170321075440) do
     t.string   "ticket_price_currency", default: "USD", null: false
     t.integer  "tour_type_id"
     t.string   "feature_tour",          default: "no"
+    t.text     "schedule"
+    t.string   "tour_location"
   end
 
   add_index "tours", ["tour_type_id"], name: "index_tours_on_tour_type_id", using: :btree

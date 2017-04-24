@@ -82,6 +82,11 @@
         li.login {
           border: 2px solid white;
           border-radius: 5px;
+          .user-profile-img {
+            width: 40px;
+            border-radius: 100%;
+            margin-right: 10px;
+          }
         }
         li {
           background-color: transparent;
@@ -98,6 +103,7 @@
         }
       }
     }
+
   }
   
 }

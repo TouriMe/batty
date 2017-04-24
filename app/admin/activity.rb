@@ -10,9 +10,8 @@ ActiveAdmin.register Activity do
     f.inputs do
       input :activity_name
     end
-
+    
     f.actions
-
   end
 
 end

@@ -27,20 +27,26 @@
           br
           = f.hidden_field :purchasable_id, value: @trip.id
           = f.hidden_field :purchasable_type, value: "Tour"
-          = f.hidden_field :price, value: @price
+          = f.hidden_field :price, id: "purchase_price"
           = f.hidden_field :reference_id, value: @reference_id
           = f.hidden_field :transport_price, value: @transport_price
-          = f.hidden_field :ticket_price, value: @ticket_price
+          = f.hidden_field :ticket_price, value: @ticket_price, id: 'tour_ticket_price'
+          = f.hidden_field :tuktuk_price, value: @trip.tuktuk_price, id: 'tour_tuktuk_price'
+          = f.hidden_field :car_price, value: @trip.car_price, id: 'tour_car_price'
+          = f.hidden_field :driver_id, id: 'selected_driver_id'
+          = f.hidden_field :vehicle_id, id: 'selected_vehicle_type'
+          = f.hidden_field :pickup_time, id: 'selected_pickup_time'
 
           .row
             .small-12.medium-8.columns
-              .row#pickup_datetime
-                .small-12.medium-6.medium-push-1.columns.text-center#pickup_date
+              .row
+                .small-6.columns.text-center
                   h5 Start Date
-                  = f.text_field :start_date, id: 'datepicker'
-                .small-12.medium-3.medium-push-1.columns.text-center#pickup_time
+                .small-6.columns.text-center
                   h5 Pick Up Time
-                  = f.text_field :pickup_time, id: 'timepicker'
+              .row#pickup_datetime
+                .small-12.columns.text-center
+                  = f.text_field :start_date, id: 'datetimepicker'
                   
             .small-12.medium-4.columns
               .row
@@ -58,8 +64,8 @@
                 .small-12.columns.text-center
                   h5 Pick Up Address
                   .form-group
-                    = f.text_field :address, id: 'address'
-                    = f.hidden_field :latlng, value: @latlng, id:"latlng" 
+                    = f.text_field :pickup, id: 'address'
+                    = f.hidden_field :latlng, id:"latlng" 
                     = link_to 'Google Map', '#', data: {"reveal-id": 'gMap'}, class: 'button meduim radius success btn_map'
                     #gMap.reveal-modal[ data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog"]
                       .modal_header
@@ -67,7 +73,6 @@
                           | Google Map
                       #map
                       = link_to "<i class='fa fa-close'></i>".html_safe, '#', class: "close-reveal-modal", aria: {"label": "Close"}
-
           br
           br
           .row
@@ -76,22 +81,22 @@
                 .small-2.columns
                   = f.label :first_name, class: 'right inline'
                 .small-9.columns
-                  = f.text_field :first_name
+                  = f.text_field :first_name, value: current_normal_user.try(:first_name)
               .row.form-group
                 .small-2.columns
                   = f.label :last_name, class: 'right inline'
                 .small-9.columns
-                  = f.text_field :last_name
+                  = f.text_field :last_name, value: current_normal_user.try(:last_name)
               .row.form-group
                 .small-2.columns
                   = f.label :email, class: 'right inline'
                 .small-9.columns
-                  = f.text_field :email
+                  = f.text_field :email, value: current_normal_user.try(:email)
               .row.form-group
                 .small-2.columns
                   = f.label :email_confirmation, class: 'right inline'
                 .small-9.columns
-                  = f.text_field :email_confirmation
+                  = f.text_field :email_confirmation, value: current_normal_user.try(:email)
               .row.form-group
                 .small-2.columns
                   = f.label :phone_number, 'Phone',class: 'right inline'
@@ -101,7 +106,7 @@
             .small-12.medium-4.columns.text-center
               h5 Quick Add
               p Save time and pre-fill some of your detail. But don't worry, we won't post it to your timeline.
-              a.omniauth_fb[href='#']
+              a.omniauth_fb[href="#{normal_user_omniauth_authorize_path(:facebook)}"]
                 .circle_icon
                   = fa_icon 'facebook'
                 strong Connect with Facebook
@@ -116,6 +121,7 @@
                   a#next[href="#driver" role='tab' tabindex='0' aria-selected="true" aria-controls='driver']
                     | Choose a Host Driver 
                     = fa_icon "chevron-right"
+
         section.content#driver[role='tabpanel' aria-hidden='false']
           h3.text-center 
             | These Host Drivers are recommended for the 
@@ -126,13 +132,13 @@
                 .small-12.medium-4.columns
                   = render 'purchases/driver_selection', driver: driver
                   .driver_details                
-                    .btn_driver_details 
+                    .btn_driver_details[data-id="driver-#{driver.id}"] 
                       | Learn More
-                  .driver_selected
+                  .driver_selected[data-driver-id="#{driver.id}" data-vehicle-id="3"]
                     = link_to "select", "#"
-            .driver_info
-              - drivers.each do |driver|
-                .row[id="#{driver.id}"]
+            - drivers.each do |driver|
+              .driver_info[id="driver-#{driver.id}"]
+                .row
                   .small-12.medium-4.columns
                     = image_tag driver.card_img
                     .driver_review.clearfix
@@ -141,28 +147,73 @@
                       span.review.right
                         = pluralize(@trip.comments.size, 'review')
                     .driver_pngs
-                      .remork_png
-                        .round_img
-                          = image_tag 'avatar.jpg'
-                        p Remork/Tuk Tuk 
-                      .car_png
-                        .round_img
-                          = image_tag 'avatar.jpg'
-                        p Car
-                      .location_png
-                        .round_img
-                          = image_tag 'avatar.jpg'
-                        p Siem Reap
+                      - driver.vehicles.each do |vehicle|
+                        - if vehicle.name == "Remork/Tuk Tuk"
+                          .remork_png
+                            .round_img
+                              = image_tag 'avatar.jpg'
+                            p = "#{vehicle.name}" 
+                        - else                        
+                          .car_png
+                            .round_img
+                              = image_tag 'avatar.jpg'
+                            p = "#{vehicle.name}"
+                      - driver.cities.each do |city|
+                        .location_png
+                          .round_img
+                            = image_tag 'avatar.jpg'
+                          p = "#{city.name}"
                   .small-12.medium-4.columns
                     strong
-                      = "#{driver.first_name}'s story:"
+                      = "#{driver.first_name}'s Story:"
                     p
                       = driver.description.html_safe
                   .small-12.medium-4.columns
-                    strong
-                      = "#{driver.first_name}'s skill:"
-                    p
-                      = driver_skills(driver)
+                    .row
+                      .small-12.columns
+                        .driver_skill
+                          strong
+                            = "#{driver.first_name}'s Skill:"
+                          br
+                          br
+                          p
+                            = driver_skills(driver)
+                    br
+                    .row
+                      .small-12.columns
+                        .driver_gallery
+                          strong
+                            = "#{driver.first_name}'s Gallery:"
+                          br
+                          br
+                          .row
+                            - driver.images.each do |image|
+                              .small-6.medium-3.columns
+                                .driver_image[style="background-image:url(#{image.url});"]
+                    br
+                    .row
+                      - driver.vehicles.each do |vehicle|
+                        - if vehicle.name.downcase == "remork/tuk tuk"
+                          .small-12.columns
+                            .tuktuk_price.clearfix
+                              .price.left
+                                strong
+                                  = number_to_currency((@trip.tuktuk_price), :precision => 0)
+                              .driver_selected.right[data-driver-id="#{driver.id}" data-vehicle-id="#{vehicle.id}"]
+                                = link_to "select", "#"
+                        - if vehicle.name.downcase == "car"
+                          .small-12.columns
+                            .car_price.clearfix
+                              .price.left
+                                strong
+                                  = number_to_currency((@trip.car_price), :precision => 0)
+                              .driver_selected.right[data-driver-id="#{driver.id}" data-vehicle-id="#{vehicle.id}"]
+                                = link_to "select", "#"
+          .row
+            .small-12.columns
+              .no_selected_driver[data-vehicle-id="0"]
+                | I don't want a host driver.
+
 
           .row.section-footer
             .small-12.columns
@@ -176,14 +227,46 @@
                     | Review Order 
                     = fa_icon "chevron-right"
         section.content#review[role='tabpanel' aria-hidden='false']
-          h1
-            | Review Order
-          .section-footer
-            ul.tabs[data-tab role='tablist']
-              li[role='presentation']
-                a#back[href="#driver" role='tab' tabindex='0' aria-selected="true" aria-controls='driver']
-                  | back
-
+          .tour_detail.text-center
+            h3.tour_name = @trip.name
+            h3.start_date
+            h3.duration = "#{@trip.tour_start} to #{@trip.tour_end}"
+          br
+          .row
+            .small-6.columns
+              .customer_detail.text-right
+                h4.ticket
+                h4.transportation
+                h4.total TOTAL
+            .small-6.columns[style="border-left: 2px solid grey;"]
+              .customer_expense.text-left
+                h4.ticket_price
+                h4.transportation_price
+                h4.total_price
+          br
+          .row
+            .small-12.columns.text-center
+              strong
+                | The total amount is payable, Cash on Delivery, when you arrive.
+              br
+              strong
+                | (note, payment confirmation through QR code may change this process)
+          br
+          .row
+            .small-12.columns.text-center
+              = link_to "Show terms and conditions", "/terms", target: '_blank', class: "terms"
+          .row.section-footer
+            .small-12.columns.clearfix
+              ul.tabs[data-tab role='tablist']
+                li[role='presentation']
+                  a#back[href="#driver" role='tab' tabindex='0' aria-selected="true" aria-controls='driver']
+                    = fa_icon "chevron-left"
+                    |  back
+              button#btn_book.right[type="submit"]
+                = "Confirm & Book "
+                = fa_icon "chevron-right"
+                
+            
 //     / .payment_wrapper.row
 //     /   .form_wrapper.small-12.large-8.columns
 // / <div class="payment_wrapper row">

@@ -1,4 +1,4 @@
-ActiveAdmin.register Length do
+ActiveAdmin.register TourType do
 
   controller do
     def permitted_params
@@ -8,7 +8,7 @@ ActiveAdmin.register Length do
 
   form do |f|
     f.inputs do
-      input :length_title
+      input :name
     end
 
     f.actions

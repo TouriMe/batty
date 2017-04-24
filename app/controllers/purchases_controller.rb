@@ -28,14 +28,13 @@ class PurchasesController < ApplicationController
     @vehicle_type = params[:vehicle_type]
     @trip = Tour.friendly.find(params[:tour_id])
     # @driver = Driver.friendly.find(params[:driver_id])
-    @transport_price = @trip.tuktuk_price.to_i
-    if @transport_price == 0
-      @transport_price = @trip.car_price.to_i
-    end
+    # @transport_price = @trip.tuktuk_price.to_i
+    # if @transport_price == 0
+    #   @transport_price = @trip.car_price.to_i
+    # end
     @ticket_price = @trip.ticket_price_cents
     @purchase = Purchase.new
     @no_show_title = true
-
     ## Reference ID
     # todo \
     # format this to 5 chars
@@ -43,9 +42,11 @@ class PurchasesController < ApplicationController
     @reference_id = SecureRandom.hex(7) # we will release this logic after 9 Millions purchases
 
     if @vehicle_type.downcase == 'remork/tuk tuk'
-      @online_pay = @trip.tuktuk_price.to_i + @trip.ticket_price_cents.to_i
-    elsif @vehicle_type == "car"
-      @online_pay = @trip.car_price.to_i + @trip.ticket_price_cents.to_i
+      @transport_price = @trip.tuktuk_price.to_i
+      @online_pay = @transport_price + @trip.ticket_price_cents.to_i
+    elsif @vehicle_type.downcase == "car"
+      @transport_price = @trip.car_price.to_i
+      @online_pay = @transport_price + @trip.ticket_price_cents.to_i
     end
     # @braintree_key = Braintree::ClientToken.generate
   end

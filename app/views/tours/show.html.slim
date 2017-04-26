@@ -202,6 +202,75 @@
             .book.left
               = link_to "BOOK NOW", "/book/#{@tour.id}/?vehicle_type=#{@vehicle_type}", class: "btn-book"
     #reviews
+      .row.full-width
+        .small-12.columns.text-center
+          h3 Reviews
+          .stars.text-center
+            = fa_icon "star"
+            = fa_icon "star"
+            = fa_icon "star"
+            = fa_icon "star"
+            = fa_icon "star"
+          .row
+            .small-6.columns
+              .recent_reviews.right
+                .order_by_date_btn.button.radius.is_active
+                  | MOST RECENT
+            .small-6.columns
+              .star_reviews.left
+                .order_by_star_btn.button.radius
+                  | STAR REVIEWS
+
+          - if normal_user_signed_in? && reviewable(current_normal_user)
+            .row
+              .small-12.columns
+                = image_tag current_normal_user.image, class: 'user-profile-img'
+
+            .row
+            .small-4.small-centered.columns
+              = form_for( @review ,method: 'post') do |f|
+                = f.hidden_field :type, value: 'tour'
+                = f.hidden_field :name, value: @tour.name
+                = f.hidden_field :email, value: current_normal_user.try(:name)
+                = f.hidden_field :star, id: 'stars'
+                .row
+                  .small-12.columns
+                    .tour_rate
+                      = fa_icon "star", id: '1', data: { star_id: 1 }
+                      = fa_icon "star", id: '2', data: { star_id: 2 }
+                      = fa_icon "star", id: '3', data: { star_id: 3 }
+                      = fa_icon "star", id: '4', data: { star_id: 4 }
+                      = fa_icon "star", id: '5', data: { star_id: 5 }
+                .row.form-group
+                  .small-12.columns
+                    = f.text_area :review, placeholder: 'Please wirte a review here....',cols: 20, rows: 10
+                .row
+                  .small-12.columns
+                    button.review_btn.button.radius[type="submit"]
+                      = "WRITE A REVIEW"
+                    
+                
+      .reviews_footer
+        .row.full-width
+          .small-6.columns
+            - if @tour.ticket_price_cents != 0
+              .price.right
+                strong Price: 
+                span 
+                  = number_to_currency(@tour.ticket_price_cents, :precision => 0)
+            - elsif @tour.tuktuk_price.to_i != 0
+              .price.right
+                strong Price: 
+                span 
+                  = number_to_currency(@tour.tuktuk_price.to_i, :precision => 0)
+            - else
+              .price.right
+                strong Price:  
+                span
+                  = number_to_currency(@tour.car_price.to_i, :precision => 0)
+          .small-6.columns
+            .book.left
+              = link_to "BOOK NOW", "/book/#{@tour.id}/?vehicle_type=#{@vehicle_type}", class: "btn-book"
 
 / .container.trip_wrapper
 /   - if @tour.images.where(is_hero: true).any?

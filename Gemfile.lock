@@ -27,15 +27,6 @@ GIT
       rails (>= 3.0.0)
 
 GIT
-  remote: git://github.com/carrierwaveuploader/carrierwave.git
-  revision: b31f7ce006bade550be0ad946d0b993b799358e3
-  specs:
-    carrierwave (0.11.0)
-      activemodel (>= 4.0.0)
-      activesupport (>= 4.0.0)
-      mime-types (>= 1.16)
-
-GIT
   remote: https://github.com/galetahub/ckeditor.git
   revision: 11d3a5b905646c6fd397f7710f95fb9eb29f0865
   specs:
@@ -136,6 +127,10 @@ GEM
     capistrano-rvm (0.1.2)
       capistrano (~> 3.0)
       sshkit (~> 1.2)
+    carrierwave (1.0.0)
+      activemodel (>= 4.0.0)
+      activesupport (>= 4.0.0)
+      mime-types (>= 1.16)
     choice (0.2.0)
     chronic (0.10.2)
     climate_control (0.1.0)
@@ -650,7 +645,7 @@ DEPENDENCIES
   capistrano-passenger
   capistrano-rails (~> 1.1.1)
   capistrano-rvm
-  carrierwave!
+  carrierwave (~> 1.0)
   ckeditor!
   coffee-rails (~> 4.1.0)
   devise

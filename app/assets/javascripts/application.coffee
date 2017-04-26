@@ -25,6 +25,7 @@
 #= require namespace
 #= require util
 
+#= require welcome
 #= require tour_index
 #= require tour_show
 #= require purchase/purchase_new

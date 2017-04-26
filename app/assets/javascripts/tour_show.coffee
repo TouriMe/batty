@@ -7,6 +7,8 @@ Batty.ToursShow = do ->
     _heroUnitSlider()
     _tourContentSection()
     _tourLocation()
+    _acitveReviewBtn()
+    _tourRateBtn()
     # $modal = $('#fill-purchase-info-modal')
     # $eles = $('.book-tour-via-driver')
     # $eles.click( (evt)->
@@ -24,6 +26,24 @@ Batty.ToursShow = do ->
 
     #   $modal.foundation('reveal', 'open')
     # )
+
+  _tourRateBtn = ->
+    $('.tour_rate i').click ->
+      rate = parseInt($(@).attr('data-star-id'))
+      $('#stars').val(rate)
+      for i in [rate+1..5]
+        $(".tour_rate i##{i}").removeClass('rated')
+      for i in [1..rate]
+        $(".tour_rate i##{i}").addClass('rated')
+
+  _acitveReviewBtn = ->
+    $('.order_by_date_btn').click ->
+      $('.order_by_star_btn').removeClass('is_active')
+      $('.order_by_date_btn').addClass('is_active')
+
+    $('.order_by_star_btn').click ->
+      $('.order_by_date_btn').removeClass('is_active')
+      $('.order_by_star_btn').addClass('is_active')
 
   _tourLocation = () ->
     latlng = $('#map').data('latlng')

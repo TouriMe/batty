@@ -91,12 +91,12 @@
                 .small-2.columns
                   = f.label :email, class: 'right inline'
                 .small-9.columns
-                  = f.text_field :email, value: current_normal_user.try(:email)
+                  = f.email_field :email, value: current_normal_user.try(:email)
               .row.form-group
                 .small-2.columns
                   = f.label :email_confirmation, class: 'right inline'
                 .small-9.columns
-                  = f.text_field :email_confirmation, value: current_normal_user.try(:email)
+                  = f.email_field :email_confirmation, value: current_normal_user.try(:email)
               .row.form-group
                 .small-2.columns
                   = f.label :phone_number, 'Phone',class: 'right inline'
@@ -151,17 +151,17 @@
                         - if vehicle.name == "Remork/Tuk Tuk"
                           .remork_png
                             .round_img
-                              = image_tag 'avatar.jpg'
+                              = image_tag 'tuktuk.png'
                             p = "#{vehicle.name}" 
                         - else                        
                           .car_png
                             .round_img
-                              = image_tag 'avatar.jpg'
+                              = image_tag 'car_white.png'
                             p = "#{vehicle.name}"
                       - driver.cities.each do |city|
                         .location_png
                           .round_img
-                            = image_tag 'avatar.jpg'
+                            = image_tag 'location_white.png'
                           p = "#{city.name}"
                   .small-12.medium-4.columns
                     strong

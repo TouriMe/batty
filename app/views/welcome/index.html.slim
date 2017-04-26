@@ -33,25 +33,25 @@
               | Duration
   .homepage-content
     .more-info
-      .row
-        .small-12.medium-6.large-4.columns
-          = fa_icon 'binoculars 5x'
-          p
-            | Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-          a.custom-button[href='#']
-            | Learn More
-        .small-12.medium-6.large-4.columns
-          = fa_icon 'motorcycle 5x'
-          p
-            | Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-          a.custom-button[href='#']
-            | Learn More
-        .small-12.medium-6.large-4.columns
-          = fa_icon 'clock-o 5x'
-          p
-            | Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-          a.custom-button[href='#']
-            | Learn More
+      - @benefits.each_slice(3) do |benefits|
+        .row
+          .small-12.columns
+            - benefits.each do |benefit|
+              .benefit
+                .benefit_png
+                  = image_tag "#{benefit.image.square}"
+                p
+                  = truncate(benefit.description, length: 200)
+                a.custom-button.benefit_btn[href='javascript:void(0)' data-benefit-id="#{benefit.id}"]
+                  | Learn More
+        - benefits.each do |benefit|
+          .row.benefit_detail[id="#{benefit.id}" style="display:none;"]
+            .small-12.columns.text-left
+              h3
+                = benefit.title
+              p
+                = benefit.description 
+
     .feature-experiences
       h3
         | Featured Experiences

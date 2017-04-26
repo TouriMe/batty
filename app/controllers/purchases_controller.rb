@@ -10,8 +10,8 @@ class PurchasesController < ApplicationController
   def create
     @purchase = Purchase.new(ajax_params)
     @host = request.host
-    @purchase.save
     if @purchase.save
+      # binding.pry
       # render json: @
       OrderConfirmation.confirm(@purchase,@host).deliver_now
       redirect_to payment_success_path(purchaseid: @purchase)

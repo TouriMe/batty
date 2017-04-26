@@ -69,7 +69,7 @@ gem 'active_model_serializers'
 gem 'fog'
 gem 'rmagick'
 gem 'mini_magick'
-gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+gem 'carrierwave', '~> 1.0'
 
 ## EXTERNAL SERVICES ##
 gem 'braintree'

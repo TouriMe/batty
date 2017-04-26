@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources :comments, only: [:create, :update, :destroy]
   resources :articles, only: [:index, :show ]
   resources :blogs, only:[:index, :show ]
+  resources :reviews
 
   namespace :api do
     resources :drivers, defaults: {format: :json}

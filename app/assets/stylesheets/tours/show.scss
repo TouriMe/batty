@@ -92,22 +92,22 @@ body[id='tours-show'] {
 
   .showpage-content {
     .btn-book {
-        border: 2px solid white;
-        margin: 0 auto;
-        display: block;
-        background-color: #1ab399;
-        padding: 12px 15px;
-        color: white;
-        border-radius: 10px;
-        width: 180px;
-        font-size: 23px;
-        font-weight: 600;
-        text-align: center;
-        @media #{$phone} {
-          font-size: 16px;
-          width: 130px;
-        }
+      border: 2px solid white;
+      margin: 0 auto;
+      display: block;
+      background-color: #1ab399;
+      padding: 12px 15px;
+      color: white;
+      border-radius: 10px;
+      width: 180px;
+      font-size: 23px;
+      font-weight: 600;
+      text-align: center;
+      @media #{$phone} {
+        font-size: 16px;
+        width: 130px;
       }
+    }
 
     #highlights {
       background-color: white;
@@ -252,6 +252,72 @@ body[id='tours-show'] {
         font-weight: 600;
       }
       .location_footer {
+        background-color: #1ab399;
+        padding: 15px 0;
+        .price {
+          padding-top: 5px;
+          strong,
+          span {
+            color: white;
+            font-size: 30px;
+          }
+        }
+      }
+    }
+    #reviews {
+      background-color: white;
+      h3 {
+        margin-top: 3%;
+        color: #FFB400;
+        font-weight: 600; 
+      }
+      .stars {
+        padding: 10px;
+        i { color: #FFB400; font-size: 20px;}
+      }
+      .review_btn { background-color: #1ab399; }
+      .recent_reviews {
+        .order_by_date_btn { 
+          background-color: white;
+          color: #808080;
+          border: 1px solid #808080;
+        }
+        .order_by_date_btn.is_active {
+          border-color: #FFB400; 
+          color: #FFB400;
+        }
+      }
+      .star_reviews {
+        .order_by_star_btn {
+          background-color: white;
+          color: #808080;
+          border: 1px solid #808080; 
+        }
+        .order_by_star_btn.is_active {
+          border-color: #FFB400; 
+          color: #FFB400;
+        }
+      }
+      .user-profile-img {
+        width: 70px;
+        border-radius: 100%;
+        margin-bottom: 10px;
+      }
+      .tour_rate {
+        i {
+          color: grey;
+          font-size: 30px;
+          margin: 5px;
+          &:hover { cursor: pointer; } 
+        }
+        i.rated { color: #FFB400; }
+      }
+      textarea {
+        margin-top: 10px;
+        border: 1px solid #FFB400;
+        border-radius: 10px;
+      }
+      .reviews_footer {
         background-color: #1ab399;
         padding: 15px 0;
         .price {

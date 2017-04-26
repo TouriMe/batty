@@ -21,6 +21,8 @@ class ToursController < ApplicationController
     end
     @seotags = Seo.new(@tour.seo_tags)
     @drivers = @tour.available_drivers
+    @review = Review.new
+    @tour_purchased_records = Purchase.where(purchasable_id: @tour.id)
     # @tour_drivers = @tour.available_drivers.page(params[:page]).per(10)
   end
 

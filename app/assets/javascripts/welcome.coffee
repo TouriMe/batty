@@ -1,31 +1,30 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.coffee.
 # You can use CoffeeScript in this file: http://coffeescript.org/
-activityId = undefined
-$(document).ready ->
 
-  $('.scroll').click (event) ->
-    event.preventDefault()
-    $('html,body').animate { scrollTop: $(@hash).offset().top }, 1000
-    return
-  $(window).scroll ->
-    if $(this).scrollTop() < 100
-      $('.top-bar').fadeIn()
-    else
-      $('.top-bar').fadeOut()
-    return
+Batty.WelcomeIndex = do ->
+  _init = ->
+    _windowScroll()
+    _scrollToTopBtn()
+    _benefitDetail()
 
-  redirectToTourPage = (activityId, lengthId) ->
-    uri = '/tours?activity_id=' + activityId + '&length_id=' + lengthId
-    window.location.href = uri
-    return
+  _benefitDetail = ->
+    $('.benefit_btn').click ->
+      benefitId = $(@).attr('data-benefit-id')
+      $(".benefit_detail:not(##{benefitId})").hide()
+      $(".benefit_detail##{benefitId}").toggle()
 
-  $('.activity-link').click (e) ->
-    activityId = $(this).data('activity-id')
-    return
-  $('.length-link').click (e) ->
-    lengthId = $(this).data('length-id')
-    redirectToTourPage activityId, lengthId
-    return
-  return
+  _scrollToTopBtn = ->
+    $('.scroll').click (event) ->
+      event.preventDefault()
+      $('html,body').animate { scrollTop: $(@hash).offset().top }, 1000
+    
+  _windowScroll = ->  
+    $(window).scroll ->
+      if $(this).scrollTop() < 100
+        $('.top-bar').fadeIn()
+      else
+        $('.top-bar').fadeOut()
+
+  { init: _init }
 

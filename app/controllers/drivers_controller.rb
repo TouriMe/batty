@@ -10,7 +10,12 @@ class DriversController < ApplicationController
 
   def show
     @driver = Driver.friendly.find(params[:id])
+    @full_name = "#{@driver.first_name} #{@driver.last_name}"
     @seotags = Seo.new(@driver.seo_tags)
+    @review = Review.new
+    @review_by_date = Review.sort_by_date.where(review_type: 'driver', name: @full_name)
+    @review_by_stars = Review.sort_by_star.where(review_type: 'driver', name: @full_name)
+    @tour_purchased_records = Purchase.where(driver_id: @driver.id)
   end
 
   def find_drivers

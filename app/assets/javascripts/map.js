@@ -41,7 +41,10 @@ jQuery(function() {
         var lng = event.latLng.lng();
         var lat = event.latLng.lat();
         var latlng = lat + ',' + lng;
+        //Front End Purchase 
         $('#latlng').val(latlng);
+        //Back End New Tour
+        $('#tour_tour_location').val(latlng);
         requestAddress(latlng);
       });
     }

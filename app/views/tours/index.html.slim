@@ -1,0 +1,61 @@
+.container
+  .tourpage-header.full-width
+    .navbar.contain-to-grid.sticky
+      = render 'partials/topbar'
+    .header-content
+      .title
+        h1
+          | EXPERIENCES
+        h4.hide-for-small-only
+          | Experience Cambodia with the helps of the locals
+      .activites
+        h3
+          | Filter by activity:
+        .row
+          - @activities.each do |activity|
+            .small-6.medium-3.columns
+              = link_to "##{activity.activity_name.parameterize('')}" do
+                .activity-box
+              h5
+                = activity.activity_name
+          
+  .tourpage-content
+    - @activities.each do |activity|
+      .row[id='#{activity.activity_name.parameterize('')}']
+        h3
+          = activity.activity_name
+        .activity-type
+          .activity-type-filter.text-center#All
+            a.custom-button.is_active[data-tour-type='0' data-activity-type="#{activity.id}"]
+              | All
+          - activity.tours.each do |tour|
+            - if tour.tour_type.present?
+              .activity-type-filter.text-center[id='#{tour.tour_type.name.parameterize('')}']
+                a.custom-button[data-tour-type="#{tour.tour_type.id}" data-activity-type="#{activity.id}"]
+                  = tour.tour_type.name
+
+        .activity-tour
+          .row
+            - activity.tours.each do |tour|
+              .small-12.medium-6.large-4.columns
+                .card
+                  = link_to tour_path(tour.slug) do
+                    .card-image
+                      .card-tour-image
+                        = image_tag tour.card_img
+                        span.card-title.ellipsis
+                          = tour.name
+                        span.card-tour-price
+                          - if tour.ticket_price_cents != 0
+                            = number_to_currency(tour.ticket_price_cents, :precision => 0)
+                          - elsif tour.tuktuk_price.to_i != 0
+                            = number_to_currency(tour.tuktuk_price.to_i, :precision => 0)
+                          - else
+                            = number_to_currency(tour.car_price.to_i, :precision => 0)
+                  .card-action
+                    .rating
+                      = render 'partials/rating', rating: tour.rating > 0 ? tour.rating : 5 
+                    .review-num
+                      strong
+                        = pluralize(tour.comments.size, 'review')
+

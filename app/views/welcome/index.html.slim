@@ -1,73 +1,81 @@
 .container
   = render 'partials/bg_video'
-  .row.home
+  .homepage-header.full-width
+    .navbar.contain-to-grid.sticky
+      = render 'partials/topbar'
     .header-content
-      .tag-line
+      .title
         h1
           | WELCOME TO CAMBODIA
-        h3.hide-for-small-only
-          | Best travel experiences for independent travelers at the lowest price.
-        .line.hide-for-small-only
-    .row.home-page-content
-      .small-6.columns
-        .show-subject-button
-          = link_to '#activity', id: 'activity-button', class: 'scroll scroll-down' do
-            .show-subject-button-content
-              .logo-img
-                = image_tag 'hp_tours.png', class: 'logo hidden-for-small-only'
-                = image_tag 'hp_tours_white.png', class: 'logo show-for-small-only'
+        h4.hide-for-small-only
+          | Experience the best of Cambodia while helping and connecting with the locals
+      .exploration
+        h3
+          | Explore by:
+        .row
+          .small-6.medium-4.columns
+            = link_to tours_path do
+              .exploration-box
+                = fa_icon 'binoculars 4x'
+            h5
+              | Experience
+          .small-6.medium-4.columns
+            = link_to drivers_path do
+              .exploration-box
+                = fa_icon 'motorcycle 5x'
+            h5
+              | Host Driver
+          .small-6.medium-4.columns
+            = link_to '#' do
+              .exploration-box
+                = fa_icon 'clock-o 5x'
+            h5
+              | Duration
+  .homepage-content
+    .more-info
+      - @benefits.each_slice(3) do |benefits|
+        .row
+          .small-12.columns
+            - benefits.each do |benefit|
+              .benefit
+                .benefit_png
+                  = image_tag "#{benefit.image.square}"
+                p
+                  = truncate(benefit.description, length: 200)
+                a.custom-button.benefit_btn[href='javascript:void(0)' data-benefit-id="#{benefit.id}"]
+                  | Learn More
+        - benefits.each do |benefit|
+          .row.benefit_detail[id="#{benefit.id}" style="display:none;"]
+            .small-12.columns.text-left
               h3
-                | Experiences
-              p.hide-for-small-only
-                | Unique, authentic, and flexible experiences to travel like a local
-                br
-                = fa_icon 'chevron-down'
-      .small-6.columns
-        .show-subject-button
-          = link_to drivers_path do
-            .show-subject-button-content
-              .logo-img
-                = image_tag 'hp_drivers.png', class: 'logo hidden-for-small-only'
-                = image_tag 'hp_drivers_white.png', class: 'logo show-for-small-only'
-              h3
-                | Hosts
-              p.hide-for-small-only
-                | Trained and certified onsite hosts to offer premium service
-                br
-                = fa_icon ' chevron-down'
-  #activity-content.wow.pulse
-    .header-content
-      .tag-line
-        h1#activity
-          | ACTIVITIES
-        h3.hide-for-small-only
-          | Best travel experiences for independent travelers at the lowest price. Please choose your activities.
-        .line.hide-for-small-only
-    .row
-      - @activities.each do |activity|
-        .small-6.medium-4.large-3.columns
-          = link_to '#', class: 'activity-link', data:{"reveal-id": "length-modal", "activity_id": activity[:id]} do
-            .form-item.wow.fadeInUp.has-tip[data-tooltip aria-haspopup="true" title="#{activity.activity_name}"]
-              / = image_tag 'Activities-20-512.png', class: 'item-image'
-              .item-title
-                br
-                br
-                = activity[:activity_name]
-  #length-modal.tour-query-form.reveal-modal.medium[data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog"]
-    .modal-title.text-center
+                = benefit.title
+              p
+                = benefit.description 
+
+    .feature-experiences
+      h3
+        | Featured Experiences
       .row
-        .small-12.columns
-          h1
-            | Lengths
-    .modal-content
-      .row
-      - @lengths.each do |length|
-        .small-6.medium-4.large-3.columns
-          = link_to '#', class: 'length-link', data:{"length_id": length[:id]} do
-            .form-item.text-center
-              / = image_tag 'icon-clock.png', class: 'length-icon'
-              h5
-                = length[:length_title]
-    a.close-reveal-modal[aria-label="Close"]
-      | ×
+        - @feature_experiences.each do |experience|
+          .small-12.medium-6.large-4.columns
+            .card
+              = link_to tour_path(experience.slug) do
+                .card-image
+                  .card-tour-image
+                    = image_tag experience.card_img
+                    span.card-title.ellipsis
+                      = experience.name
+                    span.card-tour-price
+                      - if experience.ticket_price_cents != 0
+                        = number_to_currency(experience.ticket_price_cents, :precision => 0)
+                      - elsif experience.tuktuk_price.to_i != 0
+                        = number_to_currency(experience.tuktuk_price.to_i, :precision => 0)
+                      - else
+                        = number_to_currency(experience.car_price.to_i, :precision => 0)
+              .card-action
+                .rating
+                  = render 'partials/rating', rating: experience.rating > 0 ? experience.rating : 5 
+                .review-num
+                  strong
+                    = pluralize(experience.comments.size, 'review')
 

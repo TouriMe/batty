@@ -10,9 +10,9 @@ class PurchasesController < ApplicationController
   def create
     @purchase = Purchase.new(ajax_params)
     @host = request.host
-    @purchase.save
     if @purchase.save
-      # render json: @purchase
+      # binding.pry
+      # render json: @
       OrderConfirmation.confirm(@purchase,@host).deliver_now
       redirect_to payment_success_path(purchaseid: @purchase)
     else
@@ -24,10 +24,10 @@ class PurchasesController < ApplicationController
   # book the tour(:tour_id)
   # with driver (:driver_id) 
   def new
-    @driver = Driver.find_by_id params[:driver_id]
     @vehicle_type = params[:vehicle_type]
     @trip = Tour.friendly.find(params[:tour_id])
-    # @driver = Driver.friendly.find(params[:driver_id])
+    @drivers = @trip.available_drivers
+
     @transport_price = @trip.tuktuk_price.to_i
     if @transport_price == 0
       @transport_price = @trip.car_price.to_i
@@ -35,7 +35,7 @@ class PurchasesController < ApplicationController
     @ticket_price = @trip.ticket_price_cents
     @purchase = Purchase.new
     @no_show_title = true
-
+    
     ## Reference ID
     # todo \
     # format this to 5 chars

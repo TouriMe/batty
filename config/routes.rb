@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   get 'terms', to: 'welcome#terms'
   get 'privacy', to: 'welcome#privacy'
   get 'feedback', to: 'welcome#feedback'
-
   # @todo weird route, change to search or else
   post 'drivers', to: 'drivers#find_drivers'
 
@@ -20,14 +19,16 @@ Rails.application.routes.draw do
   resources :comments, only: [:create, :update, :destroy]
   resources :articles, only: [:index, :show ]
   resources :blogs, only:[:index, :show ]
+  resources :reviews, except: [:index, :show]
 
   namespace :api do
     resources :drivers, defaults: {format: :json}
+    resources :tours, defaults: {format: :json}, only: [:index]
   end
 
   # @todo messy routes, needs clean up
   get 'tour/:tour_id/drivers', to: 'tours#driver_selection', as: 'tour_driver'
-  get 'book/:tour_id/:driver_id', to: 'purchases#new'
+  get 'book/:tour_id', to: 'purchases#new'
   get 'checkout/:id', to: 'purchases#checkout'
   get 'payment_success', to: 'purchases#success'
   get 'booking/:reference_id', to: 'bookings#show'
@@ -36,4 +37,5 @@ Rails.application.routes.draw do
   devise_for :normal_users, controllers: { omniauth_callbacks: 'auth/omniauth' }
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+  get 'admin/reviews/:id/approved_review', to: 'admin/reviews#approved_review', as: 'approved_review'
 end

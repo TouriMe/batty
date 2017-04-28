@@ -2,54 +2,58 @@ ActiveAdmin.register Tour do
 
   controller do
     def permitted_params
-      tours = [ :name, :content, :image_url, :description, :slug, :important_info, :distance,:tuktuk_price,
-                :checkpoint_num, :duration, :down_payment, :down_payment_currency, :booking_fee,
-                :booking_fee_currency, :highlight_html, :include_html, :exclude_html, :tour_start, :tour_end,
-                :card_img, :ticket_price_cents, :car_price,:is_active, :video_url, :length_id, tour_drivers_attributes: [:id, :driver_id, :_destroy], 
-                images_attributes: [:id, :url, :alt_text, :is_hero, :_destroy], tour_activity_attributes: [:id, :activity_id, :_destroy] ]
-      params.require(:tour).permit(tours)
+      params.permit!
     end
+    # def permitted_params
+    #   tours = [ :name, :content, :image_url, :description, :slug, :schedule, :important_info, :distance,:tuktuk_price,
+    #             :checkpoint_num, :duration, :down_payment, :down_payment_currency, :booking_fee,
+    #             :booking_fee_currency, :highlight_html, :include_html, :exclude_html, :tour_start, :tour_end,
+    #             :card_img, :ticket_price_cents, :car_price,:is_active, :video_url, :length_id, tour_drivers_attributes: [:id, :driver_id, :_destroy], 
+    #             images_attributes: [:id, :url, :alt_text, :is_hero, :_destroy], tour_activity_attributes: [:id, :activity_id, :_destroy] ]
+    #   params.require(:tour).permit(tours)
+    # end
 
-    def check_params_driver_attributes
-      driver_attributes = []
-      params[:tour][:tour_drivers_attributes].map {|tda| driver_attributes << tda[1]['driver_id']}
-      # modifying nested_attributes(tour_drivers) when all_drivers scenario 
-      if driver_attributes.flatten.include?('')
-        params[:tour][:tour_drivers_attributes] = {}
-        Driver.all.each_with_index do |driver,index|
-          params[:tour][:tour_drivers_attributes][index.to_s] = {"driver_id"=> "#{driver.id}"}
-        end
-      end
-    end
+    # def check_params_driver_attributes
+    #   driver_attributes = []
+    #   params[:tour][:tour_drivers_attributes].map {|tda| driver_attributes << tda[1]['driver_id']}
+    #   # modifying nested_attributes(tour_drivers) when all_drivers scenario 
+    #   if driver_attributes.flatten.include?('')
+    #     params[:tour][:tour_drivers_attributes] = {}
+    #     Driver.all.each_with_index do |driver,index|
+    #       params[:tour][:tour_drivers_attributes][index.to_s] = {"driver_id"=> "#{driver.id}"}
+    #     end
+    #   end
+    # end
 
-    def new
-      @tour = Tour.new
-      @tour.tour_drivers.build
-    end
+    # def new
+    #   @tour = Tour.new
+    #   @tour.tour_drivers.build
+    # end
     
-    def create
-      drivers_array = []
+    # def create
+    #   drivers_array = []
 
-      check_params_driver_attributes
+    #   check_params_driver_attributes
 
-      @tour = Tour.new(permitted_params)
-      @tour.save
-      redirect_to admin_tour_path(@tour)
-    end
+    #   @tour = Tour.new(permitted_params)
+    #   @tour.save
+    #   redirect_to admin_tour_path(@tour)
+    # end
 
-    def update
-      driver_attributes = []
-      params[:tour][:tour_drivers_attributes].map {|tda| driver_attributes << tda[1]['driver_id']}
+    # def update
+    #   binding.pry
+    #   driver_attributes = []
+    #   params[:tour][:tour_drivers_attributes].map {|tda| driver_attributes << tda[1]['driver_id']}
       
-      check_params_driver_attributes
-      @tour = Tour.find(params[:id])
-      if driver_attributes.flatten.include?('')
-        @tour.tour_drivers.destroy_all
-      end
-      if @tour.update_attributes(permitted_params)
-        redirect_to admin_tour_path(@tour.id)
-      end
-    end
+    #   check_params_driver_attributes
+    #   @tour = Tour.find(params[:id])
+    #   if driver_attributes.flatten.include?('')
+    #     @tour.tour_drivers.destroy_all
+    #   end
+    #   if @tour.update_attributes(permitted_params)
+    #     redirect_to admin_tour_path(@tour.id)
+    #   end
+    # end
   end
 
   form do |f|
@@ -61,22 +65,48 @@ ActiveAdmin.register Tour do
       input :duration, hint: 'integer, for example: 4 hrs'
       input :checkpoint_num, hint: 'integer, number of checkpoints'
       input :content, as: :ckeditor
+      input :schedule, as: :ckeditor
       input :important_info, as: :ckeditor
       input :highlight_html, as: :ckeditor
       input :include_html, as: :ckeditor
       input :exclude_html, as: :ckeditor
       input :tour_start
       input :tour_end
+      input :tour_type
     end
 
-    f.inputs 'Drivers' do
-      f.has_many :tour_drivers, allow_destroy: true do |driver|
-        driver.input :driver_id, label: 'Select Drivers', as: :select, collection: (Driver.all.map{|d| [d.full_name, d.id]}), prompt: 'All Drivers' 
+    # f.inputs 'Drivers' do
+    #   f.has_many :tour_drivers, allow_destroy: true do |driver|
+    #     driver.input :driver_id, label: 'Select Drivers', as: :select, collection: (Driver.all.map{|d| [d.full_name, d.id]}), prompt: 'All Drivers' 
+    #   end
+    # end
+
+    # f.inputs 'length' do
+    #   f.input :length_id, as: :select, collection: (Length.all.map{|l| [l.length_title, l.id]}), prompt: 'Choose length'
+    # end
+    f.inputs 'Map' do
+      div class: 'row' do 
+        div class: 'map_input' do
+          input :tour_location, id: 'latlng'
+        end
+        div class: 'map_button' do
+          link_to 'Google Map', 'javascript:void(0)', id: 'btn_map'
+        end
       end
-    end
-
-    f.inputs 'length' do
-      f.input :length_id, as: :select, collection: (Length.all.map{|l| [l.length_title, l.id]}), prompt: 'Choose length'
+      div id: 'map_modal' do
+        div class: 'modal_content' do
+          div class: 'modal_header' do
+            div class: 'modal_title' do
+              h3 'Google Map'
+            end
+            div class: 'modal_close_btn' do
+              link_to "<i class='fa fa-close'></i>".html_safe, 'javascript:void(0)', id: 'close_map_btn'
+            end
+          end
+          div id: 'map' do
+          end
+        end
+      end
     end
 
     f.inputs 'Activities' do
@@ -131,6 +161,8 @@ ActiveAdmin.register Tour do
     attributes_table do
       row :name
       row :description
+      row(:activity) {tour.activity.map(&:activity_name).join ' , '}  
+      row :tour_type
       row(:tuktuk_price) { tour.tuktuk_price.to_s + ' ' + tour.tuktuk_price.currency }
       row(:car_price) { tour.car_price.to_s + ' ' + tour.car_price.currency }
       row :content

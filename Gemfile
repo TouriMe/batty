@@ -57,9 +57,9 @@ gem 'active_admin_editor', github: 'boontdustie/active_admin_editor'
 ## AUTHORIZATION ##
 gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
-gem 'omniauth'
-gem 'omniauth-facebook'
-gem 'omniauth-google-oauth2'
+gem 'omniauth', '~> 1.6', '~> 1.6.1'
+gem 'omniauth-facebook', '~> 4.0'
+gem 'omniauth-google-oauth2', '~> 0.4.1'
 
 ## SERIALIZER ##
 gem 'jbuilder', '~> 2.0'
@@ -69,7 +69,7 @@ gem 'active_model_serializers'
 gem 'fog'
 gem 'rmagick'
 gem 'mini_magick'
-gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+gem 'carrierwave', '~> 1.0'
 
 ## EXTERNAL SERVICES ##
 gem 'braintree'
@@ -107,6 +107,9 @@ group :development, :test do
   gem 'faker'
   gem 'pry-rails'
   gem 'pry-byebug'
+  gem 'whenever-test'
+  gem 'shoulda-whenever',     '~> 0.0.2'
+  gem 'shoulda-matchers', '~> 3.1'
 end
 
 ## TEST STACK ##
@@ -117,3 +120,5 @@ group :test do
   gem 'factory_girl_rails'
   gem 'test_after_commit', require: false
 end
+
+gem 'whenever', '~> 0.9.7', :require => false

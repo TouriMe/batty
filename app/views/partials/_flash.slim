@@ -1,6 +1,17 @@
 - if flash[:alert]
-  .alert-box.warning = flash[:alert]
+  .alert-box.alert.radius[data-alert]
+    = flash[:alert] 
+    a.close[href="#"]
+      = "&times;".html_safe
+
 - if flash[:notice]
-  .alert-box.success =flash[:notice]
+  .alert-box.success.radius[data-alert]
+  	= flash[:notice] 
+    a.close[href="#"]
+      = "&times;".html_safe
+
 - if flash[:error]
-  .alert-box.alert =flash[:error]
+  .alert-box.warning.radius[data-alert]
+  	= flash[:error] 
+    a.close[href="#"]
+      = "&times;".html_safe

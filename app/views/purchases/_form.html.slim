@@ -1,0 +1,484 @@
+.container
+  .purchasepage-header.full-width
+    .navbar.contain-to-grid.sticky
+      = render 'partials/topbar'
+    .purchase-tour-image[style="background-image:url(#{@trip.hero_unit_image.url});"]
+      .tour-title
+        h2
+          = @trip.name
+        .rating
+          = render 'partials/rating', rating: @trip.rating > 0 ? @trip.rating : 5
+  .purchasepage-content
+    = form_for( @purchase ,method: 'post') do |f|
+      .breadcrumbs-navigation.text-center.hide-for-small-only
+        ul#breadcrumbs.tabs[data-tab role='tablist']
+          li.is_active[role='presentation']
+            strong
+              | Provide Details
+          li[role='presentation']
+            strong.driver
+              | Choose a Host Driver
+          li[role='presentation']
+            strong.current.review
+              | Review Order
+      .tabs-content
+        section.content.active#detail[role='tabpanel' aria-hidden='false']
+          h3.text-center Booking Details
+          br
+          = f.hidden_field :purchasable_id, value: @trip.id
+          = f.hidden_field :purchasable_type, value: "Tour"
+          = f.hidden_field :price, id: "purchase_price"
+          = f.hidden_field :reference_id, value: @reference_id
+          = f.hidden_field :transport_price, value: @transport_price
+          = f.hidden_field :ticket_price, value: @ticket_price, id: 'tour_ticket_price'
+          = f.hidden_field :tuktuk_price, value: @trip.tuktuk_price, id: 'tour_tuktuk_price'
+          = f.hidden_field :car_price, value: @trip.car_price, id: 'tour_car_price'
+          = f.hidden_field :driver_id, id: 'selected_driver_id'
+          = f.hidden_field :vehicle_id, id: 'selected_vehicle_type'
+          = f.hidden_field :pickup_time, id: 'selected_pickup_time'
+
+          .row
+            .small-12.medium-8.columns
+              .row
+                .small-6.columns.text-center
+                  h5 Start Date
+                .small-6.columns.text-center
+                  h5 Pick Up Time
+              .row#pickup_datetime
+                .small-12.columns.text-center
+                  = f.text_field :start_date, id: 'datetimepicker'
+                  
+            .small-12.medium-4.columns
+              .row
+                .small-12.columns.text-center
+                  h5 No. of Travellers
+                  .form-group
+                    .travellers_number
+                      = f.number_field :traveller_number, min: 1, id: 'peopleQuanities', class: 'no-spin'
+                      a.decrease[href='javascript:void(0)']
+                        = fa_icon 'minus'
+                      a.increase[href='javascript:void(0)']
+                        = fa_icon 'plus'
+              br
+              .row
+                .small-12.columns.text-center
+                  h5 Pick Up Address
+                  .form-group
+                    = f.text_field :pickup, id: 'address'
+                    = f.hidden_field :latlng, id:"latlng" 
+                    = link_to 'Google Map', '#', data: {"reveal-id": 'gMap'}, class: 'button meduim radius success btn_map'
+                    #gMap.reveal-modal[ data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog"]
+                      .modal_header
+                        h3.text-center
+                          | Google Map
+                      #map
+                      = link_to "<i class='fa fa-close'></i>".html_safe, '#', class: "close-reveal-modal", aria: {"label": "Close"}
+          br
+          br
+          .row
+            .small-12.medium-8.columns[style='border-right:1px solid #FFBE5B;']
+              .row.form-group
+                .small-2.columns
+                  = f.label :first_name, class: 'right inline'
+                .small-9.columns
+                  = f.text_field :first_name, value: current_normal_user.try(:first_name)
+              .row.form-group
+                .small-2.columns
+                  = f.label :last_name, class: 'right inline'
+                .small-9.columns
+                  = f.text_field :last_name, value: current_normal_user.try(:last_name)
+              .row.form-group
+                .small-2.columns
+                  = f.label :email, class: 'right inline'
+                .small-9.columns
+                  = f.email_field :email, value: current_normal_user.try(:email)
+              .row.form-group
+                .small-2.columns
+                  = f.label :email_confirmation, class: 'right inline'
+                .small-9.columns
+                  = f.email_field :email_confirmation, value: current_normal_user.try(:email)
+              .row.form-group
+                .small-2.columns
+                  = f.label :phone_number, 'Phone',class: 'right inline'
+                .small-9.columns
+                  = f.text_field :phone_number
+                  
+            .small-12.medium-4.columns.text-center
+              h5 Quick Add
+              p Save time and pre-fill some of your detail. But don't worry, we won't post it to your timeline.
+              a.omniauth_fb[href="#{normal_user_omniauth_authorize_path(:facebook)}"]
+                .circle_icon
+                  = fa_icon 'facebook'
+                strong Connect with Facebook
+
+          .row.section-footer
+            .small-12.columns
+              = link_to tour_path(@trip), class: 'left' do
+                i.fa.fa-chevron-left
+                |  Back
+              ul.tabs[data-tab role='tablist'] 
+                li.right[role='presentation']
+                  a#next[href="#driver" role='tab' tabindex='0' aria-selected="true" aria-controls='driver']
+                    | Choose a Host Driver 
+                    = fa_icon "chevron-right"
+
+        section.content#driver[role='tabpanel' aria-hidden='false']
+          h3.text-center 
+            | These Host Drivers are recommended for the 
+            = @trip.name
+          - @drivers.each_slice(3) do |drivers|
+            .row
+              - drivers.each do |driver|
+                .small-12.medium-4.columns
+                  = render 'purchases/driver_selection', driver: driver
+                  .driver_details                
+                    .btn_driver_details[data-id="driver-#{driver.id}"] 
+                      | Learn More
+                  .driver_selected[data-driver-id="#{driver.id}" data-vehicle-id="3"]
+                    = link_to "select", "#"
+            - drivers.each do |driver|
+              .driver_info[id="driver-#{driver.id}"]
+                .row
+                  .small-12.medium-4.columns
+                    = image_tag driver.card_img
+                    .driver_review.clearfix
+                      span.rating.left
+                        = render 'partials/rating', rating: @trip.rating > 0 ? @trip.rating : 5
+                      span.review.right
+                        = pluralize(@trip.comments.size, 'review')
+                    .driver_pngs
+                      - driver.vehicles.each do |vehicle|
+                        - if vehicle.name == "Remork/Tuk Tuk"
+                          .remork_png
+                            .round_img
+                              = image_tag 'tuktuk.png'
+                            p = "#{vehicle.name}" 
+                        - else                        
+                          .car_png
+                            .round_img
+                              = image_tag 'car_white.png'
+                            p = "#{vehicle.name}"
+                      - driver.cities.each do |city|
+                        .location_png
+                          .round_img
+                            = image_tag 'location_white.png'
+                          p = "#{city.name}"
+                  .small-12.medium-4.columns
+                    strong
+                      = "#{driver.first_name}'s Story:"
+                    p
+                      = driver.description.html_safe
+                  .small-12.medium-4.columns
+                    .row
+                      .small-12.columns
+                        .driver_skill
+                          strong
+                            = "#{driver.first_name}'s Skill:"
+                          br
+                          br
+                          p
+                            = driver_skills(driver)
+                    br
+                    .row
+                      .small-12.columns
+                        .driver_gallery
+                          strong
+                            = "#{driver.first_name}'s Gallery:"
+                          br
+                          br
+                          .row
+                            - driver.images.each do |image|
+                              .small-6.medium-3.columns
+                                .driver_image[style="background-image:url(#{image.url});"]
+                    br
+                    .row
+                      - driver.vehicles.each do |vehicle|
+                        - if vehicle.name.downcase == "remork/tuk tuk"
+                          .small-12.columns
+                            .tuktuk_price.clearfix
+                              .price.left
+                                strong
+                                  = number_to_currency((@trip.tuktuk_price), :precision => 0)
+                              .driver_selected.right[data-driver-id="#{driver.id}" data-vehicle-id="#{vehicle.id}"]
+                                = link_to "select", "#"
+                        - if vehicle.name.downcase == "car"
+                          .small-12.columns
+                            .car_price.clearfix
+                              .price.left
+                                strong
+                                  = number_to_currency((@trip.car_price), :precision => 0)
+                              .driver_selected.right[data-driver-id="#{driver.id}" data-vehicle-id="#{vehicle.id}"]
+                                = link_to "select", "#"
+          .row
+            .small-12.columns
+              .no_selected_driver[data-vehicle-id="0"]
+                | I don't want a host driver.
+
+
+          .row.section-footer
+            .small-12.columns
+              ul.tabs[data-tab role='tablist']
+                li.left[role='presentation']
+                  a#back[href="#detail" role='tab' tabindex='0' aria-selected="true" aria-controls='detail']
+                    = fa_icon "chevron-left"
+                    |  back
+                li.right[role='presentation']
+                  a#next[href="#review" role='tab' tabindex='0' aria-selected="true" aria-controls='review']
+                    | Review Order 
+                    = fa_icon "chevron-right"
+        section.content#review[role='tabpanel' aria-hidden='false']
+          .tour_detail.text-center
+            h3.tour_name = @trip.name
+            h3.start_date
+            h3.duration = "#{@trip.tour_start} to #{@trip.tour_end}"
+          br
+          .row
+            .small-6.columns
+              .customer_detail.text-right
+                h4.ticket
+                h4.transportation
+                h4.total TOTAL
+            .small-6.columns[style="border-left: 2px solid grey;"]
+              .customer_expense.text-left
+                h4.ticket_price
+                h4.transportation_price
+                h4.total_price
+          br
+          .row
+            .small-12.columns.text-center
+              strong
+                | The total amount is payable, Cash on Delivery, when you arrive.
+              br
+              strong
+                | (note, payment confirmation through QR code may change this process)
+          br
+          .row
+            .small-12.columns.text-center
+              = link_to "Show terms and conditions", "/terms", target: '_blank', class: "terms"
+          .row.section-footer
+            .small-12.columns.clearfix
+              ul.tabs[data-tab role='tablist']
+                li[role='presentation']
+                  a#back[href="#driver" role='tab' tabindex='0' aria-selected="true" aria-controls='driver']
+                    = fa_icon "chevron-left"
+                    |  back
+              button#btn_book.right[type="submit"]
+                = "Confirm & Book "
+                = fa_icon "chevron-right"
+                
+            
+//     / .payment_wrapper.row
+//     /   .form_wrapper.small-12.large-8.columns
+// / <div class="payment_wrapper row">
+
+// /   <div class="form_wrapper large-8 small-12 columns">
+
+// /     <%= form_for(@purchase, url: {action: "create"}, html: {id: "payment_details"}) do |f| %>
+// /         <div id="payment_detail">
+// /           <div class="header">
+// /             <label><h3>Booking Details</h3></label>
+// /           </div>
+
+// /           <%= f.hidden_field :purchasable_id, value: @trip.id %>
+// /           <%= f.hidden_field :purchasable_type, value: "Tour" %>
+
+// /           <%= f.hidden_field :price, value: @price %>
+// /           <%= f.hidden_field :reference_id, value: @reference_id %>
+
+// /           <%= f.hidden_field :transport_price, value: @transport_price %>
+// /           <%= f.hidden_field :ticket_price, value: @ticket_price %>
+
+// /           <div class="row">
+// /             <div class="form-group small-12 medium-6 columns">
+// /               <%= f.label :start_date, "Start Date" %>
+// /               <%= f.text_field :start_date, id: "startdate", :required => "", placeholder: 'Please enter Start Date' %>
+// /             </div>
+
+// /             <div class="form-group small-12 medium-6 columns">
+// /               <%= f.label :traveller_number, "No. of Travellers" %>
+// /               <%= f.select :traveller_number, [['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5], ['6', 6], ['7', 7], ['8', 8]], {}, \
+// /                {:onChange => 'updatePrice(this);'} %>
+// /             </div>
+
+// /             <div class="form-group small-12 medium-6 columns">
+// /               <%= f.label :pickup_time, "Pick Up Time" %>
+// /               <%= f.text_field :pickup_time, id: "pickuptime", :required => "", placeholder: 'Please enter Pick Up Time ( eg:8am )' %>
+// /             </div>
+
+// /             <div class="form-group small-12 medium-6 columns">
+// /               <%= f.label :driver_id,"Selected Driver" %>
+// /               <%= f.text_field :driver_name,value: @driver.full_name, id: "driver_name", readonly: true%>
+// /               <%= f.hidden_field :driver_id, value: @driver.id, id:"driver_id" %>
+// /             </div>
+
+// /             <div class="form-group small-12 medium-6 columns">
+// /               <%= f.label :address_id, "Pick Up Address" %>
+// /               <!--<%= f.collection_select(:address_id, Address.all, :id, :name, {:prompt => 'Please select Pickup Address', :selected => @purchase.address_id}) %>-->
+// /               <%= f.text_field :pickup, id: "address_id", :required => "", placeholder: 'Please enter Pick Up Address', id:'address' %> 
+// /               <%= f.hidden_field :latlng, value: @latlng, id:"latlng" %>
+// /               <%= link_to 'Google Map', '#', data: {"reveal-id": 'gMap'}, class: 'button tiny radius success', onclick: 'initMap()' %>
+// /               <div id="gMap", class="reveal-modal", data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+// /                 <div class="modal_header">
+// /                   <h3 class="text-center">Google Map</h3>
+// /                 </div>
+// /                 <div id="map"></div>
+// /                 <%= link_to "<i class='fa fa-close'></i>".html_safe, '#', class:"close-reveal-modal", 'aria-label':"Close" %>
+// /               </div>
+// /             </div>
+
+            
+
+
+// /           </div>
+
+// /           <div class="header">
+// /             <label><h3>Traveller Details</h3></label>
+// /           </div>
+// /           <div class="row">
+// /             <div class="form-group small-12 medium-6 columns">
+// /               <%= f.label :first_name, "First Name" %>
+// /               <%= f.text_field :first_name, :required => "", placeholder: 'Please enter First Name' %>
+// /             </div>
+
+// /             <div class="form-group small-12 medium-6 columns">
+// /               <%= f.label :last_name, "Last Name" %>
+// /               <%= f.text_field :last_name, :required => "", placeholder: 'Please enter Last Name' %>
+// /             </div>
+// /             <!--<div class="form-group small-12 medium-6 columns">-->
+// /             <!--<%= f.label :passport_number, "Passport Number" %>-->
+// /             <!--<%= f.text_field :passport_number, :required => "", placeholder: 'Please enter Passport Number' %>-->
+// /             <!--</div>-->
+// /             <div class="form-group small-12 medium-6 columns">
+// /               <%= f.label :nationality, "Nationality" %>
+// /               <%= f.text_field :nationality, :required => "", placeholder: 'Please enter Nationality' %>
+// /             </div>
+
+// /             <div class="form-group small-12 medium-6 columns">
+// /               <%= f.label :email, "Email" %>
+// /               <%= f.email_field :email, :required => "", placeholder: 'Please enter Email' %>
+// /             </div>
+
+// /             <!--<div class="form-group small-12 medium-6 columns">-->
+// /             <!--<%= f.label :email_confirmation, "Confirm Your Email" %>-->
+// /             <!--<%= f.email_field :email_confirmation, :required => "", placeholder: 'Please confirm Your Email' %>-->
+// /             <!--</div>-->
+
+// /             <div class="form-group columns">
+// /               <%= f.label :phone_number, "Phone Number", class: 'phone-label' %>
+// /               <%= f.text_field :country_code, id: "country_code", placeholder: '+country code' %>
+// /               <%= f.text_field :phone_number, id: "phone_number", placeholder: 'Phone number' %>
+// /             </div>
+
+// /             <div class="form-group small-12 columns">
+// /               <%= f.label :comments, "Your Comment" %>
+// /               <%= f.text_area :comments %>
+// /             </div>
+
+// /             <div class="form-group small-12 columns">
+// /               <%= f.submit("Confirm Booking", id: "bt_charge") %>
+// /             </div>
+
+// /           </div>
+// /         </div>
+// /     <% end %>
+
+// /     <br/>
+// /   </div>
+
+// /   <div class="large-4 payment_info small-12 columns">
+// /     <div class="box_wrapper">
+// /       <header id="info_top">
+// /         <h4><%= @trip.name %></h4>
+// /         <section id="bill_info">
+// /           <table class="table">
+// /             <tbody>
+// /             <% if @trip.ticket_price_cents > 0 %>
+// /                 <tr>
+// /                   <td>Ticket Price</td>
+// /                   <td class="charge"><%= number_to_currency(@ticket_price, :precision => 0) %>
+// /                     (USD) &nbsp; X &nbsp; <strong><span id="tourist_no">1</span></strong></td>
+// /                 </tr>
+// /             <% end %>
+
+// /             <%
+// /               if @trip.tuktuk_price > 0
+// /             %>
+// /                 <tr>
+// /                   <td>Transport (Tuk Tuk)</td>
+// /                   <td class="charge"><%= number_to_currency(@transport_price, :precision => 0) %>
+// /                     (USD) &nbsp; X &nbsp;<strong><span id="vehicle_no">1</span></strong></td>
+// /                 </tr>
+// /             <%
+// /               elsif @trip.car_price > 0
+// /             %>
+// /                 <tr>
+// /                   <td>Transport (Car)</td>
+// /                   <td class="charge"><%= number_to_currency(@transport_price, :precision => 0) %>
+// /                     (USD) &nbsp; X &nbsp;<strong><span id="vehicle_no">1</span></strong></td>
+// /                 </tr>
+// /             <%
+// /               else
+// /             %>
+// /                 <tr>
+// /                   <td colspan="2">Transportation included</td>
+// /                 </tr>
+// /             <%
+// /               end
+// /             %>
+
+
+// /             </tbody>
+// /           </table>
+// /           <h2>Total <span id="total_charge"><%= @online_pay %></span> $</h2>
+// /           <p class="meta_info">
+// /             The total amount of $<strong><span id="total_charge_small"><%= @online_pay %></span></strong> (USD) is
+// /             payable
+// /             when you arrive. </p>
+// /         </section>
+// /       </header>
+// /     </div>
+
+// /   </div>
+
+// / </div>
+
+// / <script type="text/javascript">
+// /   var firstInit = false;
+// /   function initMap(){
+// /     if(!firstInit){
+// /       setTimeout(function(){
+// /         MapUI._init("map", "13.3671", "103.8448");
+// /       }, 1000);
+// /       firstInit = true
+// /     }
+// /   }
+
+// /   function updatePrice(sel) {
+// /     var trav_no = sel.value;
+// /     if (document.getElementById('tourist_no') != undefined)
+// /       document.getElementById('tourist_no').innerHTML = trav_no;
+// /     if (document.getElementById('vehicle_no') != undefined)
+// /       document.getElementById('vehicle_no').innerHTML = '1';
+
+// /     var tran_price = document.getElementById('purchase_transport_price').value;
+// /     var tick_price = document.getElementById('purchase_ticket_price').value;
+
+// /     var tota_price;
+// /     if (tick_price != undefined && tick_price > 0)
+// /       tota_price = parseInt(tick_price * trav_no) + parseInt(tran_price);
+// /     else
+// /       tota_price = parseInt(tran_price);
+
+// /     if (trav_no > 4 && tran_price != undefined && tran_price > 0) {
+// /       document.getElementById('vehicle_no').innerHTML = '2';
+// /       tota_price = parseInt(tota_price) + parseInt(tran_price);
+// /     }
+
+// /     document.getElementById('total_charge').innerHTML = tota_price;
+// /     document.getElementById('total_charge_small').innerHTML = tota_price;
+// /     document.getElementById('purchase_price').value = tota_price;
+// /   }
+// / </script>
+
+
+

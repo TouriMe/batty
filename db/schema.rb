@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20170316083105) do
+=======
+ActiveRecord::Schema.define(version: 20170427045554) do
+>>>>>>> new-design
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +60,14 @@ ActiveRecord::Schema.define(version: 20170316083105) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "slug"
+  end
+
+  create_table "benefits", force: :cascade do |t|
+    t.string   "description"
+    t.string   "image"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "title"
   end
 
   create_table "blogs", force: :cascade do |t|
@@ -204,12 +216,6 @@ ActiveRecord::Schema.define(version: 20170316083105) do
     t.boolean  "is_hero",       default: false
   end
 
-  create_table "lengths", force: :cascade do |t|
-    t.string   "length_title"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
-
   create_table "purchases", force: :cascade do |t|
     t.integer  "purchasable_id"
     t.string   "purchasable_type"
@@ -240,6 +246,18 @@ ActiveRecord::Schema.define(version: 20170316083105) do
     t.string   "nationality"
     t.string   "vehicle_type"
     t.string   "latlng"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.string   "name"
+    t.text     "review"
+    t.integer  "star",          default: 0
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.string   "review_type"
+    t.string   "email"
+    t.boolean  "approve",       default: false
+    t.string   "customer_name"
   end
 
   create_table "seos", force: :cascade do |t|
@@ -289,9 +307,9 @@ ActiveRecord::Schema.define(version: 20170316083105) do
     t.string   "description"
     t.string   "slug"
     t.text     "important_info"
+    t.decimal  "rating"
     t.integer  "car_price_cents",       default: 0,     null: false
     t.string   "car_price_currency",    default: "USD", null: false
-    t.decimal  "rating"
     t.integer  "distance"
     t.integer  "checkpoint_num"
     t.string   "duration"
@@ -310,10 +328,18 @@ ActiveRecord::Schema.define(version: 20170316083105) do
     t.integer  "ticket_price_cents",    default: 0,     null: false
     t.string   "ticket_price_currency", default: "USD", null: false
     t.integer  "tour_type_id"
+<<<<<<< HEAD
     t.integer  "length_id"
   end
 
   add_index "tours", ["length_id"], name: "index_tours_on_length_id", using: :btree
+=======
+    t.string   "feature_tour",          default: "no"
+    t.text     "schedule"
+    t.string   "tour_location"
+  end
+
+>>>>>>> new-design
   add_index "tours", ["tour_type_id"], name: "index_tours_on_tour_type_id", using: :btree
 
   create_table "users", force: :cascade do |t|
@@ -335,6 +361,8 @@ ActiveRecord::Schema.define(version: 20170316083105) do
     t.string   "name"
     t.string   "image"
     t.boolean  "internal_user",          default: false
+    t.string   "first_name"
+    t.string   "last_name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -355,6 +383,9 @@ ActiveRecord::Schema.define(version: 20170316083105) do
   add_foreign_key "tour_activities", "tours"
   add_foreign_key "tour_drivers", "drivers"
   add_foreign_key "tour_drivers", "tours"
+<<<<<<< HEAD
   add_foreign_key "tours", "lengths"
+=======
+>>>>>>> new-design
   add_foreign_key "tours", "tour_types"
 end

@@ -5,493 +5,830 @@ body[id='tours-show'] {
     display: none;
   }
 
-.trip_wrapper {
-  background: #F5F5F5;
-  margin-top: -70px;
-  .trip-cover-img {
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 50% 50%;
-    background-color: #f5f5f5;
-    min-height: 220px;
-  }
-
-  .clearing-container {
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .trip_head_wrapper {
-    max-width: 100%;
-    background: #FFFFFF;
-    #trip_header {
-      display: inline-flex;
-      width: 100%;
-      padding-top: 0px;
-
-      @media #{$media-pad-smaller}{
-        display: block;
+  .showpage-header {
+    .navbar {
+      position: absolute;
+      z-index: 1;
+      float: left;
+    }
+    .tour-images {
+      position: relative;
+      .trip-cover-img {
+        height: 70vh;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 50% 50%;
       }
-
-      .trip_top_head {
-        padding-top: 20px;
-
-        .trip-title {
-          @media #{$media-pad-smaller}{
-            text-align: center;
-          }
-          display: block;
-
-          h1 {
-            font-weight: 500;
-            font-size: 1.6rem;
-            margin-bottom: 0;
-          }
-          .rating {
-            color: #FFB400;
-            font-size: 1.25rem;
-          }
-        }
-        .meta_head {
-          margin-top: 20px;
-          @media #{$media-pad-smaller}{
-            margin-top: 10px;
-          }
-          .meta_block {
-            display: inline-block;
-            .trip-logo, .distance-logo {
-              margin: 10px;
-              font-size: 1.2rem;
-              @media #{$media-pad-smaller}{
-                margin: 0 10px;
-              }
-            }
-
-            p {
-              float: right;
-              font-size: 0.85rem;
-              margin-right: 30px;
-              text-align: center;
-              margin-bottom: 0;
-
-              .block {
-                display: block;
-                font-weight: 500;
-                font-size: 1.2rem;
-              }
-
-              span.checkpoints, span.meta {
-                text-align: left;
-              }
-            }
-
-            @media #{$media-pad-smaller}{
-              width: 32%;
-              margin-top: 0;
-              text-align: center;
-              p {
-                margin-right: 10px;
-                float: none;
-              }
-
-            }
-
-          }
-        }
-      }
-
-      .trip_top_info {
-        border-left: 1px solid #979797;
+      .tour-description{
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 30%;
         h1 {
-          @media #{$media-pad-smaller}{
-            margin: 0;
-          }
-          margin: 10px 0 0 0;
-          text-align: center;
+          color: white;
+          font-weight: 600;
         }
-        .meta_func {
-          display: block;
-          text-align: center;
-          margin: auto;
-          width: 80%;
-          padding-bottom: 10px;
-
-          a {
-            display: block;
-            width: 90%;
-            margin: auto;
-            padding: 10px 5px;
-            text-transform: uppercase;
-            padding: 10px 10px;
+        span.rating {
+          color: #FFB400;
+        }
+        .tour-detail {
+          padding: 15px 0;
+          width: 700px;
+          margin: 0 auto;
+          .detail {
+            margin: 0 auto;
+            .detail-box {
+              display: inline-block;
+              width: 60px;
+              height: 60px;
+              border-radius: 50%;
+              background-color: white;
+              img {
+                height: 42px;
+                margin-top: 8px;
+              }
+            }
+            .detail-text {
+              vertical-align: -8px;
+              display: inline-block;
+              margin-left: 10px;
+              h5 {
+                color: white;
+                font-weight: 600;
+              }
+            }
           }
-
-          a.trip_book_now {
-            color: #FFFFFF;
-            background: #323232;
-            border-radius: 5px;
-            margin: 10px;
-            border: 1px solid #323232;
+          @media #{$tablet} {
+            width: 600px;
           }
-
-          a.share {
-            color: #464646;
-            border: 1px solid #979797;
-            border-radius: 5px;
+          @media #{$phone} {
+            width: 300px;
           }
         }
-      }
-
-    }
-
-    .tabs dd > a, .tabs .tab-title > a {
-      outline: none;
-      margin-top: 30px;
-      @media #{$media-pad-smaller}{
-        margin: 1px;
-      }
-
-    }
-    .tab-title {
-      padding: 0;
-      text-align: center;
-      margin-top: 12px;
-      @media #{$media-pad-smaller}{
-        margin-top: 0;
-      }
-      a {
-        margin: 0 1px;
-        padding-top: 6px;
-        padding-bottom: 6px;
-      }
-
-    }
-
-    .active {
-      margin-top: 0;
-      a {
-        border-top: 2px solid #FFB400;
-        padding-top: 12px;
-        padding-bottom: 12px;
-        @media #{$media-pad-smaller}{
-          border-top: none;
-          padding-top: 6px;
-          padding-bottom: 6px;
+        @media #{$phone} {
+          h1 {
+            font-size:  25px;
+          }
         }
       }
     }
-
-    .tour-video-container {
-      max-width: 800px;
-      max-height: 600px;
-      margin: auto;
-      padding: 0 10px;
-    }
-
   }
 
-  .tab-content-container {
+  .showpage-navbar {
+    background-color: #f0f1f1;
+    padding-top: 7px;
 
-    .plus-icon {
-      background-color: #FFB400;
-      text-align: center;
-      padding: 0 6px;
-      border-radius: 100%;
-      color: white;
-      font-size: 18px;
-      margin-right: 10px;
-    }
-    .minus-icon {
-      @extend .plus-icon;
-      padding: 0 9px;
-      background-color: #222;
-    }
-
-    .include {
-      > h5 {
+    .tour-detail-navbar {
+      a {
+        text-align: center;
+        display: inline-block;
+        padding: 10px 15px;
         color: #FFB400;
+        font-size: 17px;
+        font-weight: 600;
       }
-
-    }
-
-    ul {
-      margin-left: 40px;
-    }
-
+    }    
   }
 
-  .trip_detail_wrapper {
+  .showpage-content {
+    .btn-book {
+      border: 2px solid white;
+      margin: 0 auto;
+      display: block;
+      background-color: #1ab399;
+      padding: 12px 15px;
+      color: white;
+      border-radius: 10px;
+      width: 180px;
+      font-size: 23px;
+      font-weight: 600;
+      text-align: center;
+      @media #{$phone} {
+        font-size: 16px;
+        width: 130px;
+      }
+    }
 
-    #trip_sidebar {
-      border-left: 1px solid #979797;
-      padding-top: 35px;
+    #highlights {
+      background-color: white;
+      padding: 15px 0;
       h3 {
-        font-size: 1.25rem;
-        font-weight: 500;
-        color: #464646;
-      }
-    }
-
-    #detail-content {
-      .header {
-        font-size: 1.3rem;
-        font-family: 'Nunito', sans-serif;
+        margin-top: 3%;
         color: #FFB400;
-        margin: 20px 0;
-        @media #{$media-pad-smaller}{
-          margin: 10px 0;
+        font-weight: 600; 
+      }
+      p {
+        color: grey;
+      }
+      strong {
+        h4 {
+          font-weight: 600;
+          font-size: 30px;
+          color: grey;
+          margin-top: 5%;
         }
       }
+    }
+    #description {
+      background-color: #f8f8f8;
+      padding: 15px 0;
+      h3 {
+        color: #FFB400;
+        margin-top: 3%;
+        font-weight: 600;
+      }
+      p {
+        color: grey;
+      }
+    }
+    #inclusions {
+      background-color: white;
+      padding: 15px 0;
+      .include,
+      .exclude {
+        .include-title,
+        .exclude-title {
+          width: 300px;
+          display: flex;
+          align-items: center;
+          margin: 0 auto;
+          i {
+            color: #FFB400;
+          }
+          span {
+            margin-left: 25px;
+            color: #FFB400;
+            font-size: 25px;
+            font-weight: 600;
+          }
 
-      @media #{$media-pad-smaller}{
-        .highlight, .include-exclude, .tour-start-end {
-          text-align: center;
-          ol, ul {
-            text-align: left;
+        }
+        .exclude-title {
+          i, span {
+            color: grey;
           }
         }
       }
-
-      .trip-label {
-        @media #{$media-pad-smaller}{
-          text-align: center;
-        }
+      p {
+        color: grey;
+      }
+    }
+    #schedule_gallery {
+      background-color: #f8f8f8;
+      .schedule {
+        padding: 10px 0;
         h3 {
-          font-size: 1.5rem;
-          font-weight: 500;
-          color: #464646;
-          margin-left: 15px;
+          color: #FFB400;
+          font-weight: 600;
         }
-
-      }
-      .trip_content {
-        margin: 5px 10px;
-        color: #464646;
-        font-size: 0.93rem;
-        font-weight: 300;
-        line-height: 22px;
-        font-family: 'Nunito', sans-serif;
-        padding-bottom: 30px;
-      }
-      .price {
-        margin: 20px 0;
-        color: green;
-      }
-
-      .driver-container {
-        .content_head {
-          font-size: 1.2rem;
-          font-weight: 500;
-          margin-left: 20px;
+        p {
+          font-weight: 600;
+          color: grey;
         }
-
-        #driver_wrapper {
-          border-bottom: 1px solid grey;
+        span {
+          color: grey;
         }
-        .tour-driver {
-          border-top: 1px solid grey;
-          margin: 0;
-          font-family: 'Muli', sans-serif;
-          a {
-            color: black;
-          }
-          .profile-avatar {
-
-            .avatar-container {
-              width: 80px;
-              height: 80px;
-              margin: 10px 0;
-              @media #{$media-pad-smaller}{
-                margin: 10px auto 0 auto;
-              }
-              .avatar-image {
-                border-radius: 50rem;
-                border: 2px solid white;
-                width: 100%;
-              }
-
-            }
-          }
-
-          .rating-review {
-            @media #{$media-pad-smaller}{
-              text-align: center;
-              margin: 8px 0 0 0;
-            }
-
-            text-align: left;
-            padding-right: 20px;
-            font-weight: 500;
-            margin: 18px 0;
-            color: black;
-
-            .rating {
-              color: #FFB400
-            }
-
-            .comment {
-
-            }
-          }
-
-          .vehicles {
-
-            @media #{$media-pad-smaller}{
-              line-height: 30px;
-            }
-
-            @media #{$media-pad-larger}{
-              line-height: 60px;
-              margin: 13px 0;
-            }
-
-            margin: 0px;
-            padding: 0px;
-            .vehicle {
-              margin: 0;
-              .vehicle-detail {
-
-                @media #{$media-pad-larger}{
-                  display: inline-flex;
-
-                }
-
-                .icon-container {
-                  width: 50px;
-                  margin: 10px 5px;
-                  @media #{$media-pad-smaller}{
-                    margin-left: auto;
-                    margin-right: auto;
-                    margin-bottom: 5px;
-                  }
-
-                }
-
-                .vehicle-name {
-                  line-height: 84px;
-                  margin-left: 10px;
-                  @media #{$media-pad-smaller}{
-                    line-height: 22px;
-                    text-align: center;
-                  }
-
-                }
-              }
-
-            }
-
-          }
-
-          .price {
-            font-weight: 700;
-            color: black;
-            @media #{$media-pad-smaller}{
-              line-height: 60px;
-              padding: 0;
-              text-align: left;
-            }
-
-            @media #{$media-pad-larger}{
-              line-height: 32px;
-              padding: 6px 0;
-              text-align: right;
-            }
-          }
-          .book-btn {
-            margin: 25px 0;
-
-            .btn-book {
-              float: right;
-              background-color: black;
-              color: white;
-              padding: 2px 15px;
-              font-size: 0.75rem;
-              font-weight: 400;
-              line-height: 29px;
-            }
-
-            @media #{$media-pad-smaller}{
-              padding: 0;
-              .btn-book {
-                margin-top: 10px;
-                float: left;
-              }
-            }
+      } 
+      .gallery {
+        .tour-image {
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: center;
+        }
+        .orbit-container {
+          .orbit-bullets-container {
+            display: none;
           }
         }
       }
-
+      .schedule_gallery_footer {
+        background-color: #1ab399;
+        padding: 15px 0;
+        .price {
+          padding-top: 5px;
+          strong,
+          span {
+            color: white;
+            font-size: 30px;
+          }
+        }
+      }
     }
-  }
-}
-
-.rhs {
-  #payment-form {
-    border: 1px solid;
-    backgroud-color: white;
-    position: fixed;
-    width: 235px;
-    padding: 30px 10px;
-    background-color: wheat;
-  }
-}
-
-.billing-info {
-  max-width: 700px !important;
-  padding: 30px !important;
-  .divider {
-    margin-top: 10px;
-    border-top: 1px solid #C8C8C8;
-  }
-
-  .booking_label {
-    margin-right: 30px;
-  }
-
-  .bill-label {
-    line-height: 37px;
-  }
-
-  .pic-section {
-    width: 200px;
-    height: 120px;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 6px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 50% 50%;
-    background-color: #f5f5f5;
-    .avatar {
-
-    }
-  }
-
-  .price-section {
-    margin: 10px 0;
-    font-size: 1.37rem;
-    font-weight: 700;
-    text-align: center;
-    .price {
-      font-size: 2.25rem;
-    }
-  }
-
-  .pay-lah {
-    width: 120px;
-    margin-left: auto;
-    margin-right: auto;
-    .pay-btn {
-      background-color: black;
-      width: 120px;
+    #important {
+      background-color: #f9af40;
       color: white;
-      font-size: 1.12rem;
-      line-height: 32px;
-      border: none;
-      border-radius: 3px;
+      padding: 10px 0;
+      h3 {
+        color: white;
+        font-weight: 600;
+        padding: 10px 0;
+      }
+    }
+    #host {
+      background-color: white;
+      padding: 10px 0;
+      .driver-image {
+        width: 400px;
+      }
+      .driver-detail {
+        padding: 0 10px;
+        h3 {
+          font-weight: 600;
+          color: #FFB400;
+        }
+        p,
+        strong {
+          color: grey;
+        }
+      }
+      .orbit-prev span { border-right-color:black; }
+      .orbit-next span { border-left-color:black; }
+    }
+    #location {
+      background-color: #f8f8f8;
+      h3 {
+        color: #FFB400;
+        text-align: center;
+        font-weight: 600;
+      }
+      .location_footer {
+        background-color: #1ab399;
+        padding: 15px 0;
+        .price {
+          padding-top: 5px;
+          strong,
+          span {
+            color: white;
+            font-size: 30px;
+          }
+        }
+      }
+    }
+    #reviews {
+      background-color: white;
+      h3 {
+        margin-top: 3%;
+        color: #FFB400;
+        font-weight: 600; 
+      }
+      .stars {
+        padding: 10px;
+        i { color: #FFB400; font-size: 20px;}
+      }
+      .review_btn { background-color: #1ab399; }
+      .recent_reviews {
+        .order_by_date_btn { 
+          background-color: white;
+          color: #808080;
+          border: 1px solid #808080;
+        }
+        .order_by_date_btn.is_active {
+          border-color: #FFB400; 
+          color: #FFB400;
+        }
+      }
+      .star_reviews {
+        .order_by_star_btn {
+          background-color: white;
+          color: #808080;
+          border: 1px solid #808080; 
+        }
+        .order_by_star_btn.is_active {
+          border-color: #FFB400; 
+          color: #FFB400;
+        }
+      }
+      .display_reviews {
+        i {
+          color: #FFB400;
+        }
+      }
+      .user-profile-img {
+        width: 70px;
+        border-radius: 100%;
+        margin-bottom: 10px;
+      }
+      .tour_rate {
+        i {
+          color: grey;
+          font-size: 30px;
+          margin: 5px;
+          &:hover { cursor: pointer; } 
+        }
+        i.rated { color: #FFB400; }
+      }
+      textarea {
+        margin-top: 10px;
+        border: 1px solid #FFB400;
+        border-radius: 10px;
+      }
+      .review_submitted_btn {
+        background-color: #1ab399;
+      }
+      .no_display { display: none; }
+      .reviews_footer {
+        background-color: #1ab399;
+        padding: 15px 0;
+        .price {
+          padding-top: 5px;
+          strong,
+          span {
+            color: white;
+            font-size: 30px;
+          }
+        }
+      }
     }
   }
-
 }
 
-}
+// .trip_wrapper {
+//   background: #F5F5F5;
+//   margin-top: -70px;
+//   .trip-cover-img {
+//     background-repeat: no-repeat;
+//     background-size: cover;
+//     background-position: 50% 50%;
+//     background-color: #f5f5f5;
+//     min-height: 220px;
+//   }
+
+//   .clearing-container {
+//     width: 90%;
+//     margin-left: auto;
+//     margin-right: auto;
+//   }
+
+//   .trip_head_wrapper {
+//     max-width: 100%;
+//     background: #FFFFFF;
+//     #trip_header {
+//       display: inline-flex;
+//       width: 100%;
+//       padding-top: 0px;
+
+//       @media #{$media-pad-smaller}{
+//         display: block;
+//       }
+
+//       .trip_top_head {
+//         padding-top: 20px;
+
+//         .trip-title {
+//           @media #{$media-pad-smaller}{
+//             text-align: center;
+//           }
+//           display: block;
+
+//           h1 {
+//             font-weight: 500;
+//             font-size: 1.6rem;
+//             margin-bottom: 0;
+//           }
+//           .rating {
+//             color: #FFB400;
+//             font-size: 1.25rem;
+//           }
+//         }
+//         .meta_head {
+//           margin-top: 20px;
+//           @media #{$media-pad-smaller}{
+//             margin-top: 10px;
+//           }
+//           .meta_block {
+//             display: inline-block;
+//             .trip-logo, .distance-logo {
+//               margin: 10px;
+//               font-size: 1.2rem;
+//               @media #{$media-pad-smaller}{
+//                 margin: 0 10px;
+//               }
+//             }
+
+//             p {
+//               float: right;
+//               font-size: 0.85rem;
+//               margin-right: 30px;
+//               text-align: center;
+//               margin-bottom: 0;
+
+//               .block {
+//                 display: block;
+//                 font-weight: 500;
+//                 font-size: 1.2rem;
+//               }
+
+//               span.checkpoints, span.meta {
+//                 text-align: left;
+//               }
+//             }
+
+//             @media #{$media-pad-smaller}{
+//               width: 32%;
+//               margin-top: 0;
+//               text-align: center;
+//               p {
+//                 margin-right: 10px;
+//                 float: none;
+//               }
+
+//             }
+
+//           }
+//         }
+//       }
+
+//       .trip_top_info {
+//         border-left: 1px solid #979797;
+//         h1 {
+//           @media #{$media-pad-smaller}{
+//             margin: 0;
+//           }
+//           margin: 10px 0 0 0;
+//           text-align: center;
+//         }
+//         .meta_func {
+//           display: block;
+//           text-align: center;
+//           margin: auto;
+//           width: 80%;
+//           padding-bottom: 10px;
+
+//           a {
+//             display: block;
+//             width: 90%;
+//             margin: auto;
+//             padding: 10px 5px;
+//             text-transform: uppercase;
+//             padding: 10px 10px;
+//           }
+
+//           a.trip_book_now {
+//             color: #FFFFFF;
+//             background: #323232;
+//             border-radius: 5px;
+//             margin: 10px;
+//             border: 1px solid #323232;
+//           }
+
+//           a.share {
+//             color: #464646;
+//             border: 1px solid #979797;
+//             border-radius: 5px;
+//           }
+//         }
+//       }
+
+//     }
+
+//     .tabs dd > a, .tabs .tab-title > a {
+//       outline: none;
+//       margin-top: 30px;
+//       @media #{$media-pad-smaller}{
+//         margin: 1px;
+//       }
+
+//     }
+//     .tab-title {
+//       padding: 0;
+//       text-align: center;
+//       margin-top: 12px;
+//       @media #{$media-pad-smaller}{
+//         margin-top: 0;
+//       }
+//       a {
+//         margin: 0 1px;
+//         padding-top: 6px;
+//         padding-bottom: 6px;
+//       }
+
+//     }
+
+//     .active {
+//       margin-top: 0;
+//       a {
+//         border-top: 2px solid #FFB400;
+//         padding-top: 12px;
+//         padding-bottom: 12px;
+//         @media #{$media-pad-smaller}{
+//           border-top: none;
+//           padding-top: 6px;
+//           padding-bottom: 6px;
+//         }
+//       }
+//     }
+
+//     .tour-video-container {
+//       max-width: 800px;
+//       max-height: 600px;
+//       margin: auto;
+//       padding: 0 10px;
+//     }
+
+//   }
+
+//   .tab-content-container {
+
+//     .plus-icon {
+//       background-color: #FFB400;
+//       text-align: center;
+//       padding: 0 6px;
+//       border-radius: 100%;
+//       color: white;
+//       font-size: 18px;
+//       margin-right: 10px;
+//     }
+//     .minus-icon {
+//       @extend .plus-icon;
+//       padding: 0 9px;
+//       background-color: #222;
+//     }
+
+//     .include {
+//       > h5 {
+//         color: #FFB400;
+//       }
+
+//     }
+
+//     ul {
+//       margin-left: 40px;
+//     }
+
+//   }
+
+//   .trip_detail_wrapper {
+
+//     #trip_sidebar {
+//       border-left: 1px solid #979797;
+//       padding-top: 35px;
+//       h3 {
+//         font-size: 1.25rem;
+//         font-weight: 500;
+//         color: #464646;
+//       }
+//     }
+
+//     #detail-content {
+//       .header {
+//         font-size: 1.3rem;
+//         font-family: 'Nunito', sans-serif;
+//         color: #FFB400;
+//         margin: 20px 0;
+//         @media #{$media-pad-smaller}{
+//           margin: 10px 0;
+//         }
+//       }
+
+//       @media #{$media-pad-smaller}{
+//         .highlight, .include-exclude, .tour-start-end {
+//           text-align: center;
+//           ol, ul {
+//             text-align: left;
+//           }
+//         }
+//       }
+
+//       .trip-label {
+//         @media #{$media-pad-smaller}{
+//           text-align: center;
+//         }
+//         h3 {
+//           font-size: 1.5rem;
+//           font-weight: 500;
+//           color: #464646;
+//           margin-left: 15px;
+//         }
+
+//       }
+//       .trip_content {
+//         margin: 5px 10px;
+//         color: #464646;
+//         font-size: 0.93rem;
+//         font-weight: 300;
+//         line-height: 22px;
+//         font-family: 'Nunito', sans-serif;
+//         padding-bottom: 30px;
+//       }
+//       .price {
+//         margin: 20px 0;
+//         color: green;
+//       }
+
+//       .driver-container {
+//         .content_head {
+//           font-size: 1.2rem;
+//           font-weight: 500;
+//           margin-left: 20px;
+//         }
+
+//         #driver_wrapper {
+//           border-bottom: 1px solid grey;
+//         }
+//         .tour-driver {
+//           border-top: 1px solid grey;
+//           margin: 0;
+//           font-family: 'Muli', sans-serif;
+//           a {
+//             color: black;
+//           }
+//           .profile-avatar {
+
+//             .avatar-container {
+//               width: 80px;
+//               height: 80px;
+//               margin: 10px 0;
+//               @media #{$media-pad-smaller}{
+//                 margin: 10px auto 0 auto;
+//               }
+//               .avatar-image {
+//                 border-radius: 50rem;
+//                 border: 2px solid white;
+//                 width: 100%;
+//               }
+
+//             }
+//           }
+
+//           .rating-review {
+//             @media #{$media-pad-smaller}{
+//               text-align: center;
+//               margin: 8px 0 0 0;
+//             }
+
+//             text-align: left;
+//             padding-right: 20px;
+//             font-weight: 500;
+//             margin: 18px 0;
+//             color: black;
+
+//             .rating {
+//               color: #FFB400
+//             }
+
+//             .comment {
+
+//             }
+//           }
+
+//           .vehicles {
+
+//             @media #{$media-pad-smaller}{
+//               line-height: 30px;
+//             }
+
+//             @media #{$media-pad-larger}{
+//               line-height: 60px;
+//               margin: 13px 0;
+//             }
+
+//             margin: 0px;
+//             padding: 0px;
+//             .vehicle {
+//               margin: 0;
+//               .vehicle-detail {
+
+//                 @media #{$media-pad-larger}{
+//                   display: inline-flex;
+
+//                 }
+
+//                 .icon-container {
+//                   width: 50px;
+//                   margin: 10px 5px;
+//                   @media #{$media-pad-smaller}{
+//                     margin-left: auto;
+//                     margin-right: auto;
+//                     margin-bottom: 5px;
+//                   }
+
+//                 }
+
+//                 .vehicle-name {
+//                   line-height: 84px;
+//                   margin-left: 10px;
+//                   @media #{$media-pad-smaller}{
+//                     line-height: 22px;
+//                     text-align: center;
+//                   }
+
+//                 }
+//               }
+
+//             }
+
+//           }
+
+//           .price {
+//             font-weight: 700;
+//             color: black;
+//             @media #{$media-pad-smaller}{
+//               line-height: 60px;
+//               padding: 0;
+//               text-align: left;
+//             }
+
+//             @media #{$media-pad-larger}{
+//               line-height: 32px;
+//               padding: 6px 0;
+//               text-align: right;
+//             }
+//           }
+//           .book-btn {
+//             margin: 25px 0;
+
+//             .btn-book {
+//               float: right;
+//               background-color: black;
+//               color: white;
+//               padding: 2px 15px;
+//               font-size: 0.75rem;
+//               font-weight: 400;
+//               line-height: 29px;
+//             }
+
+//             @media #{$media-pad-smaller}{
+//               padding: 0;
+//               .btn-book {
+//                 margin-top: 10px;
+//                 float: left;
+//               }
+//             }
+//           }
+//         }
+//       }
+
+//     }
+//   }
+// }
+
+// .rhs {
+//   #payment-form {
+//     border: 1px solid;
+//     backgroud-color: white;
+//     position: fixed;
+//     width: 235px;
+//     padding: 30px 10px;
+//     background-color: wheat;
+//   }
+// }
+
+// .billing-info {
+//   max-width: 700px !important;
+//   padding: 30px !important;
+//   .divider {
+//     margin-top: 10px;
+//     border-top: 1px solid #C8C8C8;
+//   }
+
+//   .booking_label {
+//     margin-right: 30px;
+//   }
+
+//   .bill-label {
+//     line-height: 37px;
+//   }
+
+//   .pic-section {
+//     width: 200px;
+//     height: 120px;
+//     margin-left: auto;
+//     margin-right: auto;
+//     border-radius: 6px;
+//     background-repeat: no-repeat;
+//     background-size: cover;
+//     background-position: 50% 50%;
+//     background-color: #f5f5f5;
+//     .avatar {
+
+//     }
+//   }
+
+//   .price-section {
+//     margin: 10px 0;
+//     font-size: 1.37rem;
+//     font-weight: 700;
+//     text-align: center;
+//     .price {
+//       font-size: 2.25rem;
+//     }
+//   }
+
+//   .pay-lah {
+//     width: 120px;
+//     margin-left: auto;
+//     margin-right: auto;
+//     .pay-btn {
+//       background-color: black;
+//       width: 120px;
+//       color: white;
+//       font-size: 1.12rem;
+//       line-height: 32px;
+//       border: none;
+//       border-radius: 3px;
+//     }
+//   }
+
+// }
+
+// }

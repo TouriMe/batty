@@ -1,0 +1,63 @@
+body[id="purchases-new"] {
+  ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  #breadcrumbs{
+    background: white;
+    border-width: 2px;
+    border-style: solid;
+    border-color: white;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+
+  #breadcrumbs li{
+    float: left;
+  }
+
+  #breadcrumbs strong{
+    padding: .7em 1em .7em 2em;
+    float: left;
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    position: relative;
+    background-color: #1ab399;
+  }
+
+  #breadcrumbs li:first-child strong{
+    padding-left: 1em;
+    border-radius: 5px 0 0 5px;
+  }
+
+  #breadcrumbs strong::after,
+  #breadcrumbs strong::before{
+    content: "";
+    position: absolute;
+    top: 50%;
+    margin-top: -1.5em;   
+    border-top: 1.5em solid transparent;
+    border-bottom: 1.5em solid transparent;
+    border-left: 1em solid;
+    right: -1em;
+  }
+
+  #breadcrumbs strong::after{ 
+    z-index: 2;
+    border-left-color: #1ab399;  
+  }
+
+  #breadcrumbs strong::before{
+    border-left-color: white;  
+    right: -1.1em;
+    z-index: 1; 
+  }
+
+  #breadcrumbs .current::after,
+  #breadcrumbs .current::before{
+    content: normal;  
+  }
+}

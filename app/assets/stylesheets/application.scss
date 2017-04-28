@@ -15,6 +15,7 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
+  background-color: white;
 }
 
 #wrapper {
@@ -36,39 +37,51 @@ html, body {
 }
 
 #content {
-  @media #{$media-phone-smaller}{
-    padding-bottom: $footer-height;
-  }
-  @media #{$media-phone-larger}{
-    padding-bottom: $footer-height-medium-screen;
-  }
+  // @media #{$media-phone-smaller}{
+  //   padding-bottom: $footer-height;
+  // }
+  // @media #{$media-phone-larger}{
+  //   padding-bottom: $footer-height-medium-screen;
+  // }
 
-  @media #{$media-pad-larger}{
-    padding-bottom: $footer-height-large-screen;
+  // @media #{$media-pad-larger}{
+  //   padding-bottom: $footer-height-large-screen;
+  // }
+  a.custom-button.is_active {
+    color: #FFB94E;
+    border: 1px solid #FFB94E;
   }
-
+  a.custom-button {
+    display: inline-block;
+    color: grey;
+    border: 1px solid grey;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    width: 120px;
+    &:hover {
+      color: #FFB94E;
+      border: 1px solid #FFB94E;
+    }
+  }
+  .no-padding {
+    padding: 0;
+  }
 }
 
-#footer {
-  @media #{$media-phone-smaller}{
-    height: $footer-height;
-  }
+// #footer {
+  // @media #{$media-phone-smaller}{
+  //   height: $footer-height;
+  // }
 
-  @media #{$media-phone-larger}{
-    height: $footer-height-medium-screen;
-  }
+  // @media #{$media-phone-larger}{
+  //   height: $footer-height-medium-screen;
+  // }
 
-  @media #{$media-pad-larger}{
-    height: $footer-height-large-screen;
-  }
-
-  width: 100%;
-  height: $footer-height;
-
-  position: absolute;
-  bottom: 0;
-  left: 0;
-}
+  // @media #{$media-pad-larger}{
+  //   height: $footer-height-large-screen;
+  // }
+// }
 
 html, body, p, a, label, select {
   font-family: 'Ubuntu', sans-serif;
@@ -92,11 +105,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Top Bar Looks Tight */
-nav.top-bar {
-  height: auto;
-  padding: 5px 0;
-  display: block;
-}
+// nav.top-bar {
+//   height: auto;
+//   padding: 5px 0;
+//   display: block;
+// }
 
 /** header **/
 .main-container {

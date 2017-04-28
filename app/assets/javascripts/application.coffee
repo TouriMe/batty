@@ -14,17 +14,26 @@
 #= require gmaps/google
 #= require active_admin/base
 #= require ckeditor/init
-#= require motion-ui.min.js
 #= require map
+
+#= require wow.min.js
+#= require scrollreveal.min.js
+#= require jquery.datetimepicker.full.min
+
 #= require namespace
 #= require util
 
-#= require tours
 #= require welcome
+#= require tour/index
+#= require tour/show
+#= require purchase/new
+#= require driver/index
+#= require driver/show
 
 #= require initializer
-#= require wow.min.js
-#= require scrollreveal.min.js
+
+
+
 $(()->
   $(document).foundation()
   wow = new WOW

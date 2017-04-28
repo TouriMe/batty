@@ -1,0 +1,90 @@
+/* line 4, /home/raizer/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/bundler/gems/active_admin_editor-efc7df212173/app/assets/stylesheets/active_admin/editor.css.scss */
+body form .html_editor .wrap {
+  width: 76%;
+  float: left;
+}
+/* line 9, /home/raizer/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/bundler/gems/active_admin_editor-efc7df212173/app/assets/stylesheets/active_admin/editor.css.scss */
+body form .html_editor.uploading .spinner {
+  display: inline;
+}
+/* line 13, /home/raizer/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/bundler/gems/active_admin_editor-efc7df212173/app/assets/stylesheets/active_admin/editor.css.scss */
+body form .html_editor .spinner {
+  display: none;
+}
+/* line 17, /home/raizer/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/bundler/gems/active_admin_editor-efc7df212173/app/assets/stylesheets/active_admin/editor.css.scss */
+body form .html_editor textarea {
+  border-radius: 0;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  line-height: 1.5em;
+  width: 100%;
+  height: 300px;
+  border-top: 1px solid #e6e9ec;
+}
+/* line 24, /home/raizer/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/bundler/gems/active_admin_editor-efc7df212173/app/assets/stylesheets/active_admin/editor.css.scss */
+body form .html_editor textarea:focus {
+  box-shadow: none;
+  border: 1px solid #C9D0D6;
+  border-top: 1px solid #e6e9ec;
+}
+/* line 31, /home/raizer/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/bundler/gems/active_admin_editor-efc7df212173/app/assets/stylesheets/active_admin/editor.css.scss */
+body form .html_editor .toolbar {
+  width: 100%;
+  padding: 0 10px;
+  border: 1px solid #C9D0D6;
+  border-bottom: none;
+  border-radius: 0;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+  background: #fff;
+}
+/* line 39, /home/raizer/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/bundler/gems/active_admin_editor-efc7df212173/app/assets/stylesheets/active_admin/editor.css.scss */
+body form .html_editor .toolbar ul li a {
+  display: block;
+  padding: 5px 10px;
+  text-decoration: none;
+  color: #999;
+}
+/* line 45, /home/raizer/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/bundler/gems/active_admin_editor-efc7df212173/app/assets/stylesheets/active_admin/editor.css.scss */
+body form .html_editor .toolbar ul li a.wysihtml5-command-active, body form .html_editor .toolbar ul li a.wysihtml5-action-active, body form .html_editor .toolbar ul li a.wysihtml5-command-dialog-opened {
+  text-decoration: underline;
+  color: #38678b;
+}
+/* line 53, /home/raizer/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/bundler/gems/active_admin_editor-efc7df212173/app/assets/stylesheets/active_admin/editor.css.scss */
+body form .html_editor .toolbar ul li {
+  display: inline-block;
+}
+/* line 56, /home/raizer/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/bundler/gems/active_admin_editor-efc7df212173/app/assets/stylesheets/active_admin/editor.css.scss */
+body form .html_editor .toolbar ul li:first-child a {
+  padding-left: 0;
+}
+/* line 61, /home/raizer/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/bundler/gems/active_admin_editor-efc7df212173/app/assets/stylesheets/active_admin/editor.css.scss */
+body form .html_editor .toolbar.wysihtml5-commands-disabled ul li a[data-wysihtml5-command] {
+  display: none;
+}
+/* line 66, /home/raizer/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/bundler/gems/active_admin_editor-efc7df212173/app/assets/stylesheets/active_admin/editor.css.scss */
+body form .html_editor .dialog {
+  border-top: 1px solid #e6e9ec;
+  padding: 10px 20px;
+  margin: 0 -10px;
+}
+/* line 71, /home/raizer/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/bundler/gems/active_admin_editor-efc7df212173/app/assets/stylesheets/active_admin/editor.css.scss */
+body form .html_editor .dialog label {
+  margin-bottom: 10px;
+  width: 300px;
+}
+/* line 75, /home/raizer/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/bundler/gems/active_admin_editor-efc7df212173/app/assets/stylesheets/active_admin/editor.css.scss */
+body form .html_editor .dialog label input {
+  display: block;
+}
+/* line 79, /home/raizer/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/bundler/gems/active_admin_editor-efc7df212173/app/assets/stylesheets/active_admin/editor.css.scss */
+body form .html_editor .dialog label select {
+  display: block;
+}
+/* line 84, /home/raizer/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/bundler/gems/active_admin_editor-efc7df212173/app/assets/stylesheets/active_admin/editor.css.scss */
+body form .html_editor .dialog .action-group {
+  display: block;
+  float: right;
+  margin-top: 5px;
+  clear: both;
+}

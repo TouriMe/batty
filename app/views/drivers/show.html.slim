@@ -1,3 +1,5 @@
+.navbar.contain-to-grid.sticky
+  = render 'partials/topbar'
 .page.driver-profile
   .profile-page-hero[style = "background-image:url('#{@driver.background_url}')"]
     / .hero-background[data-img = @driver.background_url]
@@ -136,25 +138,116 @@
                 = image_tag 'unchecked_red.png', class: 'cert-icon'
               | Basic DSLR
             br
+      #reviews
+        .row.full-width.profile-page-details
+          .small-12.columns.text-center
+            h3 Reviews
+            .stars.text-center
+              = fa_icon "star"
+              = fa_icon "star"
+              = fa_icon "star"
+              = fa_icon "star"
+              = fa_icon "star"
+            .row
+              .small-12.columns
+                .review_btn.button.radius
+                  = "WRITE A REVIEW"
+              .small-6.columns
+                .recent_reviews.right
+                  .order_by_date_btn.button.radius.is_active
+                    | MOST RECENT
+              .small-6.columns
+                .star_reviews.left
+                  .order_by_star_btn.button.radius
+                    | STAR REVIEWS
+            br
+            br
+            .row.display_reviews
+              - if @review_by_date.present?
+                .review_by_date
+                  - @review_by_date.each do |review|
+                    br
+                    .small-4.small-centered.columns
+                      .row
+                        .small-6.columns.text-left
+                          strong
+                            = review.customer_name
+                          p
+                            = review.created_at.strftime("%F")
+                        .small-6.columns.text-right
+                          - review.star.times do
+                            = fa_icon "star"
+                    .small-4.small-centered.columns
+                      .row
+                        .small-12.columns.text-left[style="border-bottom:1px solid #FFB400;"]
+                          p
+                            = review.review
+                .review_by_star[style="display:none;"]
+                  - @review_by_stars.each do |review|
+                    br
+                    .small-4.small-centered.columns
+                      .row
+                        .small-6.columns.text-left
+                          strong
+                            = review.customer_name
+                          p
+                            = review.created_at.strftime("%F")
+                        .small-6.columns.text-right
+                          - review.star.times do
+                            = fa_icon "star"
+                    .small-4.small-centered.columns
+                      .row
+                        .small-12.columns.text-left[style="border-bottom:1px solid #FFB400;"]
+                          p
+                            = review.review
+            br
+            - if normal_user_signed_in?
+              - if reviewable(current_normal_user)
+                .review_form[style="display:none;"]
+                  .row
+                    .small-12.columns
+                      = image_tag current_normal_user.image, class: 'user-profile-img'
 
-      .row.full-width
-        .small-12.columns.profile-page-details
-          .section
-            /h4 About this driver
-            /p
-              - if @driver.description and (not @driver.description.empty?)
-                = @driver.description
+                  .row
+                    .small-4.small-centered.columns
+                      = form_for(@review, method: 'post') do |f|
+                        = f.hidden_field :review_type, value: 'driver'
+                        = f.hidden_field :name, value: @full_name
+                        = f.hidden_field :email, value: current_normal_user.try(:email)
+                        = f.hidden_field :customer_name, value: current_normal_user.try(:name)
+                        = f.hidden_field :star, id: 'stars'
+                        .row
+                          .small-12.columns
+                            .tour_rate
+                              = fa_icon "star", id: '1', data: { star_id: 1 }
+                              = fa_icon "star", id: '2', data: { star_id: 2 }
+                              = fa_icon "star", id: '3', data: { star_id: 3 }
+                              = fa_icon "star", id: '4', data: { star_id: 4 }
+                              = fa_icon "star", id: '5', data: { star_id: 5 }
+                        .row.form-group
+                          .small-12.columns
+                            = f.text_area :review, placeholder: 'Please wirte a review here....',cols: 20, rows: 10, required: true
+                        .row
+                          .small-12.columns
+                            = f.submit 'Submit your review', class: "button radius review_submitted_btn"
               - else
-              | We don't know much about this driver yet...
+                .small-4.small-centered.columns
+                  .alert-box.info.radius[data-alert]
+                    = "You may only review drivers that you have selected." 
+                    a.close[href="#"]
+                      = "&times;".html_safe   
 
-            .driver-gallery
-              ul.clearing-thumbs.small-block-grid-3 [data-clearing]
-                - @driver.images.each do |i|
-                  li
-                    a [href=i.url]
-                      img [src = i.url_small ]
+      / .row.full-width
+      /   .small-12.columns.profile-page-details
+      /     .section
+      /       .driver-gallery
+      /         ul.clearing-thumbs.small-block-grid-3 [data-clearing]
+      /           - @driver.images.each do |i|
+      /             li
+      /               a [href=i.url]
+      /                 img [src = i.url_small ]
 
-          = render 'comments/comments', target: @driver
+      /     = render 'comments/comments', target: @driver
 
       .row.full-width
         .small-12.columns.profile-page-details

@@ -1,0 +1,452 @@
+.container
+  .showpage-header
+    .navbar.contain-to-grid.sticky
+      = render 'partials/topbar'
+    .tour-images
+      - if @tour.images.where(is_hero: true).any?
+        .trip-cover-img[data-img="#{@tour.hero_unit_image.url}"]
+      - elsif @tour.images.any?
+        .trip-cover-img[data-img="#{@tour.cover_image}"]
+      ul.clearing-thumbs.hide[data-clearing]
+        - @tour.images.each do |image|
+          li
+            = image_tag image.url
+      .tour-description.text-center
+        h1
+          = @tour.name
+        span.rating
+          = render 'partials/rating', rating: @tour.rating > 0 ? @tour.rating : 5
+        .tour-detail
+          .row
+            .small-4.columns
+              .detail
+                .detail-box
+                  = image_tag "tour_duration.png"
+                .detail-text
+                  h5
+                    = @tour.duration.blank? ? "0" : @tour.duration
+                    |  hrs
+            .small-4.columns
+              .detail
+                .detail-box
+                  = image_tag "tour_checkpoint.png"
+                .detail-text
+                  h5
+                    = @tour.checkpoint_num.blank? ? "0" : @tour.checkpoint_num
+                    |  stop
+            .small-4.columns
+              .detail
+                .detail-box
+                  = image_tag "tour_distance.png"
+                .detail-text
+                  h5
+                    = @tour.distance.blank? ? "0" : @tour.distance
+                    | km
+  .showpage-navbar.hide-for-small-only
+    .tour-detail-navbar.text-center
+      a[href='#highlights']
+        | Highlights
+      a[href='#description']
+        | Description           
+      a[href='#inclusions']
+        | Inclusions
+      a[href='#schedule_gallery']
+        | Schedule
+      a[href='#schedule_gallery']
+        | Gallery
+      a[href='#important']
+        | Important Information
+      a[href='#host']
+        | Your Host Drivers
+      a[href='#location']
+        | Location
+      a[href='#reviews']
+        | Reviews
+  .showpage-content
+    #highlights
+      .row
+        .small-12.medium-8.columns
+          h3
+            | Highlights
+          p
+            - if @tour.highlight_html?
+              = @tour.highlight_html.html_safe
+        .small-12.medium-4.columns.text-center
+          - if @tour.ticket_price_cents != 0
+            strong
+              h4
+                = number_to_currency(@tour.ticket_price_cents, :precision => 0)
+          - elsif @tour.tuktuk_price.to_i != 0
+            strong
+              h4
+                = number_to_currency(@tour.tuktuk_price.to_i, :precision => 0)
+          - else
+            strong
+              h4
+                = number_to_currency(@tour.car_price.to_i, :precision => 0)
+          = link_to "BOOK NOW", "/book/#{@tour.id}/?vehicle_type=#{@vehicle_type}", class: "btn-book"
+    #description
+      .row
+        .small-12.columns
+          h3.text-center
+            | Description
+          p
+            = @tour.content.html_safe
+    #inclusions
+      .row
+        .small-12.medium-6.columns
+          .include
+            .include-title
+              = fa_icon 'plus-circle 3x'
+              span
+                | Inclusions
+            - if @tour.include_html?
+              p
+                = @tour.include_html.html_safe
+        .small-12.medium-6.columns
+          .exclude
+            .exclude-title
+              = fa_icon 'minus-circle 3x'
+              span
+                | Exclusions
+            - if @tour.exclude_html?
+              p
+                = @tour.exclude_html.html_safe
+    #schedule_gallery
+      .row.full-width
+        .small-12.medium-5.columns
+          .schedule.text-center
+            h3
+              | Schedule
+            - if @tour.schedule?
+              p = @tour.schedule.html_safe  
+            
+        .small-12.medium-7.columns.no-padding
+          .gallery
+            ul.tour_gallery-orbit[data-orbit]
+              - if @tour.images.any?
+                - @tour.images.each do |image|
+                  li
+                    .tour-image[style="background-image:url(#{image.url});"]
+      .schedule_gallery_footer
+        .row.full-width
+          .small-6.columns
+            - if @tour.ticket_price_cents != 0
+              .price.right
+                strongc Price: 
+                span  
+                  = number_to_currency(@tour.ticket_price_cents, :precision => 0)
+            - elsif @tour.tuktuk_price.to_i != 0
+              .price.right
+                strong Price: 
+                span  
+                  = number_to_currency(@tour.tuktuk_price.to_i, :precision => 0)
+            - else
+              .price.right
+                strong Price: 
+                span
+                  = number_to_currency(@tour.car_price.to_i, :precision => 0)
+          .small-6columns
+            .book.left
+              = link_to "BOOK NOW", "/book/#{@tour.id}/?vehicle_type=#{@vehicle_type}", class: "btn-book"
+    #important
+      .row
+        .small-12.columns
+          h3.text-center
+            | Important Information
+          p
+            = @tour.important_info.html_safe
+    #host
+      .row
+        ul.driver-orbit[data-orbit]
+          - @drivers.each do |driver|
+            li
+              .small-12.medium-5.columns
+                .driver-image
+                  = image_tag driver.card_img
+              .small-12.medium-7.columns
+                .driver-detail
+                  h3 Your Host Driver
+                  p During this experience, your host driver will pick you up and drop you off at the location of your choice. Along the way, he'll be able to tell you about the local culture, custom and some history etc etc
+                  br
+                  br
+                  p Testmonail scroll with testmonail appearing to match scrolling drivers. Drivers should be the ones who can provide the tour however cannot be selected at this point as they may not be available. 
+                  strong 
+                    | Driver Name- 
+                    =  driver.first_name
+    #location
+      .row.full-width
+        .small-12.columns
+          h3
+            | Location
+          #map[data-latlng="#{latlng?(@tour.tour_location)}"]
+      .location_footer
+        .row.full-width
+          .small-6.columns
+            - if @tour.ticket_price_cents != 0
+              .price.right
+                strong Price: 
+                span 
+                  = number_to_currency(@tour.ticket_price_cents, :precision => 0)
+            - elsif @tour.tuktuk_price.to_i != 0
+              .price.right
+                strong Price: 
+                span 
+                  = number_to_currency(@tour.tuktuk_price.to_i, :precision => 0)
+            - else
+              .price.right
+                strong Price:  
+                span
+                  = number_to_currency(@tour.car_price.to_i, :precision => 0)
+          .small-6.columns
+            .book.left
+              = link_to "BOOK NOW", "/book/#{@tour.id}/?vehicle_type=#{@vehicle_type}", class: "btn-book"
+    #reviews
+      .row.full-width
+        .small-12.columns.text-center
+          h3 Reviews
+          .stars.text-center
+            = fa_icon "star"
+            = fa_icon "star"
+            = fa_icon "star"
+            = fa_icon "star"
+            = fa_icon "star"
+          .row
+            .small-12.columns
+              .review_btn.button.radius
+                = "WRITE A REVIEW"
+            .small-6.columns
+              .recent_reviews.right
+                .order_by_date_btn.button.radius.is_active
+                  | MOST RECENT
+            .small-6.columns
+              .star_reviews.left
+                .order_by_star_btn.button.radius
+                  | STAR REVIEWS
+          br
+          br
+          .row.display_reviews
+            - if @review_by_date.present?
+              .review_by_date
+                - @review_by_date.each do |review|
+                  br
+                  .small-4.small-centered.columns
+                    .row
+                      .small-6.columns.text-left
+                        strong
+                          = review.customer_name
+                        p
+                          = review.created_at.strftime("%F")
+                      .small-6.columns.text-right
+                        - review.star.times do
+                          = fa_icon "star"
+                  .small-4.small-centered.columns
+                    .row
+                      .small-12.columns.text-left[style="border-bottom:1px solid #FFB400;"]
+                        p
+                          = review.review
+              .review_by_star[style="display:none;"]
+                - @review_by_stars.each do |review|
+                  br
+                  .small-4.small-centered.columns
+                    .row
+                      .small-6.columns.text-left
+                        strong
+                          = review.customer_name
+                        p
+                          = review.created_at.strftime("%F")
+                      .small-6.columns.text-right
+                        - review.star.times do
+                          = fa_icon "star"
+                  .small-4.small-centered.columns
+                    .row
+                      .small-12.columns.text-left[style="border-bottom:1px solid #FFB400;"]
+                        p
+                          = review.review
+          br
+          - if normal_user_signed_in?
+            - if reviewable(current_normal_user)
+              .review_form[style="display:none;"]
+                .row
+                  .small-12.columns
+                    = image_tag current_normal_user.image, class: 'user-profile-img'
+
+                .row
+                  .small-4.small-centered.columns
+                    = form_for(@review, method: 'post') do |f|
+                      = f.hidden_field :review_type, value: 'tour'
+                      = f.hidden_field :name, value: @tour.name
+                      = f.hidden_field :email, value: current_normal_user.try(:email)
+                      = f.hidden_field :customer_name, value: current_normal_user.try(:name)
+                      = f.hidden_field :star, id: 'stars'
+                      .row
+                        .small-12.columns
+                          .tour_rate
+                            = fa_icon "star", id: '1', data: { star_id: 1 }
+                            = fa_icon "star", id: '2', data: { star_id: 2 }
+                            = fa_icon "star", id: '3', data: { star_id: 3 }
+                            = fa_icon "star", id: '4', data: { star_id: 4 }
+                            = fa_icon "star", id: '5', data: { star_id: 5 }
+                      .row.form-group
+                        .small-12.columns
+                          = f.text_area :review, placeholder: 'Please wirte a review here....',cols: 20, rows: 10, required: true
+                      .row
+                        .small-12.columns
+                          = f.submit 'Submit your review', class: "button radius review_submitted_btn"
+            - else
+              .small-4.small-centered.columns
+                .alert-box.info.radius[data-alert]
+                  = "You may only review experiences that you have taken." 
+                  a.close[href="#"]
+                    = "&times;".html_safe           
+                
+      .reviews_footer
+        .row.full-width
+          .small-6.columns
+            - if @tour.ticket_price_cents != 0
+              .price.right
+                strong Price: 
+                span 
+                  = number_to_currency(@tour.ticket_price_cents, :precision => 0)
+            - elsif @tour.tuktuk_price.to_i != 0
+              .price.right
+                strong Price: 
+                span 
+                  = number_to_currency(@tour.tuktuk_price.to_i, :precision => 0)
+            - else
+              .price.right
+                strong Price:  
+                span
+                  = number_to_currency(@tour.car_price.to_i, :precision => 0)
+          .small-6.columns
+            .book.left
+              = link_to "BOOK NOW", "/book/#{@tour.id}/?vehicle_type=#{@vehicle_type}", class: "btn-book"
+
+/ .container.trip_wrapper
+/   - if @tour.images.where(is_hero: true).any?
+/     .trip-cover-img[data-img="#{@tour.hero_unit_image.url}"]
+/   - elsif @tour.images.any?
+/     .trip-cover-img[data-img="#{@tour.cover_image}"]
+/   ul.clearing-thumbs.hide[data-clearing]
+/     - @tour.images.each do |image|
+/       li
+/         = image_tag image.url
+/   .trip_head_wrapper
+/     .row
+/       section#trip_header
+/         .large-9.small-12.trip_top_head.columns
+/           .trip-title
+/             #title-text
+/               h3
+/                 = @tour.name
+/             span.rating
+/               = render 'partials/rating', rating: @tour.rating > 0 ? @tour.rating : 5
+/           .meta_head
+/             section.meta_block
+/               = image_tag("tour_distance.png", class: "distance-logo")
+/               p
+/                 span.main-value.block.center
+/                   = @tour.distance.blank? ? "0" : @tour.distance
+/                 span.meta
+/                   | Distance
+/             section.meta_block
+/               = image_tag("tour_checkpoint.png", class: "trip-logo")
+/               p
+/                 span.main-value.block.center
+/                   = @tour.checkpoint_num.blank? ? "0" : @tour.checkpoint_num
+/                 span.meta
+/                   | Checkpoints
+/             section.meta_block
+/               = image_tag("tour_duration.png", class: "trip-logo")
+/               p
+/                 span.main-value.block.center
+/                   = @tour.duration.blank? ? "0" : @tour.duration
+/                   | hrs
+/                 span.meta
+/                   | Duration
+/         .large-3.small-12.trip_top_info.columns
+/           - if @tour.ticket_price_cents != 0
+/             h1
+/               span
+/                 = number_to_currency(@tour.ticket_price_cents, :precision => 0)
+/           - elsif @tour.tuktuk_price.to_i != 0
+/             h1
+/               span
+/                 = number_to_currency(@tour.tuktuk_price.to_i, :precision => 0)
+/           - else
+/             h1
+/               span
+/                 = number_to_currency(@tour.car_price.to_i, :precision => 0)
+/           .meta_func
+/             = link_to "BOOK NOW", "/book/#{@tour.id}/?vehicle_type=#{@vehicle_type}", class: "trip_book_now"
+/     .row
+/       ul.tabs[data-tab]
+/         li.tab-title.tab-menu-item.small-6.medium-4.columns.active
+/           a[href='#panel1']
+/             strong
+/               | Highlights
+/         li.tab-title.tab-menu-item.small-6.medium-4.columns
+/           a[href='#panel2']
+/             strong
+/               | Includes
+/         li.tab-title.tab-menu-item.small-6.medium-4.columns
+/           a[href='#panel3']
+/             strong
+/               | Schedule
+/   .tab-content-container
+/     .row
+/       .tabs-content
+/         .content.active#panel1
+/           - if @tour.highlight_html?
+/             .highlight.small-12.columns
+/               = @tour.highlight_html.html_safe
+/         .content#panel2
+/           - if @tour.include_html?
+/             .include-exclude.small-12.medium-6.columns
+/               - if @tour.include_html?
+/                 .include
+/                   h5
+/                     span.plus-icon
+/                       | +
+/                     | Include
+/                   = @tour.include_html.html_safe
+/           - if @tour.exclude_html?
+/             .include-exclude.small-12.medium-6.columns
+/               - if @tour.exclude_html?
+/                 .exclude
+/                   h5
+/                     span.minus-icon
+/                       | -
+/                     | Exclude
+/                   = @tour.exclude_html.html_safe
+/         .content#panel3
+/           - if @tour.tour_start? || @tour.tour_end
+/             .tour-start-end.small-6.columns
+/               h5.header
+/                 | Start Time
+/               - if @tour.tour_start?
+/                 = @tour.tour_start
+/             .tour-start-end.small-6.columns
+/               h5.header
+/                 | End Time
+/               - if @tour.tour_end?
+/                 = @tour.tour_end
+/   .row
+/     - if !@tour.video_url.nil? && !@tour.video_url.empty?
+/       .tour-video-container
+/         .flex-video.widescreen
+/           iframe[src="#{@tour.video_url}" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen]
+/   .trip_detail_wrapper
+/     .row
+/       .detail_content
+/         .detail
+/           .trip-label
+/             h3
+/               | Tour Description
+/           .trip_content
+/             = @tour.content.html_safe
+/         .driver-container#drivers-selection
+/           = render 'comments/comments', target: @tour
+
+/ script[type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-569e699d3dd269af"]
+

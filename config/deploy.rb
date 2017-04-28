@@ -1,5 +1,5 @@
 lock '3.7.2'
-
+set :rvm_ruby_version, 'ruby-2.3.1'
 set :application, 'batty'
 set :repo_url, "git@github.com:TouriMe/#{fetch(:application)}.git"
 

@@ -1,35 +1,95 @@
 .homepage-header.full-width
-    .navbar.contain-to-grid.sticky
-      = render 'partials/topbar'
-    .header-content
-      .title
-        h1
-          | WELCOME TO CAMBODIA
-        h4.hide-for-small-only
-          | Experience the best of Cambodia while helping and connecting with the locals
-      .exploration
-        h3
-          | Explore by:
+  .navbar.contain-to-grid.sticky
+    = render 'partials/topbar'
+  .header-content
+    .title
+      h1
+        | WELCOME TO CAMBODIA
+      h4.hide-for-small-only
+        | Experience the best of Cambodia while helping and connecting with the locals
+    .exploration
+      h3
+        | Explore by:
+      .row
+        .small-6.medium-4.columns
+          = link_to tours_path do
+            .exploration-box
+              = fa_icon 'binoculars 4x'
+          h5
+            | Experience
+        .small-6.medium-4.columns
+          = link_to drivers_path do
+            .exploration-box
+              = fa_icon 'motorcycle 5x'
+          h5
+            | Host Driver
+        .small-6.medium-4.columns
+          = link_to '#' do
+            .exploration-box
+              = fa_icon 'clock-o 5x'
+          h5
+            | Duration
+.row#driver[style="background-color:white;"]
+  - @drivers.each_slice(3) do |drivers|
+    .row
+      - drivers.each do |driver|
+        .small-12.medium-4.columns
+          = render 'drivers/driver_item', driver: driver
+    - drivers.each do |driver|
+      .driver_info[id="driver-#{driver.id}" style="display:none;"]
         .row
-          .small-6.medium-4.columns
-            = link_to tours_path do
-              .exploration-box
-                = fa_icon 'binoculars 4x'
-            h5
-              | Experience
-          .small-6.medium-4.columns
-            = link_to drivers_path do
-              .exploration-box
-                = fa_icon 'motorcycle 5x'
-            h5
-              | Host Driver
-          .small-6.medium-4.columns
-            = link_to '#' do
-              .exploration-box
-                = fa_icon 'clock-o 5x'
-            h5
-              | Duration
-.row.full-width[style="background-color:white;"]
-  - @drivers.each do |driver|
-    .small-12.medium-6.large-4.columns
-      = render 'drivers/driver_item', driver: driver
+          .small-12.medium-4.columns
+            = image_tag driver.card_img
+            .driver_review.clearfix
+              span.rating.left
+                = render 'partials/rating', rating: driver.rating > 0 ? driver.rating : 5
+              span.review.right
+                = pluralize(driver.comments.size, 'review')
+            .driver_pngs
+              - driver.vehicles.each do |vehicle|
+                - if vehicle.name == "Remork/Tuk Tuk"
+                  .remork_png
+                    .round_img
+                      = image_tag 'tuktuk.png'
+                    p = "#{vehicle.name}" 
+                - else                        
+                  .car_png
+                    .round_img
+                      = image_tag 'car_white.png'
+                    p = "#{vehicle.name}"
+              - driver.cities.each do |city|
+                .location_png
+                  .round_img
+                    = image_tag 'location_white.png'
+                  p = "#{city.name}"
+          .small-12.medium-4.columns
+            strong
+              = "#{driver.first_name}'s Story:"
+            p
+              = driver.description.html_safe
+          .small-12.medium-4.columns
+            .row
+              .small-12.columns
+                .driver_skill
+                  strong
+                    = "#{driver.first_name}'s Skill:"
+                  br
+                  br
+                  p
+                    = driver_skills(driver)
+            br
+            .row
+              .small-12.columns
+                .driver_gallery
+                  strong
+                    = "#{driver.first_name}'s Gallery:"
+                  br
+                  br
+                  .row
+                    - driver.images.each do |image|
+                      .small-6.medium-3.columns
+                        .driver_image[style="background-image:url(#{image.url});"]
+            
+  / - @drivers.each do |driver|
+  /   .small-12.medium-6.large-4.columns
+  /     = render 'drivers/driver_item', driver: driver

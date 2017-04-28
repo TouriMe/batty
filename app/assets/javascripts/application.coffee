@@ -14,21 +14,21 @@
 #= require gmaps/google
 #= require active_admin/base
 #= require ckeditor/init
-#= require motion-ui.min.js
 #= require map
 
 #= require wow.min.js
 #= require scrollreveal.min.js
-#= require plugin/jquery.gridder.min
 #= require jquery.datetimepicker.full.min
 
 #= require namespace
 #= require util
 
 #= require welcome
-#= require tour_index
-#= require tour_show
-#= require purchase/purchase_new
+#= require tour/index
+#= require tour/show
+#= require purchase/new
+#= require driver/index
+#= require driver/show
 
 #= require initializer
 

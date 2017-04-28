@@ -1,6 +1,4 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+
 Batty.ToursShow = do ->
   _init = ->
     _tourHeaderSection()
@@ -9,6 +7,8 @@ Batty.ToursShow = do ->
     _tourLocation()
     _acitveReviewBtn()
     _tourRateBtn()
+    _revealLoginModal()
+    _checkForUserLogin()
     # $modal = $('#fill-purchase-info-modal')
     # $eles = $('.book-tour-via-driver')
     # $eles.click( (evt)->
@@ -26,6 +26,24 @@ Batty.ToursShow = do ->
 
     #   $modal.foundation('reveal', 'open')
     # )
+  _checkForUserLogin = ->
+    url = window.location.href
+    if url.match(/\_\=\_/i) || url.match(/\#/i) 
+      $('.review_btn').hide()
+      $('.review_form').show()
+      window.location.hash = "#reviews"
+    else
+      $('.review_btn').show()
+      $('.review_form').hide()
+
+  _revealLoginModal = ->
+    $('.review_btn').click ->
+      $('#loginModal').foundation('reveal','open')
+      logInBtnText = $('.login-logout-btn').text()
+      unless logInBtnText == "  Log In/Sign Up"
+        $('.review_form').show()
+        $(@).hide()
+
 
   _tourRateBtn = ->
     $('.tour_rate i').click ->
@@ -40,10 +58,14 @@ Batty.ToursShow = do ->
     $('.order_by_date_btn').click ->
       $('.order_by_star_btn').removeClass('is_active')
       $('.order_by_date_btn').addClass('is_active')
+      $('.review_by_date').show()
+      $('.review_by_star').hide()
 
     $('.order_by_star_btn').click ->
       $('.order_by_date_btn').removeClass('is_active')
       $('.order_by_star_btn').addClass('is_active')
+      $('.review_by_star').show()
+      $('.review_by_date').hide()
 
   _tourLocation = () ->
     latlng = $('#map').data('latlng')
@@ -70,7 +92,6 @@ Batty.ToursShow = do ->
       });
 
   _tourHeaderSection = ->  
-    console.log "cover"
     $imgUrl = $('.trip-cover-img').attr("data-img")
     # headerHeight = $('#fixed-head').height()
     # tripHeaderHeight = $('.trip_head_wrapper').height()

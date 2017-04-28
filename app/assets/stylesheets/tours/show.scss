@@ -298,6 +298,11 @@ body[id='tours-show'] {
           color: #FFB400;
         }
       }
+      .display_reviews {
+        i {
+          color: #FFB400;
+        }
+      }
       .user-profile-img {
         width: 70px;
         border-radius: 100%;
@@ -317,6 +322,10 @@ body[id='tours-show'] {
         border: 1px solid #FFB400;
         border-radius: 10px;
       }
+      .review_submitted_btn {
+        background-color: #1ab399;
+      }
+      .no_display { display: none; }
       .reviews_footer {
         background-color: #1ab399;
         padding: 15px 0;

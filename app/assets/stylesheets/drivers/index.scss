@@ -1,30 +1,169 @@
 @import 'settings';
 
 body[id='drivers-index'] {
+  #driver {
+    .driver_details {
+      .btn_driver_details {
+        margin: 0 auto;
+        padding: 5px 7px;
+        border: 1px solid grey;
+        border-radius: 5px;
+        color: grey;
+        width: 100px;
+        text-align: center;
+        &:hover {
+          cursor: pointer;
+          color: #FFBE5B;
+          border-color: #FFBE5B;
+        }
+      } 
+    }
+    .driver_selected {
+      width: 50%;
+      display: inline-block;
+      a {
+        float: right;
+        padding: 5px 7px;
+        border: 1px solid #1ab399;
+        border-radius: 5px;
+        color: grey;
+        width: 100px;
+        text-align: center;
+      }
+    }
+    .driver_info{
+      background-color: #f8f8f8;
+      padding: 20px 0;
+      border: 1px solid grey;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      display: none;
+      strong {
+        color: #FFBE5B;
+      }
+      .driver_review {
+        span.rating {
+          color: #FFBE5B;
+          padding: 10px; 
+        }
+        span.review {
+          padding: 10px;
+        }
+      }
+      .driver_pngs {
+        width: 100%;
+        p {
+          font-size: 12px;
+          text-align: center;
+          margin-top: 10px;
+        }
+        .remork_png,
+        .car_png,
+        .location_png {
+          display: inline-block;
+          width: 33%;
+          .round_img {
+            background-color: #FFBE5B;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin: 0 auto;
+            position: relative;
+            img {
+              position: absolute;
+              left: 0;
+              right: 0;
+              top: 12px;
+              margin: 0 auto;
+              width: 40px;
+              height: 30px;
+            }
+          }
+        }
+        .location_png {
+          .round_img {
+            img { width: 25px;}
+          }
+        }
+      }
+      .driver_skill {
+        p {
+          margin-bottom: 3px;
+        }
+        i.check {
+          color: #FFBE5B;
+        }
+        i.uncheck {
+          color: red;
+        }
+      }
+      .driver_gallery {
+        .driver_image {
+          margin-top: 8px;
+          margin-bottom: 8px;
+          border: 1px solid grey;
+          background-color: white;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: cover;
+        }
+      }
+      .tuktuk_price,
+      .car_price {
+        margin-top: 10px;
+        vertical-align: center;
+        .price {
+          background-color: #FFBE5B;
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          position: relative;
+          strong {
+            color: white;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 27%;
+            text-align: center;
+          }
+        }
+        .driver_selected {
+          margin-top: 6px;
+        }
+      }
+    }
+    .no_selected_driver {
+      padding: 10px 15px;
+      border: 2px solid grey;
+      border-radius: 10px;
+      color: grey;
+      text-align: center;
+      width: 30%;
+      margin: 20px auto;
+      font-size: 20px;
+      font-weight: 400;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
   .card {
     .card-driver-image {
       width: 100%;
-      height: 320px;
+      height: 200px;
       img {
         width: 100%;
         position: relative;
         margin: 0 auto;
         height: inherit;
       }
-      span.card-title {
-        font-size: 18px;
-        font-weight: 700;
-        background-color: rgba(0,0,0,0.5);
-        width: 100%;
-        padding-top: 10px;
-        padding-bottom: 10px;
-      }
       span.card-driver-avatar {
         position: absolute;
-        top: 40%;
-        right: 15%;
-        width: 60px;
-        height: 60px;
+        top: 30%;
+        right: 5%;
+        width: 50px;
+        height: 50px;
         border-radius: 50%;
         border: 3px solid white;
         overflow: hidden;
@@ -37,7 +176,7 @@ body[id='drivers-index'] {
       }
       @media #{$phone} {
         height: auto;
-        span.card-tour-price {
+        span.card-driver-price {
           width: 45px;
           height: 45px;
           font-size: 12px;
@@ -46,24 +185,23 @@ body[id='drivers-index'] {
     }
     .card-action {
       width: 100%;
-      display: inline-flex;
+      background-color: white;
+      padding: 8px;
       @media #{$tablet} {
-        padding: 10px;
         font-size: 14px; 
       }
       @media #{$phone} {
-        padding: 8px;
         font-size: 13px; 
       }
-      .rating {
-        color: #FFB400;
+      strong {
+        display: block;
       }
-      .vehicle {
-        text-align: right;
-      }
-      .rating,
-      .vehicle {
-        width: 50%;
+      .desc_ellipsis {
+        white-space: nowrap; 
+        width: 100%; 
+        height: 100px;
+        overflow: hidden;
+        text-overflow: ellipsis; 
       }
     }
   }

@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   resources :comments, only: [:create, :update, :destroy]
   resources :articles, only: [:index, :show ]
   resources :blogs, only:[:index, :show ]
-  resources :reviews
+  resources :reviews, except: [:index, :show]
 
   namespace :api do
     resources :drivers, defaults: {format: :json}
@@ -37,4 +37,5 @@ Rails.application.routes.draw do
   devise_for :normal_users, controllers: { omniauth_callbacks: 'auth/omniauth' }
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+  get 'admin/reviews/:id/approved_review', to: 'admin/reviews#approved_review', as: 'approved_review'
 end

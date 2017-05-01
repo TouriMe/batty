@@ -69,4 +69,10 @@ module PurchaseHelper
 		skills_html = communication_html + experience_html + history_html + photography_html + dslr_html
 		return skills_html.html_safe
 	end
+
+	def exsiting_url(image)
+		if image.hero_unit_image.present?
+			image.hero_unit_image.url
+		end
+	end
 end

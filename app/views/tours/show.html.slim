@@ -133,7 +133,7 @@
           .small-6.columns
             - if @tour.ticket_price_cents != 0
               .price.right
-                strongc Price: 
+                strong Price: 
                 span  
                   = number_to_currency(@tour.ticket_price_cents, :precision => 0)
             - elsif @tour.tuktuk_price.to_i != 0

@@ -2,7 +2,7 @@
   .purchasepage-header.full-width
     .navbar.contain-to-grid.sticky
       = render 'partials/topbar'
-    .purchase-tour-image[style="background-image:url(#{@trip.hero_unit_image.url});"]
+    .purchase-tour-image[style="background-image:url(#{exsiting_url(@trip)});background-color:grey;"]
       .tour-title
         h2
           = @trip.name

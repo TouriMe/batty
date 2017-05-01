@@ -2,7 +2,6 @@ class TourSerializer < ActiveModel::Serializer
   include ActionView::Helpers::NumberHelper
   include ActionView::Helpers::TextHelper
 
-  has_many :comments
   has_many :images
 
   attributes :id, :name, :ticket_price_cents, :tuktuk_price, :car_price, :rating,
@@ -13,7 +12,8 @@ class TourSerializer < ActiveModel::Serializer
   end
 
   def review
-    pluralize(object.comments.size, 'review')
+    tour_reviews = Review.where(review_type: 'tour', name: "#{object.name}").count
+    pluralize(tour_reviews, 'review')
   end
 
   def rating

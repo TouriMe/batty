@@ -8,9 +8,9 @@ class WelcomeController < ApplicationController
     @transparent_header = true
     @seotags = Seo.find_by_page('home')
     @activities = Activity.all
-    @lengths = Length.all
     @feature_experiences = Tour.where(feature_tour: 'yes')
     @benefits = Benefit.all
+
   end
 
   def terms

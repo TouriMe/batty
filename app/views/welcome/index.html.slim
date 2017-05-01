@@ -77,5 +77,5 @@
                   = render 'partials/rating', rating: experience.rating > 0 ? experience.rating : 5 
                 .review-num
                   strong
-                    = pluralize(experience.comments.size, 'review')
+                    = pluralize(number_of_reviews(experience), 'review')
 

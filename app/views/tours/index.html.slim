@@ -37,27 +37,27 @@
 
         .small-12.columns
           .activity-tour
-          .row
-            - activity.tours.each do |tour|
-              .small-12.medium-6.large-4.columns
-                .card
-                  = link_to tour_path(tour.slug) do
-                    .card-image
-                      .card-tour-image
-                        = image_tag tour.card_img
-                        span.card-title.ellipsis
-                          = tour.name
-                        span.card-tour-price
-                          - if tour.ticket_price_cents != 0
-                            = number_to_currency(tour.ticket_price_cents, :precision => 0)
-                          - elsif tour.tuktuk_price.to_i != 0
-                            = number_to_currency(tour.tuktuk_price.to_i, :precision => 0)
-                          - else
-                            = number_to_currency(tour.car_price.to_i, :precision => 0)
-                  .card-action
-                    .rating
-                      = render 'partials/rating', rating: tour.rating > 0 ? tour.rating : 5 
-                    .review-num
-                      strong
-                        = pluralize(tour.comments.size, 'review')
+            .row
+              - activity.tours.each do |tour|
+                .small-12.medium-6.large-4.columns
+                  .card
+                    = link_to tour_path(tour.slug) do
+                      .card-image
+                        .card-tour-image
+                          = image_tag tour.card_img
+                          span.card-title.ellipsis
+                            = tour.name
+                          span.card-tour-price
+                            - if tour.ticket_price_cents != 0
+                              = number_to_currency(tour.ticket_price_cents, :precision => 0)
+                            - elsif tour.tuktuk_price.to_i != 0
+                              = number_to_currency(tour.tuktuk_price.to_i, :precision => 0)
+                            - else
+                              = number_to_currency(tour.car_price.to_i, :precision => 0)
+                    .card-action
+                      .rating
+                        = render 'partials/rating', rating: tour.rating > 0 ? tour.rating : 5 
+                      .review-num
+                        strong
+                          = pluralize(number_of_reviews(tour), 'review')
 

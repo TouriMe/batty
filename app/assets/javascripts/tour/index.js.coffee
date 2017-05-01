@@ -6,12 +6,10 @@ Batty.ToursIndex = do ->
 
   _getToursCallback = ->
     $('.custom-button').on 'click', (e)->
-      
       activityRow = $(@).parents('.row').attr('id')
 
       tourType = $(e.toElement).data('tour-type')
       activityType = $(e.toElement).data('activity-type')
-      
       $.ajax
         method: 'GET'
         data: { tour_type: tourType, activity_type: activityType }

@@ -30,63 +30,64 @@
           h5
             | Duration
 .row#driver[style="background-color:white;"]
-  - @drivers.each_slice(3) do |drivers|
-    .small-12.columns
+  .small-12.columns
+    - @drivers.each_slice(3) do |drivers|
+      .row
+        - drivers.each do |driver|
+          .small-12.medium-4.columns
+            = render 'drivers/driver_item', driver: driver
       - drivers.each do |driver|
-        .small-12.medium-4.columns
-          = render 'drivers/driver_item', driver: driver
-    - drivers.each do |driver|
-      .driver_info[id="driver-#{driver.id}" style="display:none;"]
-        .row
-          .small-12.medium-4.columns
-            = image_tag driver.card_img
-            .driver_review.clearfix
-              span.rating.left
-                = render 'partials/rating', rating: driver.rating > 0 ? driver.rating : 5
-              span.review.right
-                = pluralize(driver.comments.size, 'review')
-            .driver_pngs
-              - driver.vehicles.each do |vehicle|
-                - if vehicle.name == "Remork/Tuk Tuk"
-                  .remork_png
+        .driver_info[id="driver-#{driver.id}" style="display:none;"]
+          .row
+            .small-12.medium-4.columns
+              = image_tag driver.card_img
+              .driver_review.clearfix
+                span.rating.left
+                  = render 'partials/rating', rating: driver.rating > 0 ? driver.rating : 5
+                span.review.right
+                  = pluralize(driver.comments.size, 'review')
+              .driver_pngs
+                - driver.vehicles.each do |vehicle|
+                  - if vehicle.name == "Remork/Tuk Tuk"
+                    .remork_png
+                      .round_img
+                        = image_tag 'tuktuk.png'
+                      p = "#{vehicle.name}" 
+                  - else                        
+                    .car_png
+                      .round_img
+                        = image_tag 'car_white.png'
+                      p = "#{vehicle.name}"
+                - driver.cities.each do |city|
+                  .location_png
                     .round_img
-                      = image_tag 'tuktuk.png'
-                    p = "#{vehicle.name}" 
-                - else                        
-                  .car_png
-                    .round_img
-                      = image_tag 'car_white.png'
-                    p = "#{vehicle.name}"
-              - driver.cities.each do |city|
-                .location_png
-                  .round_img
-                    = image_tag 'location_white.png'
-                  p = "#{city.name}"
-          .small-12.medium-4.columns
-            strong
-              = "#{driver.first_name}'s Story:"
-            p
-              = driver.description.html_safe
-          .small-12.medium-4.columns
-            .row
-              .small-12.columns
-                .driver_skill
-                  strong
-                    = "#{driver.first_name}'s Skill:"
-                  br
-                  br
-                  p
-                    = driver_skills(driver)
-            br
-            .row
-              .small-12.columns
-                .driver_gallery
-                  strong
-                    = "#{driver.first_name}'s Gallery:"
-                  br
-                  br
-                  .row
-                    - driver.images.each do |image|
-                      .small-6.medium-3.columns
-                        .driver_image[style="background-image:url(#{image.url});"]
+                      = image_tag 'location_white.png'
+                    p = "#{city.name}"
+            .small-12.medium-4.columns
+              strong
+                = "#{driver.first_name}'s Story:"
+              p
+                = driver.description.html_safe
+            .small-12.medium-4.columns
+              .row
+                .small-12.columns
+                  .driver_skill
+                    strong
+                      = "#{driver.first_name}'s Skill:"
+                    br
+                    br
+                    p
+                      = driver_skills(driver)
+              br
+              .row
+                .small-12.columns
+                  .driver_gallery
+                    strong
+                      = "#{driver.first_name}'s Gallery:"
+                    br
+                    br
+                    .row
+                      - driver.images.each do |image|
+                        .small-6.medium-3.columns
+                          .driver_image[style="background-image:url(#{image.url});"]
 

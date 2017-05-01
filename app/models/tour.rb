@@ -78,11 +78,15 @@ class Tour < ActiveRecord::Base
   ## cron job: random tours every sunday
   def self.feature_tours
     displayed_tours = Tour.where(feature_tour: 'yes')
-    displayed_tours.update_all(feature_tour: 'used')
+    if displayed_tours.present?
+      displayed_tours.update_all(feature_tour: 'used')
 
-    next_display_tours = Tour.where(feature_tour: 'no').order("RANDOM()").limit(3)
-    next_display_tours.update_all(feature_tour: 'yes')
+      next_display_tours = Tour.where(feature_tour: 'no').order("RANDOM()").limit(3)
+      next_display_tours.update_all(feature_tour: 'yes')
 
-    Tour.where(feature_tour: 'used').update_all(feature_tour: 'no')
+      Tour.where(feature_tour: 'used').update_all(feature_tour: 'no')
+    else
+      Tour.where(feature_tour: 'yes').order("RANDOM()").limit(3)
+    end
   end
 end

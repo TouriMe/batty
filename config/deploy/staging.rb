@@ -1,2 +1,2 @@
 set :stage, :staging
-server '52.221.23.40', user: 'deployer', roles: %w{app web db}
+server '54.169.18.241', user: 'deployer', roles: %w{app web db}

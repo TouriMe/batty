@@ -77,4 +77,22 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.action_mailer.default_url_options = { host: 'tourime.com' }
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.asset_host = "http://tourime.com"
+
+  config.action_mailer.smtp_settings = {
+    address:               'email-smtp.us-east-1.amazonaws.com',
+    authentication:        :login,
+    user_name:             ENV['AWS_SES_USER_NAME'],
+    password:              ENV['AWS_SES_PASSWORD'],
+    enable_starttls_auto:  true,
+    port:                  465,
+    openssl_verify_mode:   OpenSSL::SSL::VERIFY_NONE,
+    ssl:                   true,
+    tls:                   true
+  }
 end

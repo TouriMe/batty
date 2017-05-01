@@ -133,10 +133,11 @@ Batty.ToursShow = do ->
   _tourContentSection = ->
     padding = 21
     scheduleHeight = $('.schedule').height()
-    imageHeight = scheduleHeight + padding
-    image = '.gallery .tour_gallery-orbit .tour-image'
-    # $(".gallery").css('height', scheduleHeight)
-    $("#{image}").css('height', imageHeight)
+    if scheduleHeight >= 280
+      imageHeight = scheduleHeight + padding
+      image = '.gallery .tour_gallery-orbit .tour-image'
+      # $(".gallery").css('height', scheduleHeight)
+      $("#{image}").css('height', imageHeight)
 
   _heroUnitSlider = ->
     $(document).foundation({

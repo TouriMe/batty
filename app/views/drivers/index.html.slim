@@ -31,7 +31,7 @@
             | Duration
 .row#driver[style="background-color:white;"]
   - @drivers.each_slice(3) do |drivers|
-    .row
+    .small-12.columns
       - drivers.each do |driver|
         .small-12.medium-4.columns
           = render 'drivers/driver_item', driver: driver
@@ -89,7 +89,4 @@
                     - driver.images.each do |image|
                       .small-6.medium-3.columns
                         .driver_image[style="background-image:url(#{image.url});"]
-            
-  / - @drivers.each do |driver|
-  /   .small-12.medium-6.large-4.columns
-  /     = render 'drivers/driver_item', driver: driver
+

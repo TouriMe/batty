@@ -22,19 +22,21 @@
   .tourpage-content
     - @activities.each do |activity|
       .row[id='#{activity.activity_name.parameterize('')}']
-        h3
-          = activity.activity_name
-        .activity-type
-          .activity-type-filter.text-center#All
-            a.custom-button.is_active[data-tour-type='0' data-activity-type="#{activity.id}"]
-              | All
-          - activity.tours.each do |tour|
-            - if tour.tour_type.present?
-              .activity-type-filter.text-center[id='#{tour.tour_type.name.parameterize('')}']
-                a.custom-button[data-tour-type="#{tour.tour_type.id}" data-activity-type="#{activity.id}"]
-                  = tour.tour_type.name
+        .small-12.columns
+          h3
+            = activity.activity_name
+          .activity-type
+            .activity-type-filter.text-center#All
+              a.custom-button.is_active[data-tour-type='0' data-activity-type="#{activity.id}"]
+                | All
+            - activity.tours.each do |tour|
+              - if tour.tour_type.present?
+                .activity-type-filter.text-center[id='#{tour.tour_type.name.parameterize('')}']
+                  a.custom-button[data-tour-type="#{tour.tour_type.id}" data-activity-type="#{activity.id}"]
+                    = tour.tour_type.name
 
-        .activity-tour
+        .small-12.columns
+          .activity-tour
           .row
             - activity.tours.each do |tour|
               .small-12.medium-6.large-4.columns

@@ -97,6 +97,7 @@ Batty.ToursShow = do ->
     # tripHeaderHeight = $('.trip_head_wrapper').height()
     # heroHight = $(window).height()-tripHeaderHeight + 80
     $('.trip-cover-img').attr('style',' background-image:url('+ $imgUrl + ');');
+    $('.trip-cover-img').attr('style',' background-color:grey;');
     $('.trip-cover-img').click( (evt)->
       $('.carousel ul li:first-child img').click();
     );

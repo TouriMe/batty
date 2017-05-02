@@ -54,7 +54,7 @@
                   h5 No. of Travellers
                   .form-group
                     .travellers_number
-                      = f.number_field :traveller_number, min: 1, id: 'peopleQuanities', class: 'no-spin'
+                      = f.number_field :traveller_number, min: 1, id: 'peopleQuanities', class: 'no-spin', pattern: "\d{1,}"
                       a.decrease[href='javascript:void(0)']
                         = fa_icon 'minus'
                       a.increase[href='javascript:void(0)']

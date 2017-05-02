@@ -1,8 +1,10 @@
 Batty.PurchasesNew = do ->
   _init = ->
     _activeVisitedBreadcrumb()
+    _disableEnterToSubmitForm()
     #Detail tab
     _numberOfTravellers()
+    _validateNumberofTravellers()
     _dateTimePicker()
     _mapTimeOut()
     _nextDriverTab()
@@ -11,6 +13,24 @@ Batty.PurchasesNew = do ->
     _setHeightDriverGallery()
     _selectedDriverBtn()
 
+  _disableEnterToSubmitForm = ->
+    $('form').bind 'keypress', (e) ->
+      e.preventDefault() if e.keyCode == 13
+        
+  _validateNumberofTravellers = ->
+    $('#peopleQuanities').keydown (e) ->
+      if $.inArray(e.keyCode, [
+          46
+          8
+          9
+          27
+          13
+          110
+          190
+        ]) != -1 or e.keyCode == 65 and e.ctrlKey == true or e.keyCode == 67 and e.ctrlKey == true or e.keyCode == 88 and e.ctrlKey == true or e.keyCode >= 35 and e.keyCode <= 39
+        return
+      if (e.shiftKey or e.keyCode < 48 or e.keyCode > 57) and (e.keyCode < 96 or e.keyCode > 105)
+        e.preventDefault()
 
   _nextDriverTab = ->
     $('#detail ul.tabs a#next').click ->

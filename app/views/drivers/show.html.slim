@@ -167,39 +167,35 @@
                 .review_by_date
                   - @review_by_date.each do |review|
                     br
-                    .small-4.small-centered.columns
-                      .row
-                        .small-6.columns.text-left
-                          strong
-                            = review.customer_name
-                          p
-                            = review.created_at.strftime("%F")
-                        .small-6.columns.text-right
-                          - review.star.times do
-                            = fa_icon "star"
-                    .small-4.small-centered.columns
-                      .row
-                        .small-12.columns.text-left[style="border-bottom:1px solid #FFB400;"]
-                          p
-                            = review.review
+                    .small-12.medium-4.medium-centered.columns
+                      .small-6.columns.text-left
+                        strong
+                          = review.customer_name
+                        p
+                          = review.created_at.strftime("%F")
+                      .small-6.columns.text-right
+                        - review.star.times do
+                          = fa_icon "star"
+                    .small-12.medium-4.medium-centered.columns
+                      .small-12.columns.text-left[style="border-bottom:1px solid #FFB400;"]
+                        p
+                          = review.review
                 .review_by_star[style="display:none;"]
                   - @review_by_stars.each do |review|
                     br
-                    .small-4.small-centered.columns
-                      .row
-                        .small-6.columns.text-left
-                          strong
-                            = review.customer_name
-                          p
-                            = review.created_at.strftime("%F")
-                        .small-6.columns.text-right
-                          - review.star.times do
-                            = fa_icon "star"
-                    .small-4.small-centered.columns
-                      .row
-                        .small-12.columns.text-left[style="border-bottom:1px solid #FFB400;"]
-                          p
-                            = review.review
+                    .small-12.medium-4.medium-centered.columns
+                      .small-6.columns.text-left
+                        strong
+                          = review.customer_name
+                        p
+                          = review.created_at.strftime("%F")
+                      .small-6.columns.text-right
+                        - review.star.times do
+                          = fa_icon "star"
+                    .small-12.medium-4.medium-centered.columns
+                      .small-12.columns.text-left[style="border-bottom:1px solid #FFB400;"]
+                        p
+                          = review.review
             br
             - if normal_user_signed_in?
               - if reviewable(current_normal_user)

@@ -41,9 +41,9 @@ ActiveAdmin.register Review do
 
     actions defaults: true do |review|
       if review.approve
-        link_to 'unapprove' , approved_review_path(review)
+        link_to 'Unapprove' , approved_review_path(review)
       else
-        link_to 'approve' , approved_review_path(review)
+        link_to 'Approve' , approved_review_path(review)
       end
     end
 

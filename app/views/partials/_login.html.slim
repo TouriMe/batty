@@ -13,6 +13,7 @@
         = fa_icon 'user', class: 'user-icon'
         h5
           strong Login With
+        a.close-reveal-modal aria-label="Close"  ×
       .content
         = link_to normal_user_omniauth_authorize_path(:facebook), class: 'login-button facebook'
           = fa_icon 'facebook', class: 'left'

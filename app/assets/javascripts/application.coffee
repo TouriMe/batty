@@ -78,6 +78,8 @@ $(()->
     footerPosition = (deviceHeight - containerHeight - footerHeight) + 'px'
     $('#footer').css('margin-top', footerPosition);
 
+  $('.login-logout-btn').click ->
+    $('#loginModal').foundation('reveal', 'open'); 
 #  $("#payment_details").validate({
 #    rules: {
 #      phone_number: {

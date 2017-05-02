@@ -71,8 +71,12 @@ $(()->
     height: 40
   });
 
-
-
+  deviceHeight = $(window).height()
+  footerHeight = $('#footer').height()
+  containerHeight = $('.main-container').height()
+  if containerHeight <= deviceHeight
+    footerPosition = (deviceHeight - containerHeight - footerHeight) + 'px'
+    $('#footer').css('margin-top', footerPosition);
 
 #  $("#payment_details").validate({
 #    rules: {

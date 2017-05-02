@@ -78,29 +78,29 @@
           .row
             .small-12.medium-8.columns[style='border-right:1px solid #FFBE5B;']
               .row.form-group
-                .small-2.columns
-                  = f.label :first_name, class: 'right inline'
-                .small-9.columns
+                .small-12.medium-3.columns
+                  = f.label :first_name, class: 'left inline'
+                .small-12.medium-8.columns
                   = f.text_field :first_name, value: current_normal_user.try(:first_name)
               .row.form-group
-                .small-2.columns
-                  = f.label :last_name, class: 'right inline'
-                .small-9.columns
+                .small-12.medium-3.columns
+                  = f.label :last_name, class: 'left inline'
+                .small-12.medium-8.columns
                   = f.text_field :last_name, value: current_normal_user.try(:last_name)
               .row.form-group
-                .small-2.columns
-                  = f.label :email, class: 'right inline'
-                .small-9.columns
+                .small-12.medium-3.columns
+                  = f.label :email, class: 'left inline'
+                .small-12.medium-8.columns
                   = f.email_field :email, value: current_normal_user.try(:email)
               .row.form-group
-                .small-2.columns
-                  = f.label :email_confirmation, class: 'right inline'
-                .small-9.columns
+                .small-12.medium-3.columns
+                  = f.label :email_confirmation, class: 'left inline'
+                .small-12.medium-8.columns
                   = f.email_field :email_confirmation, value: current_normal_user.try(:email)
               .row.form-group
-                .small-2.columns
-                  = f.label :phone_number, 'Phone',class: 'right inline'
-                .small-9.columns
+                .small-12.medium-3.columns
+                  = f.label :phone_number, 'Phone',class: 'left inline'
+                .small-12.medium-8.columns
                   = f.text_field :phone_number
                   
             .small-12.medium-4.columns.text-center

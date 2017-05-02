@@ -2,6 +2,7 @@ Batty.PurchasesNew = do ->
   _init = ->
     _activeVisitedBreadcrumb()
     _disableEnterToSubmitForm()
+    _detectMobile()
     #Detail tab
     _numberOfTravellers()
     _validateNumberofTravellers()
@@ -12,6 +13,11 @@ Batty.PurchasesNew = do ->
     _displayDriverDetail()
     _setHeightDriverGallery()
     _selectedDriverBtn()
+
+  _detectMobile = ->
+    mobile_width = 425
+    if $(window).width() <= mobile_width
+      return true
 
   _disableEnterToSubmitForm = ->
     $('form').bind 'keypress', (e) ->
@@ -112,6 +118,8 @@ Batty.PurchasesNew = do ->
       driverId = $(@).data('id')
       $(".driver_info:not(##{driverId})").hide()
       $("##{driverId}").toggle()
+      if _detectMobile()
+        window.location.hash = "##{driverId}"
 
   _mapTimeOut = ->
     firstInit = false;

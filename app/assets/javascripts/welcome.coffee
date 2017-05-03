@@ -5,7 +5,7 @@
 Batty.WelcomeIndex = do ->
   _init = ->
     # _windowScroll()
-    _scrollToTopBtn()
+    # _scrollToTopBtn()
     _benefitDetail()
 
   _benefitDetail = ->
@@ -14,10 +14,10 @@ Batty.WelcomeIndex = do ->
       $(".benefit_detail:not(##{benefitId})").hide()
       $(".benefit_detail##{benefitId}").toggle()
 
-  _scrollToTopBtn = ->
-    $('.scroll').click (event) ->
-      event.preventDefault()
-      $('html,body').animate { scrollTop: $(@hash).offset().top }, 1000
+  # _scrollToTopBtn = ->
+  #   $('.scroll').click (event) ->
+  #     event.preventDefault()
+  #     $('html,body').animate { scrollTop: $(@hash).offset().top }, 1000
     
   # _windowScroll = ->  
   #   $(window).scroll ->

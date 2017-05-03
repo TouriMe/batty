@@ -33,6 +33,10 @@ body[id='tours-index'] {
         margin: 0 auto;
         margin-top: 5%;
         text-align: center;
+        .activity {
+          width: 20%;
+          display:inline-block
+        }
         h3 {
           color: #FFB94E;
           font-weight: 600;

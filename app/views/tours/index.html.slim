@@ -11,13 +11,21 @@
       .activites
         h3
           | Filter by activity:
-        .row
-          - @activities.each do |activity|
-            .small-6.medium-3.columns
-              = link_to "##{activity.activity_name.parameterize('')}" do
-                .activity-box
-              h5
-                = activity.activity_name
+        .row 
+          - if @activities.count < 4
+            - @activities.each do |activity|
+              .activity
+                = link_to "##{activity.activity_name.parameterize('')}" do
+                  .activity-box
+                h5
+                  = activity.activity_name
+          - else
+            - @activities.each do |activity|
+              .small-6.medium-3.columns 
+                = link_to "##{activity.activity_name.parameterize('')}" do
+                  .activity-box
+                h5
+                  = activity.activity_name
           
   .tourpage-content
     - @activities.each do |activity|
@@ -25,7 +33,7 @@
         .small-12.columns
           h3
             = activity.activity_name
-          .activity-type
+          .activity-type class="#{number_of_tour_type(activity)}"
             .activity-type-filter.text-center#All
               a.custom-button.is_active[data-tour-type='0' data-activity-type="#{activity.id}"]
                 | All

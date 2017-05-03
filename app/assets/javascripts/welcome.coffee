@@ -4,7 +4,7 @@
 
 Batty.WelcomeIndex = do ->
   _init = ->
-    _windowScroll()
+    # _windowScroll()
     _scrollToTopBtn()
     _benefitDetail()
 
@@ -19,12 +19,12 @@ Batty.WelcomeIndex = do ->
       event.preventDefault()
       $('html,body').animate { scrollTop: $(@hash).offset().top }, 1000
     
-  _windowScroll = ->  
-    $(window).scroll ->
-      if $(this).scrollTop() < 100
-        $('.top-bar').fadeIn()
-      else
-        $('.top-bar').fadeOut()
+  # _windowScroll = ->  
+  #   $(window).scroll ->
+  #     if $(this).scrollTop() < 100
+  #       $('.top-bar').fadeIn()
+  #     else
+  #       $('.top-bar').fadeOut()
 
   { init: _init }
 

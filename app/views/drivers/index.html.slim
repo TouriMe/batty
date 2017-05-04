@@ -62,11 +62,12 @@
                   .round_img
                     = image_tag 'location_white.png'
                   p = "#{city.name}"
-          .small-12.medium-4.columns
-            strong
-              = "#{driver.first_name}'s Story:"
-            p
-              = driver.description.html_safe
+          - if driver.description.present?
+            .small-12.medium-4.columns
+              strong
+                = "#{driver.first_name}'s Story:"
+              p
+                = driver.description.html_safe
           .small-12.medium-4.columns
             .row
               .small-12.columns
@@ -78,15 +79,16 @@
                   p
                     = driver_skills(driver)
             br
-            .row
-              .small-12.columns
-                .driver_gallery
-                  strong
-                    = "#{driver.first_name}'s Gallery:"
-                  br
-                  br
-                  .row
-                    - driver.images.each do |image|
-                      .small-6.medium-3.columns
-                        .driver_image[style="background-image:url(#{image.url});"]
+            - if driver.images.present?
+              .row
+                .small-12.columns
+                  .driver_gallery
+                    strong
+                      = "#{driver.first_name}'s Gallery:"
+                    br
+                    br
+                    .row
+                      - driver.images.each do |image|
+                        .small-6.medium-3.columns
+                          .driver_image[style="background-image:url(#{image.url});"]
 

@@ -75,8 +75,9 @@ $(()->
   footerHeight = $('#footer').height()
   containerHeight = $('.main-container').height()
   if containerHeight <= deviceHeight
-    footerPosition = (deviceHeight - containerHeight - footerHeight) + 'px'
-    $('#footer').css('margin-top', footerPosition);
+    footerPosition = deviceHeight - containerHeight - footerHeight
+    if footerPosition > 0
+      $('#footer').css('margin-top', footerPosition+'px');
 
   $('.login-logout-btn').click ->
     $('#loginModal').foundation('reveal', 'open'); 
